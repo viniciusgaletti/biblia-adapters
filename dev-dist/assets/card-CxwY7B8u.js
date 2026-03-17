@@ -1,4 +1,4 @@
-import { E as __toESM, c as cn, d as require_jsx_runtime, w as require_react } from "./button-DMYV3pJh.js";
+import { i as cn, s as require_jsx_runtime, x as __toESM, y as require_react } from "./button-pSLtMQQj.js";
 //#region src/components/ui/card.tsx
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 var import_jsx_runtime = require_jsx_runtime();
@@ -51,6 +51,6 @@ var CardFooter = import_react.forwardRef(({ className, ...props }, ref) => /* @_
 }));
 CardFooter.displayName = "CardFooter";
 //#endregion
-export { CardHeader as a, CardFooter as i, CardContent as n, CardTitle as o, CardDescription as r, Card as t };
+export { CardTitle as i, CardContent as n, CardHeader as r, Card as t };
 
-//# sourceMappingURL=card-BMVqA-P1.js.map
+//# sourceMappingURL=card-CxwY7B8u.js.map

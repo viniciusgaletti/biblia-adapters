@@ -21,18 +21,12 @@ export const getAprendizado = async (id: string) => {
 export const createAprendizado = async (
   aprendizado: Pick<Aprendizado, 'titulo' | 'conteudo' | 'categoria'>,
 ) => {
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-  if (!user) throw new Error('Not authenticated')
-
   const { data, error } = await supabase
     .from('aprendizados')
     .insert([
       {
         ...aprendizado,
-        user_id: user.id,
-      },
+      } as any,
     ])
     .select()
     .single()

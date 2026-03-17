@@ -1,6 +1,6 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-B8dke8Wq.js","assets/button-DMYV3pJh.js","assets/skeleton-D2GGYGUN.js","assets/card-BMVqA-P1.js","assets/aprendizados-DgI4ZuJl.js","assets/Login-xxEkmf9F.js","assets/label-Q-CCHO1F.js","assets/loader-circle-pedXnbvr.js","assets/NovoAprendizado-BJVjrSTK.js","assets/arrow-left-WDFfjtz1.js","assets/DetalheAprendizado-D3LI8pNw.js"])))=>i.map(i=>d[i]);
-import { C as __vitePreload, E as __toESM, T as __commonJSMin, _ as Navigate, b as Routes, c as cn$1, d as require_jsx_runtime, f as composeRefs, g as Link, h as BrowserRouter, i as supabase, l as createLucideIcon, m as useToast, p as useComposedRefs, t as Button, u as cva, v as Outlet, w as require_react, y as Route } from "./button-DMYV3pJh.js";
-import { n as require_react_dom, t as LoaderCircle } from "./loader-circle-pedXnbvr.js";
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-D7UGWHKB.js","assets/button-pSLtMQQj.js","assets/aprendizados-Bt742plA.js","assets/skeleton-DfGkHfJj.js","assets/card-CxwY7B8u.js","assets/NovoAprendizado-CBEW5ulH.js","assets/arrow-left-ByU3_M6v.js","assets/loader-circle-2MIJ0fA1.js","assets/DetalheAprendizado-HewxdXj7.js"])))=>i.map(i=>d[i]);
+import { a as createLucideIcon, b as __commonJSMin, c as composeRefs, d as BrowserRouter, f as Link, h as Routes, i as cn$1, l as useComposedRefs, m as Route, o as cva, p as Outlet, s as require_jsx_runtime, t as Button, u as useToast, v as __vitePreload, x as __toESM, y as require_react } from "./button-pSLtMQQj.js";
+import { n as require_react_dom, t as LoaderCircle } from "./loader-circle-2MIJ0fA1.js";
 //#region \0vite/modulepreload-polyfill.js
 (function polyfill() {
 	const relList = document.createElement("link").relList;
@@ -15644,20 +15644,6 @@ var BookOpen = createLucideIcon("book-open", [["path", {
 	d: "M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z",
 	key: "ruj8y"
 }]]);
-var LogOut = createLucideIcon("log-out", [
-	["path", {
-		d: "m16 17 5-5-5-5",
-		key: "1bji2h"
-	}],
-	["path", {
-		d: "M21 12H9",
-		key: "dn1m92"
-	}],
-	["path", {
-		d: "M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4",
-		key: "1uf3rs"
-	}]
-]);
 var MapPinOff = createLucideIcon("map-pin-off", [
 	["path", {
 		d: "M12.75 7.09a3 3 0 0 1 2.16 2.16",
@@ -19302,89 +19288,6 @@ var useTheme = () => {
 	return context;
 };
 //#endregion
-//#region src/hooks/use-auth.tsx
-var AuthContext = (0, import_react.createContext)(void 0);
-var useAuth = () => {
-	const context = (0, import_react.useContext)(AuthContext);
-	if (!context) throw new Error("useAuth must be used within an AuthProvider");
-	return context;
-};
-var AuthProvider = ({ children }) => {
-	const [user, setUser] = (0, import_react.useState)(null);
-	const [session, setSession] = (0, import_react.useState)(null);
-	const [loading, setLoading] = (0, import_react.useState)(true);
-	(0, import_react.useEffect)(() => {
-		const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-			setSession(session);
-			setUser(session?.user ?? null);
-			setLoading(false);
-		});
-		supabase.auth.getSession().then(({ data: { session } }) => {
-			setSession(session);
-			setUser(session?.user ?? null);
-			setLoading(false);
-		});
-		return () => subscription.unsubscribe();
-	}, []);
-	const signUp = async (email, password) => {
-		const { error } = await supabase.auth.signUp({
-			email,
-			password,
-			options: { emailRedirectTo: `${window.location.origin}/` }
-		});
-		return { error };
-	};
-	const signIn = async (email, password) => {
-		const { error } = await supabase.auth.signInWithPassword({
-			email,
-			password
-		});
-		return { error };
-	};
-	const signOut = async () => {
-		const { error } = await supabase.auth.signOut();
-		return { error };
-	};
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AuthContext.Provider, {
-		"data-uid": "src/hooks/use-auth.tsx:65:5",
-		"data-prohibitions": "[editContent]",
-		value: {
-			user,
-			session,
-			signUp,
-			signIn,
-			signOut,
-			loading
-		},
-		children
-	});
-};
-//#endregion
-//#region src/components/ProtectedRoute.tsx
-function ProtectedRoute() {
-	const { user, loading } = useAuth();
-	if (loading) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-uid": "src/components/ProtectedRoute.tsx:10:7",
-		"data-prohibitions": "[]",
-		className: "min-h-screen flex items-center justify-center bg-background",
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, {
-			"data-uid": "src/components/ProtectedRoute.tsx:11:9",
-			"data-prohibitions": "[editContent]",
-			className: "w-8 h-8 animate-spin text-primary"
-		})
-	});
-	if (!user) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Navigate, {
-		"data-uid": "src/components/ProtectedRoute.tsx:17:12",
-		"data-prohibitions": "[editContent]",
-		to: "/login",
-		replace: true
-	});
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {
-		"data-uid": "src/components/ProtectedRoute.tsx:20:10",
-		"data-prohibitions": "[editContent]"
-	});
-}
-//#endregion
 //#region src/components/ThemeToggle.tsx
 function ThemeToggle() {
 	const { theme, toggleTheme } = useTheme();
@@ -19463,79 +19366,65 @@ var ErrorBoundary = class extends import_react.Component {
 //#endregion
 //#region src/components/Layout.tsx
 function Layout() {
-	const { user, signOut } = useAuth();
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ErrorBoundary, {
-		"data-uid": "src/components/Layout.tsx:13:5",
-		"data-prohibitions": "[editContent]",
+		"data-uid": "src/components/Layout.tsx:9:5",
+		"data-prohibitions": "[]",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			"data-uid": "src/components/Layout.tsx:14:7",
-			"data-prohibitions": "[editContent]",
+			"data-uid": "src/components/Layout.tsx:10:7",
+			"data-prohibitions": "[]",
 			className: "min-h-screen bg-background text-foreground flex flex-col font-sans transition-colors duration-200",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
-				"data-uid": "src/components/Layout.tsx:15:9",
-				"data-prohibitions": "[editContent]",
+				"data-uid": "src/components/Layout.tsx:11:9",
+				"data-prohibitions": "[]",
 				className: "sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border shadow-sm",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					"data-uid": "src/components/Layout.tsx:16:11",
-					"data-prohibitions": "[editContent]",
+					"data-uid": "src/components/Layout.tsx:12:11",
+					"data-prohibitions": "[]",
 					className: "max-w-5xl mx-auto px-6 h-16 flex items-center justify-between",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
-						"data-uid": "src/components/Layout.tsx:17:13",
+						"data-uid": "src/components/Layout.tsx:13:13",
 						"data-prohibitions": "[]",
 						to: "/",
 						className: "flex items-center gap-2 group",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(BookOpen, {
-							"data-uid": "src/components/Layout.tsx:18:15",
+							"data-uid": "src/components/Layout.tsx:14:15",
 							"data-prohibitions": "[editContent]",
 							className: "w-6 h-6 text-primary transition-transform group-hover:scale-110"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							"data-uid": "src/components/Layout.tsx:19:15",
+							"data-uid": "src/components/Layout.tsx:15:15",
 							"data-prohibitions": "[]",
 							className: "text-xl font-bold text-primary tracking-tight",
 							children: "Bíblia dos Eliters"
 						})]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						"data-uid": "src/components/Layout.tsx:23:13",
-						"data-prohibitions": "[editContent]",
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						"data-uid": "src/components/Layout.tsx:19:13",
+						"data-prohibitions": "[]",
 						className: "flex items-center gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThemeToggle, {
-							"data-uid": "src/components/Layout.tsx:24:15",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThemeToggle, {
+							"data-uid": "src/components/Layout.tsx:20:15",
 							"data-prohibitions": "[editContent]"
-						}), user && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							"data-uid": "src/components/Layout.tsx:26:17",
-							"data-prohibitions": "[]",
-							variant: "ghost",
-							size: "icon",
-							onClick: () => signOut(),
-							className: "rounded-full text-muted-foreground hover:text-foreground",
-							title: "Sair",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LogOut, {
-								"data-uid": "src/components/Layout.tsx:33:19",
-								"data-prohibitions": "[editContent]",
-								className: "w-5 h-5"
-							})
-						})]
+						})
 					})]
 				})
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
-				"data-uid": "src/components/Layout.tsx:40:9",
+				"data-uid": "src/components/Layout.tsx:25:9",
 				"data-prohibitions": "[]",
 				className: "flex-1 w-full max-w-5xl mx-auto px-6 py-8 animate-fade-in",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react.Suspense, {
-					"data-uid": "src/components/Layout.tsx:41:11",
+					"data-uid": "src/components/Layout.tsx:26:11",
 					"data-prohibitions": "[]",
 					fallback: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/components/Layout.tsx:43:15",
+						"data-uid": "src/components/Layout.tsx:28:15",
 						"data-prohibitions": "[]",
 						className: "flex justify-center items-center h-64",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, {
-							"data-uid": "src/components/Layout.tsx:44:17",
+							"data-uid": "src/components/Layout.tsx:29:17",
 							"data-prohibitions": "[editContent]",
 							className: "w-8 h-8 animate-spin text-muted-foreground"
 						})
 					}),
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {
-						"data-uid": "src/components/Layout.tsx:48:13",
+						"data-uid": "src/components/Layout.tsx:33:13",
 						"data-prohibitions": "[editContent]"
 					})
 				})
@@ -19589,115 +19478,82 @@ var NotFound = () => {
 };
 //#endregion
 //#region src/App.tsx
-var Index = (0, import_react.lazy)(() => __vitePreload(() => import("./Index-B8dke8Wq.js"), __vite__mapDeps([0,1,2,3,4])));
-var Login = (0, import_react.lazy)(() => __vitePreload(() => import("./Login-xxEkmf9F.js"), __vite__mapDeps([5,1,6,7,3])));
-var NovoAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./NovoAprendizado-BJVjrSTK.js"), __vite__mapDeps([8,1,6,7,9,3,4])));
-var DetalheAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./DetalheAprendizado-D3LI8pNw.js"), __vite__mapDeps([10,1,9,2,7,4])));
+var Index = (0, import_react.lazy)(() => __vitePreload(() => import("./Index-D7UGWHKB.js"), __vite__mapDeps([0,1,2,3,4])));
+var NovoAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./NovoAprendizado-CBEW5ulH.js"), __vite__mapDeps([5,1,2,6,7,4])));
+var DetalheAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./DetalheAprendizado-HewxdXj7.js"), __vite__mapDeps([8,1,2,6,3,7])));
 var App = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BrowserRouter, {
-	"data-uid": "src/App.tsx:20:3",
+	"data-uid": "src/App.tsx:17:3",
 	"data-prohibitions": "[]",
 	future: {
 		v7_startTransition: false,
 		v7_relativeSplatPath: false
 	},
 	children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThemeProvider, {
-		"data-uid": "src/App.tsx:21:5",
+		"data-uid": "src/App.tsx:18:5",
 		"data-prohibitions": "[]",
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AuthProvider, {
-			"data-uid": "src/App.tsx:22:7",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TooltipProvider, {
+			"data-uid": "src/App.tsx:19:7",
 			"data-prohibitions": "[]",
-			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TooltipProvider, {
-				"data-uid": "src/App.tsx:23:9",
-				"data-prohibitions": "[]",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Toaster$2, {
-						"data-uid": "src/App.tsx:24:11",
-						"data-prohibitions": "[editContent]"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Toaster, {
-						"data-uid": "src/App.tsx:25:11",
-						"data-prohibitions": "[editContent]"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Routes, {
-						"data-uid": "src/App.tsx:26:11",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Toaster$2, {
+					"data-uid": "src/App.tsx:20:9",
+					"data-prohibitions": "[editContent]"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Toaster, {
+					"data-uid": "src/App.tsx:21:9",
+					"data-prohibitions": "[editContent]"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Routes, {
+					"data-uid": "src/App.tsx:22:9",
+					"data-prohibitions": "[]",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Route, {
+						"data-uid": "src/App.tsx:23:11",
 						"data-prohibitions": "[]",
+						element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layout, {
+							"data-uid": "src/App.tsx:23:27",
+							"data-prohibitions": "[editContent]"
+						}),
 						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
+								"data-uid": "src/App.tsx:24:13",
+								"data-prohibitions": "[editContent]",
+								path: "/",
+								element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Index, {
+									"data-uid": "src/App.tsx:24:38",
+									"data-prohibitions": "[editContent]"
+								})
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
+								"data-uid": "src/App.tsx:25:13",
+								"data-prohibitions": "[editContent]",
+								path: "/novo",
+								element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NovoAprendizado, {
+									"data-uid": "src/App.tsx:25:42",
+									"data-prohibitions": "[editContent]"
+								})
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
+								"data-uid": "src/App.tsx:26:13",
+								"data-prohibitions": "[editContent]",
+								path: "/aprendizado/:id",
+								element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DetalheAprendizado, {
+									"data-uid": "src/App.tsx:26:53",
+									"data-prohibitions": "[editContent]"
+								})
+							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
 								"data-uid": "src/App.tsx:27:13",
 								"data-prohibitions": "[editContent]",
-								path: "/login",
-								element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Login, {
-									"data-uid": "src/App.tsx:27:43",
-									"data-prohibitions": "[editContent]"
-								})
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-								"data-uid": "src/App.tsx:29:13",
-								"data-prohibitions": "[]",
-								element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProtectedRoute, {
-									"data-uid": "src/App.tsx:29:29",
-									"data-prohibitions": "[editContent]"
-								}),
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Route, {
-									"data-uid": "src/App.tsx:30:15",
-									"data-prohibitions": "[]",
-									element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layout, {
-										"data-uid": "src/App.tsx:30:31",
-										"data-prohibitions": "[editContent]"
-									}),
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-											"data-uid": "src/App.tsx:31:17",
-											"data-prohibitions": "[editContent]",
-											path: "/",
-											element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Index, {
-												"data-uid": "src/App.tsx:31:42",
-												"data-prohibitions": "[editContent]"
-											})
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-											"data-uid": "src/App.tsx:32:17",
-											"data-prohibitions": "[editContent]",
-											path: "/novo",
-											element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NovoAprendizado, {
-												"data-uid": "src/App.tsx:32:46",
-												"data-prohibitions": "[editContent]"
-											})
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-											"data-uid": "src/App.tsx:33:17",
-											"data-prohibitions": "[editContent]",
-											path: "/aprendizado/:id",
-											element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DetalheAprendizado, {
-												"data-uid": "src/App.tsx:33:57",
-												"data-prohibitions": "[editContent]"
-											})
-										})
-									]
-								})
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-								"data-uid": "src/App.tsx:37:13",
-								"data-prohibitions": "[]",
 								path: "*",
-								element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layout, {
-									"data-uid": "src/App.tsx:37:38",
+								element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NotFound, {
+									"data-uid": "src/App.tsx:27:38",
 									"data-prohibitions": "[editContent]"
-								}),
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-									"data-uid": "src/App.tsx:38:15",
-									"data-prohibitions": "[editContent]",
-									path: "*",
-									element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NotFound, {
-										"data-uid": "src/App.tsx:38:40",
-										"data-prohibitions": "[editContent]"
-									})
 								})
 							})
 						]
 					})
-				]
-			})
+				})
+			]
 		})
 	})
 });
@@ -19708,6 +19564,6 @@ var App = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BrowserRouter, {
 	"data-prohibitions": "[editContent]"
 }));
 //#endregion
-export { Presence as a, useCallbackRef as c, createSlottable as d, createContext2 as f, useControllableState as i, Primitive as l, composeEventHandlers as m, useId as n, Portal as o, createContextScope as p, BookOpen as r, DismissableLayer as s, useAuth as t, createSlot as u };
+export { DismissableLayer as a, createSlot as c, createContextScope as d, composeEventHandlers as f, Portal as i, createSlottable as l, useControllableState as n, useCallbackRef as o, Presence as r, Primitive as s, useId as t, createContext2 as u };
 
-//# sourceMappingURL=index-Cm0Es-oG.js.map
+//# sourceMappingURL=index-BJWh6pkJ.js.map

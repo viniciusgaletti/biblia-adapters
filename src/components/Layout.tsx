@@ -1,14 +1,10 @@
 import { Suspense } from 'react'
 import { Outlet, Link } from 'react-router-dom'
-import { BookOpen, LogOut, Loader2 } from 'lucide-react'
+import { BookOpen, Loader2 } from 'lucide-react'
 import { ThemeToggle } from './ThemeToggle'
 import { ErrorBoundary } from './ErrorBoundary'
-import { useAuth } from '@/hooks/use-auth'
-import { Button } from '@/components/ui/button'
 
 export default function Layout() {
-  const { user, signOut } = useAuth()
-
   return (
     <ErrorBoundary>
       <div className="min-h-screen bg-background text-foreground flex flex-col font-sans transition-colors duration-200">
@@ -22,17 +18,6 @@ export default function Layout() {
             </Link>
             <div className="flex items-center gap-2">
               <ThemeToggle />
-              {user && (
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => signOut()}
-                  className="rounded-full text-muted-foreground hover:text-foreground"
-                  title="Sair"
-                >
-                  <LogOut className="w-5 h-5" />
-                </Button>
-              )}
             </div>
           </div>
         </header>
