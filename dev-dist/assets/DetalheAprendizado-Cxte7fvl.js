@@ -1,9 +1,9 @@
-import { C as require_react, T as __toESM, b as useParams, c as cn, d as require_jsx_runtime, h as Link, l as createLucideIcon, n as buttonVariants, p as useComposedRefs, t as Button, y as useNavigate } from "./button-BPoK0gyP.js";
+import { C as require_react, T as __toESM, b as useParams, c as cn, d as require_jsx_runtime, h as Link, l as createLucideIcon, n as buttonVariants, p as useComposedRefs, t as Button, u as cva, y as useNavigate } from "./button-BPoK0gyP.js";
 import { d as createSlot, f as createSlottable, h as composeEventHandlers, l as Primitive, m as createContextScope, n as useControllableState, o as DismissableLayer, p as createContext2, r as Portal$1, t as useId } from "./dist-CN83TngS.js";
 import { t as ArrowLeft } from "./arrow-left-D93EGSFq.js";
-import { g as Presence, m as LoaderCircle, v as useToast } from "./index-BmHqCLOJ.js";
+import { d as LoaderCircle, h as useToast, p as Presence } from "./index-BCixL4Se.js";
 import { n as deleteAprendizado, r as getAprendizado } from "./aprendizados-DZToyReT.js";
-import { a as Skeleton, i as FocusScope, n as ReactRemoveScroll, o as Badge, r as useFocusGuards, t as hideOthers } from "./es2015-qqT2pMon.js";
+import { a as Skeleton, i as FocusScope, n as ReactRemoveScroll, r as useFocusGuards, t as hideOthers } from "./es2015-BhwJZCQh.js";
 var Calendar = createLucideIcon("calendar", [
 	["path", {
 		d: "M8 2v4",
@@ -59,9 +59,28 @@ var Trash2 = createLucideIcon("trash-2", [
 	}]
 ]);
 //#endregion
-//#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/@radix-ui+react-dialog@1.1.15_@types+react-dom@19.2.3_@types+react@19.2.14__@types+reac_779045218dc2799d336e7197abef9d38/node_modules/@radix-ui/react-dialog/dist/index.mjs
+//#region src/components/ui/badge.tsx
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 var import_jsx_runtime = require_jsx_runtime();
+var badgeVariants = cva("inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2", {
+	variants: { variant: {
+		default: "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
+		secondary: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+		destructive: "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
+		outline: "text-foreground"
+	} },
+	defaultVariants: { variant: "default" }
+});
+function Badge({ className, variant, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-uid": "src/components/ui/badge.tsx:30:10",
+		"data-prohibitions": "[editContent]",
+		className: cn(badgeVariants({ variant }), className),
+		...props
+	});
+}
+//#endregion
+//#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/@radix-ui+react-dialog@1.1.15_@types+react-dom@19.2.3_@types+react@19.2.14__@types+reac_779045218dc2799d336e7197abef9d38/node_modules/@radix-ui/react-dialog/dist/index.mjs
 var DIALOG_NAME = "Dialog";
 var [createDialogContext, createDialogScope] = createContextScope(DIALOG_NAME);
 var [DialogProvider, useDialogContext] = createDialogContext(DIALOG_NAME);
@@ -779,4 +798,4 @@ function DetalheAprendizado() {
 //#endregion
 export { DetalheAprendizado as default };
 
-//# sourceMappingURL=DetalheAprendizado-D6iayOJb.js.map
+//# sourceMappingURL=DetalheAprendizado-Cxte7fvl.js.map

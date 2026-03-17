@@ -1,8 +1,15 @@
 import { C as require_react, S as require_react_dom, T as __toESM, c as cn, d as require_jsx_runtime, h as Link, l as createLucideIcon, p as useComposedRefs, t as Button } from "./button-BPoK0gyP.js";
 import { c as useCallbackRef, d as createSlot, h as composeEventHandlers, i as useLayoutEffect2, l as Primitive, m as createContextScope, n as useControllableState, o as DismissableLayer, r as Portal$1, t as useId } from "./dist-CN83TngS.js";
-import { _ as createCollection, a as CardFooter, c as Anchor, d as Root2$1, f as createPopperScope, h as VISUALLY_HIDDEN_STYLES, i as CardContent, l as Arrow, n as Input, o as CardHeader, p as X, r as Card, s as CardTitle, u as Content } from "./index-BmHqCLOJ.js";
+import { a as Anchor, c as Root2$1, f as VISUALLY_HIDDEN_STYLES, l as createPopperScope, m as createCollection, n as Input, o as Arrow, s as Content, u as X } from "./index-BCixL4Se.js";
 import { i as getAprendizados } from "./aprendizados-DZToyReT.js";
-import { a as Skeleton, i as FocusScope, n as ReactRemoveScroll, o as Badge, r as useFocusGuards, t as hideOthers } from "./es2015-qqT2pMon.js";
+import { a as Skeleton, i as FocusScope, n as ReactRemoveScroll, r as useFocusGuards, t as hideOthers } from "./es2015-BhwJZCQh.js";
+var ArrowRight = createLucideIcon("arrow-right", [["path", {
+	d: "M5 12h14",
+	key: "1ays0h"
+}], ["path", {
+	d: "m12 5 7 7-7 7",
+	key: "xquz4c"
+}]]);
 var BookX = createLucideIcon("book-x", [
 	["path", {
 		d: "m14.5 7-5 5",
@@ -1264,131 +1271,148 @@ var SelectSeparator = import_react.forwardRef(({ className, ...props }, ref) => 
 SelectSeparator.displayName = Separator.displayName;
 //#endregion
 //#region src/pages/Index.tsx
+var getLevelColors = (level) => {
+	switch (level.toLowerCase()) {
+		case "iniciante": return "bg-[#d1fae5] text-[#065f46] dark:bg-[#064e3b] dark:text-[#a7f3d0]";
+		case "intermediario": return "bg-[#fef3c7] text-[#92400e] dark:bg-[#78350f] dark:text-[#fde68a]";
+		case "avancado": return "bg-[#fee2e2] text-[#991b1b] dark:bg-[#7f1d1d] dark:text-[#fecaca]";
+		default: return "bg-muted text-muted-foreground";
+	}
+};
 function Index() {
 	const { data, loading, error, searchTerm, setSearchTerm, categoryFilter, setCategoryFilter, levelFilter, setLevelFilter, clearFilters, refetch, hasActiveFilters, totalCount } = useLearnings();
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		"data-uid": "src/pages/Index.tsx:35:5",
+		"data-uid": "src/pages/Index.tsx:47:5",
 		"data-prohibitions": "[editContent]",
-		className: "space-y-6 animate-fade-in-up",
+		style: { fontFamily: "'Roboto Mono', monospace" },
+		className: "w-full animate-fade-in-up pb-8",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Index.tsx:36:7",
+				"data-uid": "src/pages/Index.tsx:52:7",
 				"data-prohibitions": "[]",
-				className: "flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-2",
+				className: "flex flex-col md:flex-row justify-between items-start md:items-center mb-[36px] gap-4",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					"data-uid": "src/pages/Index.tsx:37:9",
+					"data-uid": "src/pages/Index.tsx:53:9",
 					"data-prohibitions": "[]",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-						"data-uid": "src/pages/Index.tsx:38:11",
+						"data-uid": "src/pages/Index.tsx:54:11",
 						"data-prohibitions": "[]",
-						className: "text-3xl font-bold tracking-tight",
+						className: "text-[1.875rem] font-bold text-foreground tracking-[-0.02em]",
 						children: "Biblia dos Eliters"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						"data-uid": "src/pages/Index.tsx:39:11",
+						"data-uid": "src/pages/Index.tsx:57:11",
 						"data-prohibitions": "[]",
-						className: "text-muted-foreground mt-1 text-sm sm:text-base",
+						className: "text-[0.8125rem] text-muted-foreground mt-[6px] leading-[1.6]",
 						children: "Repositorio vivo de aprendizados sobre IA, Vibecoding, Automacoes e Agentes de IA"
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-					"data-uid": "src/pages/Index.tsx:43:9",
+					"data-uid": "src/pages/Index.tsx:61:9",
 					"data-prohibitions": "[]",
 					to: "/novo",
-					className: "w-full sm:w-auto shrink-0",
+					className: "w-full md:w-auto shrink-0",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						"data-uid": "src/pages/Index.tsx:44:11",
+						"data-uid": "src/pages/Index.tsx:62:11",
 						"data-prohibitions": "[]",
-						className: "w-full shadow-sm transition-transform active:scale-95 group",
+						className: "w-full bg-primary text-primary-foreground rounded-[var(--radius)] px-[18px] py-[10px] text-[0.8125rem] font-medium hover:opacity-90 transition-opacity h-auto",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {
-							"data-uid": "src/pages/Index.tsx:45:13",
+							"data-uid": "src/pages/Index.tsx:63:13",
 							"data-prohibitions": "[editContent]",
-							className: "w-5 h-5 mr-2 transition-transform group-hover:rotate-90"
+							className: "w-4 h-4 mr-2"
 						}), "Registrar Aprendizado"]
 					})
 				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Index.tsx:51:7",
+				"data-uid": "src/pages/Index.tsx:70:7",
 				"data-prohibitions": "[editContent]",
-				className: "flex flex-col md:flex-row gap-4 mb-2",
+				className: "flex flex-col sm:flex-row gap-[8px] sm:gap-[10px] mb-[14px]",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					"data-uid": "src/pages/Index.tsx:52:9",
+					"data-uid": "src/pages/Index.tsx:71:9",
 					"data-prohibitions": "[]",
 					className: "relative flex-1",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, {
-						"data-uid": "src/pages/Index.tsx:53:11",
+						"data-uid": "src/pages/Index.tsx:72:11",
 						"data-prohibitions": "[editContent]",
-						className: "absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground"
+						className: "absolute left-[14px] top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-						"data-uid": "src/pages/Index.tsx:54:11",
+						"data-uid": "src/pages/Index.tsx:73:11",
 						"data-prohibitions": "[editContent]",
 						placeholder: "Buscar por palavra-chave...",
 						value: searchTerm,
 						onChange: (e) => setSearchTerm(e.target.value),
-						className: "pl-9 bg-card"
+						className: "w-full h-auto border border-border bg-background rounded-[var(--radius)] pl-[38px] pr-[14px] py-[10px] text-[0.8125rem] leading-[1.5] text-foreground focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none",
+						style: { fontFamily: "'Roboto Mono', monospace" }
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					"data-uid": "src/pages/Index.tsx:61:9",
+					"data-uid": "src/pages/Index.tsx:81:9",
 					"data-prohibitions": "[editContent]",
-					className: "flex flex-col sm:flex-row gap-3",
+					className: "flex flex-col sm:flex-row gap-[8px] sm:gap-[10px]",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Select, {
-							"data-uid": "src/pages/Index.tsx:62:11",
+							"data-uid": "src/pages/Index.tsx:82:11",
 							"data-prohibitions": "[editContent]",
 							value: categoryFilter,
 							onValueChange: setCategoryFilter,
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectTrigger, {
-								"data-uid": "src/pages/Index.tsx:63:13",
+								"data-uid": "src/pages/Index.tsx:83:13",
 								"data-prohibitions": "[]",
-								className: "w-full sm:w-[160px] bg-card",
+								style: { fontFamily: "'Roboto Mono', monospace" },
+								className: "min-w-[155px] h-auto border border-border bg-background rounded-[var(--radius)] px-[14px] py-[10px] text-[0.8125rem] leading-[1.5] text-foreground focus:ring-1 focus:ring-ring focus:border-ring",
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectValue, {
-									"data-uid": "src/pages/Index.tsx:64:15",
+									"data-uid": "src/pages/Index.tsx:87:15",
 									"data-prohibitions": "[editContent]",
 									placeholder: "Categoria"
 								})
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectContent, {
-								"data-uid": "src/pages/Index.tsx:66:13",
+								"data-uid": "src/pages/Index.tsx:89:13",
 								"data-prohibitions": "[editContent]",
+								style: { fontFamily: "'Roboto Mono', monospace" },
 								children: CATEGORIES.map((cat) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectItem, {
-									"data-uid": "src/pages/Index.tsx:68:17",
+									"data-uid": "src/pages/Index.tsx:91:17",
 									"data-prohibitions": "[editContent]",
 									value: cat,
+									className: "text-[0.8125rem]",
 									children: cat
 								}, cat))
 							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Select, {
-							"data-uid": "src/pages/Index.tsx:74:11",
+							"data-uid": "src/pages/Index.tsx:97:11",
 							"data-prohibitions": "[editContent]",
 							value: levelFilter,
 							onValueChange: setLevelFilter,
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectTrigger, {
-								"data-uid": "src/pages/Index.tsx:75:13",
+								"data-uid": "src/pages/Index.tsx:98:13",
 								"data-prohibitions": "[]",
-								className: "w-full sm:w-[160px] bg-card",
+								style: { fontFamily: "'Roboto Mono', monospace" },
+								className: "min-w-[155px] h-auto border border-border bg-background rounded-[var(--radius)] px-[14px] py-[10px] text-[0.8125rem] leading-[1.5] text-foreground focus:ring-1 focus:ring-ring focus:border-ring",
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectValue, {
-									"data-uid": "src/pages/Index.tsx:76:15",
+									"data-uid": "src/pages/Index.tsx:102:15",
 									"data-prohibitions": "[editContent]",
 									placeholder: "Dificuldade"
 								})
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectContent, {
-								"data-uid": "src/pages/Index.tsx:78:13",
+								"data-uid": "src/pages/Index.tsx:104:13",
 								"data-prohibitions": "[editContent]",
+								style: { fontFamily: "'Roboto Mono', monospace" },
 								children: LEVELS.map((lvl) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectItem, {
-									"data-uid": "src/pages/Index.tsx:80:17",
+									"data-uid": "src/pages/Index.tsx:106:17",
 									"data-prohibitions": "[editContent]",
 									value: lvl,
+									className: "text-[0.8125rem]",
 									children: lvl
 								}, lvl))
 							})]
 						}),
 						hasActiveFilters && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-							"data-uid": "src/pages/Index.tsx:87:13",
+							"data-uid": "src/pages/Index.tsx:113:13",
 							"data-prohibitions": "[]",
 							variant: "ghost",
 							onClick: clearFilters,
-							className: "px-3 text-muted-foreground hover:text-foreground",
+							className: "h-auto px-[14px] py-[10px] text-[0.8125rem] text-muted-foreground hover:text-foreground hover:bg-transparent",
+							style: { fontFamily: "'Roboto Mono', monospace" },
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(X, {
-								"data-uid": "src/pages/Index.tsx:92:15",
+								"data-uid": "src/pages/Index.tsx:119:15",
 								"data-prohibitions": "[editContent]",
 								className: "h-4 w-4 mr-2"
 							}), "Limpar filtros"]
@@ -1397,9 +1421,9 @@ function Index() {
 				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Index.tsx:99:7",
+				"data-uid": "src/pages/Index.tsx:127:7",
 				"data-prohibitions": "[editContent]",
-				className: "text-sm text-muted-foreground font-medium",
+				className: "text-[0.75rem] text-muted-foreground tracking-[0.03em] mb-[20px]",
 				children: [
 					totalCount,
 					" ",
@@ -1407,117 +1431,143 @@ function Index() {
 				]
 			}),
 			loading ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				"data-uid": "src/pages/Index.tsx:104:9",
+				"data-uid": "src/pages/Index.tsx:133:9",
 				"data-prohibitions": "[editContent]",
-				className: "grid grid-cols-1 md:grid-cols-2 gap-6",
-				children: Array.from({ length: 6 }).map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-					"data-uid": "src/pages/Index.tsx:106:13",
+				className: "grid grid-cols-1 md:grid-cols-2 gap-[16px]",
+				children: Array.from({ length: 6 }).map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					"data-uid": "src/pages/Index.tsx:135:13",
 					"data-prohibitions": "[]",
-					className: "flex flex-col h-[280px]",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, {
-						"data-uid": "src/pages/Index.tsx:107:15",
-						"data-prohibitions": "[]",
-						className: "pb-3",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								"data-uid": "src/pages/Index.tsx:108:17",
-								"data-prohibitions": "[]",
-								className: "flex gap-2 mb-2",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, {
-									"data-uid": "src/pages/Index.tsx:109:19",
+					className: "bg-card border border-border rounded-[calc(var(--radius)*1.5)] p-[20px] flex flex-col h-[260px]",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							"data-uid": "src/pages/Index.tsx:139:15",
+							"data-prohibitions": "[]",
+							className: "flex gap-[6px] mb-[14px]",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, {
+									"data-uid": "src/pages/Index.tsx:140:17",
 									"data-prohibitions": "[editContent]",
-									className: "h-5 w-10"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, {
-									"data-uid": "src/pages/Index.tsx:110:19",
+									className: "h-[20px] w-[30px] rounded-[3px]"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, {
+									"data-uid": "src/pages/Index.tsx:141:17",
 									"data-prohibitions": "[editContent]",
-									className: "h-5 w-24"
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, {
-								"data-uid": "src/pages/Index.tsx:112:17",
-								"data-prohibitions": "[editContent]",
-								className: "h-6 w-3/4 mb-2"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, {
-								"data-uid": "src/pages/Index.tsx:113:17",
-								"data-prohibitions": "[editContent]",
-								className: "h-4 w-1/3"
-							})
-						]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-						"data-uid": "src/pages/Index.tsx:115:15",
-						"data-prohibitions": "[]",
-						className: "flex-1",
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, {
-							"data-uid": "src/pages/Index.tsx:116:17",
+									className: "h-[20px] w-[80px] rounded-[3px]"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, {
+									"data-uid": "src/pages/Index.tsx:142:17",
+									"data-prohibitions": "[editContent]",
+									className: "h-[20px] w-[70px] rounded-[3px]"
+								})
+							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, {
+							"data-uid": "src/pages/Index.tsx:144:15",
 							"data-prohibitions": "[editContent]",
-							className: "h-20 w-full"
+							className: "h-[1.4rem] w-[60%] mb-[6px]"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							"data-uid": "src/pages/Index.tsx:145:15",
+							"data-prohibitions": "[]",
+							className: "flex justify-between items-center mb-[10px]",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, {
+								"data-uid": "src/pages/Index.tsx:146:17",
+								"data-prohibitions": "[editContent]",
+								className: "h-[12px] w-[30%]"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, {
+								"data-uid": "src/pages/Index.tsx:147:17",
+								"data-prohibitions": "[editContent]",
+								className: "h-[12px] w-[20%]"
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							"data-uid": "src/pages/Index.tsx:149:15",
+							"data-prohibitions": "[]",
+							className: "space-y-[8px] mt-[10px]",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, {
+									"data-uid": "src/pages/Index.tsx:150:17",
+									"data-prohibitions": "[editContent]",
+									className: "h-[12px] w-full"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, {
+									"data-uid": "src/pages/Index.tsx:151:17",
+									"data-prohibitions": "[editContent]",
+									className: "h-[12px] w-[95%]"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, {
+									"data-uid": "src/pages/Index.tsx:152:17",
+									"data-prohibitions": "[editContent]",
+									className: "h-[12px] w-[80%]"
+								})
+							]
 						})
-					})]
+					]
 				}, i))
-			}) : error ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-				"data-uid": "src/pages/Index.tsx:122:9",
+			}) : error ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				"data-uid": "src/pages/Index.tsx:158:9",
 				"data-prohibitions": "[]",
-				className: "flex flex-col items-center justify-center p-12 text-center border-destructive/20 bg-destructive/5",
+				className: "py-[60px] flex flex-col items-center justify-center text-center border border-dashed border-destructive/20 bg-destructive/5 rounded-[calc(var(--radius)*1.5)]",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, {
-						"data-uid": "src/pages/Index.tsx:123:11",
+						"data-uid": "src/pages/Index.tsx:159:11",
 						"data-prohibitions": "[editContent]",
-						className: "w-12 h-12 text-destructive mb-4"
+						className: "w-[44px] h-[44px] text-destructive"
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-						"data-uid": "src/pages/Index.tsx:124:11",
+						"data-uid": "src/pages/Index.tsx:160:11",
 						"data-prohibitions": "[]",
-						className: "text-xl font-semibold mb-2",
+						className: "text-[1rem] font-semibold mt-[16px] text-foreground",
 						children: "Algo deu errado"
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						"data-uid": "src/pages/Index.tsx:125:11",
+						"data-uid": "src/pages/Index.tsx:161:11",
 						"data-prohibitions": "[]",
-						className: "text-muted-foreground mb-6",
+						className: "text-[0.8125rem] text-muted-foreground mt-[6px] leading-[1.6] max-w-md px-4",
 						children: "Nao foi possivel carregar os aprendizados."
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						"data-uid": "src/pages/Index.tsx:126:11",
+						"data-uid": "src/pages/Index.tsx:164:11",
 						"data-prohibitions": "[]",
 						onClick: refetch,
 						variant: "outline",
-						className: "border-destructive/20 text-destructive hover:bg-destructive/10",
+						className: "mt-[20px] h-auto px-[18px] py-[10px] text-[0.8125rem] font-medium",
+						style: { fontFamily: "'Roboto Mono', monospace" },
 						children: "Tentar novamente"
 					})
 				]
-			}) : data.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-				"data-uid": "src/pages/Index.tsx:135:9",
+			}) : data.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				"data-uid": "src/pages/Index.tsx:174:9",
 				"data-prohibitions": "[]",
-				className: "flex flex-col items-center justify-center p-12 text-center border-dashed bg-card/50",
+				className: "py-[60px] flex flex-col items-center justify-center text-center border border-dashed border-border bg-card/50 rounded-[calc(var(--radius)*1.5)]",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(BookX, {
-						"data-uid": "src/pages/Index.tsx:136:11",
+						"data-uid": "src/pages/Index.tsx:175:11",
 						"data-prohibitions": "[editContent]",
-						className: "w-12 h-12 text-muted-foreground mb-4"
+						className: "w-[44px] h-[44px] text-muted-foreground"
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-						"data-uid": "src/pages/Index.tsx:137:11",
+						"data-uid": "src/pages/Index.tsx:176:11",
 						"data-prohibitions": "[]",
-						className: "text-xl font-semibold mb-2",
+						className: "text-[1rem] font-semibold mt-[16px] text-foreground",
 						children: "Nenhum aprendizado encontrado"
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						"data-uid": "src/pages/Index.tsx:138:11",
+						"data-uid": "src/pages/Index.tsx:179:11",
 						"data-prohibitions": "[]",
-						className: "text-muted-foreground mb-6 max-w-md",
+						className: "text-[0.8125rem] text-muted-foreground mt-[6px] leading-[1.6] max-w-md px-4",
 						children: "Não encontramos nenhum resultado com os filtros atuais. Que tal registrar um novo aprendizado?"
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-						"data-uid": "src/pages/Index.tsx:142:11",
+						"data-uid": "src/pages/Index.tsx:183:11",
 						"data-prohibitions": "[]",
 						to: "/novo",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-							"data-uid": "src/pages/Index.tsx:143:13",
+							"data-uid": "src/pages/Index.tsx:184:13",
 							"data-prohibitions": "[]",
-							variant: "outline",
+							className: "mt-[20px] bg-primary text-primary-foreground rounded-[var(--radius)] px-[18px] py-[10px] text-[0.8125rem] font-medium hover:opacity-90 transition-opacity h-auto",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {
-								"data-uid": "src/pages/Index.tsx:144:15",
+								"data-uid": "src/pages/Index.tsx:185:15",
 								"data-prohibitions": "[editContent]",
 								className: "w-4 h-4 mr-2"
 							}), "Registrar Aprendizado"]
@@ -1525,92 +1575,75 @@ function Index() {
 					})
 				]
 			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				"data-uid": "src/pages/Index.tsx:150:9",
+				"data-uid": "src/pages/Index.tsx:191:9",
 				"data-prohibitions": "[editContent]",
-				className: "grid grid-cols-1 md:grid-cols-2 gap-6",
-				children: data.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-					"data-uid": "src/pages/Index.tsx:152:13",
+				className: "grid grid-cols-1 md:grid-cols-2 gap-[16px]",
+				children: data.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					"data-uid": "src/pages/Index.tsx:193:13",
 					"data-prohibitions": "[editContent]",
-					className: "flex flex-col h-full hover:shadow-md transition-all hover:border-primary/50 group",
+					className: "bg-card border border-border rounded-[calc(var(--radius)*1.5)] p-[20px] hover:border-ring hover:shadow-[0_2px_10px_rgba(0,0,0,0.06)] transition-all duration-200 ease-in-out flex flex-col",
 					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, {
-							"data-uid": "src/pages/Index.tsx:156:15",
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							"data-uid": "src/pages/Index.tsx:197:15",
 							"data-prohibitions": "[editContent]",
-							className: "pb-3",
+							className: "flex gap-[6px] items-center flex-wrap",
 							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									"data-uid": "src/pages/Index.tsx:157:17",
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									"data-uid": "src/pages/Index.tsx:198:17",
 									"data-prohibitions": "[editContent]",
-									className: "flex gap-2 mb-3 flex-wrap",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
-											"data-uid": "src/pages/Index.tsx:158:19",
-											"data-prohibitions": "[editContent]",
-											variant: "secondary",
-											className: "bg-secondary/50",
-											children: ["#", item.number]
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-											"data-uid": "src/pages/Index.tsx:161:19",
-											"data-prohibitions": "[editContent]",
-											variant: "outline",
-											children: item.category
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-											"data-uid": "src/pages/Index.tsx:162:19",
-											"data-prohibitions": "[editContent]",
-											variant: "outline",
-											className: "border-primary/20 bg-primary/5 text-primary",
-											children: item.level
-										})
-									]
+									className: "bg-muted text-muted-foreground text-[0.6875rem] font-bold tracking-[0.04em] rounded-[3px] px-[7px] py-[2px]",
+									children: ["#", item.number]
 								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
-									"data-uid": "src/pages/Index.tsx:166:17",
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									"data-uid": "src/pages/Index.tsx:201:17",
 									"data-prohibitions": "[editContent]",
-									className: "text-lg font-bold leading-tight line-clamp-2 group-hover:text-primary transition-colors",
-									children: item.title
+									className: "bg-accent text-accent-foreground text-[0.6875rem] font-bold tracking-[0.04em] rounded-[3px] px-[7px] py-[2px]",
+									children: item.category
 								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									"data-uid": "src/pages/Index.tsx:169:17",
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									"data-uid": "src/pages/Index.tsx:204:17",
 									"data-prohibitions": "[editContent]",
-									className: "text-sm text-muted-foreground mt-2",
-									children: [
-										item.author,
-										" • ",
-										item.date
-									]
+									className: cn("text-[0.6875rem] font-bold tracking-[0.04em] rounded-[3px] px-[7px] py-[2px]", getLevelColors(item.level)),
+									children: item.level
 								})
 							]
 						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-							"data-uid": "src/pages/Index.tsx:173:15",
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+							"data-uid": "src/pages/Index.tsx:213:15",
 							"data-prohibitions": "[editContent]",
-							className: "flex-1",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								"data-uid": "src/pages/Index.tsx:174:17",
-								"data-prohibitions": "[editContent]",
-								className: "text-sm text-muted-foreground line-clamp-3",
-								children: item.learning
-							})
+							className: "text-[0.9375rem] font-semibold text-foreground mt-[14px] mb-[6px] leading-[1.4] line-clamp-2",
+							children: item.title
 						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardFooter, {
-							"data-uid": "src/pages/Index.tsx:176:15",
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							"data-uid": "src/pages/Index.tsx:216:15",
+							"data-prohibitions": "[editContent]",
+							className: "text-[0.75rem] text-muted-foreground flex justify-between items-center",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								"data-uid": "src/pages/Index.tsx:217:17",
+								"data-prohibitions": "[editContent]",
+								children: item.author
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								"data-uid": "src/pages/Index.tsx:218:17",
+								"data-prohibitions": "[editContent]",
+								children: item.date
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							"data-uid": "src/pages/Index.tsx:220:15",
+							"data-prohibitions": "[editContent]",
+							className: "text-[0.8125rem] text-muted-foreground mt-[10px] leading-[1.75] line-clamp-3 flex-1",
+							children: item.learning
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
+							"data-uid": "src/pages/Index.tsx:223:15",
 							"data-prohibitions": "[]",
-							className: "pt-0",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-								"data-uid": "src/pages/Index.tsx:177:17",
-								"data-prohibitions": "[]",
-								to: `/aprendizado/${item.id}`,
-								className: "w-full",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-									"data-uid": "src/pages/Index.tsx:178:19",
-									"data-prohibitions": "[]",
-									variant: "secondary",
-									className: "w-full bg-secondary/30 hover:bg-secondary",
-									children: "Ver aprendizado completo"
-								})
-							})
+							to: `/aprendizado/${item.id}`,
+							className: "text-primary text-[0.75rem] font-medium mt-[16px] tracking-[0.02em] hover:underline inline-flex items-center w-fit",
+							children: ["Ver aprendizado completo ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {
+								"data-uid": "src/pages/Index.tsx:227:42",
+								"data-prohibitions": "[editContent]",
+								className: "w-3 h-3 ml-1"
+							})]
 						})
 					]
 				}, item.id))
@@ -1621,4 +1654,4 @@ function Index() {
 //#endregion
 export { Index as default };
 
-//# sourceMappingURL=Index-Bp9jGLNs.js.map
+//# sourceMappingURL=Index-z8O1mzXX.js.map

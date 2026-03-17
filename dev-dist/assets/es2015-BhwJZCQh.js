@@ -1,27 +1,7 @@
-import { C as require_react, T as __toESM, a as __assign, c as cn, d as require_jsx_runtime, o as __rest, p as useComposedRefs, s as __spreadArray, u as cva } from "./button-BPoK0gyP.js";
+import { C as require_react, T as __toESM, a as __assign, c as cn, d as require_jsx_runtime, o as __rest, p as useComposedRefs, s as __spreadArray } from "./button-BPoK0gyP.js";
 import { c as useCallbackRef$1, l as Primitive } from "./dist-CN83TngS.js";
-//#region src/components/ui/badge.tsx
-var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
-var import_jsx_runtime = require_jsx_runtime();
-var badgeVariants = cva("inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2", {
-	variants: { variant: {
-		default: "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
-		secondary: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
-		destructive: "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
-		outline: "text-foreground"
-	} },
-	defaultVariants: { variant: "default" }
-});
-function Badge({ className, variant, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-uid": "src/components/ui/badge.tsx:30:10",
-		"data-prohibitions": "[editContent]",
-		className: cn(badgeVariants({ variant }), className),
-		...props
-	});
-}
-//#endregion
 //#region src/components/ui/skeleton.tsx
+var import_jsx_runtime = require_jsx_runtime();
 function Skeleton({ className, ...props }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		"data-uid": "src/components/ui/skeleton.tsx:5:10",
@@ -32,6 +12,7 @@ function Skeleton({ className, ...props }) {
 }
 //#endregion
 //#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/@radix-ui+react-focus-scope@1.1.7_@types+react-dom@19.2.3_@types+react@19.2.14__@types+_f62f3af4ca2ba305a7aecf04c8534604/node_modules/@radix-ui/react-focus-scope/dist/index.mjs
+var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 var AUTOFOCUS_ON_MOUNT = "focusScope.autoFocusOnMount";
 var AUTOFOCUS_ON_UNMOUNT = "focusScope.autoFocusOnUnmount";
 var EVENT_OPTIONS = {
@@ -1035,6 +1016,6 @@ var hideOthers = function(originalTarget, parentNode, markerName) {
 	return applyAttributeToOthers(targets, activeParentNode, markerName, "aria-hidden");
 };
 //#endregion
-export { Skeleton as a, FocusScope as i, ReactRemoveScroll as n, Badge as o, useFocusGuards as r, hideOthers as t };
+export { Skeleton as a, FocusScope as i, ReactRemoveScroll as n, useFocusGuards as r, hideOthers as t };
 
-//# sourceMappingURL=es2015-qqT2pMon.js.map
+//# sourceMappingURL=es2015-BhwJZCQh.js.map

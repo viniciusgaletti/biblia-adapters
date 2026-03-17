@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom'
-import { Plus, Search, BookX, AlertCircle, X } from 'lucide-react'
+import { Plus, Search, BookX, AlertCircle, X, ArrowRight } from 'lucide-react'
 import { useLearnings, CATEGORIES, LEVELS } from '@/hooks/use-learnings'
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Input } from '@/components/ui/input'
 import {
@@ -13,6 +11,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { cn } from '@/lib/utils'
+
+const getLevelColors = (level: string) => {
+  switch (level.toLowerCase()) {
+    case 'iniciante':
+      return 'bg-[#d1fae5] text-[#065f46] dark:bg-[#064e3b] dark:text-[#a7f3d0]'
+    case 'intermediario':
+      return 'bg-[#fef3c7] text-[#92400e] dark:bg-[#78350f] dark:text-[#fde68a]'
+    case 'avancado':
+      return 'bg-[#fee2e2] text-[#991b1b] dark:bg-[#7f1d1d] dark:text-[#fecaca]'
+    default:
+      return 'bg-muted text-muted-foreground'
+  }
+}
 
 export default function Index() {
   const {
@@ -32,52 +44,66 @@ export default function Index() {
   } = useLearnings()
 
   return (
-    <div className="space-y-6 animate-fade-in-up">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-2">
+    <div
+      style={{ fontFamily: "'Roboto Mono', monospace" }}
+      className="w-full animate-fade-in-up pb-8"
+    >
+      {/* Section 1: Page Header */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-[36px] gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Biblia dos Eliters</h1>
-          <p className="text-muted-foreground mt-1 text-sm sm:text-base">
+          <h1 className="text-[1.875rem] font-bold text-foreground tracking-[-0.02em]">
+            Biblia dos Eliters
+          </h1>
+          <p className="text-[0.8125rem] text-muted-foreground mt-[6px] leading-[1.6]">
             Repositorio vivo de aprendizados sobre IA, Vibecoding, Automacoes e Agentes de IA
           </p>
         </div>
-        <Link to="/novo" className="w-full sm:w-auto shrink-0">
-          <Button className="w-full shadow-sm transition-transform active:scale-95 group">
-            <Plus className="w-5 h-5 mr-2 transition-transform group-hover:rotate-90" />
+        <Link to="/novo" className="w-full md:w-auto shrink-0">
+          <Button className="w-full bg-primary text-primary-foreground rounded-[var(--radius)] px-[18px] py-[10px] text-[0.8125rem] font-medium hover:opacity-90 transition-opacity h-auto">
+            <Plus className="w-4 h-4 mr-2" />
             Registrar Aprendizado
           </Button>
         </Link>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-4 mb-2">
+      {/* Section 2: Search and Filter Bar */}
+      <div className="flex flex-col sm:flex-row gap-[8px] sm:gap-[10px] mb-[14px]">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Search className="absolute left-[14px] top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             placeholder="Buscar por palavra-chave..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-9 bg-card"
+            className="w-full h-auto border border-border bg-background rounded-[var(--radius)] pl-[38px] pr-[14px] py-[10px] text-[0.8125rem] leading-[1.5] text-foreground focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none"
+            style={{ fontFamily: "'Roboto Mono', monospace" }}
           />
         </div>
-        <div className="flex flex-col sm:flex-row gap-3">
+        <div className="flex flex-col sm:flex-row gap-[8px] sm:gap-[10px]">
           <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-            <SelectTrigger className="w-full sm:w-[160px] bg-card">
+            <SelectTrigger
+              style={{ fontFamily: "'Roboto Mono', monospace" }}
+              className="min-w-[155px] h-auto border border-border bg-background rounded-[var(--radius)] px-[14px] py-[10px] text-[0.8125rem] leading-[1.5] text-foreground focus:ring-1 focus:ring-ring focus:border-ring"
+            >
               <SelectValue placeholder="Categoria" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent style={{ fontFamily: "'Roboto Mono', monospace" }}>
               {CATEGORIES.map((cat) => (
-                <SelectItem key={cat} value={cat}>
+                <SelectItem key={cat} value={cat} className="text-[0.8125rem]">
                   {cat}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
           <Select value={levelFilter} onValueChange={setLevelFilter}>
-            <SelectTrigger className="w-full sm:w-[160px] bg-card">
+            <SelectTrigger
+              style={{ fontFamily: "'Roboto Mono', monospace" }}
+              className="min-w-[155px] h-auto border border-border bg-background rounded-[var(--radius)] px-[14px] py-[10px] text-[0.8125rem] leading-[1.5] text-foreground focus:ring-1 focus:ring-ring focus:border-ring"
+            >
               <SelectValue placeholder="Dificuldade" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent style={{ fontFamily: "'Roboto Mono', monospace" }}>
               {LEVELS.map((lvl) => (
-                <SelectItem key={lvl} value={lvl}>
+                <SelectItem key={lvl} value={lvl} className="text-[0.8125rem]">
                   {lvl}
                 </SelectItem>
               ))}
@@ -87,7 +113,8 @@ export default function Index() {
             <Button
               variant="ghost"
               onClick={clearFilters}
-              className="px-3 text-muted-foreground hover:text-foreground"
+              className="h-auto px-[14px] py-[10px] text-[0.8125rem] text-muted-foreground hover:text-foreground hover:bg-transparent"
+              style={{ fontFamily: "'Roboto Mono', monospace" }}
             >
               <X className="h-4 w-4 mr-2" />
               Limpar filtros
@@ -96,91 +123,110 @@ export default function Index() {
         </div>
       </div>
 
-      <div className="text-sm text-muted-foreground font-medium">
+      {/* Section 3: Results Counter */}
+      <div className="text-[0.75rem] text-muted-foreground tracking-[0.03em] mb-[20px]">
         {totalCount} {totalCount === 1 ? 'aprendizado encontrado' : 'aprendizados encontrados'}
       </div>
 
+      {/* States and Grid */}
       {loading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
           {Array.from({ length: 6 }).map((_, i) => (
-            <Card key={i} className="flex flex-col h-[280px]">
-              <CardHeader className="pb-3">
-                <div className="flex gap-2 mb-2">
-                  <Skeleton className="h-5 w-10" />
-                  <Skeleton className="h-5 w-24" />
-                </div>
-                <Skeleton className="h-6 w-3/4 mb-2" />
-                <Skeleton className="h-4 w-1/3" />
-              </CardHeader>
-              <CardContent className="flex-1">
-                <Skeleton className="h-20 w-full" />
-              </CardContent>
-            </Card>
+            <div
+              key={i}
+              className="bg-card border border-border rounded-[calc(var(--radius)*1.5)] p-[20px] flex flex-col h-[260px]"
+            >
+              <div className="flex gap-[6px] mb-[14px]">
+                <Skeleton className="h-[20px] w-[30px] rounded-[3px]" />
+                <Skeleton className="h-[20px] w-[80px] rounded-[3px]" />
+                <Skeleton className="h-[20px] w-[70px] rounded-[3px]" />
+              </div>
+              <Skeleton className="h-[1.4rem] w-[60%] mb-[6px]" />
+              <div className="flex justify-between items-center mb-[10px]">
+                <Skeleton className="h-[12px] w-[30%]" />
+                <Skeleton className="h-[12px] w-[20%]" />
+              </div>
+              <div className="space-y-[8px] mt-[10px]">
+                <Skeleton className="h-[12px] w-full" />
+                <Skeleton className="h-[12px] w-[95%]" />
+                <Skeleton className="h-[12px] w-[80%]" />
+              </div>
+            </div>
           ))}
         </div>
       ) : error ? (
-        <Card className="flex flex-col items-center justify-center p-12 text-center border-destructive/20 bg-destructive/5">
-          <AlertCircle className="w-12 h-12 text-destructive mb-4" />
-          <h3 className="text-xl font-semibold mb-2">Algo deu errado</h3>
-          <p className="text-muted-foreground mb-6">Nao foi possivel carregar os aprendizados.</p>
+        <div className="py-[60px] flex flex-col items-center justify-center text-center border border-dashed border-destructive/20 bg-destructive/5 rounded-[calc(var(--radius)*1.5)]">
+          <AlertCircle className="w-[44px] h-[44px] text-destructive" />
+          <h3 className="text-[1rem] font-semibold mt-[16px] text-foreground">Algo deu errado</h3>
+          <p className="text-[0.8125rem] text-muted-foreground mt-[6px] leading-[1.6] max-w-md px-4">
+            Nao foi possivel carregar os aprendizados.
+          </p>
           <Button
             onClick={refetch}
             variant="outline"
-            className="border-destructive/20 text-destructive hover:bg-destructive/10"
+            className="mt-[20px] h-auto px-[18px] py-[10px] text-[0.8125rem] font-medium"
+            style={{ fontFamily: "'Roboto Mono', monospace" }}
           >
             Tentar novamente
           </Button>
-        </Card>
+        </div>
       ) : data.length === 0 ? (
-        <Card className="flex flex-col items-center justify-center p-12 text-center border-dashed bg-card/50">
-          <BookX className="w-12 h-12 text-muted-foreground mb-4" />
-          <h3 className="text-xl font-semibold mb-2">Nenhum aprendizado encontrado</h3>
-          <p className="text-muted-foreground mb-6 max-w-md">
+        <div className="py-[60px] flex flex-col items-center justify-center text-center border border-dashed border-border bg-card/50 rounded-[calc(var(--radius)*1.5)]">
+          <BookX className="w-[44px] h-[44px] text-muted-foreground" />
+          <h3 className="text-[1rem] font-semibold mt-[16px] text-foreground">
+            Nenhum aprendizado encontrado
+          </h3>
+          <p className="text-[0.8125rem] text-muted-foreground mt-[6px] leading-[1.6] max-w-md px-4">
             Não encontramos nenhum resultado com os filtros atuais. Que tal registrar um novo
             aprendizado?
           </p>
           <Link to="/novo">
-            <Button variant="outline">
+            <Button className="mt-[20px] bg-primary text-primary-foreground rounded-[var(--radius)] px-[18px] py-[10px] text-[0.8125rem] font-medium hover:opacity-90 transition-opacity h-auto">
               <Plus className="w-4 h-4 mr-2" />
               Registrar Aprendizado
             </Button>
           </Link>
-        </Card>
+        </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
           {data.map((item) => (
-            <Card
+            <div
               key={item.id}
-              className="flex flex-col h-full hover:shadow-md transition-all hover:border-primary/50 group"
+              className="bg-card border border-border rounded-[calc(var(--radius)*1.5)] p-[20px] hover:border-ring hover:shadow-[0_2px_10px_rgba(0,0,0,0.06)] transition-all duration-200 ease-in-out flex flex-col"
             >
-              <CardHeader className="pb-3">
-                <div className="flex gap-2 mb-3 flex-wrap">
-                  <Badge variant="secondary" className="bg-secondary/50">
-                    #{item.number}
-                  </Badge>
-                  <Badge variant="outline">{item.category}</Badge>
-                  <Badge variant="outline" className="border-primary/20 bg-primary/5 text-primary">
-                    {item.level}
-                  </Badge>
-                </div>
-                <CardTitle className="text-lg font-bold leading-tight line-clamp-2 group-hover:text-primary transition-colors">
-                  {item.title}
-                </CardTitle>
-                <div className="text-sm text-muted-foreground mt-2">
-                  {item.author} • {item.date}
-                </div>
-              </CardHeader>
-              <CardContent className="flex-1">
-                <p className="text-sm text-muted-foreground line-clamp-3">{item.learning}</p>
-              </CardContent>
-              <CardFooter className="pt-0">
-                <Link to={`/aprendizado/${item.id}`} className="w-full">
-                  <Button variant="secondary" className="w-full bg-secondary/30 hover:bg-secondary">
-                    Ver aprendizado completo
-                  </Button>
-                </Link>
-              </CardFooter>
-            </Card>
+              <div className="flex gap-[6px] items-center flex-wrap">
+                <span className="bg-muted text-muted-foreground text-[0.6875rem] font-bold tracking-[0.04em] rounded-[3px] px-[7px] py-[2px]">
+                  #{item.number}
+                </span>
+                <span className="bg-accent text-accent-foreground text-[0.6875rem] font-bold tracking-[0.04em] rounded-[3px] px-[7px] py-[2px]">
+                  {item.category}
+                </span>
+                <span
+                  className={cn(
+                    'text-[0.6875rem] font-bold tracking-[0.04em] rounded-[3px] px-[7px] py-[2px]',
+                    getLevelColors(item.level),
+                  )}
+                >
+                  {item.level}
+                </span>
+              </div>
+              <h3 className="text-[0.9375rem] font-semibold text-foreground mt-[14px] mb-[6px] leading-[1.4] line-clamp-2">
+                {item.title}
+              </h3>
+              <div className="text-[0.75rem] text-muted-foreground flex justify-between items-center">
+                <span>{item.author}</span>
+                <span>{item.date}</span>
+              </div>
+              <p className="text-[0.8125rem] text-muted-foreground mt-[10px] leading-[1.75] line-clamp-3 flex-1">
+                {item.learning}
+              </p>
+              <Link
+                to={`/aprendizado/${item.id}`}
+                className="text-primary text-[0.75rem] font-medium mt-[16px] tracking-[0.02em] hover:underline inline-flex items-center w-fit"
+              >
+                Ver aprendizado completo <ArrowRight className="w-3 h-3 ml-1" />
+              </Link>
+            </div>
           ))}
         </div>
       )}

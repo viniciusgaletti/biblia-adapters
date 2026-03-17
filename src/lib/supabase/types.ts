@@ -11,26 +11,44 @@ export type Database = {
     Tables: {
       aprendizados: {
         Row: {
+          author: string
           categoria: string | null
           conteudo: string
+          context: string
           created_at: string
           id: string
+          level: string
+          number: number
+          observations: string | null
+          steps: string | null
           titulo: string
           user_id: string | null
         }
         Insert: {
+          author?: string
           categoria?: string | null
           conteudo: string
+          context?: string
           created_at?: string
           id?: string
+          level?: string
+          number?: number
+          observations?: string | null
+          steps?: string | null
           titulo: string
           user_id?: string | null
         }
         Update: {
+          author?: string
           categoria?: string | null
           conteudo?: string
+          context?: string
           created_at?: string
           id?: string
+          level?: string
+          number?: number
+          observations?: string | null
+          steps?: string | null
           titulo?: string
           user_id?: string | null
         }
@@ -190,6 +208,12 @@ export const Constants = {
 //   titulo: text (not null)
 //   conteudo: text (not null)
 //   categoria: text (nullable)
+//   number: integer (not null, default: nextval('aprendizados_number_seq'::regclass))
+//   author: text (not null, default: 'Admin'::text)
+//   level: text (not null, default: 'Iniciante'::text)
+//   context: text (not null, default: 'Contexto geral'::text)
+//   steps: text (nullable)
+//   observations: text (nullable)
 
 // --- CONSTRAINTS ---
 // Table: aprendizados
