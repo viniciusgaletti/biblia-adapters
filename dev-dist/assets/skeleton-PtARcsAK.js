@@ -1,4 +1,4 @@
-import { E as require_jsx_runtime, u as cn } from "./button-VKFYJuFi.js";
+import { c as cn, d as require_jsx_runtime } from "./button-BPdVCIk6.js";
 //#region src/components/ui/skeleton.tsx
 var import_jsx_runtime = require_jsx_runtime();
 function Skeleton({ className, ...props }) {
@@ -12,4 +12,4 @@ function Skeleton({ className, ...props }) {
 //#endregion
 export { Skeleton as t };
 
-//# sourceMappingURL=skeleton-BgPYGgOI.js.map
+//# sourceMappingURL=skeleton-PtARcsAK.js.map
