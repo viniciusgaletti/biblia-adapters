@@ -8,7 +8,7 @@ import { createLearning } from '@/services/learnings'
 import { useAuth } from '@/hooks/use-auth'
 import { format } from 'date-fns'
 
-const NewLearningSchema = z.object({
+export const NewLearningSchema = z.object({
   author: z.string().min(2, 'Informe seu nome completo'),
   date: z.string().min(1, 'Informe a data'),
   category: z.enum(['IA', 'Vibecoding', 'Automacoes', 'Agentes de IA'], {

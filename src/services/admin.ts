@@ -1,5 +1,5 @@
 import { supabase } from '@/lib/supabase/client'
-import { LearningRow } from '@/types'
+import { LearningRow, LearningInsert } from '@/types'
 
 export const adminService = {
   fetchAllLearnings: async () => {
@@ -17,5 +17,20 @@ export const adminService = {
 
     if (error) throw error
     return true
+  },
+
+  updateLearning: async (
+    id: string,
+    payload: Partial<Omit<LearningInsert, 'id' | 'number' | 'created_at'>>,
+  ) => {
+    const { data, error } = await supabase
+      .from('learnings')
+      .update(payload)
+      .eq('id', id)
+      .select()
+      .single()
+
+    if (error) throw error
+    return data as LearningRow
   },
 }
