@@ -14,6 +14,8 @@ export interface Learning {
   steps: string | null
   observations: string | null
   created_at: string
+  rating_avg: number
+  rating_count: number
 }
 
 export const CATEGORIES = ['Todos', 'IA', 'Vibecoding', 'Automacoes', 'Agentes de IA']
@@ -28,6 +30,7 @@ export function useLearnings() {
   const [debouncedSearch, setDebouncedSearch] = useState('')
   const [categoryFilter, setCategoryFilter] = useState('Todos')
   const [levelFilter, setLevelFilter] = useState('Todos')
+  const [sortBy, setSortBy] = useState('recentes')
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -40,7 +43,7 @@ export function useLearnings() {
     try {
       setLoading(true)
       setError(null)
-      const res = await searchLearnings(debouncedSearch, categoryFilter, levelFilter)
+      const res = await searchLearnings(debouncedSearch, categoryFilter, levelFilter, sortBy)
 
       const formatted: Learning[] = res.map((item) => {
         // Parse as UTC to prevent timezone shifts changing the day
@@ -62,6 +65,8 @@ export function useLearnings() {
           steps: item.steps,
           observations: item.observations,
           created_at: item.created_at,
+          rating_avg: item.rating_avg,
+          rating_count: item.rating_count,
         }
       })
 
@@ -71,7 +76,7 @@ export function useLearnings() {
     } finally {
       setLoading(false)
     }
-  }, [debouncedSearch, categoryFilter, levelFilter])
+  }, [debouncedSearch, categoryFilter, levelFilter, sortBy])
 
   useEffect(() => {
     fetchFilteredLearnings()
@@ -81,6 +86,7 @@ export function useLearnings() {
     setSearchTerm('')
     setCategoryFilter('Todos')
     setLevelFilter('Todos')
+    setSortBy('recentes')
   }
 
   return {
@@ -93,9 +99,15 @@ export function useLearnings() {
     setCategoryFilter,
     levelFilter,
     setLevelFilter,
+    sortBy,
+    setSortBy,
     clearFilters,
     refetch: fetchFilteredLearnings,
-    hasActiveFilters: searchTerm !== '' || categoryFilter !== 'Todos' || levelFilter !== 'Todos',
+    hasActiveFilters:
+      searchTerm !== '' ||
+      categoryFilter !== 'Todos' ||
+      levelFilter !== 'Todos' ||
+      sortBy !== 'recentes',
     totalCount: data.length,
   }
 }

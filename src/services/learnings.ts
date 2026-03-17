@@ -5,14 +5,19 @@ export const fetchLearnings = async () => {
   const { data, error } = await supabase
     .from('learnings')
     .select('*')
-    .order('number', { ascending: true })
+    .order('number', { ascending: false })
 
   if (error) throw error
   return data as LearningRow[]
 }
 
-export const searchLearnings = async (searchTerm: string, category: string, level: string) => {
-  let query = supabase.from('learnings').select('*').order('number', { ascending: true })
+export const searchLearnings = async (
+  searchTerm: string,
+  category: string,
+  level: string,
+  sortBy: string = 'recentes',
+) => {
+  let query = supabase.from('learnings').select('*')
 
   if (searchTerm) {
     query = query.or(
@@ -26,6 +31,15 @@ export const searchLearnings = async (searchTerm: string, category: string, leve
 
   if (level && level !== 'Todos') {
     query = query.eq('level', level)
+  }
+
+  if (sortBy === 'relevancia') {
+    query = query
+      .order('rating_avg', { ascending: false })
+      .order('rating_count', { ascending: false })
+      .order('number', { ascending: true })
+  } else {
+    query = query.order('number', { ascending: false })
   }
 
   const { data, error } = await query
@@ -58,23 +72,20 @@ export const createLearning = async (
   return data as LearningRow
 }
 
-export const submitRating = async (
-  learningId: string,
-  rating: number,
-  previousRatingId?: string,
-) => {
-  if (previousRatingId) {
-    // @ts-expect-error - Table is dynamically added via migration
-    await supabase.from('learning_ratings').delete().eq('id', previousRatingId)
-  }
+export const deleteRating = async (ratingId: string) => {
+  // @ts-expect-error - Table is dynamically added via migration
+  const { error } = await supabase.from('learning_ratings').delete().eq('id', ratingId)
+  if (error) throw error
+}
 
+export const submitRating = async (learningId: string, rating: number) => {
   const { data, error } = await supabase
     // @ts-expect-error - Table is dynamically added via migration
     .from('learning_ratings')
     .insert([{ learning_id: learningId, rating }])
-    .select()
+    .select('id')
     .single()
 
   if (error) throw error
-  return data
+  return data.id as string
 }

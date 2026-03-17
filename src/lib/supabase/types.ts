@@ -54,6 +54,35 @@ export type Database = {
         }
         Relationships: []
       }
+      learning_ratings: {
+        Row: {
+          created_at: string
+          id: string
+          learning_id: string
+          rating: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          learning_id: string
+          rating: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          learning_id?: string
+          rating?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'learning_ratings_learning_id_fkey'
+            columns: ['learning_id']
+            isOneToOne: false
+            referencedRelation: 'learnings'
+            referencedColumns: ['id']
+          },
+        ]
+      }
       learnings: {
         Row: {
           author: string
@@ -66,6 +95,8 @@ export type Database = {
           level: string
           number: number
           observations: string | null
+          rating_avg: number
+          rating_count: number
           steps: string | null
           title: string
         }
@@ -80,6 +111,8 @@ export type Database = {
           level: string
           number?: never
           observations?: string | null
+          rating_avg?: number
+          rating_count?: number
           steps?: string | null
           title: string
         }
@@ -94,6 +127,8 @@ export type Database = {
           level?: string
           number?: never
           observations?: string | null
+          rating_avg?: number
+          rating_count?: number
           steps?: string | null
           title?: string
         }
@@ -259,6 +294,11 @@ export const Constants = {
 //   context: text (not null, default: 'Contexto geral'::text)
 //   steps: text (nullable)
 //   observations: text (nullable)
+// Table: learning_ratings
+//   id: uuid (not null, default: gen_random_uuid())
+//   learning_id: uuid (not null)
+//   rating: integer (not null)
+//   created_at: timestamp with time zone (not null, default: now())
 // Table: learnings
 //   id: uuid (not null, default: gen_random_uuid())
 //   number: integer (not null)
@@ -272,11 +312,17 @@ export const Constants = {
 //   steps: text (nullable)
 //   observations: text (nullable)
 //   created_at: timestamp with time zone (not null, default: now())
+//   rating_avg: numeric (not null, default: 0.00)
+//   rating_count: integer (not null, default: 0)
 
 // --- CONSTRAINTS ---
 // Table: aprendizados
 //   PRIMARY KEY aprendizados_pkey: PRIMARY KEY (id)
 //   FOREIGN KEY aprendizados_user_id_fkey: FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE
+// Table: learning_ratings
+//   FOREIGN KEY learning_ratings_learning_id_fkey: FOREIGN KEY (learning_id) REFERENCES learnings(id) ON DELETE CASCADE
+//   PRIMARY KEY learning_ratings_pkey: PRIMARY KEY (id)
+//   CHECK learning_ratings_rating_check: CHECK (((rating >= 1) AND (rating <= 5)))
 // Table: learnings
 //   CHECK learnings_category_check: CHECK ((category = ANY (ARRAY['IA'::text, 'Vibecoding'::text, 'Automacoes'::text, 'Agentes de IA'::text])))
 //   CHECK learnings_level_check: CHECK ((level = ANY (ARRAY['Iniciante'::text, 'Intermediario'::text, 'Avancado'::text])))
@@ -293,6 +339,13 @@ export const Constants = {
 //   Policy "Public can update learnings" (UPDATE, PERMISSIVE) roles={public}
 //     USING: true
 //     WITH CHECK: true
+// Table: learning_ratings
+//   Policy "Public delete ratings" (DELETE, PERMISSIVE) roles={anon,authenticated}
+//     USING: true
+//   Policy "Public insert ratings" (INSERT, PERMISSIVE) roles={anon,authenticated}
+//     WITH CHECK: true
+//   Policy "Public read ratings" (SELECT, PERMISSIVE) roles={anon,authenticated}
+//     USING: true
 // Table: learnings
 //   Policy "Admin delete" (DELETE, PERMISSIVE) roles={authenticated}
 //     USING: (auth.uid() IS NOT NULL)
@@ -312,3 +365,45 @@ export const Constants = {
 //     WITH CHECK: true
 //   Policy "Allow public read" (SELECT, PERMISSIVE) roles={anon}
 //     USING: true
+
+// --- DATABASE FUNCTIONS ---
+// FUNCTION update_learning_rating_stats()
+//   CREATE OR REPLACE FUNCTION public.update_learning_rating_stats()
+//    RETURNS trigger
+//    LANGUAGE plpgsql
+//    SECURITY DEFINER
+//   AS $function$
+//   DECLARE
+//       v_learning_id UUID;
+//       v_avg NUMERIC(3,2);
+//       v_count INTEGER;
+//   BEGIN
+//       IF TG_OP = 'INSERT' THEN
+//           v_learning_id := NEW.learning_id;
+//       ELSIF TG_OP = 'DELETE' THEN
+//           v_learning_id := OLD.learning_id;
+//       END IF;
+//
+//       SELECT
+//           COALESCE(ROUND(AVG(rating)::numeric, 2), 0.00),
+//           COUNT(*)
+//       INTO
+//           v_avg,
+//           v_count
+//       FROM public.learning_ratings
+//       WHERE learning_id = v_learning_id;
+//
+//       UPDATE public.learnings
+//       SET
+//           rating_avg = v_avg,
+//           rating_count = v_count
+//       WHERE id = v_learning_id;
+//
+//       RETURN NULL;
+//   END;
+//   $function$
+//
+
+// --- TRIGGERS ---
+// Table: learning_ratings
+//   after_rating_change: CREATE TRIGGER after_rating_change AFTER INSERT OR DELETE ON public.learning_ratings FOR EACH ROW EXECUTE FUNCTION update_learning_rating_stats()

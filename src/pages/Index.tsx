@@ -12,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { StarRating } from '@/components/ui/star-rating'
 import { cn } from '@/lib/utils'
 
 const getLevelColors = (level: string) => {
@@ -38,6 +39,8 @@ export default function Index() {
     setCategoryFilter,
     levelFilter,
     setLevelFilter,
+    sortBy,
+    setSortBy,
     clearFilters,
     refetch,
     hasActiveFilters,
@@ -83,7 +86,7 @@ export default function Index() {
             className="w-full h-auto pl-[38px] pr-[14px] py-[10px]"
           />
         </div>
-        <div className="flex flex-col sm:flex-row gap-[8px] sm:gap-[10px]">
+        <div className="flex flex-col sm:flex-row gap-[8px] sm:gap-[10px] flex-wrap">
           <Select value={categoryFilter} onValueChange={setCategoryFilter}>
             <SelectTrigger
               aria-label="Filtrar por categoria"
@@ -114,6 +117,18 @@ export default function Index() {
               ))}
             </SelectContent>
           </Select>
+          <Select value={sortBy} onValueChange={setSortBy}>
+            <SelectTrigger
+              aria-label="Ordenar por"
+              className="min-w-[155px] h-auto px-[14px] py-[10px]"
+            >
+              <SelectValue placeholder="Ordenar por" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="recentes">Mais recentes</SelectItem>
+              <SelectItem value="relevancia">Mais relevantes</SelectItem>
+            </SelectContent>
+          </Select>
           {hasActiveFilters && (
             <Button
               variant="ghost"
@@ -122,7 +137,7 @@ export default function Index() {
               aria-label="Limpar filtros"
             >
               <X className="h-4 w-4 mr-2" aria-hidden="true" />
-              Limpar filtros
+              Limpar
             </Button>
           )}
         </div>
@@ -232,6 +247,23 @@ export default function Index() {
               <p className="text-[0.8125rem] text-muted-foreground mt-[10px] leading-[1.75] line-clamp-3 flex-1">
                 {item.learning}
               </p>
+
+              <div className="flex items-center gap-2 mt-[14px] bg-muted/30 p-2 rounded-md border border-border/50">
+                <StarRating rating={Number(item.rating_avg || 0)} size="sm" />
+                <span className="text-[0.75rem] text-muted-foreground">
+                  {item.rating_count ? (
+                    <>
+                      <strong className="text-foreground font-semibold">
+                        {Number(item.rating_avg).toFixed(1)}
+                      </strong>{' '}
+                      ({item.rating_count} {item.rating_count === 1 ? 'avaliação' : 'avaliações'})
+                    </>
+                  ) : (
+                    'Sem avaliações ainda'
+                  )}
+                </span>
+              </div>
+
               <Link
                 to={`/aprendizado/${item.id}`}
                 className="text-primary text-[0.75rem] font-medium mt-[16px] tracking-[0.02em] hover:underline inline-flex items-center w-fit focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"

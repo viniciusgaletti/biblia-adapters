@@ -1,0 +1,63 @@
+import { a as require_jsx_runtime, g as require_react, o as createLucideIcon, v as __toESM } from "./client-D09FV_21.js";
+import { a as cn } from "./button-BeRAxBEE.js";
+var StarHalf = createLucideIcon("star-half", [["path", {
+	d: "M12 18.338a2.1 2.1 0 0 0-.987.244L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.12 2.12 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.12 2.12 0 0 0 1.597-1.16l2.309-4.679A.53.53 0 0 1 12 2",
+	key: "2ksp49"
+}]]);
+var Star = createLucideIcon("star", [["path", {
+	d: "M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z",
+	key: "r04s7s"
+}]]);
+//#endregion
+//#region src/components/ui/star-rating.tsx
+var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
+var import_jsx_runtime = require_jsx_runtime();
+function StarRating({ rating, interactive = false, onRate, userRating, size = "sm", disabled = false }) {
+	const [hoverRating, setHoverRating] = (0, import_react.useState)(0);
+	const starSizeClass = size === "sm" ? "w-[14px] h-[14px]" : interactive ? "w-[22px] h-[22px]" : "w-[18px] h-[18px]";
+	const containerClass = interactive && !disabled ? "cursor-pointer" : disabled ? "cursor-not-allowed opacity-50" : "";
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-uid": "src/components/ui/star-rating.tsx:30:5",
+		"data-prohibitions": "[editContent]",
+		className: cn("flex items-center gap-[2px]", containerClass),
+		onMouseLeave: () => setHoverRating(0),
+		children: [
+			1,
+			2,
+			3,
+			4,
+			5
+		].map((starIndex) => {
+			const fillInteractive = interactive && hoverRating >= starIndex || interactive && userRating && userRating >= starIndex && hoverRating === 0;
+			const fillDisplay = !interactive && Math.floor(rating) >= starIndex;
+			const isHalf = !interactive && !fillDisplay && rating >= starIndex - .5;
+			const isFilled = interactive ? fillInteractive : fillDisplay;
+			if (!interactive && isHalf) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StarHalf, {
+				"data-uid": "src/components/ui/star-rating.tsx:47:13",
+				"data-prohibitions": "[editContent]",
+				className: cn(starSizeClass, "fill-amber-400 text-amber-400"),
+				"aria-hidden": "true"
+			}, starIndex);
+			return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+				"data-uid": "src/components/ui/star-rating.tsx:56:11",
+				"data-prohibitions": "[editContent]",
+				type: interactive ? "button" : void 0,
+				disabled: !interactive || disabled,
+				onMouseEnter: () => interactive && setHoverRating(starIndex),
+				onClick: () => interactive && onRate && onRate(starIndex),
+				className: cn("focus:outline-none transition-colors", interactive ? "hover:scale-110 focus-visible:ring-2 focus-visible:ring-ring rounded-sm" : "cursor-default"),
+				"aria-label": interactive ? `Avaliar com ${starIndex} estrelas` : void 0,
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Star, {
+					"data-uid": "src/components/ui/star-rating.tsx:70:13",
+					"data-prohibitions": "[editContent]",
+					className: cn(starSizeClass, "transition-all", isFilled ? "fill-amber-400 text-amber-400" : "text-muted-foreground/30"),
+					"aria-hidden": "true"
+				})
+			}, starIndex);
+		})
+	});
+}
+//#endregion
+export { StarRating as t };
+
+//# sourceMappingURL=star-rating-BcZqtuYu.js.map
