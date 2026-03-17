@@ -1,4 +1,4 @@
-import { i as supabase } from "./button-BPdVCIk6.js";
+import { r as supabase } from "./index-aA96_rpP.js";
 //#region src/services/learnings.ts
 var searchLearnings = async (searchTerm, category, level) => {
 	let query = supabase.from("learnings").select("*").order("number", { ascending: true });
@@ -22,4 +22,4 @@ var createLearning = async (payload) => {
 //#endregion
 export { fetchLearningById as n, searchLearnings as r, createLearning as t };
 
-//# sourceMappingURL=learnings-B6Az6-EI.js.map
+//# sourceMappingURL=learnings-BvOgx4Yv.js.map

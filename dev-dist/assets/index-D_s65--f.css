@@ -738,6 +738,9 @@ body::selection{
 .mb-\[28px\]{
   margin-bottom: 28px;
 }
+.mb-\[32px\]{
+  margin-bottom: 32px;
+}
 .mb-\[36px\]{
   margin-bottom: 36px;
 }
@@ -934,6 +937,10 @@ body::selection{
 }
 .h-auto{
   height: auto;
+}
+.h-fit{
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .h-full{
   height: 100%;
@@ -1140,6 +1147,9 @@ body::selection{
 }
 .max-w-\[--skeleton-width\]{
   max-width: var(--skeleton-width);
+}
+.max-w-\[400px\]{
+  max-width: 400px;
 }
 .max-w-\[680px\]{
   max-width: 680px;
@@ -1390,6 +1400,11 @@ body::selection{
   margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(2rem * var(--tw-space-y-reverse));
 }
+.space-y-\[16px\] > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(16px * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(16px * var(--tw-space-y-reverse));
+}
 .space-y-\[32px\] > :not([hidden]) ~ :not([hidden]){
   --tw-space-y-reverse: 0;
   margin-top: calc(32px * calc(1 - var(--tw-space-y-reverse)));
@@ -1614,11 +1629,17 @@ body::selection{
 .p-6{
   padding: 1.5rem;
 }
+.p-8{
+  padding: 2rem;
+}
 .p-\[1px\]{
   padding: 1px;
 }
 .p-\[20px\]{
   padding: 20px;
+}
+.p-\[24px\]{
+  padding: 24px;
 }
 .px-0{
   padding-left: 0px;
@@ -1791,6 +1812,9 @@ body::selection{
 .pt-\[24px\]{
   padding-top: 24px;
 }
+.pt-\[4px\]{
+  padding-top: 4px;
+}
 .text-left{
   text-align: left;
 }
@@ -1849,6 +1873,9 @@ body::selection{
 }
 .text-\[13px\]{
   font-size: 13px;
+}
+.text-\[14px\]{
+  font-size: 14px;
 }
 .text-\[1rem\]{
   font-size: 1rem;

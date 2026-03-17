@@ -294,6 +294,11 @@ export const Constants = {
 //     USING: true
 //     WITH CHECK: true
 // Table: learnings
+//   Policy "Admin delete" (DELETE, PERMISSIVE) roles={authenticated}
+//     USING: (auth.uid() IS NOT NULL)
+//   Policy "Admin update" (UPDATE, PERMISSIVE) roles={authenticated}
+//     USING: (auth.uid() IS NOT NULL)
+//     WITH CHECK: (auth.uid() IS NOT NULL)
 //   Policy "Allow authenticated delete" (DELETE, PERMISSIVE) roles={authenticated}
 //     USING: true
 //   Policy "Allow authenticated insert" (INSERT, PERMISSIVE) roles={authenticated}
