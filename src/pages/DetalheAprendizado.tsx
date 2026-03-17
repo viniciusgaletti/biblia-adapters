@@ -154,7 +154,7 @@ export default function DetalheAprendizado() {
           <span>{formatDateLong(ap.date)}</span>
         </div>
 
-        <div className="flex flex-col gap-[6px] bg-muted/30 p-[12px] rounded-[calc(var(--radius)*1.5)] border border-border/50 max-w-sm">
+        <div className="mt-[12px] mb-[4px]">
           <div className="flex items-center gap-3">
             <StarRating
               rating={Number(ap.rating_avg || 0)}
@@ -164,22 +164,26 @@ export default function DetalheAprendizado() {
               disabled={submitting}
               size="md"
             />
-            <div className="text-[0.8125rem] text-muted-foreground">
+            <div className="flex items-center gap-2">
               {ap.rating_count ? (
-                <span>
-                  <strong className="text-foreground">{Number(ap.rating_avg).toFixed(1)}</strong>{' '}
-                  <span className="text-muted-foreground/70">
+                <>
+                  <span className="text-[1rem] font-bold text-foreground">
+                    {Number(ap.rating_avg).toFixed(1)}
+                  </span>
+                  <span className="text-[0.875rem] text-muted-foreground">
                     ({ap.rating_count} {ap.rating_count === 1 ? 'avaliação' : 'avaliações'})
                   </span>
-                </span>
+                </>
               ) : (
-                <span>Seja o primeiro a avaliar</span>
+                <span className="text-[0.875rem] text-muted-foreground italic">
+                  Seja o primeiro a avaliar
+                </span>
               )}
             </div>
           </div>
           {userRating && (
-            <div className="text-[0.75rem] text-muted-foreground">
-              Sua avaliação: {userRating.value} {userRating.value === 1 ? 'estrela' : 'estrelas'}
+            <div className="text-[0.75rem] text-muted-foreground mt-[6px]">
+              Sua avaliacao: {userRating.value} {userRating.value === 1 ? 'estrela' : 'estrelas'}
             </div>
           )}
         </div>

@@ -21,14 +21,13 @@ export function StarRating({
 }: StarRatingProps) {
   const [hoverRating, setHoverRating] = useState(0)
 
-  const starSizeClass =
-    size === 'sm' ? 'w-[14px] h-[14px]' : interactive ? 'w-[22px] h-[22px]' : 'w-[18px] h-[18px]'
-  const containerClass =
-    interactive && !disabled ? 'cursor-pointer' : disabled ? 'cursor-not-allowed opacity-50' : ''
+  const gapClass = interactive ? 'gap-[3px]' : 'gap-[1px]'
+  const starSizeClass = size === 'sm' ? 'w-[14px] h-[14px]' : 'w-[18px] h-[18px]'
+  const containerClass = disabled ? 'opacity-50 pointer-events-none' : ''
 
   return (
     <div
-      className={cn('flex items-center gap-[2px]', containerClass)}
+      className={cn('flex items-center', gapClass, containerClass)}
       onMouseLeave={() => setHoverRating(0)}
     >
       {[1, 2, 3, 4, 5].map((starIndex) => {
@@ -42,40 +41,71 @@ export function StarRating({
 
         const isFilled = interactive ? fillInteractive : fillDisplay
 
+        const starColorClass = isFilled
+          ? 'fill-[#f59e0b] text-[#f59e0b]'
+          : 'fill-transparent text-muted-foreground'
+
+        const interactiveStarColor = isHovered
+          ? 'fill-[#fbbf24] text-[#fbbf24]'
+          : isFilled
+            ? 'fill-[#f59e0b] text-[#f59e0b]'
+            : 'fill-transparent text-muted-foreground'
+
+        const finalColorClass = interactive
+          ? interactiveStarColor
+          : isHalf
+            ? 'fill-[#f59e0b] text-[#f59e0b]'
+            : starColorClass
+
         if (!interactive && isHalf) {
           return (
             <StarHalf
               key={starIndex}
-              className={cn(starSizeClass, 'fill-amber-400 text-amber-400')}
+              className={cn(
+                starSizeClass,
+                'fill-[#f59e0b] text-[#f59e0b] transition-colors duration-100 ease-in-out',
+              )}
               aria-hidden="true"
             />
           )
         }
 
-        return (
-          <button
-            key={starIndex}
-            type={interactive ? 'button' : undefined}
-            disabled={!interactive || disabled}
-            onMouseEnter={() => interactive && setHoverRating(starIndex)}
-            onClick={() => interactive && onRate && onRate(starIndex)}
-            className={cn(
-              'focus:outline-none transition-colors',
-              interactive
-                ? 'hover:scale-110 focus-visible:ring-2 focus-visible:ring-ring rounded-sm'
-                : 'cursor-default',
-            )}
-            aria-label={interactive ? `Avaliar com ${starIndex} estrelas` : undefined}
-          >
-            <Star
+        if (interactive) {
+          return (
+            <button
+              key={starIndex}
+              type="button"
+              disabled={disabled}
+              onMouseEnter={() => setHoverRating(starIndex)}
+              onClick={() => onRate && onRate(starIndex)}
               className={cn(
-                starSizeClass,
-                'transition-all',
-                isFilled ? 'fill-amber-400 text-amber-400' : 'text-muted-foreground/30',
+                'flex items-center justify-center w-[32px] h-[32px] bg-transparent border-none cursor-pointer rounded-[4px] p-0 transition-colors duration-100 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                !disabled && 'hover:bg-accent',
               )}
-              aria-hidden="true"
-            />
-          </button>
+              aria-label={`Avaliar com ${starIndex} estrelas`}
+            >
+              <Star
+                className={cn(
+                  starSizeClass,
+                  finalColorClass,
+                  'transition-colors duration-100 ease-in-out',
+                )}
+                aria-hidden="true"
+              />
+            </button>
+          )
+        }
+
+        return (
+          <Star
+            key={starIndex}
+            className={cn(
+              starSizeClass,
+              finalColorClass,
+              'transition-colors duration-100 ease-in-out',
+            )}
+            aria-hidden="true"
+          />
         )
       })}
     </div>

@@ -4,10 +4,10 @@ import { t as ArrowLeft } from "./arrow-left-DCIMdVmn.js";
 import { a as SelectValue, i as SelectTrigger, n as SelectContent, r as SelectItem, t as Select } from "./select-CyLNbRw8.js";
 import { t as Plus } from "./plus-DeMb-NdG.js";
 import { T as X } from "./dist-Cjh9VPbQ.js";
-import { i as LoaderCircle } from "./index-BEA0g7cY.js";
+import { i as LoaderCircle } from "./index-D2DI8Tpx.js";
 import "./learnings-lUo10QHQ.js";
 import { t as Input } from "./input-UzQica1A.js";
-import { a as FormControl, c as FormLabel, d as useFieldArray, i as Form, l as FormMessage, n as useNewLearning, o as FormField, s as FormItem, u as Textarea } from "./use-new-learning-JvcR15Dg.js";
+import { a as FormControl, c as FormLabel, d as useFieldArray, i as Form, l as FormMessage, n as useNewLearning, o as FormField, s as FormItem, u as Textarea } from "./use-new-learning-sfiHem5m.js";
 import "./label-Cg7XO7Wk.js";
 //#region src/pages/NovoAprendizado.tsx
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
@@ -628,4 +628,4 @@ function NovoAprendizado() {
 //#endregion
 export { NovoAprendizado as default };
 
-//# sourceMappingURL=NovoAprendizado-7T3KoPZ2.js.map
+//# sourceMappingURL=NovoAprendizado-BwExhm8n.js.map

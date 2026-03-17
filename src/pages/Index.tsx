@@ -117,18 +117,20 @@ export default function Index() {
               ))}
             </SelectContent>
           </Select>
-          <Select value={sortBy} onValueChange={setSortBy}>
-            <SelectTrigger
-              aria-label="Ordenar por"
-              className="min-w-[155px] h-auto px-[14px] py-[10px]"
-            >
-              <SelectValue placeholder="Ordenar por" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="recentes">Mais recentes</SelectItem>
-              <SelectItem value="relevancia">Mais relevantes</SelectItem>
-            </SelectContent>
-          </Select>
+          <div className="flex items-center">
+            <label htmlFor="sort-select" className="sr-only">
+              Ordenar por
+            </label>
+            <Select value={sortBy} onValueChange={setSortBy}>
+              <SelectTrigger id="sort-select" className="min-w-[160px] h-auto px-[14px] py-[10px]">
+                <SelectValue placeholder="Ordenar por" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="recentes">Mais recentes</SelectItem>
+                <SelectItem value="relevancia">Mais relevantes</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
           {hasActiveFilters && (
             <Button
               variant="ghost"
@@ -157,7 +159,7 @@ export default function Index() {
           {Array.from({ length: 6 }).map((_, i) => (
             <div
               key={i}
-              className="bg-card border border-border rounded-[calc(var(--radius)*1.5)] p-[20px] flex flex-col h-[260px]"
+              className="bg-card border border-border rounded-[calc(var(--radius)*1.5)] p-[20px] flex flex-col min-h-[260px]"
             >
               <div className="flex gap-[6px] mb-[14px]">
                 <Skeleton className="h-[20px] w-[30px] rounded-[3px]" />
@@ -169,10 +171,13 @@ export default function Index() {
                 <Skeleton className="h-[12px] w-[30%]" />
                 <Skeleton className="h-[12px] w-[20%]" />
               </div>
-              <div className="space-y-[8px] mt-[10px]">
+              <div className="space-y-[8px] mt-[10px] flex-1">
                 <Skeleton className="h-[12px] w-full" />
                 <Skeleton className="h-[12px] w-[95%]" />
                 <Skeleton className="h-[12px] w-[80%]" />
+              </div>
+              <div className="mt-[12px] pt-[12px] border-t border-border">
+                <Skeleton className="h-[14px] w-[120px] rounded-[4px]" />
               </div>
             </div>
           ))}
@@ -214,7 +219,7 @@ export default function Index() {
           {data.map((item) => (
             <article
               key={item.id}
-              className="bg-card border border-border rounded-[calc(var(--radius)*1.5)] p-[20px] hover:border-ring hover:shadow-[0_2px_10px_rgba(0,0,0,0.06)] transition-all duration-200 ease-in-out flex flex-col focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-within:ring-offset-background"
+              className="bg-card border border-border rounded-[calc(var(--radius)*1.5)] p-[20px] hover:border-ring hover:shadow-[0_2px_10px_rgba(0,0,0,0.06)] transition-all duration-200 ease-in-out flex flex-col focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-within:ring-offset-background min-h-[260px]"
             >
               <div className="flex gap-[6px] items-center flex-wrap">
                 <span className="bg-muted text-muted-foreground text-[0.6875rem] font-bold tracking-[0.04em] rounded-[3px] px-[7px] py-[2px]">
@@ -248,20 +253,22 @@ export default function Index() {
                 {item.learning}
               </p>
 
-              <div className="flex items-center gap-2 mt-[14px] bg-muted/30 p-2 rounded-md border border-border/50">
+              <div className="mt-[12px] pt-[12px] border-t border-border flex items-center gap-[6px]">
                 <StarRating rating={Number(item.rating_avg || 0)} size="sm" />
-                <span className="text-[0.75rem] text-muted-foreground">
-                  {item.rating_count ? (
-                    <>
-                      <strong className="text-foreground font-semibold">
-                        {Number(item.rating_avg).toFixed(1)}
-                      </strong>{' '}
-                      ({item.rating_count} {item.rating_count === 1 ? 'avaliação' : 'avaliações'})
-                    </>
-                  ) : (
-                    'Sem avaliações ainda'
-                  )}
-                </span>
+                {item.rating_count ? (
+                  <div className="flex items-center gap-[4px]">
+                    <span className="text-[0.75rem] font-semibold text-foreground">
+                      {Number(item.rating_avg).toFixed(1)}
+                    </span>
+                    <span className="text-[0.75rem] text-muted-foreground">
+                      ({item.rating_count})
+                    </span>
+                  </div>
+                ) : (
+                  <span className="text-[0.75rem] text-muted-foreground italic">
+                    Sem avaliacoes ainda
+                  </span>
+                )}
               </div>
 
               <Link
