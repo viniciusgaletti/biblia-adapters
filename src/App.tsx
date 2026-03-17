@@ -1,28 +1,46 @@
-/* Main App Component - Handles routing (using react-router-dom), query client and other providers - use this file to add all routes */
+import { lazy } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Toaster } from '@/components/ui/toaster'
 import { Toaster as Sonner } from '@/components/ui/sonner'
 import { TooltipProvider } from '@/components/ui/tooltip'
-import Index from './pages/Index'
-import NotFound from './pages/NotFound'
-import Layout from './components/Layout'
+import { ThemeProvider } from '@/hooks/use-theme'
+import { AuthProvider } from '@/hooks/use-auth'
+import { ProtectedRoute } from '@/components/ProtectedRoute'
 
-// ONLY IMPORT AND RENDER WORKING PAGES, NEVER ADD PLACEHOLDER COMPONENTS OR PAGES IN THIS FILE
-// AVOID REMOVING ANY CONTEXT PROVIDERS FROM THIS FILE (e.g. TooltipProvider, Toaster, Sonner)
+import Layout from '@/components/Layout'
+import NotFound from '@/pages/NotFound'
+
+// Lazy load pages for performance
+const Index = lazy(() => import('@/pages/Index'))
+const Login = lazy(() => import('@/pages/Login'))
+const NovoAprendizado = lazy(() => import('@/pages/NovoAprendizado'))
+const DetalheAprendizado = lazy(() => import('@/pages/DetalheAprendizado'))
 
 const App = () => (
   <BrowserRouter future={{ v7_startTransition: false, v7_relativeSplatPath: false }}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES MUST BE ADDED HERE */}
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </TooltipProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <Routes>
+            <Route path="/login" element={<Login />} />
+
+            <Route element={<ProtectedRoute />}>
+              <Route element={<Layout />}>
+                <Route path="/" element={<Index />} />
+                <Route path="/novo" element={<NovoAprendizado />} />
+                <Route path="/aprendizado/:id" element={<DetalheAprendizado />} />
+              </Route>
+            </Route>
+
+            <Route path="*" element={<Layout />}>
+              <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+        </TooltipProvider>
+      </AuthProvider>
+    </ThemeProvider>
   </BrowserRouter>
 )
 
