@@ -54,6 +54,51 @@ export type Database = {
         }
         Relationships: []
       }
+      learnings: {
+        Row: {
+          author: string
+          category: string
+          context: string
+          created_at: string
+          date: string
+          id: string
+          learning: string
+          level: string
+          number: number
+          observations: string | null
+          steps: string | null
+          title: string
+        }
+        Insert: {
+          author: string
+          category: string
+          context: string
+          created_at?: string
+          date: string
+          id?: string
+          learning: string
+          level: string
+          number?: never
+          observations?: string | null
+          steps?: string | null
+          title: string
+        }
+        Update: {
+          author?: string
+          category?: string
+          context?: string
+          created_at?: string
+          date?: string
+          id?: string
+          learning?: string
+          level?: string
+          number?: never
+          observations?: string | null
+          steps?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -214,11 +259,28 @@ export const Constants = {
 //   context: text (not null, default: 'Contexto geral'::text)
 //   steps: text (nullable)
 //   observations: text (nullable)
+// Table: learnings
+//   id: uuid (not null, default: gen_random_uuid())
+//   number: integer (not null)
+//   title: text (not null)
+//   author: text (not null)
+//   date: date (not null)
+//   category: text (not null)
+//   level: text (not null)
+//   context: text (not null)
+//   learning: text (not null)
+//   steps: text (nullable)
+//   observations: text (nullable)
+//   created_at: timestamp with time zone (not null, default: now())
 
 // --- CONSTRAINTS ---
 // Table: aprendizados
 //   PRIMARY KEY aprendizados_pkey: PRIMARY KEY (id)
 //   FOREIGN KEY aprendizados_user_id_fkey: FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE
+// Table: learnings
+//   CHECK learnings_category_check: CHECK ((category = ANY (ARRAY['IA'::text, 'Vibecoding'::text, 'Automacoes'::text, 'Agentes de IA'::text])))
+//   CHECK learnings_level_check: CHECK ((level = ANY (ARRAY['Iniciante'::text, 'Intermediario'::text, 'Avancado'::text])))
+//   PRIMARY KEY learnings_pkey: PRIMARY KEY (id)
 
 // --- ROW LEVEL SECURITY POLICIES ---
 // Table: aprendizados
@@ -231,3 +293,8 @@ export const Constants = {
 //   Policy "Public can update learnings" (UPDATE, PERMISSIVE) roles={public}
 //     USING: true
 //     WITH CHECK: true
+// Table: learnings
+//   Policy "Allow public insert" (INSERT, PERMISSIVE) roles={anon}
+//     WITH CHECK: true
+//   Policy "Allow public read" (SELECT, PERMISSIVE) roles={anon}
+//     USING: true

@@ -7,11 +7,12 @@ import { cn } from '@/lib/utils'
 
 function formatDateLong(dateString: string) {
   if (!dateString) return ''
+  const d = dateString.includes('T') ? new Date(dateString) : new Date(dateString + 'T12:00:00Z')
   return new Intl.DateTimeFormat('pt-BR', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
-  }).format(new Date(dateString))
+  }).format(d)
 }
 
 export default function DetalheAprendizado() {
@@ -109,9 +110,9 @@ export default function DetalheAprendizado() {
             #{ap.number}
           </span>
         )}
-        {ap.categoria && (
+        {ap.category && (
           <span className="bg-accent text-accent-foreground text-[0.6875rem] font-bold py-[2px] px-[7px] rounded-[3px]">
-            {ap.categoria}
+            {ap.category}
           </span>
         )}
         {ap.level && (
@@ -127,20 +128,20 @@ export default function DetalheAprendizado() {
       </div>
 
       <h1 className="text-[1.625rem] font-bold tracking-[-0.02em] leading-[1.3] text-foreground mb-3">
-        {ap.titulo}
+        {ap.title}
       </h1>
 
       <div className="flex items-center gap-[12px] text-[0.75rem] text-muted-foreground">
         <span>{ap.author || 'Autor desconhecido'}</span>
         <span>&bull;</span>
-        <span>{formatDateLong(ap.created_at)}</span>
+        <span>{formatDateLong(ap.date)}</span>
       </div>
 
       <hr className="border-t border-border mt-[16px] mb-[28px]" />
 
       <div className="space-y-[32px]">
         <Section title="Contexto / Problema que Resolve" content={ap.context} />
-        <Section title="O Aprendizado" content={ap.conteudo} />
+        <Section title="O Aprendizado" content={ap.learning} />
         <Section title="Passo a Passo" content={ap.steps} />
         <Section title="Observações / Dicas Extras" content={ap.observations} />
       </div>

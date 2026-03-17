@@ -2,8 +2,8 @@ import { S as require_react, c as cn, d as require_jsx_runtime, h as Link, n as 
 import { t as Input } from "./input-9w59hof-.js";
 import { t as ArrowLeft } from "./arrow-left-R0LlO7DN.js";
 import { a as SelectValue, i as SelectTrigger, n as SelectContent, o as CircleAlert, r as SelectItem, t as Select } from "./select-BQCHX5_E.js";
-import { a as useToast, i as LoaderCircle, n as useAuth, t as Label } from "./index-BHJFXuyU.js";
-import { t as createAprendizado } from "./aprendizados-Dn9CeTnY.js";
+import { a as useToast, i as LoaderCircle, n as useAuth, t as Label } from "./index-wNsnwG1G.js";
+import { t as createLearning } from "./learnings-B6Az6-EI.js";
 //#region src/components/ui/textarea.tsx
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 var import_jsx_runtime = require_jsx_runtime();
@@ -7673,24 +7673,26 @@ var useNewLearning = () => {
 	const onSubmit = async (data) => {
 		setIsSubmitting(true);
 		try {
-			await createAprendizado({
+			await createLearning({
+				title: data.title,
 				author: data.author,
-				created_at: new Date(data.date).toISOString(),
-				categoria: data.category,
+				date: data.date,
+				category: data.category,
 				level: data.level,
-				titulo: data.title,
 				context: data.context,
-				conteudo: data.learning,
+				learning: data.learning,
 				steps: data.steps || null,
-				observations: data.observations || null,
-				user_id: user?.id
+				observations: data.observations || null
 			});
 			toast({ title: "Aprendizado registrado com sucesso!" });
 			navigate("/");
 		} catch (error) {
 			console.error(error);
+			let message = "Nao foi possivel salvar. Tente novamente.";
+			if (error?.code === "23514") message = "Categoria ou nivel invalido";
+			else if (error?.message?.toLowerCase().includes("fetch") || error?.message?.toLowerCase().includes("network") || error?.message?.toLowerCase().includes("timeout") || error?.message?.toLowerCase().includes("failed to fetch")) message = "Conexao lenta. Verifique sua internet e tente novamente.";
 			toast({
-				title: "Nao foi possivel registrar. Tente novamente.",
+				title: message,
 				variant: "destructive"
 			});
 		} finally {
@@ -8231,4 +8233,4 @@ function NovoAprendizado() {
 //#endregion
 export { NovoAprendizado as default };
 
-//# sourceMappingURL=NovoAprendizado-Cq0p-nhE.js.map
+//# sourceMappingURL=NovoAprendizado-saJOOVsA.js.map

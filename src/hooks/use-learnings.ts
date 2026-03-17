@@ -1,5 +1,5 @@
-import { useState, useEffect, useMemo } from 'react'
-import { getAprendizados } from '@/services/aprendizados'
+import { useState, useEffect, useCallback } from 'react'
+import { searchLearnings } from '@/services/learnings'
 
 export interface Learning {
   id: string
@@ -36,57 +36,46 @@ export function useLearnings() {
     return () => clearTimeout(handler)
   }, [searchTerm])
 
-  const fetchLearnings = async () => {
+  const fetchFilteredLearnings = useCallback(async () => {
     try {
       setLoading(true)
       setError(null)
-      const res = await getAprendizados()
-      const formatted: Learning[] = res.map((item) => ({
-        id: item.id,
-        number: item.number || 0,
-        title: item.titulo,
-        author: item.author || 'Desconhecido',
-        date: new Date(item.created_at).toLocaleDateString('pt-BR', {
-          day: '2-digit',
-          month: 'short',
-          year: 'numeric',
-        }),
-        category: item.categoria || 'Sem categoria',
-        level: item.level || 'Iniciante',
-        context: item.context || '',
-        learning: item.conteudo,
-        steps: item.steps,
-        observations: item.observations,
-        created_at: item.created_at,
-      }))
+      const res = await searchLearnings(debouncedSearch, categoryFilter, levelFilter)
+
+      const formatted: Learning[] = res.map((item) => {
+        // Parse as UTC to prevent timezone shifts changing the day
+        const dateObj = new Date(item.date + 'T12:00:00Z')
+        return {
+          id: item.id,
+          number: item.number,
+          title: item.title,
+          author: item.author,
+          date: dateObj.toLocaleDateString('pt-BR', {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric',
+          }),
+          category: item.category,
+          level: item.level,
+          context: item.context,
+          learning: item.learning,
+          steps: item.steps,
+          observations: item.observations,
+          created_at: item.created_at,
+        }
+      })
+
       setData(formatted)
     } catch (err: any) {
       setError(err)
     } finally {
       setLoading(false)
     }
-  }
+  }, [debouncedSearch, categoryFilter, levelFilter])
 
   useEffect(() => {
-    fetchLearnings()
-  }, [])
-
-  const filteredData = useMemo(() => {
-    return data.filter((item) => {
-      const lowerSearch = debouncedSearch.toLowerCase()
-      const matchSearch =
-        debouncedSearch === '' ||
-        item.title.toLowerCase().includes(lowerSearch) ||
-        item.author.toLowerCase().includes(lowerSearch) ||
-        item.context.toLowerCase().includes(lowerSearch) ||
-        item.learning.toLowerCase().includes(lowerSearch)
-
-      const matchCategory = categoryFilter === 'Todos' || item.category === categoryFilter
-      const matchLevel = levelFilter === 'Todos' || item.level === levelFilter
-
-      return matchSearch && matchCategory && matchLevel
-    })
-  }, [data, debouncedSearch, categoryFilter, levelFilter])
+    fetchFilteredLearnings()
+  }, [fetchFilteredLearnings])
 
   const clearFilters = () => {
     setSearchTerm('')
@@ -95,7 +84,7 @@ export function useLearnings() {
   }
 
   return {
-    data: filteredData,
+    data,
     loading,
     error,
     searchTerm,
@@ -105,8 +94,8 @@ export function useLearnings() {
     levelFilter,
     setLevelFilter,
     clearFilters,
-    refetch: fetchLearnings,
+    refetch: fetchFilteredLearnings,
     hasActiveFilters: searchTerm !== '' || categoryFilter !== 'Todos' || levelFilter !== 'Todos',
-    totalCount: filteredData.length,
+    totalCount: data.length,
   }
 }

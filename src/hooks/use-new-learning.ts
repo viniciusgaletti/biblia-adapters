@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { useToast } from '@/hooks/use-toast'
-import { createAprendizado } from '@/services/aprendizados'
+import { createLearning } from '@/services/learnings'
 import { useAuth } from '@/hooks/use-auth'
 import { format } from 'date-fns'
 
@@ -51,27 +51,39 @@ export const useNewLearning = () => {
   const onSubmit = async (data: NewLearningFormValues) => {
     setIsSubmitting(true)
     try {
-      await createAprendizado({
+      await createLearning({
+        title: data.title,
         author: data.author,
-        created_at: new Date(data.date).toISOString(),
-        categoria: data.category,
+        date: data.date,
+        category: data.category,
         level: data.level,
-        titulo: data.title,
         context: data.context,
-        conteudo: data.learning,
+        learning: data.learning,
         steps: data.steps || null,
         observations: data.observations || null,
-        user_id: user?.id,
       })
 
       toast({
         title: 'Aprendizado registrado com sucesso!',
       })
       navigate('/')
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
+      let message = 'Nao foi possivel salvar. Tente novamente.'
+
+      if (error?.code === '23514') {
+        message = 'Categoria ou nivel invalido'
+      } else if (
+        error?.message?.toLowerCase().includes('fetch') ||
+        error?.message?.toLowerCase().includes('network') ||
+        error?.message?.toLowerCase().includes('timeout') ||
+        error?.message?.toLowerCase().includes('failed to fetch')
+      ) {
+        message = 'Conexao lenta. Verifique sua internet e tente novamente.'
+      }
+
       toast({
-        title: 'Nao foi possivel registrar. Tente novamente.',
+        title: message,
         variant: 'destructive',
       })
     } finally {

@@ -1,8 +1,8 @@
 import { S as require_react, c as cn, d as require_jsx_runtime, h as Link, l as createLucideIcon, t as Button, w as __toESM } from "./button-BPdVCIk6.js";
 import { t as Input } from "./input-9w59hof-.js";
 import { a as SelectValue, i as SelectTrigger, n as SelectContent, o as CircleAlert, r as SelectItem, t as Select } from "./select-BQCHX5_E.js";
-import { r as X } from "./index-BHJFXuyU.js";
-import { r as getAprendizados } from "./aprendizados-Dn9CeTnY.js";
+import { r as X } from "./index-wNsnwG1G.js";
+import { r as searchLearnings } from "./learnings-B6Az6-EI.js";
 import { t as Skeleton } from "./skeleton-PtARcsAK.js";
 var ArrowRight = createLucideIcon("arrow-right", [["path", {
 	d: "M5 12h14",
@@ -71,58 +71,51 @@ function useLearnings() {
 		}, 300);
 		return () => clearTimeout(handler);
 	}, [searchTerm]);
-	const fetchLearnings = async () => {
+	const fetchFilteredLearnings = (0, import_react.useCallback)(async () => {
 		try {
 			setLoading(true);
 			setError(null);
-			setData((await getAprendizados()).map((item) => ({
-				id: item.id,
-				number: item.number || 0,
-				title: item.titulo,
-				author: item.author || "Desconhecido",
-				date: new Date(item.created_at).toLocaleDateString("pt-BR", {
-					day: "2-digit",
-					month: "short",
-					year: "numeric"
-				}),
-				category: item.categoria || "Sem categoria",
-				level: item.level || "Iniciante",
-				context: item.context || "",
-				learning: item.conteudo,
-				steps: item.steps,
-				observations: item.observations,
-				created_at: item.created_at
-			})));
+			setData((await searchLearnings(debouncedSearch, categoryFilter, levelFilter)).map((item) => {
+				const dateObj = /* @__PURE__ */ new Date(item.date + "T12:00:00Z");
+				return {
+					id: item.id,
+					number: item.number,
+					title: item.title,
+					author: item.author,
+					date: dateObj.toLocaleDateString("pt-BR", {
+						day: "2-digit",
+						month: "short",
+						year: "numeric"
+					}),
+					category: item.category,
+					level: item.level,
+					context: item.context,
+					learning: item.learning,
+					steps: item.steps,
+					observations: item.observations,
+					created_at: item.created_at
+				};
+			}));
 		} catch (err) {
 			setError(err);
 		} finally {
 			setLoading(false);
 		}
-	};
-	(0, import_react.useEffect)(() => {
-		fetchLearnings();
-	}, []);
-	const filteredData = (0, import_react.useMemo)(() => {
-		return data.filter((item) => {
-			const lowerSearch = debouncedSearch.toLowerCase();
-			const matchSearch = debouncedSearch === "" || item.title.toLowerCase().includes(lowerSearch) || item.author.toLowerCase().includes(lowerSearch) || item.context.toLowerCase().includes(lowerSearch) || item.learning.toLowerCase().includes(lowerSearch);
-			const matchCategory = categoryFilter === "Todos" || item.category === categoryFilter;
-			const matchLevel = levelFilter === "Todos" || item.level === levelFilter;
-			return matchSearch && matchCategory && matchLevel;
-		});
 	}, [
-		data,
 		debouncedSearch,
 		categoryFilter,
 		levelFilter
 	]);
+	(0, import_react.useEffect)(() => {
+		fetchFilteredLearnings();
+	}, [fetchFilteredLearnings]);
 	const clearFilters = () => {
 		setSearchTerm("");
 		setCategoryFilter("Todos");
 		setLevelFilter("Todos");
 	};
 	return {
-		data: filteredData,
+		data,
 		loading,
 		error,
 		searchTerm,
@@ -132,9 +125,9 @@ function useLearnings() {
 		levelFilter,
 		setLevelFilter,
 		clearFilters,
-		refetch: fetchLearnings,
+		refetch: fetchFilteredLearnings,
 		hasActiveFilters: searchTerm !== "" || categoryFilter !== "Todos" || levelFilter !== "Todos",
-		totalCount: filteredData.length
+		totalCount: data.length
 	};
 }
 //#endregion
@@ -523,4 +516,4 @@ function Index() {
 //#endregion
 export { Index as default };
 
-//# sourceMappingURL=Index-CWb6OiZ_.js.map
+//# sourceMappingURL=Index-Du-sgtnk.js.map
