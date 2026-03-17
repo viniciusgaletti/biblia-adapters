@@ -294,6 +294,15 @@ export const Constants = {
 //     USING: true
 //     WITH CHECK: true
 // Table: learnings
+//   Policy "Allow authenticated delete" (DELETE, PERMISSIVE) roles={authenticated}
+//     USING: true
+//   Policy "Allow authenticated insert" (INSERT, PERMISSIVE) roles={authenticated}
+//     WITH CHECK: true
+//   Policy "Allow authenticated read" (SELECT, PERMISSIVE) roles={authenticated}
+//     USING: true
+//   Policy "Allow authenticated update" (UPDATE, PERMISSIVE) roles={authenticated}
+//     USING: true
+//     WITH CHECK: true
 //   Policy "Allow public insert" (INSERT, PERMISSIVE) roles={anon}
 //     WITH CHECK: true
 //   Policy "Allow public read" (SELECT, PERMISSIVE) roles={anon}

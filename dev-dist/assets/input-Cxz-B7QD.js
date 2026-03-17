@@ -1,4 +1,4 @@
-import { C as __commonJSMin, S as require_react, c as cn, d as require_jsx_runtime, f as composeRefs, p as useComposedRefs, w as __toESM } from "./button-BPdVCIk6.js";
+import { C as __commonJSMin, S as require_react, c as cn, d as require_jsx_runtime, f as composeRefs, l as createLucideIcon, p as useComposedRefs, w as __toESM } from "./button-BPdVCIk6.js";
 //#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/react-dom@19.2.4_react@19.2.4/node_modules/react-dom/cjs/react-dom.development.js
 /**
 * @license React
@@ -753,6 +753,13 @@ var VisuallyHidden = import_react.forwardRef((props, forwardedRef) => {
 });
 VisuallyHidden.displayName = NAME$1;
 var Root$1 = VisuallyHidden;
+var X = createLucideIcon("x", [["path", {
+	d: "M18 6 6 18",
+	key: "1bl5f8"
+}], ["path", {
+	d: "m6 6 12 12",
+	key: "d8bk6v"
+}]]);
 //#endregion
 //#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/@radix-ui+react-id@1.1.1_@types+react@19.2.14_react@19.2.4/node_modules/@radix-ui/react-id/dist/index.mjs
 var useReactId = import_react[" useId ".trim().toString()] || (() => void 0);
@@ -2727,6 +2734,6 @@ var Input = import_react.forwardRef(({ className, type, ...props }, ref) => {
 });
 Input.displayName = "Input";
 //#endregion
-export { createContextScope as C, createSlottable as S, require_react_dom as T, useCallbackRef as _, Root2 as a, createCollection as b, Root$1 as c, useControllableState as d, Portal as f, Root$2 as g, DismissableLayer as h, Content as i, VISUALLY_HIDDEN_STYLES as l, Branch as m, Anchor as n, createPopperScope as o, useLayoutEffect2 as p, Arrow as r, useId as s, Input as t, VisuallyHidden as u, Primitive as v, composeEventHandlers as w, createSlot as x, dispatchDiscreteCustomEvent as y };
+export { createSlottable as C, require_react_dom as E, createSlot as S, composeEventHandlers as T, Root$2 as _, Root2 as a, dispatchDiscreteCustomEvent as b, X as c, VisuallyHidden as d, useControllableState as f, DismissableLayer as g, Branch as h, Content as i, Root$1 as l, useLayoutEffect2 as m, Anchor as n, createPopperScope as o, Portal as p, Arrow as r, useId as s, Input as t, VISUALLY_HIDDEN_STYLES as u, useCallbackRef as v, createContextScope as w, createCollection as x, Primitive as y };
 
-//# sourceMappingURL=input-9w59hof-.js.map
+//# sourceMappingURL=input-Cxz-B7QD.js.map

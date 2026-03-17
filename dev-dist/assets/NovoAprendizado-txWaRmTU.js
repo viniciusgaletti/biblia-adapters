@@ -1,24 +1,11 @@
 import { S as require_react, c as cn, d as require_jsx_runtime, h as Link, n as Slot, t as Button, w as __toESM, y as useNavigate } from "./button-BPdVCIk6.js";
-import { t as Input } from "./input-9w59hof-.js";
+import { c as X, t as Input } from "./input-Cxz-B7QD.js";
 import { t as ArrowLeft } from "./arrow-left-R0LlO7DN.js";
-import { a as SelectValue, i as SelectTrigger, n as SelectContent, o as CircleAlert, r as SelectItem, t as Select } from "./select-BQCHX5_E.js";
-import { a as useToast, i as LoaderCircle, n as useAuth, t as Label } from "./index-wNsnwG1G.js";
+import { a as SelectValue, i as SelectTrigger, n as SelectContent, o as Plus, r as SelectItem, s as CircleAlert, t as Select } from "./select-CPtKmOuq.js";
+import { i as useToast, n as useAuth, r as LoaderCircle, t as Label } from "./index-C6IqL-bU.js";
 import { t as createLearning } from "./learnings-B6Az6-EI.js";
-//#region src/components/ui/textarea.tsx
-var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
-var import_jsx_runtime = require_jsx_runtime();
-var Textarea = import_react.forwardRef(({ className, ...props }, ref) => {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("textarea", {
-		"data-uid": "src/components/ui/textarea.tsx:7:7",
-		"data-prohibitions": "[editContent]",
-		className: cn("flex min-h-[80px] w-full rounded-[var(--radius)] border border-border bg-background px-[12px] py-[10px] text-[13px] font-sans transition-all duration-200 ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/15 focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 resize-y aria-[invalid=true]:border-destructive aria-[invalid=true]:focus-visible:ring-destructive/15 aria-[invalid=true]:focus-visible:border-destructive", className),
-		ref,
-		...props
-	});
-});
-Textarea.displayName = "Textarea";
-//#endregion
 //#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/react-hook-form@7.71.2_react@19.2.4/node_modules/react-hook-form/dist/index.esm.mjs
+var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 var isCheckBoxInput = (element) => element.type === "checkbox";
 var isDateObject = (value) => value instanceof Date;
 var isNullOrUndefined = (value) => value == null;
@@ -1758,6 +1745,285 @@ function createFormControl(props = {}) {
 		formControl: methods
 	};
 }
+var generateId = () => {
+	if (typeof crypto !== "undefined" && crypto.randomUUID) return crypto.randomUUID();
+	const d = typeof performance === "undefined" ? Date.now() : performance.now() * 1e3;
+	return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+		const r = (Math.random() * 16 + d) % 16 | 0;
+		return (c == "x" ? r : r & 3 | 8).toString(16);
+	});
+};
+var getFocusFieldName = (name, index, options = {}) => options.shouldFocus || isUndefined(options.shouldFocus) ? options.focusName || `${name}.${isUndefined(options.focusIndex) ? index : options.focusIndex}.` : "";
+var appendAt = (data, value) => [...data, ...convertToArrayPayload(value)];
+var fillEmptyArray = (value) => Array.isArray(value) ? value.map(() => void 0) : void 0;
+function insert(data, index, value) {
+	return [
+		...data.slice(0, index),
+		...convertToArrayPayload(value),
+		...data.slice(index)
+	];
+}
+var moveArrayAt = (data, from, to) => {
+	if (!Array.isArray(data)) return [];
+	if (isUndefined(data[to])) data[to] = void 0;
+	data.splice(to, 0, data.splice(from, 1)[0]);
+	return data;
+};
+var prependAt = (data, value) => [...convertToArrayPayload(value), ...convertToArrayPayload(data)];
+function removeAtIndexes(data, indexes) {
+	let i = 0;
+	const temp = [...data];
+	for (const index of indexes) {
+		temp.splice(index - i, 1);
+		i++;
+	}
+	return compact(temp).length ? temp : [];
+}
+var removeArrayAt = (data, index) => isUndefined(index) ? [] : removeAtIndexes(data, convertToArrayPayload(index).sort((a, b) => a - b));
+var swapArrayAt = (data, indexA, indexB) => {
+	[data[indexA], data[indexB]] = [data[indexB], data[indexA]];
+};
+var updateAt = (fieldValues, index, value) => {
+	fieldValues[index] = value;
+	return fieldValues;
+};
+/**
+* A custom hook that exposes convenient methods to perform operations with a list of dynamic inputs that need to be appended, updated, removed etc. • [Demo](https://codesandbox.io/s/react-hook-form-usefieldarray-ssugn) • [Video](https://youtu.be/4MrbfGSFY2A)
+*
+* @remarks
+* [API](https://react-hook-form.com/docs/usefieldarray) • [Demo](https://codesandbox.io/s/react-hook-form-usefieldarray-ssugn)
+*
+* @param props - useFieldArray props
+*
+* @returns methods - functions to manipulate with the Field Arrays (dynamic inputs) {@link UseFieldArrayReturn}
+*
+* @example
+* ```tsx
+* function App() {
+*   const { register, control, handleSubmit, reset, trigger, setError } = useForm({
+*     defaultValues: {
+*       test: []
+*     }
+*   });
+*   const { fields, append } = useFieldArray({
+*     control,
+*     name: "test"
+*   });
+*
+*   return (
+*     <form onSubmit={handleSubmit(data => console.log(data))}>
+*       {fields.map((item, index) => (
+*          <input key={item.id} {...register(`test.${index}.firstName`)}  />
+*       ))}
+*       <button type="button" onClick={() => append({ firstName: "bill" })}>
+*         append
+*       </button>
+*       <input type="submit" />
+*     </form>
+*   );
+* }
+* ```
+*/
+function useFieldArray(props) {
+	const formControl = useFormControlContext();
+	const { control = formControl, name, keyName = "id", shouldUnregister, rules } = props;
+	const [fields, setFields] = import_react.useState(control._getFieldArray(name));
+	const ids = import_react.useRef(control._getFieldArray(name).map(generateId));
+	const _actioned = import_react.useRef(false);
+	control._names.array.add(name);
+	import_react.useMemo(() => rules && fields.length >= 0 && control.register(name, rules), [
+		control,
+		name,
+		fields.length,
+		rules
+	]);
+	useIsomorphicLayoutEffect(() => control._subjects.array.subscribe({ next: ({ values, name: fieldArrayName }) => {
+		if (fieldArrayName === name || !fieldArrayName) {
+			const fieldValues = get(values, name);
+			if (Array.isArray(fieldValues)) {
+				setFields(fieldValues);
+				ids.current = fieldValues.map(generateId);
+			}
+		}
+	} }).unsubscribe, [control, name]);
+	const updateValues = import_react.useCallback((updatedFieldArrayValues) => {
+		_actioned.current = true;
+		control._setFieldArray(name, updatedFieldArrayValues);
+	}, [control, name]);
+	const append = (value, options) => {
+		const appendValue = convertToArrayPayload(cloneObject(value));
+		const updatedFieldArrayValues = appendAt(control._getFieldArray(name), appendValue);
+		control._names.focus = getFocusFieldName(name, updatedFieldArrayValues.length - 1, options);
+		ids.current = appendAt(ids.current, appendValue.map(generateId));
+		updateValues(updatedFieldArrayValues);
+		setFields(updatedFieldArrayValues);
+		control._setFieldArray(name, updatedFieldArrayValues, appendAt, { argA: fillEmptyArray(value) });
+	};
+	const prepend = (value, options) => {
+		const prependValue = convertToArrayPayload(cloneObject(value));
+		const updatedFieldArrayValues = prependAt(control._getFieldArray(name), prependValue);
+		control._names.focus = getFocusFieldName(name, 0, options);
+		ids.current = prependAt(ids.current, prependValue.map(generateId));
+		updateValues(updatedFieldArrayValues);
+		setFields(updatedFieldArrayValues);
+		control._setFieldArray(name, updatedFieldArrayValues, prependAt, { argA: fillEmptyArray(value) });
+	};
+	const remove = (index) => {
+		const updatedFieldArrayValues = removeArrayAt(control._getFieldArray(name), index);
+		ids.current = removeArrayAt(ids.current, index);
+		updateValues(updatedFieldArrayValues);
+		setFields(updatedFieldArrayValues);
+		!Array.isArray(get(control._fields, name)) && set(control._fields, name, void 0);
+		control._setFieldArray(name, updatedFieldArrayValues, removeArrayAt, { argA: index });
+	};
+	const insert$1 = (index, value, options) => {
+		const insertValue = convertToArrayPayload(cloneObject(value));
+		const updatedFieldArrayValues = insert(control._getFieldArray(name), index, insertValue);
+		control._names.focus = getFocusFieldName(name, index, options);
+		ids.current = insert(ids.current, index, insertValue.map(generateId));
+		updateValues(updatedFieldArrayValues);
+		setFields(updatedFieldArrayValues);
+		control._setFieldArray(name, updatedFieldArrayValues, insert, {
+			argA: index,
+			argB: fillEmptyArray(value)
+		});
+	};
+	const swap = (indexA, indexB) => {
+		const updatedFieldArrayValues = control._getFieldArray(name);
+		swapArrayAt(updatedFieldArrayValues, indexA, indexB);
+		swapArrayAt(ids.current, indexA, indexB);
+		updateValues(updatedFieldArrayValues);
+		setFields(updatedFieldArrayValues);
+		control._setFieldArray(name, updatedFieldArrayValues, swapArrayAt, {
+			argA: indexA,
+			argB: indexB
+		}, false);
+	};
+	const move = (from, to) => {
+		const updatedFieldArrayValues = control._getFieldArray(name);
+		moveArrayAt(updatedFieldArrayValues, from, to);
+		moveArrayAt(ids.current, from, to);
+		updateValues(updatedFieldArrayValues);
+		setFields(updatedFieldArrayValues);
+		control._setFieldArray(name, updatedFieldArrayValues, moveArrayAt, {
+			argA: from,
+			argB: to
+		}, false);
+	};
+	const update = (index, value) => {
+		const updateValue = cloneObject(value);
+		const updatedFieldArrayValues = updateAt(control._getFieldArray(name), index, updateValue);
+		ids.current = [...updatedFieldArrayValues].map((item, i) => !item || i === index ? generateId() : ids.current[i]);
+		updateValues(updatedFieldArrayValues);
+		setFields([...updatedFieldArrayValues]);
+		control._setFieldArray(name, updatedFieldArrayValues, updateAt, {
+			argA: index,
+			argB: updateValue
+		}, true, false);
+	};
+	const replace = (value) => {
+		const updatedFieldArrayValues = convertToArrayPayload(cloneObject(value));
+		ids.current = updatedFieldArrayValues.map(generateId);
+		updateValues([...updatedFieldArrayValues]);
+		setFields([...updatedFieldArrayValues]);
+		control._setFieldArray(name, [...updatedFieldArrayValues], (data) => data, {}, true, false);
+	};
+	import_react.useEffect(() => {
+		control._state.action = false;
+		isWatched(name, control._names) && control._subjects.state.next({ ...control._formState });
+		if (_actioned.current && (!getValidationModes(control._options.mode).isOnSubmit || control._formState.isSubmitted) && !getValidationModes(control._options.reValidateMode).isOnSubmit) if (control._options.resolver) control._runSchema([name]).then((result) => {
+			control._updateIsValidating([name]);
+			const error = get(result.errors, name);
+			const existingError = get(control._formState.errors, name);
+			if (existingError ? !error && existingError.type || error && (existingError.type !== error.type || existingError.message !== error.message) : error && error.type) {
+				error ? set(control._formState.errors, name, error) : unset(control._formState.errors, name);
+				control._subjects.state.next({ errors: control._formState.errors });
+			}
+		});
+		else {
+			const field = get(control._fields, name);
+			if (field && field._f && !(getValidationModes(control._options.reValidateMode).isOnSubmit && getValidationModes(control._options.mode).isOnSubmit)) validateField(field, control._names.disabled, control._formValues, control._options.criteriaMode === VALIDATION_MODE.all, control._options.shouldUseNativeValidation, true).then((error) => !isEmptyObject(error) && control._subjects.state.next({ errors: updateFieldArrayRootError(control._formState.errors, error, name) }));
+		}
+		control._subjects.state.next({
+			name,
+			values: cloneObject(control._formValues)
+		});
+		control._names.focus && iterateFieldsByAction(control._fields, (ref, key) => {
+			if (control._names.focus && key.startsWith(control._names.focus) && ref.focus) {
+				ref.focus();
+				return 1;
+			}
+		});
+		control._names.focus = "";
+		control._setValid();
+		_actioned.current = false;
+	}, [
+		fields,
+		name,
+		control
+	]);
+	import_react.useEffect(() => {
+		!get(control._formValues, name) && control._setFieldArray(name);
+		return () => {
+			const updateMounted = (name, value) => {
+				const field = get(control._fields, name);
+				if (field && field._f) field._f.mount = value;
+			};
+			control._options.shouldUnregister || shouldUnregister ? control.unregister(name) : updateMounted(name, false);
+		};
+	}, [
+		name,
+		control,
+		keyName,
+		shouldUnregister
+	]);
+	return {
+		swap: import_react.useCallback(swap, [
+			updateValues,
+			name,
+			control
+		]),
+		move: import_react.useCallback(move, [
+			updateValues,
+			name,
+			control
+		]),
+		prepend: import_react.useCallback(prepend, [
+			updateValues,
+			name,
+			control
+		]),
+		append: import_react.useCallback(append, [
+			updateValues,
+			name,
+			control
+		]),
+		remove: import_react.useCallback(remove, [
+			updateValues,
+			name,
+			control
+		]),
+		insert: import_react.useCallback(insert$1, [
+			updateValues,
+			name,
+			control
+		]),
+		update: import_react.useCallback(update, [
+			updateValues,
+			name,
+			control
+		]),
+		replace: import_react.useCallback(replace, [
+			updateValues,
+			name,
+			control
+		]),
+		fields: import_react.useMemo(() => fields.map((field, index) => ({
+			...field,
+			[keyName]: ids.current[index] || generateId()
+		})), [fields, keyName])
+	};
+}
 /**
 * Custom hook to manage the entire form.
 *
@@ -1885,6 +2151,19 @@ function useForm(props = {}) {
 	_formControl.current.formState = import_react.useMemo(() => getProxyFormState(formState, control), [control, formState]);
 	return _formControl.current;
 }
+//#endregion
+//#region src/components/ui/textarea.tsx
+var import_jsx_runtime = require_jsx_runtime();
+var Textarea = import_react.forwardRef(({ className, ...props }, ref) => {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("textarea", {
+		"data-uid": "src/components/ui/textarea.tsx:7:7",
+		"data-prohibitions": "[editContent]",
+		className: cn("flex min-h-[80px] w-full rounded-[var(--radius)] border border-border bg-background px-[12px] py-[10px] text-[13px] font-sans transition-all duration-200 ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/15 focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 resize-y aria-[invalid=true]:border-destructive aria-[invalid=true]:focus-visible:ring-destructive/15 aria-[invalid=true]:focus-visible:border-destructive", className),
+		ref,
+		...props
+	});
+});
+Textarea.displayName = "Textarea";
 //#endregion
 //#region src/components/ui/form.tsx
 var Form = FormProvider;
@@ -7650,7 +7929,7 @@ var NewLearningSchema = object({
 	title: string().min(5, "Titulo deve ter entre 5 e 100 caracteres").max(100, "Titulo deve ter entre 5 e 100 caracteres"),
 	context: string().min(20, "Descreva o contexto com pelo menos 20 caracteres"),
 	learning: string().min(30, "Descreva o aprendizado com pelo menos 30 caracteres"),
-	steps: string().optional().nullable(),
+	stepsArray: array(object({ value: string() })).max(10),
 	observations: string().optional().nullable()
 });
 var useNewLearning = () => {
@@ -7666,13 +7945,15 @@ var useNewLearning = () => {
 			title: "",
 			context: "",
 			learning: "",
-			steps: "",
+			stepsArray: [{ value: "" }],
 			observations: ""
 		}
 	});
 	const onSubmit = async (data) => {
 		setIsSubmitting(true);
 		try {
+			const validSteps = data.stepsArray?.map((step) => step.value.trim()).filter((step) => step.length > 0) || [];
+			const formattedSteps = validSteps.length > 0 ? validSteps.map((step, index) => `${index + 1}. ${step}`).join("\n") : null;
 			await createLearning({
 				title: data.title,
 				author: data.author,
@@ -7681,7 +7962,7 @@ var useNewLearning = () => {
 				level: data.level,
 				context: data.context,
 				learning: data.learning,
-				steps: data.steps || null,
+				steps: formattedSteps,
 				observations: data.observations || null
 			});
 			toast({ title: "Aprendizado registrado com sucesso!" });
@@ -7708,14 +7989,14 @@ var useNewLearning = () => {
 //#endregion
 //#region src/pages/NovoAprendizado.tsx
 var ReqLabel = ({ children }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(FormLabel, {
-	"data-uid": "src/pages/NovoAprendizado.tsx:25:3",
+	"data-uid": "src/pages/NovoAprendizado.tsx:26:3",
 	"data-prohibitions": "[editContent]",
 	className: "text-[13px] font-medium text-foreground inline-flex items-baseline mb-[5px]",
 	children: [
 		children,
 		" ",
 		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-			"data-uid": "src/pages/NovoAprendizado.tsx:26:16",
+			"data-uid": "src/pages/NovoAprendizado.tsx:27:16",
 			"data-prohibitions": "[]",
 			className: "text-primary ml-[2px]",
 			children: "*"
@@ -7723,14 +8004,14 @@ var ReqLabel = ({ children }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Fo
 	]
 });
 var OptLabel = ({ children }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(FormLabel, {
-	"data-uid": "src/pages/NovoAprendizado.tsx:31:3",
+	"data-uid": "src/pages/NovoAprendizado.tsx:32:3",
 	"data-prohibitions": "[editContent]",
 	className: "text-[13px] font-medium text-foreground inline-flex items-baseline mb-[5px]",
 	children: [
 		children,
 		" ",
 		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-			"data-uid": "src/pages/NovoAprendizado.tsx:33:5",
+			"data-uid": "src/pages/NovoAprendizado.tsx:34:5",
 			"data-prohibitions": "[]",
 			className: "text-muted-foreground font-normal text-[12px] ml-1",
 			children: "(opcional)"
@@ -7739,81 +8020,85 @@ var OptLabel = ({ children }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Fo
 });
 function NovoAprendizado() {
 	const { form, isSubmitting, onSubmit } = useNewLearning();
+	const { fields, append, remove } = useFieldArray({
+		control: form.control,
+		name: "stepsArray"
+	});
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		"data-uid": "src/pages/NovoAprendizado.tsx:41:5",
+		"data-uid": "src/pages/NovoAprendizado.tsx:46:5",
 		"data-prohibitions": "[editContent]",
 		className: "max-w-[680px] mx-auto animate-fade-in-up pb-12 font-sans",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
-				"data-uid": "src/pages/NovoAprendizado.tsx:42:7",
+				"data-uid": "src/pages/NovoAprendizado.tsx:47:7",
 				"data-prohibitions": "[]",
 				to: "/",
 				className: "inline-flex items-center text-[12px] tracking-[0.02em] text-muted-foreground hover:text-primary mb-[28px] transition-colors",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, {
-					"data-uid": "src/pages/NovoAprendizado.tsx:46:9",
+					"data-uid": "src/pages/NovoAprendizado.tsx:51:9",
 					"data-prohibitions": "[editContent]",
 					className: "w-3.5 h-3.5 mr-1.5"
 				}), "Voltar para lista"]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/NovoAprendizado.tsx:50:7",
+				"data-uid": "src/pages/NovoAprendizado.tsx:55:7",
 				"data-prohibitions": "[]",
 				className: "mb-[36px]",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-					"data-uid": "src/pages/NovoAprendizado.tsx:51:9",
+					"data-uid": "src/pages/NovoAprendizado.tsx:56:9",
 					"data-prohibitions": "[]",
 					className: "text-[24px] font-bold tracking-[-0.02em] text-foreground",
 					children: "Registrar Aprendizado"
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					"data-uid": "src/pages/NovoAprendizado.tsx:54:9",
+					"data-uid": "src/pages/NovoAprendizado.tsx:59:9",
 					"data-prohibitions": "[]",
 					className: "text-[13px] text-muted-foreground mt-1 leading-[1.6]",
 					children: "Compartilhe com a equipe o que voce aprendeu na pratica."
 				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Form, {
-				"data-uid": "src/pages/NovoAprendizado.tsx:59:7",
+				"data-uid": "src/pages/NovoAprendizado.tsx:64:7",
 				"data-prohibitions": "[editContent]",
 				...form,
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-					"data-uid": "src/pages/NovoAprendizado.tsx:60:9",
+					"data-uid": "src/pages/NovoAprendizado.tsx:65:9",
 					"data-prohibitions": "[editContent]",
 					onSubmit,
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/pages/NovoAprendizado.tsx:61:11",
+							"data-uid": "src/pages/NovoAprendizado.tsx:66:11",
 							"data-prohibitions": "[]",
 							className: "mb-[36px]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-								"data-uid": "src/pages/NovoAprendizado.tsx:62:13",
+								"data-uid": "src/pages/NovoAprendizado.tsx:67:13",
 								"data-prohibitions": "[]",
 								className: "uppercase text-[11px] font-bold tracking-[0.08em] text-muted-foreground border-b border-border pb-[8px] mb-[20px]",
 								children: "Identificação"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								"data-uid": "src/pages/NovoAprendizado.tsx:65:13",
+								"data-uid": "src/pages/NovoAprendizado.tsx:70:13",
 								"data-prohibitions": "[]",
 								className: "grid grid-cols-1 sm:grid-cols-2 gap-[16px]",
 								children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormField, {
-										"data-uid": "src/pages/NovoAprendizado.tsx:66:15",
+										"data-uid": "src/pages/NovoAprendizado.tsx:71:15",
 										"data-prohibitions": "[editContent]",
 										control: form.control,
 										name: "author",
 										render: ({ field }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(FormItem, {
-											"data-uid": "src/pages/NovoAprendizado.tsx:70:19",
+											"data-uid": "src/pages/NovoAprendizado.tsx:75:19",
 											"data-prohibitions": "[]",
 											className: "space-y-0 flex flex-col",
 											children: [
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ReqLabel, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:71:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:76:21",
 													"data-prohibitions": "[]",
 													children: "Autor"
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormControl, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:72:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:77:21",
 													"data-prohibitions": "[]",
 													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-														"data-uid": "src/pages/NovoAprendizado.tsx:73:23",
+														"data-uid": "src/pages/NovoAprendizado.tsx:78:23",
 														"data-prohibitions": "[editContent]",
 														placeholder: "Seu nome completo",
 														disabled: isSubmitting,
@@ -7821,32 +8106,32 @@ function NovoAprendizado() {
 													})
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormMessage, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:75:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:80:21",
 													"data-prohibitions": "[editContent]"
 												})
 											]
 										})
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormField, {
-										"data-uid": "src/pages/NovoAprendizado.tsx:79:15",
+										"data-uid": "src/pages/NovoAprendizado.tsx:84:15",
 										"data-prohibitions": "[editContent]",
 										control: form.control,
 										name: "date",
 										render: ({ field }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(FormItem, {
-											"data-uid": "src/pages/NovoAprendizado.tsx:83:19",
+											"data-uid": "src/pages/NovoAprendizado.tsx:88:19",
 											"data-prohibitions": "[]",
 											className: "space-y-0 flex flex-col",
 											children: [
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ReqLabel, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:84:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:89:21",
 													"data-prohibitions": "[]",
 													children: "Data"
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormControl, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:85:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:90:21",
 													"data-prohibitions": "[]",
 													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-														"data-uid": "src/pages/NovoAprendizado.tsx:86:23",
+														"data-uid": "src/pages/NovoAprendizado.tsx:91:23",
 														"data-prohibitions": "[editContent]",
 														type: "date",
 														disabled: isSubmitting,
@@ -7854,70 +8139,70 @@ function NovoAprendizado() {
 													})
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormMessage, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:88:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:93:21",
 													"data-prohibitions": "[editContent]"
 												})
 											]
 										})
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormField, {
-										"data-uid": "src/pages/NovoAprendizado.tsx:92:15",
+										"data-uid": "src/pages/NovoAprendizado.tsx:97:15",
 										"data-prohibitions": "[editContent]",
 										control: form.control,
 										name: "category",
 										render: ({ field }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(FormItem, {
-											"data-uid": "src/pages/NovoAprendizado.tsx:96:19",
+											"data-uid": "src/pages/NovoAprendizado.tsx:101:19",
 											"data-prohibitions": "[editContent]",
 											className: "space-y-0 flex flex-col",
 											children: [
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ReqLabel, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:97:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:102:21",
 													"data-prohibitions": "[]",
 													children: "Categoria"
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Select, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:98:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:103:21",
 													"data-prohibitions": "[editContent]",
 													onValueChange: field.onChange,
 													defaultValue: field.value,
 													disabled: isSubmitting,
 													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormControl, {
-														"data-uid": "src/pages/NovoAprendizado.tsx:103:23",
+														"data-uid": "src/pages/NovoAprendizado.tsx:108:23",
 														"data-prohibitions": "[editContent]",
 														children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectTrigger, {
-															"data-uid": "src/pages/NovoAprendizado.tsx:104:25",
+															"data-uid": "src/pages/NovoAprendizado.tsx:109:25",
 															"data-prohibitions": "[editContent]",
 															className: cn(form.formState.errors.category && "border-destructive focus:ring-destructive/15"),
 															children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectValue, {
-																"data-uid": "src/pages/NovoAprendizado.tsx:110:27",
+																"data-uid": "src/pages/NovoAprendizado.tsx:115:27",
 																"data-prohibitions": "[editContent]",
 																placeholder: "Selecione uma categoria"
 															})
 														})
 													}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SelectContent, {
-														"data-uid": "src/pages/NovoAprendizado.tsx:113:23",
+														"data-uid": "src/pages/NovoAprendizado.tsx:118:23",
 														"data-prohibitions": "[]",
 														children: [
 															/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectItem, {
-																"data-uid": "src/pages/NovoAprendizado.tsx:114:25",
+																"data-uid": "src/pages/NovoAprendizado.tsx:119:25",
 																"data-prohibitions": "[]",
 																value: "IA",
 																children: "IA"
 															}),
 															/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectItem, {
-																"data-uid": "src/pages/NovoAprendizado.tsx:115:25",
+																"data-uid": "src/pages/NovoAprendizado.tsx:120:25",
 																"data-prohibitions": "[]",
 																value: "Vibecoding",
 																children: "Vibecoding"
 															}),
 															/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectItem, {
-																"data-uid": "src/pages/NovoAprendizado.tsx:116:25",
+																"data-uid": "src/pages/NovoAprendizado.tsx:121:25",
 																"data-prohibitions": "[]",
 																value: "Automacoes",
 																children: "Automacoes"
 															}),
 															/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectItem, {
-																"data-uid": "src/pages/NovoAprendizado.tsx:117:25",
+																"data-uid": "src/pages/NovoAprendizado.tsx:122:25",
 																"data-prohibitions": "[]",
 																value: "Agentes de IA",
 																children: "Agentes de IA"
@@ -7926,64 +8211,64 @@ function NovoAprendizado() {
 													})]
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormMessage, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:120:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:125:21",
 													"data-prohibitions": "[editContent]"
 												})
 											]
 										})
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormField, {
-										"data-uid": "src/pages/NovoAprendizado.tsx:124:15",
+										"data-uid": "src/pages/NovoAprendizado.tsx:129:15",
 										"data-prohibitions": "[editContent]",
 										control: form.control,
 										name: "level",
 										render: ({ field }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(FormItem, {
-											"data-uid": "src/pages/NovoAprendizado.tsx:128:19",
+											"data-uid": "src/pages/NovoAprendizado.tsx:133:19",
 											"data-prohibitions": "[editContent]",
 											className: "space-y-0 flex flex-col",
 											children: [
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ReqLabel, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:129:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:134:21",
 													"data-prohibitions": "[]",
 													children: "Nível"
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Select, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:130:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:135:21",
 													"data-prohibitions": "[editContent]",
 													onValueChange: field.onChange,
 													defaultValue: field.value,
 													disabled: isSubmitting,
 													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormControl, {
-														"data-uid": "src/pages/NovoAprendizado.tsx:135:23",
+														"data-uid": "src/pages/NovoAprendizado.tsx:140:23",
 														"data-prohibitions": "[editContent]",
 														children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectTrigger, {
-															"data-uid": "src/pages/NovoAprendizado.tsx:136:25",
+															"data-uid": "src/pages/NovoAprendizado.tsx:141:25",
 															"data-prohibitions": "[editContent]",
 															className: cn(form.formState.errors.level && "border-destructive focus:ring-destructive/15"),
 															children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectValue, {
-																"data-uid": "src/pages/NovoAprendizado.tsx:142:27",
+																"data-uid": "src/pages/NovoAprendizado.tsx:147:27",
 																"data-prohibitions": "[editContent]",
 																placeholder: "Selecione o nivel"
 															})
 														})
 													}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SelectContent, {
-														"data-uid": "src/pages/NovoAprendizado.tsx:145:23",
+														"data-uid": "src/pages/NovoAprendizado.tsx:150:23",
 														"data-prohibitions": "[]",
 														children: [
 															/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectItem, {
-																"data-uid": "src/pages/NovoAprendizado.tsx:146:25",
+																"data-uid": "src/pages/NovoAprendizado.tsx:151:25",
 																"data-prohibitions": "[]",
 																value: "Iniciante",
 																children: "Iniciante"
 															}),
 															/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectItem, {
-																"data-uid": "src/pages/NovoAprendizado.tsx:147:25",
+																"data-uid": "src/pages/NovoAprendizado.tsx:152:25",
 																"data-prohibitions": "[]",
 																value: "Intermediario",
 																children: "Intermediário"
 															}),
 															/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectItem, {
-																"data-uid": "src/pages/NovoAprendizado.tsx:148:25",
+																"data-uid": "src/pages/NovoAprendizado.tsx:153:25",
 																"data-prohibitions": "[]",
 																value: "Avancado",
 																children: "Avançado"
@@ -7992,7 +8277,7 @@ function NovoAprendizado() {
 													})]
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormMessage, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:151:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:156:21",
 													"data-prohibitions": "[editContent]"
 												})
 											]
@@ -8002,38 +8287,38 @@ function NovoAprendizado() {
 							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/pages/NovoAprendizado.tsx:158:11",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/NovoAprendizado.tsx:163:11",
+							"data-prohibitions": "[editContent]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-								"data-uid": "src/pages/NovoAprendizado.tsx:159:13",
+								"data-uid": "src/pages/NovoAprendizado.tsx:164:13",
 								"data-prohibitions": "[]",
 								className: "uppercase text-[11px] font-bold tracking-[0.08em] text-muted-foreground border-b border-border pb-[8px] mb-[20px]",
 								children: "Conteúdo"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								"data-uid": "src/pages/NovoAprendizado.tsx:162:13",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/NovoAprendizado.tsx:167:13",
+								"data-prohibitions": "[editContent]",
 								className: "flex flex-col gap-[20px]",
 								children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormField, {
-										"data-uid": "src/pages/NovoAprendizado.tsx:163:15",
+										"data-uid": "src/pages/NovoAprendizado.tsx:168:15",
 										"data-prohibitions": "[editContent]",
 										control: form.control,
 										name: "title",
 										render: ({ field }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(FormItem, {
-											"data-uid": "src/pages/NovoAprendizado.tsx:167:19",
+											"data-uid": "src/pages/NovoAprendizado.tsx:172:19",
 											"data-prohibitions": "[editContent]",
 											className: "space-y-0 flex flex-col",
 											children: [
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ReqLabel, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:168:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:173:21",
 													"data-prohibitions": "[]",
 													children: "Título"
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormControl, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:169:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:174:21",
 													"data-prohibitions": "[]",
 													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-														"data-uid": "src/pages/NovoAprendizado.tsx:170:23",
+														"data-uid": "src/pages/NovoAprendizado.tsx:175:23",
 														"data-prohibitions": "[editContent]",
 														placeholder: "Titulo curto e direto do aprendizado",
 														disabled: isSubmitting,
@@ -8041,38 +8326,38 @@ function NovoAprendizado() {
 													})
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-													"data-uid": "src/pages/NovoAprendizado.tsx:176:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:181:21",
 													"data-prohibitions": "[editContent]",
 													className: "text-[11px] text-muted-foreground text-right mt-1",
 													children: [field.value?.length || 0, "/100"]
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormMessage, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:179:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:184:21",
 													"data-prohibitions": "[editContent]"
 												})
 											]
 										})
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormField, {
-										"data-uid": "src/pages/NovoAprendizado.tsx:183:15",
+										"data-uid": "src/pages/NovoAprendizado.tsx:188:15",
 										"data-prohibitions": "[editContent]",
 										control: form.control,
 										name: "context",
 										render: ({ field }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(FormItem, {
-											"data-uid": "src/pages/NovoAprendizado.tsx:187:19",
+											"data-uid": "src/pages/NovoAprendizado.tsx:192:19",
 											"data-prohibitions": "[]",
 											className: "space-y-0 flex flex-col",
 											children: [
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ReqLabel, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:188:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:193:21",
 													"data-prohibitions": "[]",
 													children: "Contexto"
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormControl, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:189:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:194:21",
 													"data-prohibitions": "[]",
 													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
-														"data-uid": "src/pages/NovoAprendizado.tsx:190:23",
+														"data-uid": "src/pages/NovoAprendizado.tsx:195:23",
 														"data-prohibitions": "[editContent]",
 														placeholder: "Descreva o problema ou situacao que gerou esse aprendizado.",
 														rows: 4,
@@ -8081,32 +8366,32 @@ function NovoAprendizado() {
 													})
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormMessage, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:197:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:202:21",
 													"data-prohibitions": "[editContent]"
 												})
 											]
 										})
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormField, {
-										"data-uid": "src/pages/NovoAprendizado.tsx:201:15",
+										"data-uid": "src/pages/NovoAprendizado.tsx:206:15",
 										"data-prohibitions": "[editContent]",
 										control: form.control,
 										name: "learning",
 										render: ({ field }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(FormItem, {
-											"data-uid": "src/pages/NovoAprendizado.tsx:205:19",
+											"data-uid": "src/pages/NovoAprendizado.tsx:210:19",
 											"data-prohibitions": "[]",
 											className: "space-y-0 flex flex-col",
 											children: [
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ReqLabel, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:206:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:211:21",
 													"data-prohibitions": "[]",
 													children: "Aprendizado"
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormControl, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:207:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:212:21",
 													"data-prohibitions": "[]",
 													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
-														"data-uid": "src/pages/NovoAprendizado.tsx:208:23",
+														"data-uid": "src/pages/NovoAprendizado.tsx:213:23",
 														"data-prohibitions": "[editContent]",
 														placeholder: "Descreva a solucao ou insight de forma clara e direta.",
 														rows: 5,
@@ -8115,67 +8400,137 @@ function NovoAprendizado() {
 													})
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormMessage, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:215:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:220:21",
 													"data-prohibitions": "[editContent]"
 												})
 											]
 										})
 									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormField, {
-										"data-uid": "src/pages/NovoAprendizado.tsx:219:15",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										"data-uid": "src/pages/NovoAprendizado.tsx:225:15",
 										"data-prohibitions": "[editContent]",
-										control: form.control,
-										name: "steps",
-										render: ({ field }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(FormItem, {
-											"data-uid": "src/pages/NovoAprendizado.tsx:223:19",
-											"data-prohibitions": "[]",
-											className: "space-y-0 flex flex-col",
-											children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(OptLabel, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:224:21",
+										className: "space-y-0 flex flex-col",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												"data-uid": "src/pages/NovoAprendizado.tsx:226:17",
+												"data-prohibitions": "[]",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+													"data-uid": "src/pages/NovoAprendizado.tsx:227:19",
 													"data-prohibitions": "[]",
-													children: "Passos"
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormControl, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:225:21",
+													className: "text-[13px] font-medium text-foreground inline-flex items-baseline mb-[5px]",
+													children: [
+														"Passos",
+														" ",
+														/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+															"data-uid": "src/pages/NovoAprendizado.tsx:229:21",
+															"data-prohibitions": "[]",
+															className: "text-muted-foreground font-normal text-[12px] ml-1",
+															children: "(opcional)"
+														})
+													]
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+													"data-uid": "src/pages/NovoAprendizado.tsx:233:19",
 													"data-prohibitions": "[]",
-													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
-														"data-uid": "src/pages/NovoAprendizado.tsx:226:23",
-														"data-prohibitions": "[editContent]",
-														placeholder: "Se o aprendizado tem uma sequencia, liste os passos. Deixe em branco se nao se aplicar.",
-														rows: 3,
-														disabled: isSubmitting,
-														value: field.value || "",
-														onChange: field.onChange
-													})
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormMessage, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:234:21",
-													"data-prohibitions": "[editContent]"
-												})
-											]
-										})
+													className: "text-[12px] text-muted-foreground mb-[10px]",
+													children: "Divida o aprendizado em etapas. Deixe em branco se nao se aplicar."
+												})]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+												"data-uid": "src/pages/NovoAprendizado.tsx:237:17",
+												"data-prohibitions": "[editContent]",
+												className: "flex flex-col gap-[8px]",
+												children: fields.map((field, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+													"data-uid": "src/pages/NovoAprendizado.tsx:239:21",
+													"data-prohibitions": "[editContent]",
+													className: "flex flex-row items-center gap-[8px]",
+													children: [
+														/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+															"data-uid": "src/pages/NovoAprendizado.tsx:240:23",
+															"data-prohibitions": "[editContent]",
+															className: "font-mono text-[13px] font-medium text-muted-foreground min-w-[24px] text-right",
+															children: [index + 1, "."]
+														}),
+														/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormField, {
+															"data-uid": "src/pages/NovoAprendizado.tsx:243:23",
+															"data-prohibitions": "[editContent]",
+															control: form.control,
+															name: `stepsArray.${index}.value`,
+															render: ({ field: inputField }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(FormItem, {
+																"data-uid": "src/pages/NovoAprendizado.tsx:247:27",
+																"data-prohibitions": "[]",
+																className: "flex-1 space-y-0",
+																children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormControl, {
+																	"data-uid": "src/pages/NovoAprendizado.tsx:248:29",
+																	"data-prohibitions": "[]",
+																	children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+																		"data-uid": "src/pages/NovoAprendizado.tsx:249:31",
+																		"data-prohibitions": "[editContent]",
+																		...inputField,
+																		className: "font-mono text-[13px] py-[9px] px-[12px] h-auto focus-visible:ring-0 focus-visible:border-ring shadow-none",
+																		placeholder: `Passo ${index + 1}`,
+																		disabled: isSubmitting
+																	})
+																}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormMessage, {
+																	"data-uid": "src/pages/NovoAprendizado.tsx:256:29",
+																	"data-prohibitions": "[editContent]"
+																})]
+															})
+														}),
+														fields.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+															"data-uid": "src/pages/NovoAprendizado.tsx:261:25",
+															"data-prohibitions": "[]",
+															type: "button",
+															variant: "ghost",
+															size: "icon",
+															className: "w-[28px] h-[28px] shrink-0 text-muted-foreground hover:text-destructive hover:bg-transparent",
+															onClick: () => remove(index),
+															"aria-label": "Remover passo",
+															disabled: isSubmitting,
+															children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(X, {
+																"data-uid": "src/pages/NovoAprendizado.tsx:270:27",
+																"data-prohibitions": "[editContent]",
+																className: "w-4 h-4"
+															})
+														})
+													]
+												}, field.id))
+											}),
+											fields.length < 10 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+												"data-uid": "src/pages/NovoAprendizado.tsx:277:19",
+												"data-prohibitions": "[]",
+												type: "button",
+												variant: "ghost",
+												className: "w-fit mt-[8px] text-[13px] font-mono text-primary hover:text-primary/90 hover:bg-transparent px-0 h-auto gap-[4px]",
+												onClick: () => append({ value: "" }),
+												disabled: isSubmitting,
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {
+													"data-uid": "src/pages/NovoAprendizado.tsx:284:21",
+													"data-prohibitions": "[editContent]",
+													className: "w-3.5 h-3.5"
+												}), "Adicionar passo"]
+											})
+										]
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormField, {
-										"data-uid": "src/pages/NovoAprendizado.tsx:238:15",
+										"data-uid": "src/pages/NovoAprendizado.tsx:290:15",
 										"data-prohibitions": "[editContent]",
 										control: form.control,
 										name: "observations",
 										render: ({ field }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(FormItem, {
-											"data-uid": "src/pages/NovoAprendizado.tsx:242:19",
+											"data-uid": "src/pages/NovoAprendizado.tsx:294:19",
 											"data-prohibitions": "[]",
 											className: "space-y-0 flex flex-col",
 											children: [
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(OptLabel, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:243:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:295:21",
 													"data-prohibitions": "[]",
 													children: "Observações"
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormControl, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:244:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:296:21",
 													"data-prohibitions": "[]",
 													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Textarea, {
-														"data-uid": "src/pages/NovoAprendizado.tsx:245:23",
+														"data-uid": "src/pages/NovoAprendizado.tsx:297:23",
 														"data-prohibitions": "[editContent]",
 														placeholder: "Pontos de atencao, limitacoes ou informacoes extras para os colegas.",
 														rows: 3,
@@ -8185,7 +8540,7 @@ function NovoAprendizado() {
 													})
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FormMessage, {
-													"data-uid": "src/pages/NovoAprendizado.tsx:253:21",
+													"data-uid": "src/pages/NovoAprendizado.tsx:305:21",
 													"data-prohibitions": "[editContent]"
 												})
 											]
@@ -8195,15 +8550,15 @@ function NovoAprendizado() {
 							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/pages/NovoAprendizado.tsx:260:11",
+							"data-uid": "src/pages/NovoAprendizado.tsx:312:11",
 							"data-prohibitions": "[editContent]",
 							className: "flex items-center justify-end gap-[12px] border-t border-border pt-[24px] mt-[40px]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-								"data-uid": "src/pages/NovoAprendizado.tsx:261:13",
+								"data-uid": "src/pages/NovoAprendizado.tsx:313:13",
 								"data-prohibitions": "[]",
 								to: "/",
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-									"data-uid": "src/pages/NovoAprendizado.tsx:262:15",
+									"data-uid": "src/pages/NovoAprendizado.tsx:314:15",
 									"data-prohibitions": "[]",
 									type: "button",
 									variant: "outline",
@@ -8212,13 +8567,13 @@ function NovoAprendizado() {
 									children: "Cancelar"
 								})
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-								"data-uid": "src/pages/NovoAprendizado.tsx:271:13",
+								"data-uid": "src/pages/NovoAprendizado.tsx:323:13",
 								"data-prohibitions": "[editContent]",
 								type: "submit",
 								disabled: isSubmitting,
 								className: "px-[22px] py-[10px] h-auto text-[13px] font-medium disabled:opacity-50 disabled:cursor-not-allowed",
 								children: isSubmitting ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, {
-									"data-uid": "src/pages/NovoAprendizado.tsx:278:19",
+									"data-uid": "src/pages/NovoAprendizado.tsx:330:19",
 									"data-prohibitions": "[editContent]",
 									className: "w-4 h-4 mr-2 animate-spin shrink-0"
 								}), "Registrando..."] }) : "Registrar Aprendizado"
@@ -8233,4 +8588,4 @@ function NovoAprendizado() {
 //#endregion
 export { NovoAprendizado as default };
 
-//# sourceMappingURL=NovoAprendizado-saJOOVsA.js.map
+//# sourceMappingURL=NovoAprendizado-txWaRmTU.js.map

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { ArrowLeft, Loader2 } from 'lucide-react'
+import { ArrowLeft, Loader2, Plus, X } from 'lucide-react'
+import { useFieldArray } from 'react-hook-form'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -36,6 +37,10 @@ const OptLabel = ({ children }: { children: React.ReactNode }) => (
 
 export default function NovoAprendizado() {
   const { form, isSubmitting, onSubmit } = useNewLearning()
+  const { fields, append, remove } = useFieldArray({
+    control: form.control,
+    name: 'stepsArray',
+  })
 
   return (
     <div className="max-w-[680px] mx-auto animate-fade-in-up pb-12 font-sans">
@@ -216,25 +221,72 @@ export default function NovoAprendizado() {
                   </FormItem>
                 )}
               />
-              <FormField
-                control={form.control}
-                name="steps"
-                render={({ field }) => (
-                  <FormItem className="space-y-0 flex flex-col">
-                    <OptLabel>Passos</OptLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="Se o aprendizado tem uma sequencia, liste os passos. Deixe em branco se nao se aplicar."
-                        rows={3}
-                        disabled={isSubmitting}
-                        value={field.value || ''}
-                        onChange={field.onChange}
+
+              <div className="space-y-0 flex flex-col">
+                <div>
+                  <label className="text-[13px] font-medium text-foreground inline-flex items-baseline mb-[5px]">
+                    Passos{' '}
+                    <span className="text-muted-foreground font-normal text-[12px] ml-1">
+                      (opcional)
+                    </span>
+                  </label>
+                  <p className="text-[12px] text-muted-foreground mb-[10px]">
+                    Divida o aprendizado em etapas. Deixe em branco se nao se aplicar.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-[8px]">
+                  {fields.map((field, index) => (
+                    <div key={field.id} className="flex flex-row items-center gap-[8px]">
+                      <span className="font-mono text-[13px] font-medium text-muted-foreground min-w-[24px] text-right">
+                        {index + 1}.
+                      </span>
+                      <FormField
+                        control={form.control}
+                        name={`stepsArray.${index}.value`}
+                        render={({ field: inputField }) => (
+                          <FormItem className="flex-1 space-y-0">
+                            <FormControl>
+                              <Input
+                                {...inputField}
+                                className="font-mono text-[13px] py-[9px] px-[12px] h-auto focus-visible:ring-0 focus-visible:border-ring shadow-none"
+                                placeholder={`Passo ${index + 1}`}
+                                disabled={isSubmitting}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
                       />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+                      {fields.length > 1 && (
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="icon"
+                          className="w-[28px] h-[28px] shrink-0 text-muted-foreground hover:text-destructive hover:bg-transparent"
+                          onClick={() => remove(index)}
+                          aria-label="Remover passo"
+                          disabled={isSubmitting}
+                        >
+                          <X className="w-4 h-4" />
+                        </Button>
+                      )}
+                    </div>
+                  ))}
+                </div>
+                {fields.length < 10 && (
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    className="w-fit mt-[8px] text-[13px] font-mono text-primary hover:text-primary/90 hover:bg-transparent px-0 h-auto gap-[4px]"
+                    onClick={() => append({ value: '' })}
+                    disabled={isSubmitting}
+                  >
+                    <Plus className="w-3.5 h-3.5" />
+                    Adicionar passo
+                  </Button>
                 )}
-              />
+              </div>
+
               <FormField
                 control={form.control}
                 name="observations"

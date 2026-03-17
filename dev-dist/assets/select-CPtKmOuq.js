@@ -1,5 +1,5 @@
 import { S as require_react, a as __assign, c as cn, d as require_jsx_runtime, l as createLucideIcon, o as __rest, p as useComposedRefs, s as __spreadArray, w as __toESM } from "./button-BPdVCIk6.js";
-import { C as createContextScope, T as require_react_dom, _ as useCallbackRef$1, a as Root2$1, b as createCollection, d as useControllableState, f as Portal$1, h as DismissableLayer, i as Content, l as VISUALLY_HIDDEN_STYLES, n as Anchor, o as createPopperScope, p as useLayoutEffect2, r as Arrow, s as useId, v as Primitive, w as composeEventHandlers, x as createSlot } from "./input-9w59hof-.js";
+import { E as require_react_dom, S as createSlot, T as composeEventHandlers, a as Root2$1, f as useControllableState, g as DismissableLayer, i as Content, m as useLayoutEffect2, n as Anchor, o as createPopperScope, p as Portal$1, r as Arrow, s as useId, u as VISUALLY_HIDDEN_STYLES, v as useCallbackRef$1, w as createContextScope, x as createCollection, y as Primitive } from "./input-Cxz-B7QD.js";
 var Check = createLucideIcon("check", [["path", {
 	d: "M20 6 9 17l-5-5",
 	key: "1gmf2c"
@@ -34,6 +34,13 @@ var CircleAlert = createLucideIcon("circle-alert", [
 		key: "4dfq90"
 	}]
 ]);
+var Plus = createLucideIcon("plus", [["path", {
+	d: "M5 12h14",
+	key: "1ays0h"
+}], ["path", {
+	d: "M12 5v14",
+	key: "s699le"
+}]]);
 //#endregion
 //#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/@radix-ui+number@1.1.1/node_modules/@radix-ui/number/dist/index.mjs
 function clamp(value, [min, max]) {
@@ -2139,6 +2146,6 @@ var SelectSeparator = import_react.forwardRef(({ className, ...props }, ref) => 
 }));
 SelectSeparator.displayName = Separator.displayName;
 //#endregion
-export { SelectValue as a, SelectTrigger as i, SelectContent as n, CircleAlert as o, SelectItem as r, Select as t };
+export { SelectValue as a, SelectTrigger as i, SelectContent as n, Plus as o, SelectItem as r, CircleAlert as s, Select as t };
 
-//# sourceMappingURL=select-BQCHX5_E.js.map
+//# sourceMappingURL=select-CPtKmOuq.js.map

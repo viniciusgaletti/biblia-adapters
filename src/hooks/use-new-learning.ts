@@ -23,7 +23,7 @@ const NewLearningSchema = z.object({
     .max(100, 'Titulo deve ter entre 5 e 100 caracteres'),
   context: z.string().min(20, 'Descreva o contexto com pelo menos 20 caracteres'),
   learning: z.string().min(30, 'Descreva o aprendizado com pelo menos 30 caracteres'),
-  steps: z.string().optional().nullable(),
+  stepsArray: z.array(z.object({ value: z.string() })).max(10),
   observations: z.string().optional().nullable(),
 })
 
@@ -43,7 +43,7 @@ export const useNewLearning = () => {
       title: '',
       context: '',
       learning: '',
-      steps: '',
+      stepsArray: [{ value: '' }],
       observations: '',
     },
   })
@@ -51,6 +51,14 @@ export const useNewLearning = () => {
   const onSubmit = async (data: NewLearningFormValues) => {
     setIsSubmitting(true)
     try {
+      const validSteps =
+        data.stepsArray?.map((step) => step.value.trim()).filter((step) => step.length > 0) || []
+
+      const formattedSteps =
+        validSteps.length > 0
+          ? validSteps.map((step, index) => `${index + 1}. ${step}`).join('\n')
+          : null
+
       await createLearning({
         title: data.title,
         author: data.author,
@@ -59,7 +67,7 @@ export const useNewLearning = () => {
         level: data.level,
         context: data.context,
         learning: data.learning,
-        steps: data.steps || null,
+        steps: formattedSteps,
         observations: data.observations || null,
       })
 
