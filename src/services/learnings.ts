@@ -35,7 +35,15 @@ export const searchLearnings = async (searchTerm: string, category: string, leve
 }
 
 export const fetchLearningById = async (id: string) => {
-  const { data, error } = await supabase.from('learnings').select('*').eq('id', id).single()
+  let query = supabase.from('learnings').select('*')
+
+  if (/^\d+$/.test(id)) {
+    query = query.eq('number', parseInt(id, 10))
+  } else {
+    query = query.eq('id', id)
+  }
+
+  const { data, error } = await query.single()
 
   if (error) throw error
   return data as LearningRow

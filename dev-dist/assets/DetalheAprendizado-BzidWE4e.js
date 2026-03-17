@@ -1,7 +1,7 @@
 import { a as require_jsx_runtime, c as Link, g as require_react, m as useParams, o as createLucideIcon, v as __toESM } from "./client-D09FV_21.js";
 import { t as ArrowLeft } from "./arrow-left-DCIMdVmn.js";
 import { a as cn, t as Button } from "./button-CiSPku0O.js";
-import { n as fetchLearningById } from "./learnings-CkpGBjTW.js";
+import { n as fetchLearningById } from "./learnings-DmqZRIP-.js";
 import { t as Skeleton } from "./skeleton-BvP868zf.js";
 var RefreshCw = createLucideIcon("refresh-cw", [
 	["path", {
@@ -353,4 +353,4 @@ function DetalheAprendizado() {
 //#endregion
 export { DetalheAprendizado as default };
 
-//# sourceMappingURL=DetalheAprendizado-Cd8qQxr5.js.map
+//# sourceMappingURL=DetalheAprendizado-BzidWE4e.js.map

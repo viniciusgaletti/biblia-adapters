@@ -10,7 +10,10 @@ var searchLearnings = async (searchTerm, category, level) => {
 	return data;
 };
 var fetchLearningById = async (id) => {
-	const { data, error } = await supabase.from("learnings").select("*").eq("id", id).single();
+	let query = supabase.from("learnings").select("*");
+	if (/^\d+$/.test(id)) query = query.eq("number", parseInt(id, 10));
+	else query = query.eq("id", id);
+	const { data, error } = await query.single();
 	if (error) throw error;
 	return data;
 };
@@ -22,4 +25,4 @@ var createLearning = async (payload) => {
 //#endregion
 export { fetchLearningById as n, searchLearnings as r, createLearning as t };
 
-//# sourceMappingURL=learnings-CkpGBjTW.js.map
+//# sourceMappingURL=learnings-DmqZRIP-.js.map
