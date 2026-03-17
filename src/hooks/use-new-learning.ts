@@ -5,7 +5,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { useToast } from '@/hooks/use-toast'
 import { createLearning } from '@/services/learnings'
-import { useAuth } from '@/hooks/use-auth'
 import { format } from 'date-fns'
 
 export const NewLearningSchema = z.object({
@@ -32,13 +31,12 @@ export type NewLearningFormValues = z.infer<typeof NewLearningSchema>
 export const useNewLearning = () => {
   const navigate = useNavigate()
   const { toast } = useToast()
-  const { user } = useAuth()
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const form = useForm<NewLearningFormValues>({
     resolver: zodResolver(NewLearningSchema),
     defaultValues: {
-      author: user?.user_metadata?.name || '',
+      author: '',
       date: format(new Date(), 'yyyy-MM-dd'),
       title: '',
       context: '',

@@ -1382,9 +1382,6 @@ body::selection{
 .gap-2{
   gap: 0.5rem;
 }
-.gap-3{
-  gap: 0.75rem;
-}
 .gap-4{
   gap: 1rem;
 }
@@ -1437,11 +1434,6 @@ body::selection{
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
-}
-.space-y-4 > :not([hidden]) ~ :not([hidden]){
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 .space-y-6 > :not([hidden]) ~ :not([hidden]){
   --tw-space-y-reverse: 0;
@@ -1657,9 +1649,6 @@ body::selection{
 .bg-destructive{
   background-color: hsl(var(--destructive));
 }
-.bg-destructive\/10{
-  background-color: hsl(var(--destructive) / 0.1);
-}
 .bg-destructive\/5{
   background-color: hsl(var(--destructive) / 0.05);
 }
@@ -1873,9 +1862,6 @@ body::selection{
 .pb-4{
   padding-bottom: 1rem;
 }
-.pb-6{
-  padding-bottom: 1.5rem;
-}
 .pb-8{
   padding-bottom: 2rem;
 }
@@ -1914,9 +1900,6 @@ body::selection{
 }
 .pt-0{
   padding-top: 0px;
-}
-.pt-2{
-  padding-top: 0.5rem;
 }
 .pt-3{
   padding-top: 0.75rem;

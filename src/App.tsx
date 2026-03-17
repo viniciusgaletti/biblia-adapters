@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'
 import { Loader2 } from 'lucide-react'
 import { Toaster } from '@/components/ui/toaster'
 import { Toaster as Sonner } from '@/components/ui/sonner'
@@ -27,15 +27,21 @@ const AdminLoader = () => (
   </div>
 )
 
+const AdminWrapper = () => (
+  <AuthProvider>
+    <Outlet />
+  </AuthProvider>
+)
+
 const App = () => (
   <BrowserRouter future={{ v7_startTransition: false, v7_relativeSplatPath: false }}>
     <ThemeProvider>
-      <AuthProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <Routes>
-            {/* Admin Routes */}
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <Routes>
+          {/* Admin Routes */}
+          <Route element={<AdminWrapper />}>
             <Route
               path="/admin/login"
               element={
@@ -54,17 +60,17 @@ const App = () => (
               <Route path="/admin" element={<AdminDashboard />} />
               <Route path="/admin/editar/:id" element={<AdminEditLearning />} />
             </Route>
+          </Route>
 
-            {/* Public Layout Routes */}
-            <Route element={<Layout />}>
-              <Route path="/" element={<Index />} />
-              <Route path="/novo" element={<NovoAprendizado />} />
-              <Route path="/aprendizado/:id" element={<DetalheAprendizado />} />
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
-        </TooltipProvider>
-      </AuthProvider>
+          {/* Public Layout Routes */}
+          <Route element={<Layout />}>
+            <Route path="/" element={<Index />} />
+            <Route path="/novo" element={<NovoAprendizado />} />
+            <Route path="/aprendizado/:id" element={<DetalheAprendizado />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </TooltipProvider>
     </ThemeProvider>
   </BrowserRouter>
 )

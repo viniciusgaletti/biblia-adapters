@@ -1,5 +1,4 @@
-import { _ as __commonJSMin, a as require_jsx_runtime, g as require_react, v as __toESM } from "./client-D09FV_21.js";
-import { a as cn } from "./button-CiSPku0O.js";
+import { _ as __commonJSMin, g as require_react } from "./client-D09FV_21.js";
 //#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/react-dom@19.2.4_react@19.2.4/node_modules/react-dom/cjs/react-dom.development.js
 /**
 * @license React
@@ -180,21 +179,6 @@ var require_react_dom = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_react_dom_development();
 }));
 //#endregion
-//#region src/components/ui/input.tsx
-var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
-var import_jsx_runtime = require_jsx_runtime();
-var Input = import_react.forwardRef(({ className, type, ...props }, ref) => {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-		"data-uid": "src/components/ui/input.tsx:7:7",
-		"data-prohibitions": "[editContent]",
-		type,
-		className: cn("flex w-full rounded-[var(--radius)] border border-border bg-background px-[12px] py-[10px] text-[13px] transition-all duration-200 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-destructive aria-[invalid=true]:focus-visible:ring-destructive", className),
-		ref,
-		...props
-	});
-});
-Input.displayName = "Input";
-//#endregion
-export { require_react_dom as n, Input as t };
+export { require_react_dom as t };
 
-//# sourceMappingURL=input-CU9DIYAF.js.map
+//# sourceMappingURL=react-dom-D47xuAER.js.map

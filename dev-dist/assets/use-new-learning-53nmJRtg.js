@@ -1,8 +1,9 @@
 import { a as require_jsx_runtime, g as require_react, p as useNavigate, v as __toESM } from "./client-D09FV_21.js";
 import { n as CircleAlert } from "./plus-DeMb-NdG.js";
 import { a as cn, r as Slot } from "./button-CiSPku0O.js";
-import { i as useToast, n as useAuth, t as Label } from "./index-Qkng0t77.js";
+import { n as useToast } from "./index-D9qN5M9L.js";
 import { t as createLearning } from "./learnings-CkpGBjTW.js";
+import { t as Label } from "./label-DaJv_aPs.js";
 //#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/react-hook-form@7.71.2_react@19.2.4/node_modules/react-hook-form/dist/index.esm.mjs
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 var isCheckBoxInput = (element) => element.type === "checkbox";
@@ -7934,12 +7935,11 @@ var NewLearningSchema = object({
 var useNewLearning = () => {
 	const navigate = useNavigate();
 	const { toast } = useToast();
-	const { user } = useAuth();
 	const [isSubmitting, setIsSubmitting] = (0, import_react.useState)(false);
 	const form = useForm({
 		resolver: a(NewLearningSchema),
 		defaultValues: {
-			author: user?.user_metadata?.name || "",
+			author: "",
 			date: format(/* @__PURE__ */ new Date(), "yyyy-MM-dd"),
 			title: "",
 			context: "",
@@ -7988,4 +7988,4 @@ var useNewLearning = () => {
 //#endregion
 export { FormControl as a, FormLabel as c, useFieldArray as d, useForm as f, Form as i, FormMessage as l, useNewLearning as n, FormField as o, a as r, FormItem as s, NewLearningSchema as t, Textarea as u };
 
-//# sourceMappingURL=use-new-learning-C5S9dUpy.js.map
+//# sourceMappingURL=use-new-learning-53nmJRtg.js.map

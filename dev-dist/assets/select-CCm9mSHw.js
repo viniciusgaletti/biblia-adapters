@@ -1,6 +1,6 @@
 import { a as require_jsx_runtime, g as require_react, i as __spreadArray, n as __assign, o as createLucideIcon, r as __rest, v as __toESM } from "./client-D09FV_21.js";
-import { n as require_react_dom } from "./input-CU9DIYAF.js";
-import { C as createContextScope, _ as Primitive, a as createPopperScope, b as createSlot, c as VISUALLY_HIDDEN_STYLES, d as Portal$1, f as useLayoutEffect2, g as useCallbackRef$1, i as Root2$1, m as DismissableLayer, n as Arrow, o as useId, r as Content, t as Anchor, u as useControllableState, w as composeEventHandlers, y as createCollection } from "./dist-DcaTQt1M.js";
+import { t as require_react_dom } from "./react-dom-D47xuAER.js";
+import { C as createContextScope, _ as Primitive, a as createPopperScope, b as createSlot, c as VISUALLY_HIDDEN_STYLES, d as Portal$1, f as useLayoutEffect2, g as useCallbackRef$1, i as Root2$1, m as DismissableLayer, n as Arrow, o as useId, r as Content, t as Anchor, u as useControllableState, w as composeEventHandlers, y as createCollection } from "./dist-Gd_mGgr5.js";
 import { a as cn, c as useComposedRefs } from "./button-CiSPku0O.js";
 var Check = createLucideIcon("check", [["path", {
 	d: "M20 6 9 17l-5-5",
@@ -2121,4 +2121,4 @@ SelectSeparator.displayName = Separator.displayName;
 //#endregion
 export { SelectValue as a, FocusScope as c, SelectTrigger as i, useFocusGuards as l, SelectContent as n, ReactRemoveScroll as o, SelectItem as r, hideOthers as s, Select as t };
 
-//# sourceMappingURL=select-H5Ic4qMm.js.map
+//# sourceMappingURL=select-CCm9mSHw.js.map

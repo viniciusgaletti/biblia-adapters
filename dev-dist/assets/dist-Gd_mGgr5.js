@@ -1,5 +1,5 @@
 import { a as require_jsx_runtime, g as require_react, o as createLucideIcon, v as __toESM } from "./client-D09FV_21.js";
-import { n as require_react_dom } from "./input-CU9DIYAF.js";
+import { t as require_react_dom } from "./react-dom-D47xuAER.js";
 import { c as useComposedRefs, s as composeRefs } from "./button-CiSPku0O.js";
 var X = createLucideIcon("x", [["path", {
 	d: "M18 6 6 18",
@@ -2565,4 +2565,4 @@ var Arrow = PopperArrow;
 //#endregion
 export { createContextScope as C, createContext2 as S, X as T, Primitive as _, createPopperScope as a, createSlot as b, VISUALLY_HIDDEN_STYLES as c, Portal as d, useLayoutEffect2 as f, useCallbackRef as g, Root$2 as h, Root2 as i, VisuallyHidden as l, DismissableLayer as m, Arrow as n, useId as o, Branch as p, Content as r, Root$1 as s, Anchor as t, useControllableState as u, dispatchDiscreteCustomEvent as v, composeEventHandlers as w, createSlottable as x, createCollection as y };
 
-//# sourceMappingURL=dist-DcaTQt1M.js.map
+//# sourceMappingURL=dist-Gd_mGgr5.js.map
