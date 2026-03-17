@@ -1,6 +1,6 @@
 import { A as Link, B as __toESM, E as require_jsx_runtime, R as require_react, d as createLucideIcon, t as Button, u as cn } from "./button-VKFYJuFi.js";
-import { a as SelectValue, i as SelectTrigger, n as SelectContent, r as SelectItem, t as Select } from "./select-G37ix1k9.js";
-import { l as X, n as Input } from "./index-ClAD-WRg.js";
+import { a as SelectValue, i as SelectTrigger, n as SelectContent, o as CircleAlert, r as SelectItem, t as Select } from "./select-CFj_I6wM.js";
+import { l as X, n as Input } from "./index-BYv097JX.js";
 import { c as getAprendizados } from "./es2015-C8-gSiZ6.js";
 import { t as Skeleton } from "./skeleton-BgPYGgOI.js";
 var ArrowRight = createLucideIcon("arrow-right", [["path", {
@@ -22,28 +22,6 @@ var BookX = createLucideIcon("book-x", [
 	["path", {
 		d: "m9.5 7 5 5",
 		key: "s45iea"
-	}]
-]);
-var CircleAlert = createLucideIcon("circle-alert", [
-	["circle", {
-		cx: "12",
-		cy: "12",
-		r: "10",
-		key: "1mglay"
-	}],
-	["line", {
-		x1: "12",
-		x2: "12",
-		y1: "8",
-		y2: "12",
-		key: "1pkeuh"
-	}],
-	["line", {
-		x1: "12",
-		x2: "12.01",
-		y1: "16",
-		y2: "16",
-		key: "4dfq90"
 	}]
 ]);
 var Plus = createLucideIcon("plus", [["path", {
@@ -544,4 +522,4 @@ function Index() {
 //#endregion
 export { Index as default };
 
-//# sourceMappingURL=Index-CwMQfetg.js.map
+//# sourceMappingURL=Index-DahW0GVc.js.map

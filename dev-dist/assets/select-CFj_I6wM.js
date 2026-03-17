@@ -1,5 +1,5 @@
 import { B as __toESM, D as useComposedRefs, E as require_jsx_runtime, L as require_react_dom, O as composeEventHandlers, R as require_react, S as createSlot, T as createContextScope, _ as DismissableLayer, b as Primitive, d as createLucideIcon, h as useLayoutEffect2, l as useId, m as Portal$1, p as useControllableState, u as cn, y as useCallbackRef } from "./button-VKFYJuFi.js";
-import { a as Arrow, c as createPopperScope, d as VISUALLY_HIDDEN_STYLES, i as Anchor, o as Content, p as createCollection, s as Root2$1 } from "./index-ClAD-WRg.js";
+import { a as Arrow, c as createPopperScope, d as VISUALLY_HIDDEN_STYLES, i as Anchor, o as Content, p as createCollection, s as Root2$1 } from "./index-BYv097JX.js";
 import { i as FocusScope, n as ReactRemoveScroll, r as useFocusGuards, t as hideOthers } from "./es2015-C8-gSiZ6.js";
 var Check = createLucideIcon("check", [["path", {
 	d: "M20 6 9 17l-5-5",
@@ -13,6 +13,28 @@ var ChevronUp = createLucideIcon("chevron-up", [["path", {
 	d: "m18 15-6-6-6 6",
 	key: "153udz"
 }]]);
+var CircleAlert = createLucideIcon("circle-alert", [
+	["circle", {
+		cx: "12",
+		cy: "12",
+		r: "10",
+		key: "1mglay"
+	}],
+	["line", {
+		x1: "12",
+		x2: "12",
+		y1: "8",
+		y2: "12",
+		key: "1pkeuh"
+	}],
+	["line", {
+		x1: "12",
+		x2: "12.01",
+		y1: "16",
+		y2: "16",
+		key: "4dfq90"
+	}]
+]);
 //#endregion
 //#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/@radix-ui+number@1.1.1/node_modules/@radix-ui/number/dist/index.mjs
 function clamp(value, [min, max]) {
@@ -999,17 +1021,17 @@ var Separator = SelectSeparator$1;
 var Select = Root2;
 var SelectValue = Value;
 var SelectTrigger = import_react.forwardRef(({ className, children, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Trigger, {
-	"data-uid": "src/components/ui/select.tsx:18:3",
+	"data-uid": "src/components/ui/select.tsx:15:3",
 	"data-prohibitions": "[editContent]",
 	ref,
-	className: cn("flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background data-[placeholder]:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1", className),
+	className: cn("flex w-full items-center justify-between rounded-[var(--radius)] border border-border bg-background px-[12px] py-[10px] text-[13px] font-sans transition-all duration-200 ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:border-ring focus:ring-[3px] focus:ring-ring/15 focus:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1", className),
 	...props,
 	children: [children, /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, {
-		"data-uid": "src/components/ui/select.tsx:27:5",
+		"data-uid": "src/components/ui/select.tsx:24:5",
 		"data-prohibitions": "[]",
 		asChild: true,
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, {
-			"data-uid": "src/components/ui/select.tsx:28:7",
+			"data-uid": "src/components/ui/select.tsx:25:7",
 			"data-prohibitions": "[editContent]",
 			className: "h-4 w-4 opacity-50"
 		})
@@ -1017,36 +1039,36 @@ var SelectTrigger = import_react.forwardRef(({ className, children, ...props }, 
 }));
 SelectTrigger.displayName = Trigger.displayName;
 var SelectScrollUpButton = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ScrollUpButton, {
-	"data-uid": "src/components/ui/select.tsx:38:3",
+	"data-uid": "src/components/ui/select.tsx:35:3",
 	"data-prohibitions": "[editContent]",
 	ref,
 	className: cn("flex cursor-default items-center justify-center py-1", className),
 	...props,
 	children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronUp, {
-		"data-uid": "src/components/ui/select.tsx:43:5",
+		"data-uid": "src/components/ui/select.tsx:40:5",
 		"data-prohibitions": "[editContent]",
 		className: "h-4 w-4"
 	})
 }));
 SelectScrollUpButton.displayName = ScrollUpButton.displayName;
 var SelectScrollDownButton = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ScrollDownButton, {
-	"data-uid": "src/components/ui/select.tsx:52:3",
+	"data-uid": "src/components/ui/select.tsx:49:3",
 	"data-prohibitions": "[editContent]",
 	ref,
 	className: cn("flex cursor-default items-center justify-center py-1", className),
 	...props,
 	children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, {
-		"data-uid": "src/components/ui/select.tsx:57:5",
+		"data-uid": "src/components/ui/select.tsx:54:5",
 		"data-prohibitions": "[editContent]",
 		className: "h-4 w-4"
 	})
 }));
 SelectScrollDownButton.displayName = ScrollDownButton.displayName;
 var SelectContent = import_react.forwardRef(({ className, children, position = "popper", ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Portal, {
-	"data-uid": "src/components/ui/select.tsx:66:3",
+	"data-uid": "src/components/ui/select.tsx:63:3",
 	"data-prohibitions": "[editContent]",
 	children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Content2, {
-		"data-uid": "src/components/ui/select.tsx:67:5",
+		"data-uid": "src/components/ui/select.tsx:64:5",
 		"data-prohibitions": "[editContent]",
 		ref,
 		className: cn("relative z-50 max-h-[--radix-select-content-available-height] min-w-[8rem] overflow-y-auto overflow-x-hidden rounded-md border bg-popover text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[--radix-select-content-transform-origin]", position === "popper" && "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1", className),
@@ -1054,17 +1076,17 @@ var SelectContent = import_react.forwardRef(({ className, children, position = "
 		...props,
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectScrollUpButton, {
-				"data-uid": "src/components/ui/select.tsx:78:7",
+				"data-uid": "src/components/ui/select.tsx:75:7",
 				"data-prohibitions": "[editContent]"
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Viewport, {
-				"data-uid": "src/components/ui/select.tsx:79:7",
+				"data-uid": "src/components/ui/select.tsx:76:7",
 				"data-prohibitions": "[editContent]",
 				className: cn("p-1", position === "popper" && "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]"),
 				children
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectScrollDownButton, {
-				"data-uid": "src/components/ui/select.tsx:88:7",
+				"data-uid": "src/components/ui/select.tsx:85:7",
 				"data-prohibitions": "[editContent]"
 			})
 		]
@@ -1072,7 +1094,7 @@ var SelectContent = import_react.forwardRef(({ className, children, position = "
 }));
 SelectContent.displayName = Content2.displayName;
 var SelectLabel = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Label, {
-	"data-uid": "src/components/ui/select.tsx:98:3",
+	"data-uid": "src/components/ui/select.tsx:95:3",
 	"data-prohibitions": "[editContent]",
 	ref,
 	className: cn("py-1.5 pl-8 pr-2 text-sm font-semibold", className),
@@ -1080,33 +1102,33 @@ var SelectLabel = import_react.forwardRef(({ className, ...props }, ref) => /* @
 }));
 SelectLabel.displayName = Label.displayName;
 var SelectItem = import_react.forwardRef(({ className, children, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Item, {
-	"data-uid": "src/components/ui/select.tsx:110:3",
+	"data-uid": "src/components/ui/select.tsx:107:3",
 	"data-prohibitions": "[editContent]",
 	ref,
-	className: cn("relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50", className),
+	className: cn("relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-[13px] font-sans outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50", className),
 	...props,
 	children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-		"data-uid": "src/components/ui/select.tsx:118:5",
+		"data-uid": "src/components/ui/select.tsx:115:5",
 		"data-prohibitions": "[]",
 		className: "absolute left-2 flex h-3.5 w-3.5 items-center justify-center",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ItemIndicator, {
-			"data-uid": "src/components/ui/select.tsx:119:7",
+			"data-uid": "src/components/ui/select.tsx:116:7",
 			"data-prohibitions": "[]",
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {
-				"data-uid": "src/components/ui/select.tsx:120:9",
+				"data-uid": "src/components/ui/select.tsx:117:9",
 				"data-prohibitions": "[editContent]",
 				className: "h-4 w-4"
 			})
 		})
 	}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ItemText, {
-		"data-uid": "src/components/ui/select.tsx:124:5",
+		"data-uid": "src/components/ui/select.tsx:120:5",
 		"data-prohibitions": "[editContent]",
 		children
 	})]
 }));
 SelectItem.displayName = Item.displayName;
 var SelectSeparator = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Separator, {
-	"data-uid": "src/components/ui/select.tsx:133:3",
+	"data-uid": "src/components/ui/select.tsx:129:3",
 	"data-prohibitions": "[editContent]",
 	ref,
 	className: cn("-mx-1 my-1 h-px bg-muted", className),
@@ -1114,6 +1136,6 @@ var SelectSeparator = import_react.forwardRef(({ className, ...props }, ref) => 
 }));
 SelectSeparator.displayName = Separator.displayName;
 //#endregion
-export { SelectValue as a, SelectTrigger as i, SelectContent as n, SelectItem as r, Select as t };
+export { SelectValue as a, SelectTrigger as i, SelectContent as n, CircleAlert as o, SelectItem as r, Select as t };
 
-//# sourceMappingURL=select-G37ix1k9.js.map
+//# sourceMappingURL=select-CFj_I6wM.js.map

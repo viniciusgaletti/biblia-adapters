@@ -1,4 +1,3 @@
-/* Form Component primitives - A component that displays a form - from shadcn/ui (exposes Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage) */
 import * as React from 'react'
 import * as LabelPrimitive from '@radix-ui/react-label'
 import { Slot } from '@radix-ui/react-slot'
@@ -10,6 +9,7 @@ import {
   type FieldPath,
   type FieldValues,
 } from 'react-hook-form'
+import { AlertCircle } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 import { Label } from '@/components/ui/label'
@@ -147,10 +147,14 @@ const FormMessage = React.forwardRef<
     <p
       ref={ref}
       id={formMessageId}
-      className={cn('text-sm font-medium text-destructive', className)}
+      className={cn(
+        'text-[12px] font-sans font-medium text-destructive mt-[4px] flex items-start gap-[4px]',
+        className,
+      )}
       {...props}
     >
-      {body}
+      <AlertCircle className="w-3.5 h-3.5 shrink-0 mt-[1px]" />
+      <span>{body}</span>
     </p>
   )
 })

@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-CwMQfetg.js","assets/button-VKFYJuFi.js","assets/select-G37ix1k9.js","assets/es2015-C8-gSiZ6.js","assets/skeleton-BgPYGgOI.js","assets/NovoAprendizado-D36Vm6lm.js","assets/arrow-left-DNkQ53MR.js","assets/DetalheAprendizado-DiwBdLNl.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-DahW0GVc.js","assets/button-VKFYJuFi.js","assets/select-CFj_I6wM.js","assets/es2015-C8-gSiZ6.js","assets/skeleton-BgPYGgOI.js","assets/NovoAprendizado-MxQu__VN.js","assets/arrow-left-DNkQ53MR.js","assets/DetalheAprendizado-vQhDUH9q.js"])))=>i.map(i=>d[i]);
 import { A as Link, B as __toESM, C as createSlottable, D as useComposedRefs, E as require_jsx_runtime, I as __vitePreload, L as require_react_dom, M as Route, N as Routes, O as composeEventHandlers, R as require_react, S as createSlot, T as createContextScope, _ as DismissableLayer, a as supabase, b as Primitive$1, d as createLucideIcon, f as cva, g as Branch, h as useLayoutEffect2, i as createSlot$1, j as Outlet, k as BrowserRouter, l as useId, m as Portal, p as useControllableState, t as Button, u as cn$1, v as Root$3, x as dispatchDiscreteCustomEvent, y as useCallbackRef, z as __commonJSMin } from "./button-VKFYJuFi.js";
 //#region \0vite/modulepreload-polyfill.js
 (function polyfill() {
@@ -19088,10 +19088,10 @@ CardFooter.displayName = "CardFooter";
 //#region src/components/ui/input.tsx
 var Input = import_react.forwardRef(({ className, type, ...props }, ref) => {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-		"data-uid": "src/components/ui/input.tsx:9:7",
+		"data-uid": "src/components/ui/input.tsx:7:7",
 		"data-prohibitions": "[editContent]",
 		type,
-		className: cn$1("flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm", className),
+		className: cn$1("flex w-full rounded-[var(--radius)] border border-border bg-background px-[12px] py-[10px] text-[13px] font-sans transition-all duration-200 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/15 focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-destructive aria-[invalid=true]:focus-visible:ring-destructive/15 aria-[invalid=true]:focus-visible:border-destructive", className),
 		ref,
 		...props
 	});
@@ -19410,9 +19410,9 @@ var NotFound = () => {
 };
 //#endregion
 //#region src/App.tsx
-var Index = (0, import_react.lazy)(() => __vitePreload(() => import("./Index-CwMQfetg.js"), __vite__mapDeps([0,1,2,3,4])));
-var NovoAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./NovoAprendizado-D36Vm6lm.js"), __vite__mapDeps([5,1,2,3,6])));
-var DetalheAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./DetalheAprendizado-DiwBdLNl.js"), __vite__mapDeps([7,1,3,6,4])));
+var Index = (0, import_react.lazy)(() => __vitePreload(() => import("./Index-DahW0GVc.js"), __vite__mapDeps([0,1,2,3,4])));
+var NovoAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./NovoAprendizado-MxQu__VN.js"), __vite__mapDeps([5,1,2,3,6])));
+var DetalheAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./DetalheAprendizado-vQhDUH9q.js"), __vite__mapDeps([7,1,3,6,4])));
 var App = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BrowserRouter, {
 	"data-uid": "src/App.tsx:18:3",
 	"data-prohibitions": "[]",
@@ -19502,4 +19502,4 @@ var App = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BrowserRouter, {
 //#endregion
 export { Arrow as a, createPopperScope as c, VISUALLY_HIDDEN_STYLES as d, Presence as f, Anchor as i, X as l, useToast as m, Input as n, Content as o, createCollection as p, useAuth as r, Root2 as s, Label as t, LoaderCircle as u };
 
-//# sourceMappingURL=index-ClAD-WRg.js.map
+//# sourceMappingURL=index-BYv097JX.js.map
