@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { ArrowLeft, RefreshCw } from 'lucide-react'
 import { useLearningDetail } from '@/hooks/use-learning-detail'
@@ -19,9 +20,17 @@ export default function DetalheAprendizado() {
   const { id } = useParams<{ id: string }>()
   const { data: ap, loading, error, refetch } = useLearningDetail(id)
 
+  useEffect(() => {
+    if (ap?.title) {
+      document.title = `${ap.title} | Biblia dos Adapters`
+    } else if (!loading) {
+      document.title = 'Detalhe do Aprendizado | Biblia dos Adapters'
+    }
+  }, [ap, loading])
+
   if (loading) {
     return (
-      <div className="max-w-[680px] mx-auto animate-fade-in font-mono">
+      <div className="max-w-[680px] mx-auto animate-fade-in font-sans" aria-busy="true">
         <Skeleton className="h-4 w-32 mb-8" />
         <div className="flex gap-2 mb-4">
           <Skeleton className="h-5 w-8" />
@@ -45,10 +54,12 @@ export default function DetalheAprendizado() {
 
   if (error) {
     return (
-      <div className="max-w-[680px] mx-auto text-center py-12 font-mono animate-fade-in-up">
-        <p className="text-destructive mb-4">Não foi possível carregar o aprendizado.</p>
-        <Button onClick={refetch} variant="outline" className="font-mono">
-          <RefreshCw className="w-4 h-4 mr-2" />
+      <div className="max-w-[680px] mx-auto text-center py-12 font-sans animate-fade-in-up">
+        <p className="text-destructive mb-4" role="alert">
+          Não foi possível carregar o aprendizado.
+        </p>
+        <Button onClick={refetch} variant="outline" className="font-sans">
+          <RefreshCw className="w-4 h-4 mr-2" aria-hidden="true" />
           Tentar novamente
         </Button>
       </div>
@@ -57,10 +68,12 @@ export default function DetalheAprendizado() {
 
   if (!ap) {
     return (
-      <div className="max-w-[680px] mx-auto text-center py-12 font-mono animate-fade-in-up">
-        <p className="text-muted-foreground mb-6">Aprendizado não encontrado.</p>
+      <div className="max-w-[680px] mx-auto text-center py-12 font-sans animate-fade-in-up">
+        <p className="text-muted-foreground mb-6" role="alert">
+          Aprendizado não encontrado.
+        </p>
         <Link to="/">
-          <Button variant="outline" className="font-mono">
+          <Button variant="outline" className="font-sans">
             Voltar para lista
           </Button>
         </Link>
@@ -96,46 +109,48 @@ export default function DetalheAprendizado() {
     ) : null
 
   return (
-    <div className="max-w-[680px] mx-auto animate-fade-in font-mono pb-12">
+    <article className="max-w-[680px] mx-auto animate-fade-in font-sans pb-12">
       <Link
         to="/"
-        className="inline-flex items-center text-[0.75rem] tracking-[0.02em] text-muted-foreground hover:text-foreground transition-colors mb-6 no-underline"
+        className="inline-flex items-center text-[0.75rem] tracking-[0.02em] text-muted-foreground hover:text-foreground transition-colors mb-6 no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
       >
-        <ArrowLeft className="w-3 h-3 mr-1.5" /> Voltar para lista
+        <ArrowLeft className="w-3 h-3 mr-1.5" aria-hidden="true" /> Voltar para lista
       </Link>
 
-      <div className="flex flex-wrap items-center gap-2 mb-4">
-        {ap.number != null && (
-          <span className="bg-muted text-muted-foreground text-[0.6875rem] font-bold py-[2px] px-[7px] rounded-[3px]">
-            #{ap.number}
-          </span>
-        )}
-        {ap.category && (
-          <span className="bg-accent text-accent-foreground text-[0.6875rem] font-bold py-[2px] px-[7px] rounded-[3px]">
-            {ap.category}
-          </span>
-        )}
-        {ap.level && (
-          <span
-            className={cn(
-              'text-[0.6875rem] font-bold py-[2px] px-[7px] rounded-[3px]',
-              getLevelColor(ap.level),
-            )}
-          >
-            {ap.level}
-          </span>
-        )}
-      </div>
+      <header>
+        <div className="flex flex-wrap items-center gap-2 mb-4">
+          {ap.number != null && (
+            <span className="bg-muted text-muted-foreground text-[0.6875rem] font-bold py-[2px] px-[7px] rounded-[3px]">
+              #{ap.number}
+            </span>
+          )}
+          {ap.category && (
+            <span className="bg-accent text-accent-foreground text-[0.6875rem] font-bold py-[2px] px-[7px] rounded-[3px]">
+              {ap.category}
+            </span>
+          )}
+          {ap.level && (
+            <span
+              className={cn(
+                'text-[0.6875rem] font-bold py-[2px] px-[7px] rounded-[3px]',
+                getLevelColor(ap.level),
+              )}
+            >
+              {ap.level}
+            </span>
+          )}
+        </div>
 
-      <h1 className="text-[1.625rem] font-bold tracking-[-0.02em] leading-[1.3] text-foreground mb-3">
-        {ap.title}
-      </h1>
+        <h1 className="text-[1.625rem] font-bold tracking-[-0.02em] leading-[1.3] text-foreground mb-3">
+          {ap.title}
+        </h1>
 
-      <div className="flex items-center gap-[12px] text-[0.75rem] text-muted-foreground">
-        <span>{ap.author || 'Autor desconhecido'}</span>
-        <span>&bull;</span>
-        <span>{formatDateLong(ap.date)}</span>
-      </div>
+        <div className="flex items-center gap-[12px] text-[0.75rem] text-muted-foreground">
+          <span>{ap.author || 'Autor desconhecido'}</span>
+          <span aria-hidden="true">&bull;</span>
+          <span>{formatDateLong(ap.date)}</span>
+        </div>
+      </header>
 
       <hr className="border-t border-border mt-[16px] mb-[28px]" />
 
@@ -146,16 +161,16 @@ export default function DetalheAprendizado() {
         <Section title="Observações / Dicas Extras" content={ap.observations} />
       </div>
 
-      <div className="mt-[44px]">
-        <Link to="/">
+      <footer className="mt-[44px]">
+        <Link to="/" tabIndex={-1}>
           <Button
             variant="ghost"
-            className="text-[0.8125rem] text-muted-foreground font-mono hover:bg-muted/50 h-auto py-2 px-3 -ml-3"
+            className="text-[0.8125rem] text-muted-foreground hover:bg-muted/50 h-auto py-2 px-3 -ml-3"
           >
-            <ArrowLeft className="w-3 h-3 mr-2" /> Voltar para lista
+            <ArrowLeft className="w-3 h-3 mr-2" aria-hidden="true" /> Voltar para lista
           </Button>
         </Link>
-      </div>
-    </div>
+      </footer>
+    </article>
   )
 }

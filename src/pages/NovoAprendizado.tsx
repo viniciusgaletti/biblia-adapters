@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft, Loader2, Plus, X } from 'lucide-react'
 import { useFieldArray } from 'react-hook-form'
@@ -24,7 +25,11 @@ import { cn } from '@/lib/utils'
 
 const ReqLabel = ({ children }: { children: React.ReactNode }) => (
   <FormLabel className="text-[13px] font-medium text-foreground inline-flex items-baseline mb-[5px]">
-    {children} <span className="text-primary ml-[2px]">*</span>
+    {children}{' '}
+    <span className="text-primary ml-[2px]" aria-hidden="true">
+      *
+    </span>
+    <span className="sr-only">(Obrigatório)</span>
   </FormLabel>
 )
 
@@ -42,28 +47,32 @@ export default function NovoAprendizado() {
     name: 'stepsArray',
   })
 
+  useEffect(() => {
+    document.title = 'Registrar Aprendizado | Biblia dos Adapters'
+  }, [])
+
   return (
     <div className="max-w-[680px] mx-auto animate-fade-in-up pb-12 font-sans">
       <Link
         to="/"
-        className="inline-flex items-center text-[12px] tracking-[0.02em] text-muted-foreground hover:text-primary mb-[28px] transition-colors"
+        className="inline-flex items-center text-[12px] tracking-[0.02em] text-muted-foreground hover:text-primary mb-[28px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
       >
-        <ArrowLeft className="w-3.5 h-3.5 mr-1.5" />
+        <ArrowLeft className="w-3.5 h-3.5 mr-1.5" aria-hidden="true" />
         Voltar para lista
       </Link>
 
-      <div className="mb-[36px]">
+      <section className="mb-[36px]">
         <h1 className="text-[24px] font-bold tracking-[-0.02em] text-foreground">
           Registrar Aprendizado
         </h1>
         <p className="text-[13px] text-muted-foreground mt-1 leading-[1.6]">
           Compartilhe com a equipe o que voce aprendeu na pratica.
         </p>
-      </div>
+      </section>
 
       <Form {...form}>
-        <form onSubmit={onSubmit}>
-          <div className="mb-[36px]">
+        <form onSubmit={onSubmit} noValidate>
+          <section className="mb-[36px]">
             <h2 className="uppercase text-[11px] font-bold tracking-[0.08em] text-muted-foreground border-b border-border pb-[8px] mb-[20px]">
               Identificação
             </h2>
@@ -109,7 +118,7 @@ export default function NovoAprendizado() {
                         <SelectTrigger
                           className={cn(
                             form.formState.errors.category &&
-                              'border-destructive focus:ring-destructive/15',
+                              'border-destructive focus-visible:ring-destructive',
                           )}
                         >
                           <SelectValue placeholder="Selecione uma categoria" />
@@ -141,7 +150,7 @@ export default function NovoAprendizado() {
                         <SelectTrigger
                           className={cn(
                             form.formState.errors.level &&
-                              'border-destructive focus:ring-destructive/15',
+                              'border-destructive focus-visible:ring-destructive',
                           )}
                         >
                           <SelectValue placeholder="Selecione o nivel" />
@@ -158,9 +167,9 @@ export default function NovoAprendizado() {
                 )}
               />
             </div>
-          </div>
+          </section>
 
-          <div>
+          <section>
             <h2 className="uppercase text-[11px] font-bold tracking-[0.08em] text-muted-foreground border-b border-border pb-[8px] mb-[20px]">
               Conteúdo
             </h2>
@@ -248,9 +257,10 @@ export default function NovoAprendizado() {
                             <FormControl>
                               <Input
                                 {...inputField}
-                                className="font-mono text-[13px] py-[9px] px-[12px] h-auto focus-visible:ring-0 focus-visible:border-ring shadow-none"
+                                className="font-mono text-[13px] py-[9px] px-[12px] h-auto shadow-none"
                                 placeholder={`Passo ${index + 1}`}
                                 disabled={isSubmitting}
+                                aria-label={`Passo ${index + 1}`}
                               />
                             </FormControl>
                             <FormMessage />
@@ -264,10 +274,10 @@ export default function NovoAprendizado() {
                           size="icon"
                           className="w-[28px] h-[28px] shrink-0 text-muted-foreground hover:text-destructive hover:bg-transparent"
                           onClick={() => remove(index)}
-                          aria-label="Remover passo"
+                          aria-label={`Remover passo ${index + 1}`}
                           disabled={isSubmitting}
                         >
-                          <X className="w-4 h-4" />
+                          <X className="w-4 h-4" aria-hidden="true" />
                         </Button>
                       )}
                     </div>
@@ -281,7 +291,7 @@ export default function NovoAprendizado() {
                     onClick={() => append({ value: '' })}
                     disabled={isSubmitting}
                   >
-                    <Plus className="w-3.5 h-3.5" />
+                    <Plus className="w-3.5 h-3.5" aria-hidden="true" />
                     Adicionar passo
                   </Button>
                 )}
@@ -307,7 +317,7 @@ export default function NovoAprendizado() {
                 )}
               />
             </div>
-          </div>
+          </section>
 
           <div className="flex items-center justify-end gap-[12px] border-t border-border pt-[24px] mt-[40px]">
             <Link to="/">
@@ -327,7 +337,7 @@ export default function NovoAprendizado() {
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="w-4 h-4 mr-2 animate-spin shrink-0" />
+                  <Loader2 className="w-4 h-4 mr-2 animate-spin shrink-0" aria-hidden="true" />
                   Registrando...
                 </>
               ) : (

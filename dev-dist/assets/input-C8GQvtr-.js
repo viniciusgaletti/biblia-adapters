@@ -2727,7 +2727,7 @@ var Input = import_react.forwardRef(({ className, type, ...props }, ref) => {
 		"data-uid": "src/components/ui/input.tsx:7:7",
 		"data-prohibitions": "[editContent]",
 		type,
-		className: cn("flex w-full rounded-[var(--radius)] border border-border bg-background px-[12px] py-[10px] text-[13px] font-sans transition-all duration-200 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/15 focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-destructive aria-[invalid=true]:focus-visible:ring-destructive/15 aria-[invalid=true]:focus-visible:border-destructive", className),
+		className: cn("flex w-full rounded-[var(--radius)] border border-border bg-background px-[12px] py-[10px] text-[13px] transition-all duration-200 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-destructive aria-[invalid=true]:focus-visible:ring-destructive", className),
 		ref,
 		...props
 	});
@@ -2736,4 +2736,4 @@ Input.displayName = "Input";
 //#endregion
 export { createSlottable as C, require_react_dom as E, createSlot as S, composeEventHandlers as T, Root$2 as _, Root2 as a, dispatchDiscreteCustomEvent as b, X as c, VisuallyHidden as d, useControllableState as f, DismissableLayer as g, Branch as h, Content as i, Root$1 as l, useLayoutEffect2 as m, Anchor as n, createPopperScope as o, Portal as p, Arrow as r, useId as s, Input as t, VISUALLY_HIDDEN_STYLES as u, useCallbackRef as v, createContextScope as w, createCollection as x, Primitive as y };
 
-//# sourceMappingURL=input-Cxz-B7QD.js.map
+//# sourceMappingURL=input-C8GQvtr-.js.map

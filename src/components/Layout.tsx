@@ -18,7 +18,7 @@ import { Button } from '@/components/ui/button'
 
 function AuthForm() {
   const { signIn, signUp } = useAuth()
-  const [email, setEmail] = useState('eliter@example.com')
+  const [email, setEmail] = useState('adapter@example.com')
   const [password, setPassword] = useState('SenhaForte123!')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -34,21 +34,25 @@ function AuthForm() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-[60vh] animate-fade-in-up">
+    <div className="flex items-center justify-center min-h-[60vh] animate-fade-in-up px-4">
       <Card className="w-full max-w-md border-border/50 shadow-elevation">
         <CardHeader className="text-center pb-6">
           <CardTitle className="text-2xl font-bold tracking-tight">Acesso Restrito</CardTitle>
-          <CardDescription>Faça login para acessar a Bíblia dos Eliters</CardDescription>
+          <CardDescription>Faça login para acessar a Bíblia dos Adapters</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           {error && (
-            <div className="text-sm font-medium text-destructive bg-destructive/10 p-3 rounded-md">
+            <div
+              className="text-sm font-medium text-destructive bg-destructive/10 p-3 rounded-md"
+              role="alert"
+            >
               {error}
             </div>
           )}
           <div className="space-y-2">
-            <Label>Email</Label>
+            <Label htmlFor="auth-email">Email</Label>
             <Input
+              id="auth-email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -56,8 +60,9 @@ function AuthForm() {
             />
           </div>
           <div className="space-y-2">
-            <Label>Senha</Label>
+            <Label htmlFor="auth-password">Senha</Label>
             <Input
+              id="auth-password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -88,16 +93,20 @@ export default function Layout() {
 
   return (
     <ErrorBoundary>
-      <div className="min-h-screen bg-background text-foreground flex flex-col font-mono transition-colors duration-200">
+      <div className="min-h-screen bg-background text-foreground flex flex-col font-sans transition-colors duration-200">
         <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border shadow-sm">
-          <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-2 group">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 sm:py-0 min-h-16 h-auto flex flex-wrap sm:flex-nowrap items-center justify-between gap-y-3 gap-x-4">
+            <Link
+              to="/"
+              className="flex items-center gap-2 group shrink-0"
+              aria-label="Página Inicial"
+            >
               <BookOpen className="w-6 h-6 text-primary transition-transform group-hover:scale-110" />
               <span className="text-xl font-bold text-primary tracking-tight hidden sm:inline-block">
-                Bíblia dos Eliters
+                Bíblia dos Adapters
               </span>
             </Link>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
               {user && (
                 <Button
                   variant="ghost"
@@ -113,18 +122,26 @@ export default function Layout() {
           </div>
         </header>
 
-        <main className="flex-1 w-full max-w-5xl mx-auto px-6 py-8 animate-fade-in">
+        <main className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8 animate-fade-in">
           {loading ? (
-            <div className="flex justify-center items-center h-64">
-              <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+            <div
+              className="flex justify-center items-center h-64"
+              role="status"
+              aria-label="Carregando"
+            >
+              <Loader2 className="w-8 h-8 animate-spin text-primary" />
             </div>
           ) : !user ? (
             <AuthForm />
           ) : (
             <Suspense
               fallback={
-                <div className="flex justify-center items-center h-64">
-                  <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+                <div
+                  className="flex justify-center items-center h-64"
+                  role="status"
+                  aria-label="Carregando"
+                >
+                  <Loader2 className="w-8 h-8 animate-spin text-primary" />
                 </div>
               }
             >

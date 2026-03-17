@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Plus, Search, BookX, AlertCircle, X, ArrowRight } from 'lucide-react'
 import { useLearnings, CATEGORIES, LEVELS } from '@/hooks/use-learnings'
@@ -43,16 +44,17 @@ export default function Index() {
     totalCount,
   } = useLearnings()
 
+  useEffect(() => {
+    document.title = 'Biblia dos Adapters'
+  }, [])
+
   return (
-    <div
-      style={{ fontFamily: "'Roboto Mono', monospace" }}
-      className="w-full animate-fade-in-up pb-8"
-    >
+    <div className="w-full animate-fade-in-up pb-8">
       {/* Section 1: Page Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-[36px] gap-4">
+      <section className="flex flex-col md:flex-row justify-between items-start md:items-center mb-[36px] gap-4">
         <div>
           <h1 className="text-[1.875rem] font-bold text-foreground tracking-[-0.02em]">
-            Biblia dos Eliters
+            Biblia dos Adapters
           </h1>
           <p className="text-[0.8125rem] text-muted-foreground mt-[6px] leading-[1.6]">
             Repositorio vivo de aprendizados sobre IA, Vibecoding, Automacoes e Agentes de IA
@@ -64,31 +66,34 @@ export default function Index() {
             Registrar Aprendizado
           </Button>
         </Link>
-      </div>
+      </section>
 
       {/* Section 2: Search and Filter Bar */}
-      <div className="flex flex-col sm:flex-row gap-[8px] sm:gap-[10px] mb-[14px]">
+      <section className="flex flex-col sm:flex-row gap-[8px] sm:gap-[10px] mb-[14px]">
         <div className="relative flex-1">
-          <Search className="absolute left-[14px] top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Search
+            className="absolute left-[14px] top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground"
+            aria-hidden="true"
+          />
           <Input
+            aria-label="Buscar aprendizados"
             placeholder="Buscar por palavra-chave..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full h-auto border border-border bg-background rounded-[var(--radius)] pl-[38px] pr-[14px] py-[10px] text-[0.8125rem] leading-[1.5] text-foreground focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none"
-            style={{ fontFamily: "'Roboto Mono', monospace" }}
+            className="w-full h-auto pl-[38px] pr-[14px] py-[10px]"
           />
         </div>
         <div className="flex flex-col sm:flex-row gap-[8px] sm:gap-[10px]">
           <Select value={categoryFilter} onValueChange={setCategoryFilter}>
             <SelectTrigger
-              style={{ fontFamily: "'Roboto Mono', monospace" }}
-              className="min-w-[155px] h-auto border border-border bg-background rounded-[var(--radius)] px-[14px] py-[10px] text-[0.8125rem] leading-[1.5] text-foreground focus:ring-1 focus:ring-ring focus:border-ring"
+              aria-label="Filtrar por categoria"
+              className="min-w-[155px] h-auto px-[14px] py-[10px]"
             >
               <SelectValue placeholder="Categoria" />
             </SelectTrigger>
-            <SelectContent style={{ fontFamily: "'Roboto Mono', monospace" }}>
+            <SelectContent>
               {CATEGORIES.map((cat) => (
-                <SelectItem key={cat} value={cat} className="text-[0.8125rem]">
+                <SelectItem key={cat} value={cat}>
                   {cat}
                 </SelectItem>
               ))}
@@ -96,14 +101,14 @@ export default function Index() {
           </Select>
           <Select value={levelFilter} onValueChange={setLevelFilter}>
             <SelectTrigger
-              style={{ fontFamily: "'Roboto Mono', monospace" }}
-              className="min-w-[155px] h-auto border border-border bg-background rounded-[var(--radius)] px-[14px] py-[10px] text-[0.8125rem] leading-[1.5] text-foreground focus:ring-1 focus:ring-ring focus:border-ring"
+              aria-label="Filtrar por dificuldade"
+              className="min-w-[155px] h-auto px-[14px] py-[10px]"
             >
               <SelectValue placeholder="Dificuldade" />
             </SelectTrigger>
-            <SelectContent style={{ fontFamily: "'Roboto Mono', monospace" }}>
+            <SelectContent>
               {LEVELS.map((lvl) => (
-                <SelectItem key={lvl} value={lvl} className="text-[0.8125rem]">
+                <SelectItem key={lvl} value={lvl}>
                   {lvl}
                 </SelectItem>
               ))}
@@ -114,23 +119,26 @@ export default function Index() {
               variant="ghost"
               onClick={clearFilters}
               className="h-auto px-[14px] py-[10px] text-[0.8125rem] text-muted-foreground hover:text-foreground hover:bg-transparent"
-              style={{ fontFamily: "'Roboto Mono', monospace" }}
+              aria-label="Limpar filtros"
             >
-              <X className="h-4 w-4 mr-2" />
+              <X className="h-4 w-4 mr-2" aria-hidden="true" />
               Limpar filtros
             </Button>
           )}
         </div>
-      </div>
+      </section>
 
       {/* Section 3: Results Counter */}
-      <div className="text-[0.75rem] text-muted-foreground tracking-[0.03em] mb-[20px]">
+      <section
+        className="text-[0.75rem] text-muted-foreground tracking-[0.03em] mb-[20px]"
+        aria-live="polite"
+      >
         {totalCount} {totalCount === 1 ? 'aprendizado encontrado' : 'aprendizados encontrados'}
-      </div>
+      </section>
 
       {/* States and Grid */}
       {loading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
+        <section className="grid grid-cols-1 sm:grid-cols-2 gap-[16px]" aria-busy="true">
           {Array.from({ length: 6 }).map((_, i) => (
             <div
               key={i}
@@ -153,10 +161,10 @@ export default function Index() {
               </div>
             </div>
           ))}
-        </div>
+        </section>
       ) : error ? (
-        <div className="py-[60px] flex flex-col items-center justify-center text-center border border-dashed border-destructive/20 bg-destructive/5 rounded-[calc(var(--radius)*1.5)]">
-          <AlertCircle className="w-[44px] h-[44px] text-destructive" />
+        <section className="py-[60px] flex flex-col items-center justify-center text-center border border-dashed border-destructive/20 bg-destructive/5 rounded-[calc(var(--radius)*1.5)]">
+          <AlertCircle className="w-[44px] h-[44px] text-destructive" aria-hidden="true" />
           <h3 className="text-[1rem] font-semibold mt-[16px] text-foreground">Algo deu errado</h3>
           <p className="text-[0.8125rem] text-muted-foreground mt-[6px] leading-[1.6] max-w-md px-4">
             Nao foi possivel carregar os aprendizados.
@@ -165,14 +173,13 @@ export default function Index() {
             onClick={refetch}
             variant="outline"
             className="mt-[20px] h-auto px-[18px] py-[10px] text-[0.8125rem] font-medium"
-            style={{ fontFamily: "'Roboto Mono', monospace" }}
           >
             Tentar novamente
           </Button>
-        </div>
+        </section>
       ) : data.length === 0 ? (
-        <div className="py-[60px] flex flex-col items-center justify-center text-center border border-dashed border-border bg-card/50 rounded-[calc(var(--radius)*1.5)]">
-          <BookX className="w-[44px] h-[44px] text-muted-foreground" />
+        <section className="py-[60px] flex flex-col items-center justify-center text-center border border-dashed border-border bg-card/50 rounded-[calc(var(--radius)*1.5)]">
+          <BookX className="w-[44px] h-[44px] text-muted-foreground" aria-hidden="true" />
           <h3 className="text-[1rem] font-semibold mt-[16px] text-foreground">
             Nenhum aprendizado encontrado
           </h3>
@@ -182,17 +189,17 @@ export default function Index() {
           </p>
           <Link to="/novo">
             <Button className="mt-[20px] bg-primary text-primary-foreground rounded-[var(--radius)] px-[18px] py-[10px] text-[0.8125rem] font-medium hover:opacity-90 transition-opacity h-auto">
-              <Plus className="w-4 h-4 mr-2" />
+              <Plus className="w-4 h-4 mr-2" aria-hidden="true" />
               Registrar Aprendizado
             </Button>
           </Link>
-        </div>
+        </section>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
+        <section className="grid grid-cols-1 sm:grid-cols-2 gap-[16px]">
           {data.map((item) => (
-            <div
+            <article
               key={item.id}
-              className="bg-card border border-border rounded-[calc(var(--radius)*1.5)] p-[20px] hover:border-ring hover:shadow-[0_2px_10px_rgba(0,0,0,0.06)] transition-all duration-200 ease-in-out flex flex-col"
+              className="bg-card border border-border rounded-[calc(var(--radius)*1.5)] p-[20px] hover:border-ring hover:shadow-[0_2px_10px_rgba(0,0,0,0.06)] transition-all duration-200 ease-in-out flex flex-col focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-within:ring-offset-background"
             >
               <div className="flex gap-[6px] items-center flex-wrap">
                 <span className="bg-muted text-muted-foreground text-[0.6875rem] font-bold tracking-[0.04em] rounded-[3px] px-[7px] py-[2px]">
@@ -211,7 +218,12 @@ export default function Index() {
                 </span>
               </div>
               <h3 className="text-[0.9375rem] font-semibold text-foreground mt-[14px] mb-[6px] leading-[1.4] line-clamp-2">
-                {item.title}
+                <Link
+                  to={`/aprendizado/${item.id}`}
+                  className="hover:underline focus:outline-none focus:underline"
+                >
+                  {item.title}
+                </Link>
               </h3>
               <div className="text-[0.75rem] text-muted-foreground flex justify-between items-center">
                 <span>{item.author}</span>
@@ -222,13 +234,14 @@ export default function Index() {
               </p>
               <Link
                 to={`/aprendizado/${item.id}`}
-                className="text-primary text-[0.75rem] font-medium mt-[16px] tracking-[0.02em] hover:underline inline-flex items-center w-fit"
+                className="text-primary text-[0.75rem] font-medium mt-[16px] tracking-[0.02em] hover:underline inline-flex items-center w-fit focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+                aria-label={`Ver aprendizado completo sobre ${item.title}`}
               >
-                Ver aprendizado completo <ArrowRight className="w-3 h-3 ml-1" />
+                Ver aprendizado completo <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
               </Link>
-            </div>
+            </article>
           ))}
-        </div>
+        </section>
       )}
     </div>
   )

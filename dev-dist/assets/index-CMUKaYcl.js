@@ -1,6 +1,6 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-BwrUYXDh.js","assets/button-BPdVCIk6.js","assets/input-Cxz-B7QD.js","assets/select-CPtKmOuq.js","assets/skeleton-PtARcsAK.js","assets/learnings-B6Az6-EI.js","assets/NovoAprendizado-txWaRmTU.js","assets/arrow-left-R0LlO7DN.js","assets/DetalheAprendizado-8HQG59o_.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-CB0w2h-7.js","assets/button-BPdVCIk6.js","assets/input-C8GQvtr-.js","assets/select-CjHayztg.js","assets/skeleton-PtARcsAK.js","assets/learnings-B6Az6-EI.js","assets/NovoAprendizado-ZYOAMD3y.js","assets/arrow-left-R0LlO7DN.js","assets/DetalheAprendizado-C4uw6uau.js"])))=>i.map(i=>d[i]);
 import { C as __commonJSMin, S as require_react, _ as Route, c as cn$1, d as require_jsx_runtime, g as Outlet, h as Link, i as supabase, l as createLucideIcon, m as BrowserRouter, p as useComposedRefs, r as createSlot, t as Button, u as cva, v as Routes, w as __toESM, x as __vitePreload } from "./button-BPdVCIk6.js";
-import { C as createSlottable, E as require_react_dom, T as composeEventHandlers, _ as Root$1, a as Root2$1, b as dispatchDiscreteCustomEvent, c as X, d as VisuallyHidden, f as useControllableState, g as DismissableLayer, h as Branch, i as Content, l as Root$2, m as useLayoutEffect2, n as Anchor, o as createPopperScope, p as Portal, r as Arrow, s as useId, t as Input, v as useCallbackRef, w as createContextScope, x as createCollection, y as Primitive$1 } from "./input-Cxz-B7QD.js";
+import { C as createSlottable, E as require_react_dom, T as composeEventHandlers, _ as Root$1, a as Root2$1, b as dispatchDiscreteCustomEvent, c as X, d as VisuallyHidden, f as useControllableState, g as DismissableLayer, h as Branch, i as Content, l as Root$2, m as useLayoutEffect2, n as Anchor, o as createPopperScope, p as Portal, r as Arrow, s as useId, t as Input, v as useCallbackRef, w as createContextScope, x as createCollection, y as Primitive$1 } from "./input-C8GQvtr-.js";
 //#region \0vite/modulepreload-polyfill.js
 (function polyfill() {
 	const relList = document.createElement("link").relList;
@@ -17098,7 +17098,7 @@ Label.displayName = Root.displayName;
 //#region src/components/Layout.tsx
 function AuthForm() {
 	const { signIn, signUp } = useAuth();
-	const [email, setEmail] = (0, import_react.useState)("eliter@example.com");
+	const [email, setEmail] = (0, import_react.useState)("adapter@example.com");
 	const [password, setPassword] = (0, import_react.useState)("SenhaForte123!");
 	const [loading, setLoading] = (0, import_react.useState)(false);
 	const [error, setError] = (0, import_react.useState)("");
@@ -17112,7 +17112,7 @@ function AuthForm() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		"data-uid": "src/components/Layout.tsx:37:5",
 		"data-prohibitions": "[editContent]",
-		className: "flex items-center justify-center min-h-[60vh] animate-fade-in-up",
+		className: "flex items-center justify-center min-h-[60vh] animate-fade-in-up px-4",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
 			"data-uid": "src/components/Layout.tsx:38:7",
 			"data-prohibitions": "[editContent]",
@@ -17130,7 +17130,7 @@ function AuthForm() {
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardDescription, {
 						"data-uid": "src/components/Layout.tsx:41:11",
 						"data-prohibitions": "[]",
-						children: "Faça login para acessar a Bíblia dos Eliters"
+						children: "Faça login para acessar a Bíblia dos Adapters"
 					})]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
@@ -17142,19 +17142,22 @@ function AuthForm() {
 							"data-uid": "src/components/Layout.tsx:45:13",
 							"data-prohibitions": "[editContent]",
 							className: "text-sm font-medium text-destructive bg-destructive/10 p-3 rounded-md",
+							role: "alert",
 							children: error
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/components/Layout.tsx:49:11",
+							"data-uid": "src/components/Layout.tsx:52:11",
 							"data-prohibitions": "[]",
 							className: "space-y-2",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Label, {
-								"data-uid": "src/components/Layout.tsx:50:13",
+								"data-uid": "src/components/Layout.tsx:53:13",
 								"data-prohibitions": "[]",
+								htmlFor: "auth-email",
 								children: "Email"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								"data-uid": "src/components/Layout.tsx:51:13",
+								"data-uid": "src/components/Layout.tsx:54:13",
 								"data-prohibitions": "[editContent]",
+								id: "auth-email",
 								type: "email",
 								value: email,
 								onChange: (e) => setEmail(e.target.value),
@@ -17162,16 +17165,18 @@ function AuthForm() {
 							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/components/Layout.tsx:58:11",
+							"data-uid": "src/components/Layout.tsx:62:11",
 							"data-prohibitions": "[]",
 							className: "space-y-2",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Label, {
-								"data-uid": "src/components/Layout.tsx:59:13",
+								"data-uid": "src/components/Layout.tsx:63:13",
 								"data-prohibitions": "[]",
+								htmlFor: "auth-password",
 								children: "Senha"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								"data-uid": "src/components/Layout.tsx:60:13",
+								"data-uid": "src/components/Layout.tsx:64:13",
 								"data-prohibitions": "[editContent]",
+								id: "auth-password",
 								type: "password",
 								value: password,
 								onChange: (e) => setPassword(e.target.value),
@@ -17181,22 +17186,22 @@ function AuthForm() {
 					]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardFooter, {
-					"data-uid": "src/components/Layout.tsx:68:9",
+					"data-uid": "src/components/Layout.tsx:73:9",
 					"data-prohibitions": "[editContent]",
 					className: "flex gap-3 pt-2",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						"data-uid": "src/components/Layout.tsx:69:11",
+						"data-uid": "src/components/Layout.tsx:74:11",
 						"data-prohibitions": "[editContent]",
 						className: "flex-1",
 						onClick: () => handleAuth("signin"),
 						disabled: loading,
 						children: loading ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, {
-							"data-uid": "src/components/Layout.tsx:70:24",
+							"data-uid": "src/components/Layout.tsx:75:24",
 							"data-prohibitions": "[editContent]",
 							className: "w-4 h-4 animate-spin"
 						}) : "Entrar"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						"data-uid": "src/components/Layout.tsx:72:11",
+						"data-uid": "src/components/Layout.tsx:77:11",
 						"data-prohibitions": "[]",
 						className: "flex-1",
 						variant: "outline",
@@ -17212,41 +17217,42 @@ function AuthForm() {
 function Layout() {
 	const { user, loading, signOut } = useAuth();
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ErrorBoundary, {
-		"data-uid": "src/components/Layout.tsx:90:5",
+		"data-uid": "src/components/Layout.tsx:95:5",
 		"data-prohibitions": "[editContent]",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			"data-uid": "src/components/Layout.tsx:91:7",
+			"data-uid": "src/components/Layout.tsx:96:7",
 			"data-prohibitions": "[editContent]",
-			className: "min-h-screen bg-background text-foreground flex flex-col font-mono transition-colors duration-200",
+			className: "min-h-screen bg-background text-foreground flex flex-col font-sans transition-colors duration-200",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
-				"data-uid": "src/components/Layout.tsx:92:9",
+				"data-uid": "src/components/Layout.tsx:97:9",
 				"data-prohibitions": "[editContent]",
 				className: "sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border shadow-sm",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					"data-uid": "src/components/Layout.tsx:93:11",
+					"data-uid": "src/components/Layout.tsx:98:11",
 					"data-prohibitions": "[editContent]",
-					className: "max-w-5xl mx-auto px-6 h-16 flex items-center justify-between",
+					className: "max-w-5xl mx-auto px-4 sm:px-6 py-3 sm:py-0 min-h-16 h-auto flex flex-wrap sm:flex-nowrap items-center justify-between gap-y-3 gap-x-4",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
-						"data-uid": "src/components/Layout.tsx:94:13",
+						"data-uid": "src/components/Layout.tsx:99:13",
 						"data-prohibitions": "[]",
 						to: "/",
-						className: "flex items-center gap-2 group",
+						className: "flex items-center gap-2 group shrink-0",
+						"aria-label": "Página Inicial",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(BookOpen, {
-							"data-uid": "src/components/Layout.tsx:95:15",
+							"data-uid": "src/components/Layout.tsx:104:15",
 							"data-prohibitions": "[editContent]",
 							className: "w-6 h-6 text-primary transition-transform group-hover:scale-110"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							"data-uid": "src/components/Layout.tsx:96:15",
+							"data-uid": "src/components/Layout.tsx:105:15",
 							"data-prohibitions": "[]",
 							className: "text-xl font-bold text-primary tracking-tight hidden sm:inline-block",
-							children: "Bíblia dos Eliters"
+							children: "Bíblia dos Adapters"
 						})]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						"data-uid": "src/components/Layout.tsx:100:13",
+						"data-uid": "src/components/Layout.tsx:109:13",
 						"data-prohibitions": "[editContent]",
-						className: "flex items-center gap-2",
+						className: "flex items-center gap-2 w-full sm:w-auto justify-end",
 						children: [user && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							"data-uid": "src/components/Layout.tsx:102:17",
+							"data-uid": "src/components/Layout.tsx:111:17",
 							"data-prohibitions": "[]",
 							variant: "ghost",
 							size: "sm",
@@ -17254,42 +17260,46 @@ function Layout() {
 							className: "mr-2 text-muted-foreground hover:text-foreground",
 							children: "Sair"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThemeToggle, {
-							"data-uid": "src/components/Layout.tsx:111:15",
+							"data-uid": "src/components/Layout.tsx:120:15",
 							"data-prohibitions": "[editContent]"
 						})]
 					})]
 				})
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
-				"data-uid": "src/components/Layout.tsx:116:9",
+				"data-uid": "src/components/Layout.tsx:125:9",
 				"data-prohibitions": "[editContent]",
-				className: "flex-1 w-full max-w-5xl mx-auto px-6 py-8 animate-fade-in",
+				className: "flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8 animate-fade-in",
 				children: loading ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					"data-uid": "src/components/Layout.tsx:118:13",
+					"data-uid": "src/components/Layout.tsx:127:13",
 					"data-prohibitions": "[]",
 					className: "flex justify-center items-center h-64",
+					role: "status",
+					"aria-label": "Carregando",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, {
-						"data-uid": "src/components/Layout.tsx:119:15",
+						"data-uid": "src/components/Layout.tsx:132:15",
 						"data-prohibitions": "[editContent]",
-						className: "w-8 h-8 animate-spin text-muted-foreground"
+						className: "w-8 h-8 animate-spin text-primary"
 					})
 				}) : !user ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AuthForm, {
-					"data-uid": "src/components/Layout.tsx:122:13",
+					"data-uid": "src/components/Layout.tsx:135:13",
 					"data-prohibitions": "[editContent]"
 				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react.Suspense, {
-					"data-uid": "src/components/Layout.tsx:124:13",
+					"data-uid": "src/components/Layout.tsx:137:13",
 					"data-prohibitions": "[]",
 					fallback: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/components/Layout.tsx:126:17",
+						"data-uid": "src/components/Layout.tsx:139:17",
 						"data-prohibitions": "[]",
 						className: "flex justify-center items-center h-64",
+						role: "status",
+						"aria-label": "Carregando",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, {
-							"data-uid": "src/components/Layout.tsx:127:19",
+							"data-uid": "src/components/Layout.tsx:144:19",
 							"data-prohibitions": "[editContent]",
-							className: "w-8 h-8 animate-spin text-muted-foreground"
+							className: "w-8 h-8 animate-spin text-primary"
 						})
 					}),
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {
-						"data-uid": "src/components/Layout.tsx:131:15",
+						"data-uid": "src/components/Layout.tsx:148:15",
 						"data-prohibitions": "[editContent]"
 					})
 				})
@@ -17343,9 +17353,9 @@ var NotFound = () => {
 };
 //#endregion
 //#region src/App.tsx
-var Index = (0, import_react.lazy)(() => __vitePreload(() => import("./Index-BwrUYXDh.js"), __vite__mapDeps([0,1,2,3,4,5])));
-var NovoAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./NovoAprendizado-txWaRmTU.js"), __vite__mapDeps([6,1,2,3,7,5])));
-var DetalheAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./DetalheAprendizado-8HQG59o_.js"), __vite__mapDeps([8,1,7,4,5])));
+var Index = (0, import_react.lazy)(() => __vitePreload(() => import("./Index-CB0w2h-7.js"), __vite__mapDeps([0,1,2,3,4,5])));
+var NovoAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./NovoAprendizado-ZYOAMD3y.js"), __vite__mapDeps([6,1,2,3,7,5])));
+var DetalheAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./DetalheAprendizado-C4uw6uau.js"), __vite__mapDeps([8,1,7,4,5])));
 var App = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BrowserRouter, {
 	"data-uid": "src/App.tsx:18:3",
 	"data-prohibitions": "[]",
@@ -17435,4 +17445,4 @@ var App = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BrowserRouter, {
 //#endregion
 export { useToast as i, useAuth as n, LoaderCircle as r, Label as t };
 
-//# sourceMappingURL=index-C6IqL-bU.js.map
+//# sourceMappingURL=index-CMUKaYcl.js.map

@@ -1,5 +1,5 @@
 import { S as require_react, a as __assign, c as cn, d as require_jsx_runtime, l as createLucideIcon, o as __rest, p as useComposedRefs, s as __spreadArray, w as __toESM } from "./button-BPdVCIk6.js";
-import { E as require_react_dom, S as createSlot, T as composeEventHandlers, a as Root2$1, f as useControllableState, g as DismissableLayer, i as Content, m as useLayoutEffect2, n as Anchor, o as createPopperScope, p as Portal$1, r as Arrow, s as useId, u as VISUALLY_HIDDEN_STYLES, v as useCallbackRef$1, w as createContextScope, x as createCollection, y as Primitive } from "./input-Cxz-B7QD.js";
+import { E as require_react_dom, S as createSlot, T as composeEventHandlers, a as Root2$1, f as useControllableState, g as DismissableLayer, i as Content, m as useLayoutEffect2, n as Anchor, o as createPopperScope, p as Portal$1, r as Arrow, s as useId, u as VISUALLY_HIDDEN_STYLES, v as useCallbackRef$1, w as createContextScope, x as createCollection, y as Primitive } from "./input-C8GQvtr-.js";
 var Check = createLucideIcon("check", [["path", {
 	d: "M20 6 9 17l-5-5",
 	key: "1gmf2c"
@@ -2034,7 +2034,7 @@ var SelectTrigger = import_react.forwardRef(({ className, children, ...props }, 
 	"data-uid": "src/components/ui/select.tsx:15:3",
 	"data-prohibitions": "[editContent]",
 	ref,
-	className: cn("flex w-full items-center justify-between rounded-[var(--radius)] border border-border bg-background px-[12px] py-[10px] text-[13px] font-sans transition-all duration-200 ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:border-ring focus:ring-[3px] focus:ring-ring/15 focus:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1", className),
+	className: cn("flex w-full items-center justify-between rounded-[var(--radius)] border border-border bg-background px-[12px] py-[10px] text-[13px] transition-all duration-200 ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1", className),
 	...props,
 	children: [children, /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, {
 		"data-uid": "src/components/ui/select.tsx:24:5",
@@ -2115,7 +2115,7 @@ var SelectItem = import_react.forwardRef(({ className, children, ...props }, ref
 	"data-uid": "src/components/ui/select.tsx:107:3",
 	"data-prohibitions": "[editContent]",
 	ref,
-	className: cn("relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-[13px] font-sans outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50", className),
+	className: cn("relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-[13px] outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50", className),
 	...props,
 	children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 		"data-uid": "src/components/ui/select.tsx:115:5",
@@ -2148,4 +2148,4 @@ SelectSeparator.displayName = Separator.displayName;
 //#endregion
 export { SelectValue as a, SelectTrigger as i, SelectContent as n, Plus as o, SelectItem as r, CircleAlert as s, Select as t };
 
-//# sourceMappingURL=select-CPtKmOuq.js.map
+//# sourceMappingURL=select-CjHayztg.js.map

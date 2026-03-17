@@ -10,6 +10,17 @@
     font-size: 15px;
   }
 
+  html,
+  body,
+  button,
+  input,
+  select,
+  textarea,
+  .toaster,
+  .toast {
+    font-family: 'Roboto Mono', monospace !important;
+  }
+
   :root {
     /* Light Mode Palette */
     --background: 48 26% 97%; /* #faf9f5 */
