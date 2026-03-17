@@ -1,5 +1,8 @@
 import { supabase } from '@/lib/supabase/client'
 import { Aprendizado } from '@/types'
+import { Database } from '@/lib/supabase/types'
+
+type InsertAprendizado = Database['public']['Tables']['aprendizados']['Insert']
 
 export const getAprendizados = async () => {
   const { data, error } = await supabase
@@ -18,16 +21,10 @@ export const getAprendizado = async (id: string) => {
   return data as Aprendizado
 }
 
-export const createAprendizado = async (
-  aprendizado: Pick<Aprendizado, 'titulo' | 'conteudo' | 'categoria'>,
-) => {
+export const createAprendizado = async (aprendizado: InsertAprendizado) => {
   const { data, error } = await supabase
     .from('aprendizados')
-    .insert([
-      {
-        ...aprendizado,
-      } as any,
-    ])
+    .insert([aprendizado])
     .select()
     .single()
 

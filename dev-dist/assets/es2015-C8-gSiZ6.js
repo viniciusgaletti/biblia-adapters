@@ -1,18 +1,28 @@
-import { C as require_react, T as __toESM, a as __assign, c as cn, d as require_jsx_runtime, o as __rest, p as useComposedRefs, s as __spreadArray } from "./button-BPoK0gyP.js";
-import { c as useCallbackRef$1, l as Primitive } from "./dist-CN83TngS.js";
-//#region src/components/ui/skeleton.tsx
-var import_jsx_runtime = require_jsx_runtime();
-function Skeleton({ className, ...props }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-uid": "src/components/ui/skeleton.tsx:5:10",
-		"data-prohibitions": "[editContent]",
-		className: cn("animate-pulse rounded-md bg-muted", className),
-		...props
-	});
-}
+import { B as __toESM, D as useComposedRefs, E as require_jsx_runtime, R as require_react, a as supabase, b as Primitive, c as __spreadArray, o as __assign, s as __rest, y as useCallbackRef$1 } from "./button-VKFYJuFi.js";
+//#region src/services/aprendizados.ts
+var getAprendizados = async () => {
+	const { data, error } = await supabase.from("aprendizados").select("*").order("created_at", { ascending: false });
+	if (error) throw error;
+	return data;
+};
+var getAprendizado = async (id) => {
+	const { data, error } = await supabase.from("aprendizados").select("*").eq("id", id).single();
+	if (error) throw error;
+	return data;
+};
+var createAprendizado = async (aprendizado) => {
+	const { data, error } = await supabase.from("aprendizados").insert([aprendizado]).select().single();
+	if (error) throw error;
+	return data;
+};
+var deleteAprendizado = async (id) => {
+	const { error } = await supabase.from("aprendizados").delete().eq("id", id);
+	if (error) throw error;
+};
 //#endregion
 //#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/@radix-ui+react-focus-scope@1.1.7_@types+react-dom@19.2.3_@types+react@19.2.14__@types+_f62f3af4ca2ba305a7aecf04c8534604/node_modules/@radix-ui/react-focus-scope/dist/index.mjs
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
+var import_jsx_runtime = require_jsx_runtime();
 var AUTOFOCUS_ON_MOUNT = "focusScope.autoFocusOnMount";
 var AUTOFOCUS_ON_UNMOUNT = "focusScope.autoFocusOnUnmount";
 var EVENT_OPTIONS = {
@@ -1016,6 +1026,6 @@ var hideOthers = function(originalTarget, parentNode, markerName) {
 	return applyAttributeToOthers(targets, activeParentNode, markerName, "aria-hidden");
 };
 //#endregion
-export { Skeleton as a, FocusScope as i, ReactRemoveScroll as n, useFocusGuards as r, hideOthers as t };
+export { createAprendizado as a, getAprendizados as c, FocusScope as i, ReactRemoveScroll as n, deleteAprendizado as o, useFocusGuards as r, getAprendizado as s, hideOthers as t };
 
-//# sourceMappingURL=es2015-BhwJZCQh.js.map
+//# sourceMappingURL=es2015-C8-gSiZ6.js.map

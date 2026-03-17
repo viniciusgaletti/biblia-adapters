@@ -1,6 +1,5 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-z8O1mzXX.js","assets/button-BPoK0gyP.js","assets/dist-CN83TngS.js","assets/es2015-BhwJZCQh.js","assets/aprendizados-DZToyReT.js","assets/NovoAprendizado-DBsGzBmS.js","assets/arrow-left-D93EGSFq.js","assets/DetalheAprendizado-Cxte7fvl.js"])))=>i.map(i=>d[i]);
-import { C as require_react, S as require_react_dom, T as __toESM, _ as Route, c as cn$1, d as require_jsx_runtime, g as Outlet, h as Link, i as supabase, l as createLucideIcon, m as BrowserRouter, p as useComposedRefs, r as createSlot, t as Button, u as cva, v as Routes, w as __commonJSMin, x as __vitePreload } from "./button-BPoK0gyP.js";
-import { a as Branch, c as useCallbackRef, d as createSlot$1, f as createSlottable, h as composeEventHandlers, i as useLayoutEffect2, l as Primitive$1, m as createContextScope, n as useControllableState, o as DismissableLayer, r as Portal, s as Root$3, t as useId, u as dispatchDiscreteCustomEvent } from "./dist-CN83TngS.js";
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-CwMQfetg.js","assets/button-VKFYJuFi.js","assets/select-G37ix1k9.js","assets/es2015-C8-gSiZ6.js","assets/skeleton-BgPYGgOI.js","assets/NovoAprendizado-D36Vm6lm.js","assets/arrow-left-DNkQ53MR.js","assets/DetalheAprendizado-DiwBdLNl.js"])))=>i.map(i=>d[i]);
+import { A as Link, B as __toESM, C as createSlottable, D as useComposedRefs, E as require_jsx_runtime, I as __vitePreload, L as require_react_dom, M as Route, N as Routes, O as composeEventHandlers, R as require_react, S as createSlot, T as createContextScope, _ as DismissableLayer, a as supabase, b as Primitive$1, d as createLucideIcon, f as cva, g as Branch, h as useLayoutEffect2, i as createSlot$1, j as Outlet, k as BrowserRouter, l as useId, m as Portal, p as useControllableState, t as Button, u as cn$1, v as Root$3, x as dispatchDiscreteCustomEvent, y as useCallbackRef, z as __commonJSMin } from "./button-VKFYJuFi.js";
 //#region \0vite/modulepreload-polyfill.js
 (function polyfill() {
 	const relList = document.createElement("link").relList;
@@ -14548,7 +14547,7 @@ function createCollection(name) {
 	};
 	CollectionProvider.displayName = PROVIDER_NAME;
 	const COLLECTION_SLOT_NAME = name + "CollectionSlot";
-	const CollectionSlotImpl = createSlot$1(COLLECTION_SLOT_NAME);
+	const CollectionSlotImpl = createSlot(COLLECTION_SLOT_NAME);
 	const CollectionSlot = import_react.forwardRef((props, forwardedRef) => {
 		const { scope, children } = props;
 		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CollectionSlotImpl, {
@@ -14559,7 +14558,7 @@ function createCollection(name) {
 	CollectionSlot.displayName = COLLECTION_SLOT_NAME;
 	const ITEM_SLOT_NAME = name + "CollectionItemSlot";
 	const ITEM_DATA_ATTR = "data-radix-collection-item";
-	const CollectionItemSlotImpl = createSlot$1(ITEM_SLOT_NAME);
+	const CollectionItemSlotImpl = createSlot(ITEM_SLOT_NAME);
 	const CollectionItemSlot = import_react.forwardRef((props, forwardedRef) => {
 		const { scope, children, ...itemData } = props;
 		const ref = import_react.useRef(null);
@@ -19119,7 +19118,7 @@ var Primitive = [
 	"svg",
 	"ul"
 ].reduce((primitive, node) => {
-	const Slot = createSlot(`Primitive.${node}`);
+	const Slot = createSlot$1(`Primitive.${node}`);
 	const Node = import_react.forwardRef((props, forwardedRef) => {
 		const { asChild, ...primitiveProps } = props;
 		const Comp = asChild ? Slot : node;
@@ -19285,7 +19284,7 @@ function Layout() {
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			"data-uid": "src/components/Layout.tsx:91:7",
 			"data-prohibitions": "[editContent]",
-			className: "min-h-screen bg-background text-foreground flex flex-col font-sans transition-colors duration-200",
+			className: "min-h-screen bg-background text-foreground flex flex-col font-mono transition-colors duration-200",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
 				"data-uid": "src/components/Layout.tsx:92:9",
 				"data-prohibitions": "[editContent]",
@@ -19411,9 +19410,9 @@ var NotFound = () => {
 };
 //#endregion
 //#region src/App.tsx
-var Index = (0, import_react.lazy)(() => __vitePreload(() => import("./Index-z8O1mzXX.js"), __vite__mapDeps([0,1,2,3,4])));
-var NovoAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./NovoAprendizado-DBsGzBmS.js"), __vite__mapDeps([5,1,6,4])));
-var DetalheAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./DetalheAprendizado-Cxte7fvl.js"), __vite__mapDeps([7,1,2,3,6,4])));
+var Index = (0, import_react.lazy)(() => __vitePreload(() => import("./Index-CwMQfetg.js"), __vite__mapDeps([0,1,2,3,4])));
+var NovoAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./NovoAprendizado-D36Vm6lm.js"), __vite__mapDeps([5,1,2,3,6])));
+var DetalheAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./DetalheAprendizado-DiwBdLNl.js"), __vite__mapDeps([7,1,3,6,4])));
 var App = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BrowserRouter, {
 	"data-uid": "src/App.tsx:18:3",
 	"data-prohibitions": "[]",
@@ -19501,6 +19500,6 @@ var App = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BrowserRouter, {
 	"data-prohibitions": "[editContent]"
 }));
 //#endregion
-export { Anchor as a, Root2 as c, LoaderCircle as d, VISUALLY_HIDDEN_STYLES as f, useToast as h, CardContent as i, createPopperScope as l, createCollection as m, Input as n, Arrow as o, Presence as p, Card as r, Content as s, Label as t, X as u };
+export { Arrow as a, createPopperScope as c, VISUALLY_HIDDEN_STYLES as d, Presence as f, Anchor as i, X as l, useToast as m, Input as n, Content as o, createCollection as p, useAuth as r, Root2 as s, Label as t, LoaderCircle as u };
 
-//# sourceMappingURL=index-BCixL4Se.js.map
+//# sourceMappingURL=index-ClAD-WRg.js.map

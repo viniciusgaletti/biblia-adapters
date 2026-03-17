@@ -2327,15 +2327,15 @@ function usePrefetchBehavior(prefetch, theirElementProps) {
 		shouldPrefetch,
 		ref,
 		{
-			onFocus: composeEventHandlers(onFocus, setIntent),
-			onBlur: composeEventHandlers(onBlur, cancelIntent),
-			onMouseEnter: composeEventHandlers(onMouseEnter, setIntent),
-			onMouseLeave: composeEventHandlers(onMouseLeave, cancelIntent),
-			onTouchStart: composeEventHandlers(onTouchStart, setIntent)
+			onFocus: composeEventHandlers$1(onFocus, setIntent),
+			onBlur: composeEventHandlers$1(onBlur, cancelIntent),
+			onMouseEnter: composeEventHandlers$1(onMouseEnter, setIntent),
+			onMouseLeave: composeEventHandlers$1(onMouseLeave, cancelIntent),
+			onTouchStart: composeEventHandlers$1(onTouchStart, setIntent)
 		}
 	];
 }
-function composeEventHandlers(theirHandler, ourHandler) {
+function composeEventHandlers$1(theirHandler, ourHandler) {
 	return (event) => {
 		theirHandler && theirHandler(event);
 		if (!event.defaultPrevented) ourHandler(event);
@@ -2868,6 +2868,13 @@ function useViewTransitionState(to, { relative } = {}) {
 	let nextPath = stripBasename(vtContext.nextLocation.pathname, basename) || vtContext.nextLocation.pathname;
 	return matchPath(path.pathname, nextPath) != null || matchPath(path.pathname, currentPath) != null;
 }
+typeof window !== "undefined" && window.document && window.document.createElement;
+function composeEventHandlers(originalEventHandler, ourEventHandler, { checkForDefaultPrevented = true } = {}) {
+	return function handleEvent(event) {
+		originalEventHandler?.(event);
+		if (checkForDefaultPrevented === false || !event.defaultPrevented) return ourEventHandler?.(event);
+	};
+}
 //#endregion
 //#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/@radix-ui+react-compose-refs@1.1.2_@types+react@19.2.14_react@19.2.4/node_modules/@radix-ui/react-compose-refs/dist/index.mjs
 function setRef(ref, value) {
@@ -3098,6 +3105,493 @@ var require_react_jsx_runtime_development = /* @__PURE__ */ __commonJSMin(((expo
 var require_jsx_runtime = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_react_jsx_runtime_development();
 }));
+//#endregion
+//#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/@radix-ui+react-context@1.1.2_@types+react@19.2.14_react@19.2.4/node_modules/@radix-ui/react-context/dist/index.mjs
+var import_jsx_runtime = require_jsx_runtime();
+function createContext2(rootComponentName, defaultContext) {
+	const Context = import_react.createContext(defaultContext);
+	const Provider = (props) => {
+		const { children, ...context } = props;
+		const value = import_react.useMemo(() => context, Object.values(context));
+		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Context.Provider, {
+			value,
+			children
+		});
+	};
+	Provider.displayName = rootComponentName + "Provider";
+	function useContext2(consumerName) {
+		const context = import_react.useContext(Context);
+		if (context) return context;
+		if (defaultContext !== void 0) return defaultContext;
+		throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
+	}
+	return [Provider, useContext2];
+}
+function createContextScope(scopeName, createContextScopeDeps = []) {
+	let defaultContexts = [];
+	function createContext3(rootComponentName, defaultContext) {
+		const BaseContext = import_react.createContext(defaultContext);
+		const index = defaultContexts.length;
+		defaultContexts = [...defaultContexts, defaultContext];
+		const Provider = (props) => {
+			const { scope, children, ...context } = props;
+			const Context = scope?.[scopeName]?.[index] || BaseContext;
+			const value = import_react.useMemo(() => context, Object.values(context));
+			return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Context.Provider, {
+				value,
+				children
+			});
+		};
+		Provider.displayName = rootComponentName + "Provider";
+		function useContext2(consumerName, scope) {
+			const Context = scope?.[scopeName]?.[index] || BaseContext;
+			const context = import_react.useContext(Context);
+			if (context) return context;
+			if (defaultContext !== void 0) return defaultContext;
+			throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
+		}
+		return [Provider, useContext2];
+	}
+	const createScope = () => {
+		const scopeContexts = defaultContexts.map((defaultContext) => {
+			return import_react.createContext(defaultContext);
+		});
+		return function useScope(scope) {
+			const contexts = scope?.[scopeName] || scopeContexts;
+			return import_react.useMemo(() => ({ [`__scope${scopeName}`]: {
+				...scope,
+				[scopeName]: contexts
+			} }), [scope, contexts]);
+		};
+	};
+	createScope.scopeName = scopeName;
+	return [createContext3, composeContextScopes(createScope, ...createContextScopeDeps)];
+}
+function composeContextScopes(...scopes) {
+	const baseScope = scopes[0];
+	if (scopes.length === 1) return baseScope;
+	const createScope = () => {
+		const scopeHooks = scopes.map((createScope2) => ({
+			useScope: createScope2(),
+			scopeName: createScope2.scopeName
+		}));
+		return function useComposedScopes(overrideScopes) {
+			const nextScopes = scopeHooks.reduce((nextScopes2, { useScope, scopeName }) => {
+				const currentScope = useScope(overrideScopes)[`__scope${scopeName}`];
+				return {
+					...nextScopes2,
+					...currentScope
+				};
+			}, {});
+			return import_react.useMemo(() => ({ [`__scope${baseScope.scopeName}`]: nextScopes }), [nextScopes]);
+		};
+	};
+	createScope.scopeName = baseScope.scopeName;
+	return createScope;
+}
+//#endregion
+//#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/@radix-ui+react-slot@1.2.3_@types+react@19.2.14_react@19.2.4/node_modules/@radix-ui/react-slot/dist/index.mjs
+/* @__NO_SIDE_EFFECTS__ */
+function createSlot$1(ownerName) {
+	const SlotClone = /* @__PURE__ */ createSlotClone$1(ownerName);
+	const Slot2 = import_react.forwardRef((props, forwardedRef) => {
+		const { children, ...slotProps } = props;
+		const childrenArray = import_react.Children.toArray(children);
+		const slottable = childrenArray.find(isSlottable$1);
+		if (slottable) {
+			const newElement = slottable.props.children;
+			const newChildren = childrenArray.map((child) => {
+				if (child === slottable) {
+					if (import_react.Children.count(newElement) > 1) return import_react.Children.only(null);
+					return import_react.isValidElement(newElement) ? newElement.props.children : null;
+				} else return child;
+			});
+			return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SlotClone, {
+				...slotProps,
+				ref: forwardedRef,
+				children: import_react.isValidElement(newElement) ? import_react.cloneElement(newElement, void 0, newChildren) : null
+			});
+		}
+		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SlotClone, {
+			...slotProps,
+			ref: forwardedRef,
+			children
+		});
+	});
+	Slot2.displayName = `${ownerName}.Slot`;
+	return Slot2;
+}
+/* @__NO_SIDE_EFFECTS__ */
+function createSlotClone$1(ownerName) {
+	const SlotClone = import_react.forwardRef((props, forwardedRef) => {
+		const { children, ...slotProps } = props;
+		if (import_react.isValidElement(children)) {
+			const childrenRef = getElementRef$1(children);
+			const props2 = mergeProps$1(slotProps, children.props);
+			if (children.type !== import_react.Fragment) props2.ref = forwardedRef ? composeRefs(forwardedRef, childrenRef) : childrenRef;
+			return import_react.cloneElement(children, props2);
+		}
+		return import_react.Children.count(children) > 1 ? import_react.Children.only(null) : null;
+	});
+	SlotClone.displayName = `${ownerName}.SlotClone`;
+	return SlotClone;
+}
+var SLOTTABLE_IDENTIFIER$1 = Symbol("radix.slottable");
+/* @__NO_SIDE_EFFECTS__ */
+function createSlottable(ownerName) {
+	const Slottable2 = ({ children }) => {
+		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_jsx_runtime.Fragment, { children });
+	};
+	Slottable2.displayName = `${ownerName}.Slottable`;
+	Slottable2.__radixId = SLOTTABLE_IDENTIFIER$1;
+	return Slottable2;
+}
+function isSlottable$1(child) {
+	return import_react.isValidElement(child) && typeof child.type === "function" && "__radixId" in child.type && child.type.__radixId === SLOTTABLE_IDENTIFIER$1;
+}
+function mergeProps$1(slotProps, childProps) {
+	const overrideProps = { ...childProps };
+	for (const propName in childProps) {
+		const slotPropValue = slotProps[propName];
+		const childPropValue = childProps[propName];
+		if (/^on[A-Z]/.test(propName)) {
+			if (slotPropValue && childPropValue) overrideProps[propName] = (...args) => {
+				const result = childPropValue(...args);
+				slotPropValue(...args);
+				return result;
+			};
+			else if (slotPropValue) overrideProps[propName] = slotPropValue;
+		} else if (propName === "style") overrideProps[propName] = {
+			...slotPropValue,
+			...childPropValue
+		};
+		else if (propName === "className") overrideProps[propName] = [slotPropValue, childPropValue].filter(Boolean).join(" ");
+	}
+	return {
+		...slotProps,
+		...overrideProps
+	};
+}
+function getElementRef$1(element) {
+	let getter = Object.getOwnPropertyDescriptor(element.props, "ref")?.get;
+	let mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
+	if (mayWarn) return element.ref;
+	getter = Object.getOwnPropertyDescriptor(element, "ref")?.get;
+	mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
+	if (mayWarn) return element.props.ref;
+	return element.props.ref || element.ref;
+}
+//#endregion
+//#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/@radix-ui+react-primitive@2.1.3_@types+react-dom@19.2.3_@types+react@19.2.14__@types+re_1181ea5061ec9212248424669240e4ec/node_modules/@radix-ui/react-primitive/dist/index.mjs
+var import_react_dom = /* @__PURE__ */ __toESM(require_react_dom(), 1);
+var Primitive = [
+	"a",
+	"button",
+	"div",
+	"form",
+	"h2",
+	"h3",
+	"img",
+	"input",
+	"label",
+	"li",
+	"nav",
+	"ol",
+	"p",
+	"select",
+	"span",
+	"svg",
+	"ul"
+].reduce((primitive, node) => {
+	const Slot = /* @__PURE__ */ createSlot$1(`Primitive.${node}`);
+	const Node = import_react.forwardRef((props, forwardedRef) => {
+		const { asChild, ...primitiveProps } = props;
+		const Comp = asChild ? Slot : node;
+		if (typeof window !== "undefined") window[Symbol.for("radix-ui")] = true;
+		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Comp, {
+			...primitiveProps,
+			ref: forwardedRef
+		});
+	});
+	Node.displayName = `Primitive.${node}`;
+	return {
+		...primitive,
+		[node]: Node
+	};
+}, {});
+function dispatchDiscreteCustomEvent(target, event) {
+	if (target) import_react_dom.flushSync(() => target.dispatchEvent(event));
+}
+//#endregion
+//#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/@radix-ui+react-use-callback-ref@1.1.1_@types+react@19.2.14_react@19.2.4/node_modules/@radix-ui/react-use-callback-ref/dist/index.mjs
+function useCallbackRef(callback) {
+	const callbackRef = import_react.useRef(callback);
+	import_react.useEffect(() => {
+		callbackRef.current = callback;
+	});
+	return import_react.useMemo(() => (...args) => callbackRef.current?.(...args), []);
+}
+//#endregion
+//#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/@radix-ui+react-use-escape-keydown@1.1.1_@types+react@19.2.14_react@19.2.4/node_modules/@radix-ui/react-use-escape-keydown/dist/index.mjs
+function useEscapeKeydown(onEscapeKeyDownProp, ownerDocument = globalThis?.document) {
+	const onEscapeKeyDown = useCallbackRef(onEscapeKeyDownProp);
+	import_react.useEffect(() => {
+		const handleKeyDown = (event) => {
+			if (event.key === "Escape") onEscapeKeyDown(event);
+		};
+		ownerDocument.addEventListener("keydown", handleKeyDown, { capture: true });
+		return () => ownerDocument.removeEventListener("keydown", handleKeyDown, { capture: true });
+	}, [onEscapeKeyDown, ownerDocument]);
+}
+//#endregion
+//#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/@radix-ui+react-dismissable-layer@1.1.11_@types+react-dom@19.2.3_@types+react@19.2.14___3d3960154a4c07d09bb90cb341135fc5/node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs
+var DISMISSABLE_LAYER_NAME = "DismissableLayer";
+var CONTEXT_UPDATE = "dismissableLayer.update";
+var POINTER_DOWN_OUTSIDE = "dismissableLayer.pointerDownOutside";
+var FOCUS_OUTSIDE = "dismissableLayer.focusOutside";
+var originalBodyPointerEvents;
+var DismissableLayerContext = import_react.createContext({
+	layers: /* @__PURE__ */ new Set(),
+	layersWithOutsidePointerEventsDisabled: /* @__PURE__ */ new Set(),
+	branches: /* @__PURE__ */ new Set()
+});
+var DismissableLayer = import_react.forwardRef((props, forwardedRef) => {
+	const { disableOutsidePointerEvents = false, onEscapeKeyDown, onPointerDownOutside, onFocusOutside, onInteractOutside, onDismiss, ...layerProps } = props;
+	const context = import_react.useContext(DismissableLayerContext);
+	const [node, setNode] = import_react.useState(null);
+	const ownerDocument = node?.ownerDocument ?? globalThis?.document;
+	const [, force] = import_react.useState({});
+	const composedRefs = useComposedRefs(forwardedRef, (node2) => setNode(node2));
+	const layers = Array.from(context.layers);
+	const [highestLayerWithOutsidePointerEventsDisabled] = [...context.layersWithOutsidePointerEventsDisabled].slice(-1);
+	const highestLayerWithOutsidePointerEventsDisabledIndex = layers.indexOf(highestLayerWithOutsidePointerEventsDisabled);
+	const index = node ? layers.indexOf(node) : -1;
+	const isBodyPointerEventsDisabled = context.layersWithOutsidePointerEventsDisabled.size > 0;
+	const isPointerEventsEnabled = index >= highestLayerWithOutsidePointerEventsDisabledIndex;
+	const pointerDownOutside = usePointerDownOutside((event) => {
+		const target = event.target;
+		const isPointerDownOnBranch = [...context.branches].some((branch) => branch.contains(target));
+		if (!isPointerEventsEnabled || isPointerDownOnBranch) return;
+		onPointerDownOutside?.(event);
+		onInteractOutside?.(event);
+		if (!event.defaultPrevented) onDismiss?.();
+	}, ownerDocument);
+	const focusOutside = useFocusOutside((event) => {
+		const target = event.target;
+		if ([...context.branches].some((branch) => branch.contains(target))) return;
+		onFocusOutside?.(event);
+		onInteractOutside?.(event);
+		if (!event.defaultPrevented) onDismiss?.();
+	}, ownerDocument);
+	useEscapeKeydown((event) => {
+		if (!(index === context.layers.size - 1)) return;
+		onEscapeKeyDown?.(event);
+		if (!event.defaultPrevented && onDismiss) {
+			event.preventDefault();
+			onDismiss();
+		}
+	}, ownerDocument);
+	import_react.useEffect(() => {
+		if (!node) return;
+		if (disableOutsidePointerEvents) {
+			if (context.layersWithOutsidePointerEventsDisabled.size === 0) {
+				originalBodyPointerEvents = ownerDocument.body.style.pointerEvents;
+				ownerDocument.body.style.pointerEvents = "none";
+			}
+			context.layersWithOutsidePointerEventsDisabled.add(node);
+		}
+		context.layers.add(node);
+		dispatchUpdate();
+		return () => {
+			if (disableOutsidePointerEvents && context.layersWithOutsidePointerEventsDisabled.size === 1) ownerDocument.body.style.pointerEvents = originalBodyPointerEvents;
+		};
+	}, [
+		node,
+		ownerDocument,
+		disableOutsidePointerEvents,
+		context
+	]);
+	import_react.useEffect(() => {
+		return () => {
+			if (!node) return;
+			context.layers.delete(node);
+			context.layersWithOutsidePointerEventsDisabled.delete(node);
+			dispatchUpdate();
+		};
+	}, [node, context]);
+	import_react.useEffect(() => {
+		const handleUpdate = () => force({});
+		document.addEventListener(CONTEXT_UPDATE, handleUpdate);
+		return () => document.removeEventListener(CONTEXT_UPDATE, handleUpdate);
+	}, []);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+		...layerProps,
+		ref: composedRefs,
+		style: {
+			pointerEvents: isBodyPointerEventsDisabled ? isPointerEventsEnabled ? "auto" : "none" : void 0,
+			...props.style
+		},
+		onFocusCapture: composeEventHandlers(props.onFocusCapture, focusOutside.onFocusCapture),
+		onBlurCapture: composeEventHandlers(props.onBlurCapture, focusOutside.onBlurCapture),
+		onPointerDownCapture: composeEventHandlers(props.onPointerDownCapture, pointerDownOutside.onPointerDownCapture)
+	});
+});
+DismissableLayer.displayName = DISMISSABLE_LAYER_NAME;
+var BRANCH_NAME = "DismissableLayerBranch";
+var DismissableLayerBranch = import_react.forwardRef((props, forwardedRef) => {
+	const context = import_react.useContext(DismissableLayerContext);
+	const ref = import_react.useRef(null);
+	const composedRefs = useComposedRefs(forwardedRef, ref);
+	import_react.useEffect(() => {
+		const node = ref.current;
+		if (node) {
+			context.branches.add(node);
+			return () => {
+				context.branches.delete(node);
+			};
+		}
+	}, [context.branches]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+		...props,
+		ref: composedRefs
+	});
+});
+DismissableLayerBranch.displayName = BRANCH_NAME;
+function usePointerDownOutside(onPointerDownOutside, ownerDocument = globalThis?.document) {
+	const handlePointerDownOutside = useCallbackRef(onPointerDownOutside);
+	const isPointerInsideReactTreeRef = import_react.useRef(false);
+	const handleClickRef = import_react.useRef(() => {});
+	import_react.useEffect(() => {
+		const handlePointerDown = (event) => {
+			if (event.target && !isPointerInsideReactTreeRef.current) {
+				let handleAndDispatchPointerDownOutsideEvent2 = function() {
+					handleAndDispatchCustomEvent(POINTER_DOWN_OUTSIDE, handlePointerDownOutside, eventDetail, { discrete: true });
+				};
+				const eventDetail = { originalEvent: event };
+				if (event.pointerType === "touch") {
+					ownerDocument.removeEventListener("click", handleClickRef.current);
+					handleClickRef.current = handleAndDispatchPointerDownOutsideEvent2;
+					ownerDocument.addEventListener("click", handleClickRef.current, { once: true });
+				} else handleAndDispatchPointerDownOutsideEvent2();
+			} else ownerDocument.removeEventListener("click", handleClickRef.current);
+			isPointerInsideReactTreeRef.current = false;
+		};
+		const timerId = window.setTimeout(() => {
+			ownerDocument.addEventListener("pointerdown", handlePointerDown);
+		}, 0);
+		return () => {
+			window.clearTimeout(timerId);
+			ownerDocument.removeEventListener("pointerdown", handlePointerDown);
+			ownerDocument.removeEventListener("click", handleClickRef.current);
+		};
+	}, [ownerDocument, handlePointerDownOutside]);
+	return { onPointerDownCapture: () => isPointerInsideReactTreeRef.current = true };
+}
+function useFocusOutside(onFocusOutside, ownerDocument = globalThis?.document) {
+	const handleFocusOutside = useCallbackRef(onFocusOutside);
+	const isFocusInsideReactTreeRef = import_react.useRef(false);
+	import_react.useEffect(() => {
+		const handleFocus = (event) => {
+			if (event.target && !isFocusInsideReactTreeRef.current) handleAndDispatchCustomEvent(FOCUS_OUTSIDE, handleFocusOutside, { originalEvent: event }, { discrete: false });
+		};
+		ownerDocument.addEventListener("focusin", handleFocus);
+		return () => ownerDocument.removeEventListener("focusin", handleFocus);
+	}, [ownerDocument, handleFocusOutside]);
+	return {
+		onFocusCapture: () => isFocusInsideReactTreeRef.current = true,
+		onBlurCapture: () => isFocusInsideReactTreeRef.current = false
+	};
+}
+function dispatchUpdate() {
+	const event = new CustomEvent(CONTEXT_UPDATE);
+	document.dispatchEvent(event);
+}
+function handleAndDispatchCustomEvent(name, handler, detail, { discrete }) {
+	const target = detail.originalEvent.target;
+	const event = new CustomEvent(name, {
+		bubbles: false,
+		cancelable: true,
+		detail
+	});
+	if (handler) target.addEventListener(name, handler, { once: true });
+	if (discrete) dispatchDiscreteCustomEvent(target, event);
+	else target.dispatchEvent(event);
+}
+var Root = DismissableLayer;
+var Branch = DismissableLayerBranch;
+//#endregion
+//#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/@radix-ui+react-use-layout-effect@1.1.1_@types+react@19.2.14_react@19.2.4/node_modules/@radix-ui/react-use-layout-effect/dist/index.mjs
+var useLayoutEffect2 = globalThis?.document ? import_react.useLayoutEffect : () => {};
+//#endregion
+//#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/@radix-ui+react-portal@1.1.9_@types+react-dom@19.2.3_@types+react@19.2.14__@types+react_7668895bec2444446faa4e0f4eb5244b/node_modules/@radix-ui/react-portal/dist/index.mjs
+var PORTAL_NAME = "Portal";
+var Portal = import_react.forwardRef((props, forwardedRef) => {
+	const { container: containerProp, ...portalProps } = props;
+	const [mounted, setMounted] = import_react.useState(false);
+	useLayoutEffect2(() => setMounted(true), []);
+	const container = containerProp || mounted && globalThis?.document?.body;
+	return container ? import_react_dom.createPortal(/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+		...portalProps,
+		ref: forwardedRef
+	}), container) : null;
+});
+Portal.displayName = PORTAL_NAME;
+//#endregion
+//#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/@radix-ui+react-use-controllable-state@1.2.2_@types+react@19.2.14_react@19.2.4/node_modules/@radix-ui/react-use-controllable-state/dist/index.mjs
+var useInsertionEffect = import_react[" useInsertionEffect ".trim().toString()] || useLayoutEffect2;
+function useControllableState({ prop, defaultProp, onChange = () => {}, caller }) {
+	const [uncontrolledProp, setUncontrolledProp, onChangeRef] = useUncontrolledState({
+		defaultProp,
+		onChange
+	});
+	const isControlled = prop !== void 0;
+	const value = isControlled ? prop : uncontrolledProp;
+	{
+		const isControlledRef = import_react.useRef(prop !== void 0);
+		import_react.useEffect(() => {
+			const wasControlled = isControlledRef.current;
+			if (wasControlled !== isControlled) {
+				const from = wasControlled ? "controlled" : "uncontrolled";
+				const to = isControlled ? "controlled" : "uncontrolled";
+				console.warn(`${caller} is changing from ${from} to ${to}. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component.`);
+			}
+			isControlledRef.current = isControlled;
+		}, [isControlled, caller]);
+	}
+	return [value, import_react.useCallback((nextValue) => {
+		if (isControlled) {
+			const value2 = isFunction(nextValue) ? nextValue(prop) : nextValue;
+			if (value2 !== prop) onChangeRef.current?.(value2);
+		} else setUncontrolledProp(nextValue);
+	}, [
+		isControlled,
+		prop,
+		setUncontrolledProp,
+		onChangeRef
+	])];
+}
+function useUncontrolledState({ defaultProp, onChange }) {
+	const [value, setValue] = import_react.useState(defaultProp);
+	const prevValueRef = import_react.useRef(value);
+	const onChangeRef = import_react.useRef(onChange);
+	useInsertionEffect(() => {
+		onChangeRef.current = onChange;
+	}, [onChange]);
+	import_react.useEffect(() => {
+		if (prevValueRef.current !== value) {
+			onChangeRef.current?.(value);
+			prevValueRef.current = value;
+		}
+	}, [value, prevValueRef]);
+	return [
+		value,
+		setValue,
+		onChangeRef
+	];
+}
+function isFunction(value) {
+	return typeof value === "function";
+}
 //#endregion
 //#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/clsx@2.1.1/node_modules/clsx/dist/clsx.mjs
 function r(e) {
@@ -4695,6 +5189,17 @@ var twMerge = /* @__PURE__ */ createTailwindMerge(getDefaultConfig);
 */
 function cn(...inputs) {
 	return twMerge(clsx(inputs));
+}
+//#endregion
+//#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/@radix-ui+react-id@1.1.1_@types+react@19.2.14_react@19.2.4/node_modules/@radix-ui/react-id/dist/index.mjs
+var useReactId = import_react[" useId ".trim().toString()] || (() => void 0);
+var count = 0;
+function useId(deterministicId) {
+	const [id, setId] = import_react.useState(useReactId());
+	useLayoutEffect2(() => {
+		if (!deterministicId) setId((reactId) => reactId ?? String(count++));
+	}, [deterministicId]);
+	return deterministicId || (id ? `radix-${id}` : "");
 }
 //#endregion
 //#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/tslib@2.8.1/node_modules/tslib/tslib.es6.mjs
@@ -18365,7 +18870,6 @@ var supabase = createClient("https://owmwpkkmwzjectofrhuf.supabase.co", "eyJhbGc
 } });
 //#endregion
 //#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/@radix-ui+react-slot@1.2.4_@types+react@19.2.14_react@19.2.4/node_modules/@radix-ui/react-slot/dist/index.mjs
-var import_jsx_runtime = require_jsx_runtime();
 var REACT_LAZY_TYPE = Symbol.for("react.lazy");
 var use = import_react[" use ".trim().toString()];
 function isPromiseLike(value) {
@@ -18497,6 +19001,6 @@ var Button = import_react.forwardRef(({ className, variant, size, asChild = fals
 });
 Button.displayName = "Button";
 //#endregion
-export { require_react as C, require_react_dom as S, __toESM as T, Route as _, __assign as a, useParams as b, cn as c, require_jsx_runtime as d, composeRefs as f, Outlet as g, Link as h, supabase as i, createLucideIcon as l, BrowserRouter as m, buttonVariants as n, __rest as o, useComposedRefs as p, createSlot as r, __spreadArray as s, Button as t, cva as u, Routes as v, __commonJSMin as w, __vitePreload as x, useNavigate as y };
+export { Link as A, __toESM as B, createSlottable as C, useComposedRefs as D, require_jsx_runtime as E, useParams as F, __vitePreload as I, require_react_dom as L, Route as M, Routes as N, composeEventHandlers as O, useNavigate as P, require_react as R, createSlot$1 as S, createContextScope as T, DismissableLayer as _, supabase as a, Primitive as b, __spreadArray as c, createLucideIcon as d, cva as f, Branch as g, useLayoutEffect2 as h, createSlot as i, Outlet as j, BrowserRouter as k, useId as l, Portal as m, buttonVariants as n, __assign as o, useControllableState as p, Slot as r, __rest as s, Button as t, cn as u, Root as v, createContext2 as w, dispatchDiscreteCustomEvent as x, useCallbackRef as y, __commonJSMin as z };
 
-//# sourceMappingURL=button-BPoK0gyP.js.map
+//# sourceMappingURL=button-VKFYJuFi.js.map

@@ -1,123 +1,247 @@
-import { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
-import { ArrowLeft, Save, Loader2 } from 'lucide-react'
-import { createAprendizado } from '@/services/aprendizados'
+import { Link } from 'react-router-dom'
+import { ArrowLeft, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
-import { Card, CardContent } from '@/components/ui/card'
-import { useToast } from '@/hooks/use-toast'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { useNewLearning } from '@/hooks/use-new-learning'
 
 export default function NovoAprendizado() {
-  const [titulo, setTitulo] = useState('')
-  const [conteudo, setConteudo] = useState('')
-  const [categoria, setCategoria] = useState('')
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const navigate = useNavigate()
-  const { toast } = useToast()
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!titulo.trim() || !conteudo.trim()) return
-
-    setIsSubmitting(true)
-    try {
-      await createAprendizado({
-        titulo: titulo.trim(),
-        conteudo: conteudo.trim(),
-        categoria: categoria.trim() || null,
-      })
-      toast({
-        title: 'Sucesso!',
-        description: 'Aprendizado registrado na sua bíblia.',
-      })
-      navigate('/')
-    } catch (error) {
-      toast({
-        variant: 'destructive',
-        title: 'Erro ao salvar',
-        description: 'Tente novamente mais tarde.',
-      })
-      setIsSubmitting(false)
-    }
-  }
+  const { form, isSubmitting, onSubmit } = useNewLearning()
 
   return (
-    <div className="max-w-3xl mx-auto animate-fade-in-up">
-      <div className="mb-6 flex items-center gap-4">
+    <div className="max-w-3xl mx-auto animate-fade-in-up pb-12">
+      <div className="mb-8 flex items-center gap-4">
         <Link to="/">
-          <Button variant="ghost" size="icon" className="rounded-full">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="rounded-full"
+            aria-label="Voltar para lista"
+          >
             <ArrowLeft className="w-5 h-5" />
           </Button>
         </Link>
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Novo Aprendizado</h1>
-          <p className="text-muted-foreground">O que você descobriu hoje?</p>
+          <h1 className="text-3xl font-bold tracking-tight">Registrar Aprendizado</h1>
+          <p className="text-muted-foreground">
+            Compartilhe com a equipe o que voce aprendeu na pratica.
+          </p>
         </div>
       </div>
 
-      <Card className="border-border shadow-sm">
-        <form onSubmit={handleSubmit}>
-          <CardContent className="space-y-6 pt-6">
-            <div className="space-y-2">
-              <Label htmlFor="titulo" className="text-base font-medium">
-                Título
-              </Label>
-              <Input
-                id="titulo"
-                placeholder="Ex: Como centralizar uma div"
-                value={titulo}
-                onChange={(e) => setTitulo(e.target.value)}
-                required
-                className="text-lg py-6"
-                autoFocus
+      <Form {...form}>
+        <form onSubmit={onSubmit} className="space-y-8">
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold border-b pb-2">Identificação</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <FormField
+                control={form.control}
+                name="author"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Autor</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Seu nome completo" disabled={isSubmitting} {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="date"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Data</FormLabel>
+                    <FormControl>
+                      <Input type="date" disabled={isSubmitting} {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="category"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Categoria</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                      disabled={isSubmitting}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Selecione uma categoria" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="IA">IA</SelectItem>
+                        <SelectItem value="Vibecoding">Vibecoding</SelectItem>
+                        <SelectItem value="Automacoes">Automacoes</SelectItem>
+                        <SelectItem value="Agentes de IA">Agentes de IA</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="level"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Nível</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                      disabled={isSubmitting}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Selecione o nivel" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="Iniciante">Iniciante</SelectItem>
+                        <SelectItem value="Intermediario">Intermediário</SelectItem>
+                        <SelectItem value="Avancado">Avançado</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
             </div>
+          </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="categoria" className="text-base font-medium">
-                Categoria (Opcional)
-              </Label>
-              <Input
-                id="categoria"
-                placeholder="Ex: CSS, Filosofia, Finanças..."
-                value={categoria}
-                onChange={(e) => setCategoria(e.target.value)}
-              />
-            </div>
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold border-b pb-2">Conteúdo</h2>
+            <FormField
+              control={form.control}
+              name="title"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Título</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Titulo curto e direto do aprendizado"
+                      disabled={isSubmitting}
+                      {...field}
+                    />
+                  </FormControl>
+                  <div className="text-xs text-muted-foreground text-right">
+                    {field.value?.length || 0}/100
+                  </div>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="context"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Contexto</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder="Descreva o problema ou situacao que gerou esse aprendizado."
+                      rows={4}
+                      disabled={isSubmitting}
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="learning"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Aprendizado</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder="Descreva a solucao ou insight de forma clara e direta."
+                      rows={5}
+                      disabled={isSubmitting}
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="steps"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Passos (opcional)</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder="Se o aprendizado tem uma sequencia, liste os passos. Deixe em branco se nao se aplicar."
+                      rows={3}
+                      disabled={isSubmitting}
+                      value={field.value || ''}
+                      onChange={field.onChange}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="observations"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Observações (opcional)</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder="Pontos de atencao, limitacoes ou informacoes extras para os colegas."
+                      rows={3}
+                      disabled={isSubmitting}
+                      value={field.value || ''}
+                      onChange={field.onChange}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="conteudo" className="text-base font-medium">
-                Conteúdo
-              </Label>
-              <Textarea
-                id="conteudo"
-                placeholder="Descreva detalhadamente o que você aprendeu..."
-                value={conteudo}
-                onChange={(e) => setConteudo(e.target.value)}
-                required
-                className="min-h-[300px] resize-y text-base p-4"
-              />
-            </div>
-          </CardContent>
-          <div className="flex items-center justify-end gap-3 p-6 pt-0 border-t border-border mt-6">
+          <div className="flex items-center justify-end gap-3 pt-6">
             <Link to="/">
-              <Button type="button" variant="ghost">
+              <Button type="button" variant="ghost" disabled={isSubmitting}>
                 Cancelar
               </Button>
             </Link>
-            <Button type="submit" disabled={isSubmitting || !titulo.trim() || !conteudo.trim()}>
-              {isSubmitting ? (
-                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-              ) : (
-                <Save className="w-4 h-4 mr-2" />
-              )}
-              Salvar
+            <Button type="submit" disabled={isSubmitting}>
+              {isSubmitting && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
+              Registrar Aprendizado
             </Button>
           </div>
         </form>
-      </Card>
+      </Form>
     </div>
   )
 }

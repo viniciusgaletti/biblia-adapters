@@ -1,0 +1,87 @@
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
+import { useToast } from '@/hooks/use-toast'
+import { createAprendizado } from '@/services/aprendizados'
+import { useAuth } from '@/hooks/use-auth'
+import { format } from 'date-fns'
+
+const NewLearningSchema = z.object({
+  author: z.string().min(2, 'Informe seu nome completo'),
+  date: z.string().min(1, 'Informe a data'),
+  category: z.enum(['IA', 'Vibecoding', 'Automacoes', 'Agentes de IA'], {
+    errorMap: () => ({ message: 'Selecione uma categoria' }),
+  }),
+  level: z.enum(['Iniciante', 'Intermediario', 'Avancado'], {
+    errorMap: () => ({ message: 'Selecione o nivel' }),
+  }),
+  title: z
+    .string()
+    .min(5, 'Titulo deve ter entre 5 e 100 caracteres')
+    .max(100, 'Titulo deve ter entre 5 e 100 caracteres'),
+  context: z.string().min(20, 'Descreva o contexto com pelo menos 20 caracteres'),
+  learning: z.string().min(30, 'Descreva o aprendizado com pelo menos 30 caracteres'),
+  steps: z.string().optional().nullable(),
+  observations: z.string().optional().nullable(),
+})
+
+export type NewLearningFormValues = z.infer<typeof NewLearningSchema>
+
+export const useNewLearning = () => {
+  const navigate = useNavigate()
+  const { toast } = useToast()
+  const { user } = useAuth()
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const form = useForm<NewLearningFormValues>({
+    resolver: zodResolver(NewLearningSchema),
+    defaultValues: {
+      author: user?.user_metadata?.name || '',
+      date: format(new Date(), 'yyyy-MM-dd'),
+      title: '',
+      context: '',
+      learning: '',
+      steps: '',
+      observations: '',
+    },
+  })
+
+  const onSubmit = async (data: NewLearningFormValues) => {
+    setIsSubmitting(true)
+    try {
+      await createAprendizado({
+        author: data.author,
+        created_at: new Date(data.date).toISOString(),
+        categoria: data.category,
+        level: data.level,
+        titulo: data.title,
+        context: data.context,
+        conteudo: data.learning,
+        steps: data.steps || null,
+        observations: data.observations || null,
+        user_id: user?.id,
+      })
+
+      toast({
+        title: 'Aprendizado registrado com sucesso!',
+      })
+      navigate('/')
+    } catch (error) {
+      console.error(error)
+      toast({
+        title: 'Nao foi possivel registrar. Tente novamente.',
+        variant: 'destructive',
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  return {
+    form,
+    isSubmitting,
+    onSubmit: form.handleSubmit(onSubmit),
+  }
+}
