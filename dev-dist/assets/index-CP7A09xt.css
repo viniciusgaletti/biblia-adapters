@@ -1054,6 +1054,9 @@ body::selection{
 .left-2{
   left: 0.5rem;
 }
+.left-3{
+  left: 0.75rem;
+}
 .left-\[50\%\]{
   left: 50%;
 }
@@ -1171,9 +1174,6 @@ body::selection{
 .ml-auto{
   margin-left: auto;
 }
-.mr-1{
-  margin-right: 0.25rem;
-}
 .mr-1\.5{
   margin-right: 0.375rem;
 }
@@ -1197,9 +1197,6 @@ body::selection{
 }
 .mt-6{
   margin-top: 1.5rem;
-}
-.mt-8{
-  margin-top: 2rem;
 }
 .mt-auto{
   margin-top: auto;
@@ -1298,6 +1295,9 @@ body::selection{
 }
 .h-\[1px\]{
   height: 1px;
+}
+.h-\[280px\]{
+  height: 280px;
 }
 .h-\[var\(--radix-navigation-menu-viewport-height\)\]{
   height: var(--radix-navigation-menu-viewport-height);
@@ -1690,6 +1690,11 @@ body::selection{
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
+.space-y-4 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
 .space-y-6 > :not([hidden]) ~ :not([hidden]){
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1792,6 +1797,9 @@ body::selection{
 .border-destructive{
   border-color: hsl(var(--destructive));
 }
+.border-destructive\/20{
+  border-color: hsl(var(--destructive) / 0.2);
+}
 .border-destructive\/50{
   border-color: hsl(var(--destructive) / 0.5);
 }
@@ -1800,6 +1808,9 @@ body::selection{
 }
 .border-primary{
   border-color: hsl(var(--primary));
+}
+.border-primary\/20{
+  border-color: hsl(var(--primary) / 0.2);
 }
 .border-transparent{
   border-color: transparent;
@@ -1837,6 +1848,12 @@ body::selection{
 .bg-destructive{
   background-color: hsl(var(--destructive));
 }
+.bg-destructive\/10{
+  background-color: hsl(var(--destructive) / 0.1);
+}
+.bg-destructive\/5{
+  background-color: hsl(var(--destructive) / 0.05);
+}
 .bg-foreground{
   background-color: hsl(var(--foreground));
 }
@@ -1852,8 +1869,17 @@ body::selection{
 .bg-primary{
   background-color: hsl(var(--primary));
 }
+.bg-primary\/5{
+  background-color: hsl(var(--primary) / 0.05);
+}
 .bg-secondary{
   background-color: hsl(var(--secondary));
+}
+.bg-secondary\/30{
+  background-color: hsl(var(--secondary) / 0.3);
+}
+.bg-secondary\/50{
+  background-color: hsl(var(--secondary) / 0.5);
 }
 .bg-transparent{
   background-color: transparent;
@@ -1959,6 +1985,9 @@ body::selection{
 .pb-4{
   padding-bottom: 1rem;
 }
+.pb-6{
+  padding-bottom: 1.5rem;
+}
 .pb-8{
   padding-bottom: 2rem;
 }
@@ -1974,6 +2003,9 @@ body::selection{
 .pl-8{
   padding-left: 2rem;
 }
+.pl-9{
+  padding-left: 2.25rem;
+}
 .pr-1{
   padding-right: 0.25rem;
 }
@@ -1988,6 +2020,9 @@ body::selection{
 }
 .pt-0{
   padding-top: 0px;
+}
+.pt-2{
+  padding-top: 0.5rem;
 }
 .pt-3{
   padding-top: 0.75rem;
@@ -2531,10 +2566,6 @@ body::selection{
 }
 .group\/menu-item:focus-within .group-focus-within\/menu-item\:opacity-100{
   opacity: 1;
-}
-.group:hover .group-hover\:-translate-y-1{
-  --tw-translate-y: -0.25rem;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .group:hover .group-hover\:rotate-90{
   --tw-rotate: 90deg;
@@ -3106,8 +3137,17 @@ body::selection{
   .sm\:mt-0{
     margin-top: 0px;
   }
+  .sm\:inline-block{
+    display: inline-block;
+  }
   .sm\:flex{
     display: flex;
+  }
+  .sm\:w-\[160px\]{
+    width: 160px;
+  }
+  .sm\:w-auto{
+    width: auto;
   }
   .sm\:max-w-sm{
     max-width: 24rem;
@@ -3137,6 +3177,10 @@ body::selection{
   }
   .sm\:text-left{
     text-align: left;
+  }
+  .sm\:text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
   .data-\[state\=open\]\:sm\:slide-in-from-bottom-full[data-state="open"]{
     --tw-enter-translate-y: 100%;
@@ -3194,11 +3238,6 @@ body::selection{
     --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  }
-}
-@media (min-width: 1024px){
-  .lg\:grid-cols-3{
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 .\[\&\:first-child\[data-selected\=true\]_button\]\:rounded-l-md:first-child[data-selected=true] button{
