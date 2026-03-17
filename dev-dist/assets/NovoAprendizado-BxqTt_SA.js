@@ -5,9 +5,9 @@ import { a as SelectValue, i as SelectTrigger, n as SelectContent, r as SelectIt
 import { t as Plus } from "./plus-DeMb-NdG.js";
 import { T as X } from "./dist-DcaTQt1M.js";
 import { a as cn, t as Button } from "./button-CiSPku0O.js";
-import { s as LoaderCircle } from "./index-jZkD1oa4.js";
+import { a as LoaderCircle } from "./index-Qkng0t77.js";
 import "./learnings-CkpGBjTW.js";
-import { a as FormControl, c as FormLabel, d as useFieldArray, i as Form, l as FormMessage, n as useNewLearning, o as FormField, s as FormItem, u as Textarea } from "./use-new-learning-CV4u_xvh.js";
+import { a as FormControl, c as FormLabel, d as useFieldArray, i as Form, l as FormMessage, n as useNewLearning, o as FormField, s as FormItem, u as Textarea } from "./use-new-learning-C5S9dUpy.js";
 //#region src/pages/NovoAprendizado.tsx
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 var import_jsx_runtime = require_jsx_runtime();
@@ -627,4 +627,4 @@ function NovoAprendizado() {
 //#endregion
 export { NovoAprendizado as default };
 
-//# sourceMappingURL=NovoAprendizado-CUAwa8RY.js.map
+//# sourceMappingURL=NovoAprendizado-BxqTt_SA.js.map

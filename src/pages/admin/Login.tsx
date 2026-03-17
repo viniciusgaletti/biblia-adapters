@@ -48,18 +48,15 @@ export default function AdminLogin() {
   }
 
   return (
-    <div
-      className="flex justify-center px-4 font-sans bg-background min-h-screen"
-      style={{ paddingTop: '80px' }}
-    >
-      <div className="w-full max-w-[400px] h-fit bg-card border border-border rounded-[var(--radius)] p-[24px] shadow-sm animate-fade-in-up">
+    <div className="flex justify-center items-start px-4 font-sans bg-background min-h-screen">
+      <div className="w-full max-w-[400px] h-fit bg-card border border-border rounded-[calc(var(--radius)*2)] p-[40px] shadow-sm animate-fade-in-up mt-[80px]">
         <div className="text-center mb-[32px]">
-          <h1 className="text-[24px] font-bold text-primary tracking-[-0.02em]">
-            Biblia dos Eliters
-          </h1>
-          <p className="text-[14px] text-muted-foreground mt-[4px]">Acesso restrito</p>
+          <h1 className="text-[1.125rem] font-bold text-primary mb-[4px]">Biblia dos Eliters</h1>
+          <p className="text-[0.75rem] text-muted-foreground tracking-[0.04em] uppercase">
+            Acesso restrito
+          </p>
         </div>
-        <form onSubmit={handleSubmit} className="space-y-[16px]">
+        <form onSubmit={handleSubmit} className="space-y-[20px]">
           <div className="space-y-[8px] flex flex-col">
             <Label htmlFor="email" className="text-[13px] font-medium text-foreground">
               E-mail
@@ -88,10 +85,14 @@ export default function AdminLogin() {
               required
             />
           </div>
-          {error && <p className="text-[13px] font-medium text-destructive pt-[4px]">{error}</p>}
+          {error && (
+            <p className="text-[0.8125rem] font-medium text-destructive mt-[16px] text-center">
+              {error}
+            </p>
+          )}
           <Button
             type="submit"
-            className="w-full mt-[8px] h-auto py-[10px] text-[13px] font-medium"
+            className="w-full bg-primary text-primary-foreground py-[11px] text-[0.875rem] font-medium h-auto hover:bg-primary/90 transition-colors"
             disabled={loading}
           >
             {loading ? (

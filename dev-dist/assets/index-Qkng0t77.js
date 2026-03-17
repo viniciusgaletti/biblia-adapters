@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-BnS5FNWR.js","assets/client-D09FV_21.js","assets/dist-DcaTQt1M.js","assets/button-CiSPku0O.js","assets/input-CU9DIYAF.js","assets/select-H5Ic4qMm.js","assets/plus-DeMb-NdG.js","assets/skeleton-BvP868zf.js","assets/learnings-CkpGBjTW.js","assets/NovoAprendizado-CUAwa8RY.js","assets/use-new-learning-CV4u_xvh.js","assets/arrow-left-DCIMdVmn.js","assets/DetalheAprendizado-Cd8qQxr5.js","assets/Login-DTPsuD90.js","assets/use-admin-auth-CzBVU3ds.js","assets/Dashboard-C8pSJSQ2.js","assets/badge-jNgfatAn.js","assets/EditLearning-CJhBOLlr.js","assets/AdminRoute-BP1fZ51j.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-BnS5FNWR.js","assets/client-D09FV_21.js","assets/dist-DcaTQt1M.js","assets/button-CiSPku0O.js","assets/input-CU9DIYAF.js","assets/select-H5Ic4qMm.js","assets/plus-DeMb-NdG.js","assets/skeleton-BvP868zf.js","assets/learnings-CkpGBjTW.js","assets/NovoAprendizado-BxqTt_SA.js","assets/use-new-learning-C5S9dUpy.js","assets/arrow-left-DCIMdVmn.js","assets/DetalheAprendizado-Cd8qQxr5.js","assets/Login-CZm_DK7Y.js","assets/use-admin-auth-CzBVU3ds.js","assets/Dashboard-3eEBoiNo.js","assets/admin-CuRPZNi3.js","assets/EditLearning-DMQPCufA.js","assets/AdminRoute-C5ZfyS_g.js"])))=>i.map(i=>d[i]);
 import { _ as __commonJSMin, a as require_jsx_runtime, c as Link, d as Route, f as Routes, g as require_react, h as __vitePreload, o as createLucideIcon, s as BrowserRouter, t as supabase, u as Outlet, v as __toESM } from "./client-D09FV_21.js";
 import { n as require_react_dom, t as Input } from "./input-CU9DIYAF.js";
 import { C as createContextScope, T as X, _ as Primitive$1, a as createPopperScope, d as Portal, f as useLayoutEffect2, g as useCallbackRef, h as Root$1, i as Root2$1, l as VisuallyHidden, m as DismissableLayer, n as Arrow, o as useId, p as Branch, r as Content, s as Root$2, t as Anchor, u as useControllableState, v as dispatchDiscreteCustomEvent, w as composeEventHandlers, x as createSlottable, y as createCollection } from "./dist-DcaTQt1M.js";
@@ -17359,12 +17359,12 @@ var NotFound = () => {
 //#endregion
 //#region src/App.tsx
 var Index = (0, import_react.lazy)(() => __vitePreload(() => import("./Index-BnS5FNWR.js"), __vite__mapDeps([0,1,2,3,4,5,6,7,8])));
-var NovoAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./NovoAprendizado-CUAwa8RY.js"), __vite__mapDeps([9,1,2,3,4,10,6,8,5,11])));
+var NovoAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./NovoAprendizado-BxqTt_SA.js"), __vite__mapDeps([9,1,2,3,4,10,6,8,5,11])));
 var DetalheAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./DetalheAprendizado-Cd8qQxr5.js"), __vite__mapDeps([12,1,3,11,7,8])));
-var AdminLogin = (0, import_react.lazy)(() => __vitePreload(() => import("./Login-DTPsuD90.js"), __vite__mapDeps([13,1,3,4,14])));
-var AdminDashboard = (0, import_react.lazy)(() => __vitePreload(() => import("./Dashboard-C8pSJSQ2.js"), __vite__mapDeps([15,1,2,3,4,5,16,7,14])));
-var AdminEditLearning = (0, import_react.lazy)(() => __vitePreload(() => import("./EditLearning-CJhBOLlr.js"), __vite__mapDeps([17,1,2,3,4,10,6,8,5,11,16,7])));
-var AdminRoute = (0, import_react.lazy)(() => __vitePreload(() => import("./AdminRoute-BP1fZ51j.js"), __vite__mapDeps([18,1,14])));
+var AdminLogin = (0, import_react.lazy)(() => __vitePreload(() => import("./Login-CZm_DK7Y.js"), __vite__mapDeps([13,1,3,4,14])));
+var AdminDashboard = (0, import_react.lazy)(() => __vitePreload(() => import("./Dashboard-3eEBoiNo.js"), __vite__mapDeps([15,1,2,3,4,5,7,14,16])));
+var AdminEditLearning = (0, import_react.lazy)(() => __vitePreload(() => import("./EditLearning-DMQPCufA.js"), __vite__mapDeps([17,1,2,3,4,10,6,8,5,11,7,16])));
+var AdminRoute = (0, import_react.lazy)(() => __vitePreload(() => import("./AdminRoute-C5ZfyS_g.js"), __vite__mapDeps([18,1,14])));
 var AdminLoader = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 	"data-uid": "src/App.tsx:25:3",
 	"data-prohibitions": "[]",
@@ -17514,6 +17514,6 @@ var App = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BrowserRouter, {
 	"data-prohibitions": "[editContent]"
 }));
 //#endregion
-export { Presence as a, useAuth as i, Card as n, useToast as o, CardContent as r, LoaderCircle as s, Label as t };
+export { LoaderCircle as a, useToast as i, useAuth as n, Presence as r, Label as t };
 
-//# sourceMappingURL=index-jZkD1oa4.js.map
+//# sourceMappingURL=index-Qkng0t77.js.map

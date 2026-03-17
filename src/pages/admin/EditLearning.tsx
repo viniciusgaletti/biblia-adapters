@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Skeleton } from '@/components/ui/skeleton'
-import { Badge } from '@/components/ui/badge'
 import {
   Form,
   FormControl,
@@ -57,7 +56,7 @@ export default function EditLearning() {
 
   if (isLoading) {
     return (
-      <div className="max-w-[680px] mx-auto animate-fade-in-up pb-12 font-mono p-4 sm:p-0 mt-8">
+      <div className="max-w-[680px] mx-auto animate-fade-in-up pb-12 font-sans px-4 sm:px-0 pt-[32px]">
         <Skeleton className="w-32 h-4 mb-8" />
         <Skeleton className="w-48 h-8 mb-2" />
         <Skeleton className="w-64 h-4 mb-8" />
@@ -78,7 +77,7 @@ export default function EditLearning() {
 
   if (error || !learning) {
     return (
-      <div className="max-w-[680px] mx-auto flex flex-col items-center justify-center min-h-[50vh] animate-fade-in-up font-mono">
+      <div className="max-w-[680px] mx-auto flex flex-col items-center justify-center min-h-[50vh] animate-fade-in-up font-sans px-4">
         <h2 className="text-xl font-bold mb-4">{error || 'Aprendizado nao encontrado.'}</h2>
         <Link to="/admin">
           <Button>Voltar ao painel</Button>
@@ -88,7 +87,7 @@ export default function EditLearning() {
   }
 
   return (
-    <div className="max-w-[680px] mx-auto animate-fade-in-up pb-12 font-mono p-4 sm:p-0 mt-8">
+    <div className="max-w-[680px] mx-auto animate-fade-in-up pb-12 font-sans px-4 sm:px-0 pt-[32px]">
       <Link
         to="/admin"
         className="inline-flex items-center text-[12px] tracking-[0.02em] text-muted-foreground hover:text-primary mb-[28px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
@@ -97,17 +96,17 @@ export default function EditLearning() {
         Voltar ao painel
       </Link>
 
-      <section className="mb-[36px] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-[24px] font-bold tracking-[-0.02em] text-foreground flex items-center gap-3">
-            Editar Aprendizado
-            <Badge variant="secondary" className="font-mono text-sm">
-              #{learning.number}
-            </Badge>
-          </h1>
-          <p className="text-[13px] text-muted-foreground mt-1 leading-[1.6]">
+      <section className="mb-[36px]">
+        <h1 className="text-[1.25rem] font-bold tracking-[-0.02em] text-foreground">
+          Editar Aprendizado
+        </h1>
+        <div className="flex items-center gap-[8px] mt-[8px]">
+          <span className="font-sans text-[0.75rem] px-2 py-0.5 rounded-full border border-border bg-secondary text-secondary-foreground font-semibold">
+            #{learning.number}
+          </span>
+          <span className="text-[0.75rem] text-muted-foreground">
             Editando aprendizado existente
-          </p>
+          </span>
         </div>
       </section>
 
@@ -125,12 +124,7 @@ export default function EditLearning() {
                   <FormItem className="space-y-0 flex flex-col">
                     <ReqLabel>Autor</ReqLabel>
                     <FormControl>
-                      <Input
-                        placeholder="Nome completo"
-                        disabled={isSubmitting}
-                        className="font-mono"
-                        {...field}
-                      />
+                      <Input placeholder="Nome completo" disabled={isSubmitting} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -143,7 +137,7 @@ export default function EditLearning() {
                   <FormItem className="space-y-0 flex flex-col">
                     <ReqLabel>Data</ReqLabel>
                     <FormControl>
-                      <Input type="date" disabled={isSubmitting} className="font-mono" {...field} />
+                      <Input type="date" disabled={isSubmitting} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -163,7 +157,6 @@ export default function EditLearning() {
                       <FormControl>
                         <SelectTrigger
                           className={cn(
-                            'font-mono',
                             form.formState.errors.category &&
                               'border-destructive focus-visible:ring-destructive',
                           )}
@@ -171,7 +164,7 @@ export default function EditLearning() {
                           <SelectValue placeholder="Selecione" />
                         </SelectTrigger>
                       </FormControl>
-                      <SelectContent className="font-mono">
+                      <SelectContent>
                         <SelectItem value="IA">IA</SelectItem>
                         <SelectItem value="Vibecoding">Vibecoding</SelectItem>
                         <SelectItem value="Automacoes">Automacoes</SelectItem>
@@ -196,7 +189,6 @@ export default function EditLearning() {
                       <FormControl>
                         <SelectTrigger
                           className={cn(
-                            'font-mono',
                             form.formState.errors.level &&
                               'border-destructive focus-visible:ring-destructive',
                           )}
@@ -204,7 +196,7 @@ export default function EditLearning() {
                           <SelectValue placeholder="Selecione" />
                         </SelectTrigger>
                       </FormControl>
-                      <SelectContent className="font-mono">
+                      <SelectContent>
                         <SelectItem value="Iniciante">Iniciante</SelectItem>
                         <SelectItem value="Intermediario">Intermediário</SelectItem>
                         <SelectItem value="Avancado">Avançado</SelectItem>
@@ -230,9 +222,8 @@ export default function EditLearning() {
                     <ReqLabel>Título</ReqLabel>
                     <FormControl>
                       <Input
-                        placeholder="Titulo do aprendizado"
+                        placeholder="Titulo curto e direto do aprendizado"
                         disabled={isSubmitting}
-                        className="font-mono"
                         {...field}
                       />
                     </FormControl>
@@ -251,10 +242,9 @@ export default function EditLearning() {
                     <ReqLabel>Contexto</ReqLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Contexto..."
+                        placeholder="Descreva o problema ou situacao que gerou esse aprendizado."
                         rows={4}
                         disabled={isSubmitting}
-                        className="font-mono"
                         {...field}
                       />
                     </FormControl>
@@ -270,10 +260,9 @@ export default function EditLearning() {
                     <ReqLabel>Aprendizado</ReqLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Aprendizado..."
+                        placeholder="Descreva a solucao ou insight de forma clara e direta."
                         rows={5}
                         disabled={isSubmitting}
-                        className="font-mono"
                         {...field}
                       />
                     </FormControl>
@@ -290,11 +279,14 @@ export default function EditLearning() {
                       (opcional)
                     </span>
                   </label>
+                  <p className="text-[12px] text-muted-foreground mb-[10px]">
+                    Divida o aprendizado em etapas. Deixe em branco se nao se aplicar.
+                  </p>
                 </div>
                 <div className="flex flex-col gap-[8px]">
                   {fields.map((field, index) => (
                     <div key={field.id} className="flex flex-row items-center gap-[8px]">
-                      <span className="font-mono text-[13px] font-medium text-muted-foreground min-w-[24px] text-right">
+                      <span className="text-[13px] font-medium text-muted-foreground min-w-[24px] text-right">
                         {index + 1}.
                       </span>
                       <FormField
@@ -305,9 +297,10 @@ export default function EditLearning() {
                             <FormControl>
                               <Input
                                 {...inputField}
-                                className="font-mono text-[13px] py-[9px] px-[12px] h-auto shadow-none"
+                                className="text-[13px] py-[9px] px-[12px] h-auto shadow-none"
                                 placeholder={`Passo ${index + 1}`}
                                 disabled={isSubmitting}
+                                aria-label={`Passo ${index + 1}`}
                               />
                             </FormControl>
                             <FormMessage />
@@ -319,11 +312,12 @@ export default function EditLearning() {
                           type="button"
                           variant="ghost"
                           size="icon"
-                          className="w-[28px] h-[28px] shrink-0 text-muted-foreground hover:text-destructive"
+                          className="w-[28px] h-[28px] shrink-0 text-muted-foreground hover:text-destructive hover:bg-transparent"
                           onClick={() => remove(index)}
+                          aria-label={`Remover passo ${index + 1}`}
                           disabled={isSubmitting}
                         >
-                          <X className="w-4 h-4" />
+                          <X className="w-4 h-4" aria-hidden="true" />
                         </Button>
                       )}
                     </div>
@@ -333,11 +327,11 @@ export default function EditLearning() {
                   <Button
                     type="button"
                     variant="ghost"
-                    className="w-fit mt-[8px] text-[13px] font-mono text-primary px-0 h-auto gap-[4px]"
+                    className="w-fit mt-[8px] text-[13px] text-primary hover:text-primary/90 hover:bg-transparent px-0 h-auto gap-[4px]"
                     onClick={() => append({ value: '' })}
                     disabled={isSubmitting}
                   >
-                    <Plus className="w-3.5 h-3.5" />
+                    <Plus className="w-3.5 h-3.5" aria-hidden="true" />
                     Adicionar passo
                   </Button>
                 )}
@@ -351,10 +345,9 @@ export default function EditLearning() {
                     <OptLabel>Observações</OptLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Observacoes..."
+                        placeholder="Pontos de atencao, limitacoes ou informacoes extras para os colegas."
                         rows={3}
                         disabled={isSubmitting}
-                        className="font-mono"
                         value={field.value || ''}
                         onChange={field.onChange}
                       />
@@ -368,14 +361,23 @@ export default function EditLearning() {
 
           <div className="flex items-center justify-end gap-[12px] border-t border-border pt-[24px] mt-[40px]">
             <Link to="/admin">
-              <Button type="button" variant="ghost" disabled={isSubmitting} className="font-mono">
+              <Button
+                type="button"
+                variant="outline"
+                disabled={isSubmitting}
+                className="px-[20px] py-[10px] h-auto text-[13px] bg-transparent border-border hover:bg-accent hover:text-accent-foreground disabled:opacity-50"
+              >
                 Cancelar
               </Button>
             </Link>
-            <Button type="submit" disabled={isSubmitting} className="font-mono font-medium">
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              className="px-[22px] py-[10px] h-auto text-[13px] font-medium disabled:opacity-50 disabled:cursor-not-allowed bg-primary text-primary-foreground hover:bg-primary/90"
+            >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="w-4 h-4 mr-2 animate-spin shrink-0" />
+                  <Loader2 className="w-4 h-4 mr-2 animate-spin shrink-0" aria-hidden="true" />
                   Salvando...
                 </>
               ) : (

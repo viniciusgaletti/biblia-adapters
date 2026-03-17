@@ -3,10 +3,10 @@ import { t as Input } from "./input-CU9DIYAF.js";
 import { a as SelectValue, c as FocusScope, i as SelectTrigger, l as useFocusGuards, n as SelectContent, o as ReactRemoveScroll, r as SelectItem, s as hideOthers, t as Select } from "./select-H5Ic4qMm.js";
 import { C as createContextScope, S as createContext2, T as X, _ as Primitive, b as createSlot, d as Portal$1, m as DismissableLayer, o as useId, u as useControllableState, w as composeEventHandlers, x as createSlottable } from "./dist-DcaTQt1M.js";
 import { a as cn, c as useComposedRefs, n as buttonVariants, t as Button } from "./button-CiSPku0O.js";
-import { a as Presence, n as Card, o as useToast, r as CardContent } from "./index-jZkD1oa4.js";
+import { i as useToast, r as Presence } from "./index-Qkng0t77.js";
 import { t as useAdminAuth } from "./use-admin-auth-CzBVU3ds.js";
 import { t as Skeleton } from "./skeleton-BvP868zf.js";
-import { n as adminService, t as Badge } from "./badge-jNgfatAn.js";
+import { t as adminService } from "./admin-CuRPZNi3.js";
 var ExternalLink = createLucideIcon("external-link", [
 	["path", {
 		d: "M15 3h6v6",
@@ -119,79 +119,8 @@ function useAdminDashboard() {
 	};
 }
 //#endregion
-//#region src/components/ui/table.tsx
-var import_jsx_runtime = require_jsx_runtime();
-var Table = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-	"data-uid": "src/components/ui/table.tsx:8:5",
-	"data-prohibitions": "[editContent]",
-	className: "relative w-full overflow-auto",
-	children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("table", {
-		"data-uid": "src/components/ui/table.tsx:9:7",
-		"data-prohibitions": "[editContent]",
-		ref,
-		className: cn("w-full caption-bottom text-sm", className),
-		...props
-	})
-}));
-Table.displayName = "Table";
-var TableHeader = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("thead", {
-	"data-uid": "src/components/ui/table.tsx:19:3",
-	"data-prohibitions": "[editContent]",
-	ref,
-	className: cn("[&_tr]:border-b", className),
-	...props
-}));
-TableHeader.displayName = "TableHeader";
-var TableBody = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("tbody", {
-	"data-uid": "src/components/ui/table.tsx:27:3",
-	"data-prohibitions": "[editContent]",
-	ref,
-	className: cn("[&_tr:last-child]:border-0", className),
-	...props
-}));
-TableBody.displayName = "TableBody";
-var TableFooter = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("tfoot", {
-	"data-uid": "src/components/ui/table.tsx:35:3",
-	"data-prohibitions": "[editContent]",
-	ref,
-	className: cn("border-t bg-muted/50 font-medium [&>tr]:last:border-b-0", className),
-	...props
-}));
-TableFooter.displayName = "TableFooter";
-var TableRow = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("tr", {
-	"data-uid": "src/components/ui/table.tsx:45:5",
-	"data-prohibitions": "[editContent]",
-	ref,
-	className: cn("border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted", className),
-	...props
-}));
-TableRow.displayName = "TableRow";
-var TableHead = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-	"data-uid": "src/components/ui/table.tsx:61:3",
-	"data-prohibitions": "[editContent]",
-	ref,
-	className: cn("h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0", className),
-	...props
-}));
-TableHead.displayName = "TableHead";
-var TableCell = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
-	"data-uid": "src/components/ui/table.tsx:76:3",
-	"data-prohibitions": "[editContent]",
-	ref,
-	className: cn("p-4 align-middle [&:has([role=checkbox])]:pr-0", className),
-	...props
-}));
-TableCell.displayName = "TableCell";
-var TableCaption = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("caption", {
-	"data-uid": "src/components/ui/table.tsx:88:3",
-	"data-prohibitions": "[editContent]",
-	ref,
-	className: cn("mt-4 text-sm text-muted-foreground", className),
-	...props
-}));
-TableCaption.displayName = "TableCaption";
-//#endregion
 //#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/@radix-ui+react-dialog@1.1.15_@types+react-dom@19.2.3_@types+react@19.2.14__@types+reac_779045218dc2799d336e7197abef9d38/node_modules/@radix-ui/react-dialog/dist/index.mjs
+var import_jsx_runtime = require_jsx_runtime();
 var DIALOG_NAME = "Dialog";
 var [createDialogContext, createDialogScope] = createContextScope(DIALOG_NAME);
 var [DialogProvider, useDialogContext] = createDialogContext(DIALOG_NAME);
@@ -747,505 +676,491 @@ function AdminDashboard() {
 	const dateFmt = (d) => d ? d.split("-").reverse().join("/") : "";
 	const getLvlColor = (lvl) => {
 		switch (lvl) {
-			case "Iniciante": return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300";
-			case "Intermediario": return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300";
-			case "Avancado": return "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300";
-			default: return "";
+			case "Iniciante": return "bg-green-100 text-green-800 border-green-200 dark:bg-green-900/30 dark:text-green-400 dark:border-green-800";
+			case "Intermediario": return "bg-yellow-100 text-yellow-800 border-yellow-200 dark:bg-yellow-900/30 dark:text-yellow-400 dark:border-yellow-800";
+			case "Avancado": return "bg-red-100 text-red-800 border-red-200 dark:bg-red-900/30 dark:text-red-400 dark:border-red-800";
+			default: return "border-transparent";
 		}
 	};
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		"data-uid": "src/pages/admin/Dashboard.tsx:84:5",
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-uid": "src/pages/admin/Dashboard.tsx:74:5",
 		"data-prohibitions": "[editContent]",
-		className: "min-h-screen bg-background text-foreground",
-		style: { fontFamily: "\"Roboto Mono\", monospace" },
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("style", {
-				"data-uid": "src/pages/admin/Dashboard.tsx:88:7",
-				"data-prohibitions": "[editContent]",
-				children: `@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap');`
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
-				"data-uid": "src/pages/admin/Dashboard.tsx:89:7",
-				"data-prohibitions": "[editContent]",
-				className: "border-b bg-card px-4 py-4 flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-center w-full",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					"data-uid": "src/pages/admin/Dashboard.tsx:90:9",
+		className: "min-h-screen bg-background text-foreground font-sans",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
+			"data-uid": "src/pages/admin/Dashboard.tsx:75:7",
+			"data-prohibitions": "[editContent]",
+			className: "max-w-7xl mx-auto px-4 py-8",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
+					"data-uid": "src/pages/admin/Dashboard.tsx:76:9",
 					"data-prohibitions": "[editContent]",
-					className: "text-center md:text-left",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-						"data-uid": "src/pages/admin/Dashboard.tsx:91:11",
-						"data-prohibitions": "[]",
-						className: "text-2xl font-bold",
-						children: "Painel Admin"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-						"data-uid": "src/pages/admin/Dashboard.tsx:92:11",
+					className: "flex flex-col md:flex-row md:items-center justify-between gap-4 mb-[28px]",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						"data-uid": "src/pages/admin/Dashboard.tsx:77:11",
 						"data-prohibitions": "[editContent]",
-						className: "text-muted-foreground text-sm",
-						children: [learnings.length, " aprendizados no repositorio"]
-					})]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					"data-uid": "src/pages/admin/Dashboard.tsx:96:9",
-					"data-prohibitions": "[]",
-					className: "flex gap-4 items-center",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
-						"data-uid": "src/pages/admin/Dashboard.tsx:97:11",
-						"data-prohibitions": "[]",
-						to: "/",
-						target: "_blank",
-						className: "text-sm font-medium hover:underline flex items-center gap-1",
-						children: ["Ver repositorio ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, {
-							"data-uid": "src/pages/admin/Dashboard.tsx:102:29",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+							"data-uid": "src/pages/admin/Dashboard.tsx:78:13",
+							"data-prohibitions": "[]",
+							className: "text-[1.5rem] font-bold tracking-[-0.02em] text-foreground",
+							children: "Painel Admin"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							"data-uid": "src/pages/admin/Dashboard.tsx:81:13",
 							"data-prohibitions": "[editContent]",
-							className: "w-4 h-4"
+							className: "text-[0.8125rem] text-muted-foreground mt-[2px]",
+							children: [learnings.length, " aprendizados no repositorio"]
 						})]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						"data-uid": "src/pages/admin/Dashboard.tsx:104:11",
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						"data-uid": "src/pages/admin/Dashboard.tsx:85:11",
 						"data-prohibitions": "[]",
-						variant: "ghost",
-						onClick: async () => {
-							await signOut();
-							navigate("/admin/login");
-						},
-						children: "Sair"
+						className: "flex items-center gap-[12px]",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
+							"data-uid": "src/pages/admin/Dashboard.tsx:86:13",
+							"data-prohibitions": "[]",
+							to: "/",
+							target: "_blank",
+							className: "text-[0.8125rem] text-primary hover:underline flex items-center gap-1 font-medium",
+							children: ["Ver repositorio ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, {
+								"data-uid": "src/pages/admin/Dashboard.tsx:91:31",
+								"data-prohibitions": "[editContent]",
+								className: "w-3.5 h-3.5"
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							"data-uid": "src/pages/admin/Dashboard.tsx:93:13",
+							"data-prohibitions": "[]",
+							onClick: async () => {
+								await signOut();
+								navigate("/admin/login");
+							},
+							className: "border border-border px-[16px] py-[8px] rounded-[var(--radius)] text-[0.8125rem] text-foreground hover:bg-accent transition-colors font-medium",
+							children: "Sair"
+						})]
 					})]
-				})]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
-				"data-uid": "src/pages/admin/Dashboard.tsx:116:7",
-				"data-prohibitions": "[editContent]",
-				className: "max-w-7xl mx-auto px-4 py-8 space-y-8",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/pages/admin/Dashboard.tsx:117:9",
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					"data-uid": "src/pages/admin/Dashboard.tsx:105:9",
+					"data-prohibitions": "[editContent]",
+					className: "grid grid-cols-2 md:grid-cols-4 gap-[12px] mb-[28px]",
+					children: stats.map((s) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						"data-uid": "src/pages/admin/Dashboard.tsx:107:13",
 						"data-prohibitions": "[editContent]",
-						className: "grid grid-cols-2 md:grid-cols-4 gap-4",
-						children: stats.map((s) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
-							"data-uid": "src/pages/admin/Dashboard.tsx:119:13",
+						className: "bg-card border border-border rounded-[calc(var(--radius)*1.5)] py-[16px] px-[20px]",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							"data-uid": "src/pages/admin/Dashboard.tsx:111:15",
 							"data-prohibitions": "[editContent]",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
-								"data-uid": "src/pages/admin/Dashboard.tsx:120:15",
-								"data-prohibitions": "[editContent]",
-								className: "p-6",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									"data-uid": "src/pages/admin/Dashboard.tsx:121:17",
-									"data-prohibitions": "[editContent]",
-									className: "text-sm text-muted-foreground font-medium",
-									children: s.label
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									"data-uid": "src/pages/admin/Dashboard.tsx:122:17",
-									"data-prohibitions": "[editContent]",
-									className: "text-3xl font-bold mt-2",
-									children: s.val
-								})]
-							})
-						}, s.label))
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						"data-uid": "src/pages/admin/Dashboard.tsx:128:9",
-						"data-prohibitions": "[editContent]",
-						className: "flex flex-col md:flex-row gap-4",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								"data-uid": "src/pages/admin/Dashboard.tsx:129:11",
-								"data-prohibitions": "[editContent]",
-								placeholder: "Buscar aprendizados",
-								"aria-label": "Buscar aprendizados",
-								value: searchTerm,
-								onChange: (e) => setSearchTerm(e.target.value),
-								className: "md:w-1/3"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Select, {
-								"data-uid": "src/pages/admin/Dashboard.tsx:136:11",
-								"data-prohibitions": "[editContent]",
-								value: category,
-								onValueChange: setCategory,
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectTrigger, {
-									"data-uid": "src/pages/admin/Dashboard.tsx:137:13",
-									"data-prohibitions": "[]",
-									className: "md:w-[200px]",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectValue, {
-										"data-uid": "src/pages/admin/Dashboard.tsx:138:15",
-										"data-prohibitions": "[editContent]",
-										placeholder: "Categoria"
-									})
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectContent, {
-									"data-uid": "src/pages/admin/Dashboard.tsx:140:13",
-									"data-prohibitions": "[editContent]",
-									children: CATEGORIES.map((c) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectItem, {
-										"data-uid": "src/pages/admin/Dashboard.tsx:142:17",
-										"data-prohibitions": "[editContent]",
-										value: c,
-										children: c
-									}, c))
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Select, {
-								"data-uid": "src/pages/admin/Dashboard.tsx:148:11",
-								"data-prohibitions": "[editContent]",
-								value: level,
-								onValueChange: setLevel,
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectTrigger, {
-									"data-uid": "src/pages/admin/Dashboard.tsx:149:13",
-									"data-prohibitions": "[]",
-									className: "md:w-[200px]",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectValue, {
-										"data-uid": "src/pages/admin/Dashboard.tsx:150:15",
-										"data-prohibitions": "[editContent]",
-										placeholder: "Nivel"
-									})
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectContent, {
-									"data-uid": "src/pages/admin/Dashboard.tsx:152:13",
-									"data-prohibitions": "[editContent]",
-									children: LEVELS.map((l) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectItem, {
-										"data-uid": "src/pages/admin/Dashboard.tsx:154:17",
-										"data-prohibitions": "[editContent]",
-										value: l,
-										children: l
-									}, l))
-								})]
-							}),
-							(searchTerm !== "" || category !== "Todos" || level !== "Todos") && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-								"data-uid": "src/pages/admin/Dashboard.tsx:161:13",
+							className: "text-[1.75rem] font-bold text-primary leading-none",
+							children: s.val
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							"data-uid": "src/pages/admin/Dashboard.tsx:112:15",
+							"data-prohibitions": "[editContent]",
+							className: "text-[0.6875rem] font-semibold uppercase tracking-[0.06em] text-muted-foreground mt-[4px]",
+							children: s.label
+						})]
+					}, s.label))
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					"data-uid": "src/pages/admin/Dashboard.tsx:119:9",
+					"data-prohibitions": "[editContent]",
+					className: "flex flex-col md:flex-row gap-4 mb-6",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+							"data-uid": "src/pages/admin/Dashboard.tsx:120:11",
+							"data-prohibitions": "[editContent]",
+							placeholder: "Buscar aprendizados",
+							"aria-label": "Buscar aprendizados",
+							value: searchTerm,
+							onChange: (e) => setSearchTerm(e.target.value),
+							className: "md:w-1/3"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Select, {
+							"data-uid": "src/pages/admin/Dashboard.tsx:127:11",
+							"data-prohibitions": "[editContent]",
+							value: category,
+							onValueChange: setCategory,
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectTrigger, {
+								"data-uid": "src/pages/admin/Dashboard.tsx:128:13",
 								"data-prohibitions": "[]",
-								variant: "ghost",
-								onClick: () => {
-									setSearchTerm("");
-									setCategory("Todos");
-									setLevel("Todos");
-								},
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(X, {
-									"data-uid": "src/pages/admin/Dashboard.tsx:169:15",
+								className: "md:w-[200px]",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectValue, {
+									"data-uid": "src/pages/admin/Dashboard.tsx:129:15",
 									"data-prohibitions": "[editContent]",
-									className: "w-4 h-4 mr-2"
-								}), " Limpar filtros"]
+									placeholder: "Categoria"
+								})
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectContent, {
+								"data-uid": "src/pages/admin/Dashboard.tsx:131:13",
+								"data-prohibitions": "[editContent]",
+								children: CATEGORIES.map((c) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectItem, {
+									"data-uid": "src/pages/admin/Dashboard.tsx:133:17",
+									"data-prohibitions": "[editContent]",
+									value: c,
+									children: c
+								}, c))
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Select, {
+							"data-uid": "src/pages/admin/Dashboard.tsx:139:11",
+							"data-prohibitions": "[editContent]",
+							value: level,
+							onValueChange: setLevel,
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectTrigger, {
+								"data-uid": "src/pages/admin/Dashboard.tsx:140:13",
+								"data-prohibitions": "[]",
+								className: "md:w-[200px]",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectValue, {
+									"data-uid": "src/pages/admin/Dashboard.tsx:141:15",
+									"data-prohibitions": "[editContent]",
+									placeholder: "Nivel"
+								})
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectContent, {
+								"data-uid": "src/pages/admin/Dashboard.tsx:143:13",
+								"data-prohibitions": "[editContent]",
+								children: LEVELS.map((l) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectItem, {
+									"data-uid": "src/pages/admin/Dashboard.tsx:145:17",
+									"data-prohibitions": "[editContent]",
+									value: l,
+									children: l
+								}, l))
+							})]
+						}),
+						(searchTerm !== "" || category !== "Todos" || level !== "Todos") && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+							"data-uid": "src/pages/admin/Dashboard.tsx:152:13",
+							"data-prohibitions": "[]",
+							variant: "ghost",
+							onClick: () => {
+								setSearchTerm("");
+								setCategory("Todos");
+								setLevel("Todos");
+							},
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(X, {
+								"data-uid": "src/pages/admin/Dashboard.tsx:160:15",
+								"data-prohibitions": "[editContent]",
+								className: "w-4 h-4 mr-2"
+							}), " Limpar filtros"]
+						})
+					]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+					"data-uid": "src/pages/admin/Dashboard.tsx:165:9",
+					"data-prohibitions": "[editContent]",
+					className: "text-[0.8125rem] text-muted-foreground mb-4",
+					children: [filteredLearnings.length, " aprendizados encontrados"]
+				}),
+				loading ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					"data-uid": "src/pages/admin/Dashboard.tsx:170:11",
+					"data-prohibitions": "[editContent]",
+					className: "w-full border border-border rounded-[calc(var(--radius)*1.5)] overflow-hidden",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						"data-uid": "src/pages/admin/Dashboard.tsx:171:13",
+						"data-prohibitions": "[]",
+						className: "bg-muted h-[35px] w-full border-b border-border"
+					}), Array.from({ length: 8 }).map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						"data-uid": "src/pages/admin/Dashboard.tsx:173:15",
+						"data-prohibitions": "[]",
+						className: "h-[52px] w-full border-b border-border bg-card flex items-center px-[14px]",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, {
+							"data-uid": "src/pages/admin/Dashboard.tsx:177:17",
+							"data-prohibitions": "[editContent]",
+							className: "h-4 w-full bg-muted-foreground/10"
+						})
+					}, i))]
+				}) : error ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					"data-uid": "src/pages/admin/Dashboard.tsx:182:11",
+					"data-prohibitions": "[]",
+					className: "text-center py-12",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						"data-uid": "src/pages/admin/Dashboard.tsx:183:13",
+						"data-prohibitions": "[]",
+						className: "mb-4 text-[0.875rem]",
+						children: "Nao foi possivel carregar."
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+						"data-uid": "src/pages/admin/Dashboard.tsx:184:13",
+						"data-prohibitions": "[]",
+						onClick: fetchLearnings,
+						children: "Tentar novamente"
+					})]
+				}) : filteredLearnings.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					"data-uid": "src/pages/admin/Dashboard.tsx:187:11",
+					"data-prohibitions": "[]",
+					className: "text-center py-12 text-[0.875rem] text-muted-foreground",
+					children: "Nenhum aprendizado encontrado."
+				}) : isMobile ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					"data-uid": "src/pages/admin/Dashboard.tsx:191:11",
+					"data-prohibitions": "[editContent]",
+					className: "space-y-0",
+					children: filteredLearnings.map((l) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						"data-uid": "src/pages/admin/Dashboard.tsx:193:15",
+						"data-prohibitions": "[editContent]",
+						className: "bg-card border border-border rounded-[calc(var(--radius)*1.5)] p-[16px] mb-[12px]",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								"data-uid": "src/pages/admin/Dashboard.tsx:197:17",
+								"data-prohibitions": "[editContent]",
+								className: "flex items-center gap-2 mb-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									"data-uid": "src/pages/admin/Dashboard.tsx:198:19",
+									"data-prohibitions": "[editContent]",
+									className: "text-[0.75rem] bg-muted text-muted-foreground px-2 py-0.5 rounded-full border border-border",
+									children: ["#", l.number]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+									"data-uid": "src/pages/admin/Dashboard.tsx:201:19",
+									"data-prohibitions": "[editContent]",
+									className: "font-bold text-[0.875rem] text-foreground",
+									children: l.title
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								"data-uid": "src/pages/admin/Dashboard.tsx:203:17",
+								"data-prohibitions": "[editContent]",
+								className: "flex justify-between text-[0.8125rem] text-muted-foreground mb-3",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									"data-uid": "src/pages/admin/Dashboard.tsx:204:19",
+									"data-prohibitions": "[editContent]",
+									children: l.author
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									"data-uid": "src/pages/admin/Dashboard.tsx:205:19",
+									"data-prohibitions": "[editContent]",
+									children: dateFmt(l.date)
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								"data-uid": "src/pages/admin/Dashboard.tsx:207:17",
+								"data-prohibitions": "[editContent]",
+								className: "flex gap-2 flex-wrap mb-4",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									"data-uid": "src/pages/admin/Dashboard.tsx:208:19",
+									"data-prohibitions": "[editContent]",
+									className: "text-[0.6875rem] font-medium bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full border border-transparent",
+									children: l.category
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									"data-uid": "src/pages/admin/Dashboard.tsx:211:19",
+									"data-prohibitions": "[editContent]",
+									className: `text-[0.6875rem] font-medium px-2 py-0.5 rounded-full border ${getLvlColor(l.level)}`,
+									children: l.level
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								"data-uid": "src/pages/admin/Dashboard.tsx:217:17",
+								"data-prohibitions": "[]",
+								className: "flex items-center gap-2 w-full",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+									"data-uid": "src/pages/admin/Dashboard.tsx:218:19",
+									"data-prohibitions": "[]",
+									to: `/admin/editar/${l.id}`,
+									className: "flex-1 border border-border rounded-[var(--radius)] text-[0.8125rem] py-2 text-center text-foreground hover:bg-accent transition-colors font-medium",
+									children: "Editar"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DelDialog, {
+									"data-uid": "src/pages/admin/Dashboard.tsx:224:19",
+									"data-prohibitions": "[]",
+									onConfirm: () => deleteLearning(l.id),
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+										"data-uid": "src/pages/admin/Dashboard.tsx:225:21",
+										"data-prohibitions": "[]",
+										className: "flex-1 border border-destructive/30 text-destructive rounded-[var(--radius)] text-[0.8125rem] py-2 text-center hover:bg-destructive/10 transition-colors font-medium",
+										children: "Excluir"
+									})
+								})]
 							})
 						]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-						"data-uid": "src/pages/admin/Dashboard.tsx:173:9",
+					}, l.id))
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					"data-uid": "src/pages/admin/Dashboard.tsx:234:11",
+					"data-prohibitions": "[editContent]",
+					className: "bg-card rounded-[calc(var(--radius)*1.5)] border border-border overflow-hidden",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("table", {
+						"data-uid": "src/pages/admin/Dashboard.tsx:235:13",
 						"data-prohibitions": "[editContent]",
-						className: "text-sm text-muted-foreground",
-						children: [filteredLearnings.length, " aprendizados encontrados"]
-					}),
-					loading ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/pages/admin/Dashboard.tsx:178:11",
-						"data-prohibitions": "[editContent]",
-						className: "space-y-4",
-						children: Array.from({ length: 8 }).map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, {
-							"data-uid": "src/pages/admin/Dashboard.tsx:180:15",
-							"data-prohibitions": "[editContent]",
-							className: "h-16 w-full"
-						}, i))
-					}) : error ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						"data-uid": "src/pages/admin/Dashboard.tsx:184:11",
-						"data-prohibitions": "[]",
-						className: "text-center py-12",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							"data-uid": "src/pages/admin/Dashboard.tsx:185:13",
+						className: "w-full border-collapse text-left",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("thead", {
+							"data-uid": "src/pages/admin/Dashboard.tsx:236:15",
 							"data-prohibitions": "[]",
-							className: "mb-4",
-							children: "Nao foi possivel carregar."
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							"data-uid": "src/pages/admin/Dashboard.tsx:186:13",
-							"data-prohibitions": "[]",
-							onClick: fetchLearnings,
-							children: "Tentar novamente"
-						})]
-					}) : filteredLearnings.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/pages/admin/Dashboard.tsx:189:11",
-						"data-prohibitions": "[]",
-						className: "text-center py-12 text-muted-foreground",
-						children: "Nenhum aprendizado encontrado."
-					}) : isMobile ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/pages/admin/Dashboard.tsx:193:11",
-						"data-prohibitions": "[editContent]",
-						className: "space-y-4",
-						children: filteredLearnings.map((l) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
-							"data-uid": "src/pages/admin/Dashboard.tsx:195:15",
-							"data-prohibitions": "[editContent]",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
-								"data-uid": "src/pages/admin/Dashboard.tsx:196:17",
-								"data-prohibitions": "[editContent]",
-								className: "p-4 space-y-4",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", {
+								"data-uid": "src/pages/admin/Dashboard.tsx:237:17",
+								"data-prohibitions": "[]",
+								className: "border-b border-border bg-muted",
 								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										"data-uid": "src/pages/admin/Dashboard.tsx:197:19",
-										"data-prohibitions": "[editContent]",
-										className: "flex items-center gap-2 mb-2",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
-											"data-uid": "src/pages/admin/Dashboard.tsx:198:21",
-											"data-prohibitions": "[editContent]",
-											variant: "outline",
-											children: ["#", l.number]
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-											"data-uid": "src/pages/admin/Dashboard.tsx:199:21",
-											"data-prohibitions": "[editContent]",
-											className: "font-bold",
-											children: l.title
-										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										"data-uid": "src/pages/admin/Dashboard.tsx:201:19",
-										"data-prohibitions": "[editContent]",
-										className: "flex justify-between text-sm text-muted-foreground",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											"data-uid": "src/pages/admin/Dashboard.tsx:202:21",
-											"data-prohibitions": "[editContent]",
-											children: l.author
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											"data-uid": "src/pages/admin/Dashboard.tsx:203:21",
-											"data-prohibitions": "[editContent]",
-											children: dateFmt(l.date)
-										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										"data-uid": "src/pages/admin/Dashboard.tsx:205:19",
-										"data-prohibitions": "[editContent]",
-										className: "flex gap-2 flex-wrap",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-											"data-uid": "src/pages/admin/Dashboard.tsx:206:21",
-											"data-prohibitions": "[editContent]",
-											variant: "secondary",
-											children: l.category
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-											"data-uid": "src/pages/admin/Dashboard.tsx:207:21",
-											"data-prohibitions": "[editContent]",
-											variant: "outline",
-											className: getLvlColor(l.level),
-											children: l.level
-										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										"data-uid": "src/pages/admin/Dashboard.tsx:211:19",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+										"data-uid": "src/pages/admin/Dashboard.tsx:238:19",
 										"data-prohibitions": "[]",
-										className: "flex gap-2",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-											"data-uid": "src/pages/admin/Dashboard.tsx:212:21",
-											"data-prohibitions": "[]",
-											variant: "outline",
-											className: "flex-1",
-											asChild: true,
-											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-												"data-uid": "src/pages/admin/Dashboard.tsx:213:23",
-												"data-prohibitions": "[]",
-												to: `/admin/editar/${l.id}`,
-												children: "Editar"
-											})
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DelDialog, {
-											"data-uid": "src/pages/admin/Dashboard.tsx:215:21",
-											"data-prohibitions": "[]",
-											onConfirm: () => deleteLearning(l.id),
-											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-												"data-uid": "src/pages/admin/Dashboard.tsx:216:23",
-												"data-prohibitions": "[]",
-												variant: "destructive",
-												className: "flex-1",
-												children: "Excluir"
-											})
-										})]
+										className: "px-[14px] py-[10px] text-[0.6875rem] font-bold uppercase tracking-[0.06em] text-muted-foreground w-[60px]",
+										children: "#"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+										"data-uid": "src/pages/admin/Dashboard.tsx:241:19",
+										"data-prohibitions": "[]",
+										className: "px-[14px] py-[10px] text-[0.6875rem] font-bold uppercase tracking-[0.06em] text-muted-foreground",
+										children: "Titulo"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+										"data-uid": "src/pages/admin/Dashboard.tsx:244:19",
+										"data-prohibitions": "[]",
+										className: "px-[14px] py-[10px] text-[0.6875rem] font-bold uppercase tracking-[0.06em] text-muted-foreground w-[140px]",
+										children: "Autor"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+										"data-uid": "src/pages/admin/Dashboard.tsx:247:19",
+										"data-prohibitions": "[]",
+										className: "px-[14px] py-[10px] text-[0.6875rem] font-bold uppercase tracking-[0.06em] text-muted-foreground w-[120px]",
+										children: "Categoria"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+										"data-uid": "src/pages/admin/Dashboard.tsx:250:19",
+										"data-prohibitions": "[]",
+										className: "px-[14px] py-[10px] text-[0.6875rem] font-bold uppercase tracking-[0.06em] text-muted-foreground w-[110px]",
+										children: "Nivel"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+										"data-uid": "src/pages/admin/Dashboard.tsx:253:19",
+										"data-prohibitions": "[]",
+										className: "px-[14px] py-[10px] text-[0.6875rem] font-bold uppercase tracking-[0.06em] text-muted-foreground w-[100px]",
+										children: "Data"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+										"data-uid": "src/pages/admin/Dashboard.tsx:256:19",
+										"data-prohibitions": "[]",
+										className: "px-[14px] py-[10px] text-[0.6875rem] font-bold uppercase tracking-[0.06em] text-muted-foreground w-[100px] text-right",
+										children: "Acoes"
 									})
 								]
 							})
-						}, l.id))
-					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/pages/admin/Dashboard.tsx:226:11",
-						"data-prohibitions": "[editContent]",
-						className: "bg-card rounded-md border",
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Table, {
-							"data-uid": "src/pages/admin/Dashboard.tsx:227:13",
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("tbody", {
+							"data-uid": "src/pages/admin/Dashboard.tsx:261:15",
 							"data-prohibitions": "[editContent]",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHeader, {
-								"data-uid": "src/pages/admin/Dashboard.tsx:228:15",
-								"data-prohibitions": "[]",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TableRow, {
-									"data-uid": "src/pages/admin/Dashboard.tsx:229:17",
-									"data-prohibitions": "[]",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
-											"data-uid": "src/pages/admin/Dashboard.tsx:230:19",
-											"data-prohibitions": "[]",
-											className: "w-[60px]",
-											children: "Num (#)"
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
-											"data-uid": "src/pages/admin/Dashboard.tsx:231:19",
-											"data-prohibitions": "[]",
-											children: "Titulo"
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
-											"data-uid": "src/pages/admin/Dashboard.tsx:232:19",
-											"data-prohibitions": "[]",
-											className: "w-[140px]",
-											children: "Autor"
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
-											"data-uid": "src/pages/admin/Dashboard.tsx:233:19",
-											"data-prohibitions": "[]",
-											className: "w-[120px]",
-											children: "Categoria"
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
-											"data-uid": "src/pages/admin/Dashboard.tsx:234:19",
-											"data-prohibitions": "[]",
-											className: "w-[110px]",
-											children: "Nivel"
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
-											"data-uid": "src/pages/admin/Dashboard.tsx:235:19",
-											"data-prohibitions": "[]",
-											className: "w-[100px]",
-											children: "Data"
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
-											"data-uid": "src/pages/admin/Dashboard.tsx:236:19",
-											"data-prohibitions": "[]",
-											className: "w-[100px]",
-											children: "Acoes"
-										})
-									]
-								})
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableBody, {
-								"data-uid": "src/pages/admin/Dashboard.tsx:239:15",
+							children: filteredLearnings.map((l) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", {
+								"data-uid": "src/pages/admin/Dashboard.tsx:263:19",
 								"data-prohibitions": "[editContent]",
-								children: filteredLearnings.map((l) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TableRow, {
-									"data-uid": "src/pages/admin/Dashboard.tsx:241:19",
-									"data-prohibitions": "[editContent]",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-											"data-uid": "src/pages/admin/Dashboard.tsx:242:21",
+								className: "border-b border-border hover:bg-accent/50 transition-colors last:border-0",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+										"data-uid": "src/pages/admin/Dashboard.tsx:267:21",
+										"data-prohibitions": "[editContent]",
+										className: "px-[14px] py-[12px] text-[0.8125rem] text-foreground",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											"data-uid": "src/pages/admin/Dashboard.tsx:268:23",
 											"data-prohibitions": "[editContent]",
-											children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Badge, {
-												"data-uid": "src/pages/admin/Dashboard.tsx:243:23",
-												"data-prohibitions": "[editContent]",
-												variant: "outline",
-												children: ["#", l.number]
-											})
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-											"data-uid": "src/pages/admin/Dashboard.tsx:245:21",
-											"data-prohibitions": "[editContent]",
-											className: "max-w-[200px] truncate font-bold",
-											title: l.title,
-											children: l.title
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-											"data-uid": "src/pages/admin/Dashboard.tsx:248:21",
-											"data-prohibitions": "[editContent]",
-											children: l.author
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-											"data-uid": "src/pages/admin/Dashboard.tsx:249:21",
-											"data-prohibitions": "[editContent]",
-											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-												"data-uid": "src/pages/admin/Dashboard.tsx:250:23",
-												"data-prohibitions": "[editContent]",
-												variant: "secondary",
-												children: l.category
-											})
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-											"data-uid": "src/pages/admin/Dashboard.tsx:252:21",
-											"data-prohibitions": "[editContent]",
-											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-												"data-uid": "src/pages/admin/Dashboard.tsx:253:23",
-												"data-prohibitions": "[editContent]",
-												variant: "outline",
-												className: getLvlColor(l.level),
-												children: l.level
-											})
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-											"data-uid": "src/pages/admin/Dashboard.tsx:257:21",
-											"data-prohibitions": "[editContent]",
-											children: dateFmt(l.date)
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-											"data-uid": "src/pages/admin/Dashboard.tsx:258:21",
-											"data-prohibitions": "[]",
-											children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												"data-uid": "src/pages/admin/Dashboard.tsx:259:23",
-												"data-prohibitions": "[]",
-												className: "flex items-center gap-2",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-													"data-uid": "src/pages/admin/Dashboard.tsx:260:25",
-													"data-prohibitions": "[]",
-													variant: "ghost",
-													size: "icon",
-													asChild: true,
-													"aria-label": "Editar aprendizado",
-													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-														"data-uid": "src/pages/admin/Dashboard.tsx:261:27",
-														"data-prohibitions": "[]",
-														to: `/admin/editar/${l.id}`,
-														children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Pencil, {
-															"data-uid": "src/pages/admin/Dashboard.tsx:262:29",
-															"data-prohibitions": "[editContent]",
-															className: "w-4 h-4"
-														})
-													})
-												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DelDialog, {
-													"data-uid": "src/pages/admin/Dashboard.tsx:265:25",
-													"data-prohibitions": "[]",
-													onConfirm: () => deleteLearning(l.id),
-													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-														"data-uid": "src/pages/admin/Dashboard.tsx:266:27",
-														"data-prohibitions": "[]",
-														variant: "ghost",
-														size: "icon",
-														className: "text-destructive hover:bg-destructive/10",
-														"aria-label": "Excluir aprendizado",
-														children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trash2, {
-															"data-uid": "src/pages/admin/Dashboard.tsx:272:29",
-															"data-prohibitions": "[editContent]",
-															className: "w-4 h-4"
-														})
-													})
-												})]
-											})
+											className: "bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full border border-border text-[0.6875rem] font-medium",
+											children: l.number
 										})
-									]
-								}, l.id))
-							})]
-						})
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+										"data-uid": "src/pages/admin/Dashboard.tsx:272:21",
+										"data-prohibitions": "[editContent]",
+										className: "px-[14px] py-[12px] text-[0.8125rem] text-foreground font-medium max-w-[220px] truncate whitespace-nowrap",
+										title: l.title,
+										children: l.title
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+										"data-uid": "src/pages/admin/Dashboard.tsx:278:21",
+										"data-prohibitions": "[editContent]",
+										className: "px-[14px] py-[12px] text-[0.8125rem] text-muted-foreground truncate",
+										children: l.author
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+										"data-uid": "src/pages/admin/Dashboard.tsx:281:21",
+										"data-prohibitions": "[editContent]",
+										className: "px-[14px] py-[12px]",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											"data-uid": "src/pages/admin/Dashboard.tsx:282:23",
+											"data-prohibitions": "[editContent]",
+											className: "text-[0.6875rem] font-medium bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full border border-transparent",
+											children: l.category
+										})
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+										"data-uid": "src/pages/admin/Dashboard.tsx:286:21",
+										"data-prohibitions": "[editContent]",
+										className: "px-[14px] py-[12px]",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											"data-uid": "src/pages/admin/Dashboard.tsx:287:23",
+											"data-prohibitions": "[editContent]",
+											className: `text-[0.6875rem] font-medium px-2 py-0.5 rounded-full border ${getLvlColor(l.level)}`,
+											children: l.level
+										})
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+										"data-uid": "src/pages/admin/Dashboard.tsx:295:21",
+										"data-prohibitions": "[editContent]",
+										className: "px-[14px] py-[12px] text-[0.8125rem] text-muted-foreground",
+										children: dateFmt(l.date)
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+										"data-uid": "src/pages/admin/Dashboard.tsx:298:21",
+										"data-prohibitions": "[]",
+										className: "px-[14px] py-[12px] text-[0.8125rem] text-foreground text-right",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											"data-uid": "src/pages/admin/Dashboard.tsx:299:23",
+											"data-prohibitions": "[]",
+											className: "flex items-center justify-end gap-[4px]",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+												"data-uid": "src/pages/admin/Dashboard.tsx:300:25",
+												"data-prohibitions": "[]",
+												to: `/admin/editar/${l.id}`,
+												className: "w-[32px] h-[32px] rounded-[var(--radius)] flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-accent transition-colors",
+												"aria-label": "Editar",
+												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Pencil, {
+													"data-uid": "src/pages/admin/Dashboard.tsx:305:27",
+													"data-prohibitions": "[editContent]",
+													className: "w-4 h-4"
+												})
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DelDialog, {
+												"data-uid": "src/pages/admin/Dashboard.tsx:307:25",
+												"data-prohibitions": "[]",
+												onConfirm: () => deleteLearning(l.id),
+												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+													"data-uid": "src/pages/admin/Dashboard.tsx:308:27",
+													"data-prohibitions": "[]",
+													className: "w-[32px] h-[32px] rounded-[var(--radius)] flex items-center justify-center text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors",
+													"aria-label": "Excluir",
+													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trash2, {
+														"data-uid": "src/pages/admin/Dashboard.tsx:312:29",
+														"data-prohibitions": "[editContent]",
+														className: "w-4 h-4"
+													})
+												})
+											})]
+										})
+									})
+								]
+							}, l.id))
+						})]
 					})
-				]
-			})
-		]
+				})
+			]
+		})
 	});
 }
 function DelDialog({ children, onConfirm }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AlertDialog, {
-		"data-uid": "src/pages/admin/Dashboard.tsx:290:5",
+		"data-uid": "src/pages/admin/Dashboard.tsx:330:5",
 		"data-prohibitions": "[editContent]",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AlertDialogTrigger, {
-			"data-uid": "src/pages/admin/Dashboard.tsx:291:7",
+			"data-uid": "src/pages/admin/Dashboard.tsx:331:7",
 			"data-prohibitions": "[editContent]",
 			asChild: true,
 			children
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AlertDialogContent, {
-			"data-uid": "src/pages/admin/Dashboard.tsx:292:7",
+			"data-uid": "src/pages/admin/Dashboard.tsx:332:7",
 			"data-prohibitions": "[]",
+			className: "font-sans",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AlertDialogHeader, {
-				"data-uid": "src/pages/admin/Dashboard.tsx:293:9",
+				"data-uid": "src/pages/admin/Dashboard.tsx:333:9",
 				"data-prohibitions": "[]",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AlertDialogTitle, {
-					"data-uid": "src/pages/admin/Dashboard.tsx:294:11",
+					"data-uid": "src/pages/admin/Dashboard.tsx:334:11",
 					"data-prohibitions": "[]",
 					children: "Excluir aprendizado?"
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AlertDialogDescription, {
-					"data-uid": "src/pages/admin/Dashboard.tsx:295:11",
+					"data-uid": "src/pages/admin/Dashboard.tsx:335:11",
 					"data-prohibitions": "[]",
 					children: "Essa acao nao pode ser desfeita. O aprendizado sera removido permanentemente do repositorio."
 				})]
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AlertDialogFooter, {
-				"data-uid": "src/pages/admin/Dashboard.tsx:300:9",
+				"data-uid": "src/pages/admin/Dashboard.tsx:340:9",
 				"data-prohibitions": "[]",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AlertDialogCancel, {
-					"data-uid": "src/pages/admin/Dashboard.tsx:301:11",
+					"data-uid": "src/pages/admin/Dashboard.tsx:341:11",
 					"data-prohibitions": "[]",
 					children: "Cancelar"
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AlertDialogAction, {
-					"data-uid": "src/pages/admin/Dashboard.tsx:302:11",
+					"data-uid": "src/pages/admin/Dashboard.tsx:342:11",
 					"data-prohibitions": "[]",
 					onClick: onConfirm,
 					className: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
@@ -1258,4 +1173,4 @@ function DelDialog({ children, onConfirm }) {
 //#endregion
 export { AdminDashboard as default };
 
-//# sourceMappingURL=Dashboard-C8pSJSQ2.js.map
+//# sourceMappingURL=Dashboard-3eEBoiNo.js.map
