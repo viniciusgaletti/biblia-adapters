@@ -1,4 +1,4 @@
-import { i as supabase } from "./button-DVNN3I8f.js";
+import { i as supabase } from "./button-DMYV3pJh.js";
 //#region src/services/aprendizados.ts
 var getAprendizados = async () => {
 	const { data, error } = await supabase.from("aprendizados").select("*").order("created_at", { ascending: false });
@@ -27,4 +27,4 @@ var deleteAprendizado = async (id) => {
 //#endregion
 export { getAprendizados as i, deleteAprendizado as n, getAprendizado as r, createAprendizado as t };
 
-//# sourceMappingURL=aprendizados-BEJfwGrY.js.map
+//# sourceMappingURL=aprendizados-DgI4ZuJl.js.map

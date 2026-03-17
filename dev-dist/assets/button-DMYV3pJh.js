@@ -18317,7 +18317,7 @@ function shouldShowDeprecationWarning() {
 	return parseInt(versionMatch[1], 10) <= 18;
 }
 if (shouldShowDeprecationWarning()) console.warn("⚠️  Node.js 18 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 20 or later. For more information, visit: https://github.com/orgs/supabase/discussions/37217");
-var supabase = createClient(void 0, void 0, { auth: {
+var supabase = createClient("https://owmwpkkmwzjectofrhuf.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im93bXdwa2ttd3pqZWN0b2ZyaHVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM3NzEyODQsImV4cCI6MjA4OTM0NzI4NH0.y3V5WR9YDSJoSzW_ccX2jAUftj4rZ4nW60LGoN0LMX8", { auth: {
 	storage: localStorage,
 	persistSession: true,
 	autoRefreshToken: true
@@ -18458,4 +18458,4 @@ Button.displayName = "Button";
 //#endregion
 export { __vitePreload as C, __toESM as E, useParams as S, __commonJSMin as T, Navigate as _, __assign as a, Routes as b, cn as c, require_jsx_runtime as d, composeRefs as f, Link as g, BrowserRouter as h, supabase as i, createLucideIcon as l, useToast as m, buttonVariants as n, __rest as o, useComposedRefs as p, createSlot as r, __spreadArray as s, Button as t, cva as u, Outlet as v, require_react as w, useNavigate as x, Route as y };
 
-//# sourceMappingURL=button-DVNN3I8f.js.map
+//# sourceMappingURL=button-DMYV3pJh.js.map

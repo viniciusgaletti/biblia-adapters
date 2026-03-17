@@ -1,4 +1,4 @@
-import { l as createLucideIcon } from "./button-DVNN3I8f.js";
+import { l as createLucideIcon } from "./button-DMYV3pJh.js";
 var ArrowLeft = createLucideIcon("arrow-left", [["path", {
 	d: "m12 19-7-7 7-7",
 	key: "1l729n"
@@ -9,4 +9,4 @@ var ArrowLeft = createLucideIcon("arrow-left", [["path", {
 //#endregion
 export { ArrowLeft as t };
 
-//# sourceMappingURL=arrow-left-P6VWhAdv.js.map
+//# sourceMappingURL=arrow-left-WDFfjtz1.js.map

@@ -9,7 +9,33 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      aprendizados: {
+        Row: {
+          categoria: string | null
+          conteudo: string
+          created_at: string
+          id: string
+          titulo: string
+          user_id: string
+        }
+        Insert: {
+          categoria?: string | null
+          conteudo: string
+          created_at?: string
+          id?: string
+          titulo: string
+          user_id: string
+        }
+        Update: {
+          categoria?: string | null
+          conteudo?: string
+          created_at?: string
+          id?: string
+          titulo?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -153,3 +179,31 @@ export const Constants = {
 // IMPORTANT: The TypeScript types above map UUID, TEXT, VARCHAR all to "string".
 // Use the COLUMN TYPES section below to know the real PostgreSQL type for each column.
 // Always use the correct PostgreSQL type when writing SQL migrations.
+
+// --- COLUMN TYPES (actual PostgreSQL types) ---
+// Use this to know the real database type when writing migrations.
+// "string" in TypeScript types above may be uuid, text, varchar, timestamptz, etc.
+// Table: aprendizados
+//   id: uuid (not null, default: gen_random_uuid())
+//   created_at: timestamp with time zone (not null, default: now())
+//   user_id: uuid (not null)
+//   titulo: text (not null)
+//   conteudo: text (not null)
+//   categoria: text (nullable)
+
+// --- CONSTRAINTS ---
+// Table: aprendizados
+//   PRIMARY KEY aprendizados_pkey: PRIMARY KEY (id)
+//   FOREIGN KEY aprendizados_user_id_fkey: FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE
+
+// --- ROW LEVEL SECURITY POLICIES ---
+// Table: aprendizados
+//   Policy "Users can delete their own learnings" (DELETE, PERMISSIVE) roles={authenticated}
+//     USING: (auth.uid() = user_id)
+//   Policy "Users can insert their own learnings" (INSERT, PERMISSIVE) roles={authenticated}
+//     WITH CHECK: (auth.uid() = user_id)
+//   Policy "Users can see their own learnings" (SELECT, PERMISSIVE) roles={authenticated}
+//     USING: (auth.uid() = user_id)
+//   Policy "Users can update their own learnings" (UPDATE, PERMISSIVE) roles={authenticated}
+//     USING: (auth.uid() = user_id)
+//     WITH CHECK: (auth.uid() = user_id)

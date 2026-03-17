@@ -1,5 +1,5 @@
-import { E as __toESM, c as cn, d as require_jsx_runtime, r as createSlot, u as cva, w as require_react } from "./button-DVNN3I8f.js";
-import { n as require_react_dom } from "./loader-circle-fpXoFpGk.js";
+import { E as __toESM, c as cn, d as require_jsx_runtime, r as createSlot, u as cva, w as require_react } from "./button-DMYV3pJh.js";
+import { n as require_react_dom } from "./loader-circle-pedXnbvr.js";
 //#region src/components/ui/input.tsx
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 var import_jsx_runtime = require_jsx_runtime();
@@ -80,4 +80,4 @@ Label.displayName = Root.displayName;
 //#endregion
 export { Input as n, Label as t };
 
-//# sourceMappingURL=label-Ch-d8Lgw.js.map
+//# sourceMappingURL=label-Q-CCHO1F.js.map

@@ -1,6 +1,6 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-C0mUK8m5.js","assets/button-DVNN3I8f.js","assets/skeleton-BdKw0IDJ.js","assets/card-CanMHTIj.js","assets/aprendizados-BEJfwGrY.js","assets/Login-ChqPWCPQ.js","assets/label-Ch-d8Lgw.js","assets/loader-circle-fpXoFpGk.js","assets/NovoAprendizado-BybTaGxy.js","assets/arrow-left-P6VWhAdv.js","assets/DetalheAprendizado-V556skN7.js"])))=>i.map(i=>d[i]);
-import { C as __vitePreload, E as __toESM, T as __commonJSMin, _ as Navigate, b as Routes, c as cn$1, d as require_jsx_runtime, f as composeRefs, g as Link, h as BrowserRouter, i as supabase, l as createLucideIcon, m as useToast, p as useComposedRefs, t as Button, u as cva, v as Outlet, w as require_react, y as Route } from "./button-DVNN3I8f.js";
-import { n as require_react_dom, t as LoaderCircle } from "./loader-circle-fpXoFpGk.js";
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-B8dke8Wq.js","assets/button-DMYV3pJh.js","assets/skeleton-D2GGYGUN.js","assets/card-BMVqA-P1.js","assets/aprendizados-DgI4ZuJl.js","assets/Login-xxEkmf9F.js","assets/label-Q-CCHO1F.js","assets/loader-circle-pedXnbvr.js","assets/NovoAprendizado-BJVjrSTK.js","assets/arrow-left-WDFfjtz1.js","assets/DetalheAprendizado-D3LI8pNw.js"])))=>i.map(i=>d[i]);
+import { C as __vitePreload, E as __toESM, T as __commonJSMin, _ as Navigate, b as Routes, c as cn$1, d as require_jsx_runtime, f as composeRefs, g as Link, h as BrowserRouter, i as supabase, l as createLucideIcon, m as useToast, p as useComposedRefs, t as Button, u as cva, v as Outlet, w as require_react, y as Route } from "./button-DMYV3pJh.js";
+import { n as require_react_dom, t as LoaderCircle } from "./loader-circle-pedXnbvr.js";
 //#region \0vite/modulepreload-polyfill.js
 (function polyfill() {
 	const relList = document.createElement("link").relList;
@@ -19589,10 +19589,10 @@ var NotFound = () => {
 };
 //#endregion
 //#region src/App.tsx
-var Index = (0, import_react.lazy)(() => __vitePreload(() => import("./Index-C0mUK8m5.js"), __vite__mapDeps([0,1,2,3,4])));
-var Login = (0, import_react.lazy)(() => __vitePreload(() => import("./Login-ChqPWCPQ.js"), __vite__mapDeps([5,1,6,7,3])));
-var NovoAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./NovoAprendizado-BybTaGxy.js"), __vite__mapDeps([8,1,6,7,9,3,4])));
-var DetalheAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./DetalheAprendizado-V556skN7.js"), __vite__mapDeps([10,1,9,2,7,4])));
+var Index = (0, import_react.lazy)(() => __vitePreload(() => import("./Index-B8dke8Wq.js"), __vite__mapDeps([0,1,2,3,4])));
+var Login = (0, import_react.lazy)(() => __vitePreload(() => import("./Login-xxEkmf9F.js"), __vite__mapDeps([5,1,6,7,3])));
+var NovoAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./NovoAprendizado-BJVjrSTK.js"), __vite__mapDeps([8,1,6,7,9,3,4])));
+var DetalheAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./DetalheAprendizado-D3LI8pNw.js"), __vite__mapDeps([10,1,9,2,7,4])));
 var App = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BrowserRouter, {
 	"data-uid": "src/App.tsx:20:3",
 	"data-prohibitions": "[]",
@@ -19710,4 +19710,4 @@ var App = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BrowserRouter, {
 //#endregion
 export { Presence as a, useCallbackRef as c, createSlottable as d, createContext2 as f, useControllableState as i, Primitive as l, composeEventHandlers as m, useId as n, Portal as o, createContextScope as p, BookOpen as r, DismissableLayer as s, useAuth as t, createSlot as u };
 
-//# sourceMappingURL=index-Dbgt713z.js.map
+//# sourceMappingURL=index-Cm0Es-oG.js.map
