@@ -1,10 +1,12 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { ArrowLeft, RefreshCw } from 'lucide-react'
+import { ArrowLeft, RefreshCw, Star } from 'lucide-react'
 import { useLearningDetail } from '@/hooks/use-learning-detail'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { submitRating } from '@/services/learnings'
+import { toast } from 'sonner'
 
 function formatDateLong(dateString: string) {
   if (!dateString) return ''
@@ -20,13 +22,49 @@ export default function DetalheAprendizado() {
   const { id } = useParams<{ id: string }>()
   const { data: ap, loading, error, refetch } = useLearningDetail(id)
 
+  const [userRating, setUserRating] = useState<number>(0)
+  const [ratingId, setRatingId] = useState<string | undefined>()
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [hoverRating, setHoverRating] = useState(0)
+
   useEffect(() => {
     if (ap?.title) {
       document.title = `${ap.title} | Biblia dos Adapters`
     } else if (!loading) {
       document.title = 'Detalhe do Aprendizado | Biblia dos Adapters'
     }
+
+    if (ap) {
+      const stored = localStorage.getItem(`rating_${ap.id}`)
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored)
+          setUserRating(parsed.rating)
+          setRatingId(parsed.id)
+        } catch (e) {
+          // Ignore parse errors
+        }
+      }
+    }
   }, [ap, loading])
+
+  const handleRate = async (value: number) => {
+    if (!ap || isSubmitting) return
+    try {
+      setIsSubmitting(true)
+      const result = await submitRating(ap.id, value, ratingId)
+      setUserRating(value)
+      setRatingId(result.id)
+      localStorage.setItem(`rating_${ap.id}`, JSON.stringify({ rating: value, id: result.id }))
+      toast.success('Avaliação enviada com sucesso!')
+      refetch()
+    } catch (err) {
+      console.error(err)
+      toast.error('Erro ao enviar avaliação. Tente novamente.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   if (loading) {
     return (
@@ -159,6 +197,44 @@ export default function DetalheAprendizado() {
         <Section title="O Aprendizado" content={ap.learning} />
         <Section title="Passo a Passo" content={ap.steps} />
         <Section title="Observações / Dicas Extras" content={ap.observations} />
+      </div>
+
+      <div className="mt-12 pt-8 border-t border-border">
+        <h3 className="text-sm font-bold text-foreground mb-4">Avalie este aprendizado</h3>
+        <div className="flex items-center gap-4 flex-wrap">
+          <div className="flex gap-1">
+            {[1, 2, 3, 4, 5].map((star) => (
+              <button
+                key={star}
+                disabled={isSubmitting}
+                onMouseEnter={() => setHoverRating(star)}
+                onMouseLeave={() => setHoverRating(0)}
+                onClick={() => handleRate(star)}
+                className="p-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm transition-colors"
+                aria-label={`Avaliar com ${star} estrelas`}
+              >
+                <Star
+                  className={cn(
+                    'w-6 h-6 transition-all',
+                    (hoverRating || userRating) >= star
+                      ? 'fill-yellow-400 text-yellow-400'
+                      : 'text-muted-foreground/30 hover:text-muted-foreground',
+                  )}
+                />
+              </button>
+            ))}
+          </div>
+          <div className="text-sm text-muted-foreground">
+            {ap.rating_avg && ap.rating_count ? (
+              <span>
+                <strong className="text-foreground">{Number(ap.rating_avg).toFixed(1)}</strong> / 5
+                ({ap.rating_count} {ap.rating_count === 1 ? 'avaliação' : 'avaliações'})
+              </span>
+            ) : (
+              <span>Seja o primeiro a avaliar!</span>
+            )}
+          </div>
+        </div>
       </div>
 
       <footer className="mt-[44px]">

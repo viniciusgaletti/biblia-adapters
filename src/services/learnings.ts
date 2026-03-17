@@ -57,3 +57,24 @@ export const createLearning = async (
   if (error) throw error
   return data as LearningRow
 }
+
+export const submitRating = async (
+  learningId: string,
+  rating: number,
+  previousRatingId?: string,
+) => {
+  if (previousRatingId) {
+    // @ts-expect-error - Table is dynamically added via migration
+    await supabase.from('learning_ratings').delete().eq('id', previousRatingId)
+  }
+
+  const { data, error } = await supabase
+    // @ts-expect-error - Table is dynamically added via migration
+    .from('learning_ratings')
+    .insert([{ learning_id: learningId, rating }])
+    .select()
+    .single()
+
+  if (error) throw error
+  return data
+}
