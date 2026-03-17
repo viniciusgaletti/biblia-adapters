@@ -16,7 +16,7 @@ export type Database = {
           created_at: string
           id: string
           titulo: string
-          user_id: string
+          user_id: string | null
         }
         Insert: {
           categoria?: string | null
@@ -24,7 +24,7 @@ export type Database = {
           created_at?: string
           id?: string
           titulo: string
-          user_id: string
+          user_id?: string | null
         }
         Update: {
           categoria?: string | null
@@ -32,7 +32,7 @@ export type Database = {
           created_at?: string
           id?: string
           titulo?: string
-          user_id?: string
+          user_id?: string | null
         }
         Relationships: []
       }
@@ -186,7 +186,7 @@ export const Constants = {
 // Table: aprendizados
 //   id: uuid (not null, default: gen_random_uuid())
 //   created_at: timestamp with time zone (not null, default: now())
-//   user_id: uuid (not null)
+//   user_id: uuid (nullable)
 //   titulo: text (not null)
 //   conteudo: text (not null)
 //   categoria: text (nullable)
@@ -198,12 +198,12 @@ export const Constants = {
 
 // --- ROW LEVEL SECURITY POLICIES ---
 // Table: aprendizados
-//   Policy "Users can delete their own learnings" (DELETE, PERMISSIVE) roles={authenticated}
-//     USING: (auth.uid() = user_id)
-//   Policy "Users can insert their own learnings" (INSERT, PERMISSIVE) roles={authenticated}
-//     WITH CHECK: (auth.uid() = user_id)
-//   Policy "Users can see their own learnings" (SELECT, PERMISSIVE) roles={authenticated}
-//     USING: (auth.uid() = user_id)
-//   Policy "Users can update their own learnings" (UPDATE, PERMISSIVE) roles={authenticated}
-//     USING: (auth.uid() = user_id)
-//     WITH CHECK: (auth.uid() = user_id)
+//   Policy "Public can delete learnings" (DELETE, PERMISSIVE) roles={public}
+//     USING: true
+//   Policy "Public can insert learnings" (INSERT, PERMISSIVE) roles={public}
+//     WITH CHECK: true
+//   Policy "Public can see learnings" (SELECT, PERMISSIVE) roles={public}
+//     USING: true
+//   Policy "Public can update learnings" (UPDATE, PERMISSIVE) roles={public}
+//     USING: true
+//     WITH CHECK: true

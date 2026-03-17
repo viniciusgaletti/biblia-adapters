@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-D7UGWHKB.js","assets/button-pSLtMQQj.js","assets/aprendizados-Bt742plA.js","assets/skeleton-DfGkHfJj.js","assets/card-CxwY7B8u.js","assets/NovoAprendizado-CBEW5ulH.js","assets/arrow-left-ByU3_M6v.js","assets/loader-circle-2MIJ0fA1.js","assets/DetalheAprendizado-HewxdXj7.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-D7UGWHKB.js","assets/button-pSLtMQQj.js","assets/aprendizados-Bt742plA.js","assets/skeleton-DfGkHfJj.js","assets/card-CxwY7B8u.js","assets/NovoAprendizado-CBEW5ulH.js","assets/arrow-left-ByU3_M6v.js","assets/loader-circle-2MIJ0fA1.js","assets/DetalheAprendizado-CW2D2O6S.js"])))=>i.map(i=>d[i]);
 import { a as createLucideIcon, b as __commonJSMin, c as composeRefs, d as BrowserRouter, f as Link, h as Routes, i as cn$1, l as useComposedRefs, m as Route, o as cva, p as Outlet, s as require_jsx_runtime, t as Button, u as useToast, v as __vitePreload, x as __toESM, y as require_react } from "./button-pSLtMQQj.js";
 import { n as require_react_dom, t as LoaderCircle } from "./loader-circle-2MIJ0fA1.js";
 //#region \0vite/modulepreload-polyfill.js
@@ -19480,7 +19480,7 @@ var NotFound = () => {
 //#region src/App.tsx
 var Index = (0, import_react.lazy)(() => __vitePreload(() => import("./Index-D7UGWHKB.js"), __vite__mapDeps([0,1,2,3,4])));
 var NovoAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./NovoAprendizado-CBEW5ulH.js"), __vite__mapDeps([5,1,2,6,7,4])));
-var DetalheAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./DetalheAprendizado-HewxdXj7.js"), __vite__mapDeps([8,1,2,6,3,7])));
+var DetalheAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./DetalheAprendizado-CW2D2O6S.js"), __vite__mapDeps([8,1,2,6,3,7])));
 var App = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BrowserRouter, {
 	"data-uid": "src/App.tsx:17:3",
 	"data-prohibitions": "[]",
@@ -19566,4 +19566,4 @@ var App = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BrowserRouter, {
 //#endregion
 export { DismissableLayer as a, createSlot as c, createContextScope as d, composeEventHandlers as f, Portal as i, createSlottable as l, useControllableState as n, useCallbackRef as o, Presence as r, Primitive as s, useId as t, createContext2 as u };
 
-//# sourceMappingURL=index-BJWh6pkJ.js.map
+//# sourceMappingURL=index-BhQPSbw5.js.map
