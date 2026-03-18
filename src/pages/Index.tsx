@@ -72,25 +72,25 @@ export default function Index() {
       </section>
 
       {/* Section 2: Search and Filter Bar */}
-      <section className="flex flex-col sm:flex-row gap-[8px] sm:gap-[10px] mb-[14px]">
-        <div className="relative flex-1">
-          <Search
-            className="absolute left-[14px] top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground"
-            aria-hidden="true"
-          />
-          <Input
-            aria-label="Buscar aprendizados"
-            placeholder="Buscar por palavra-chave..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full h-auto pl-[38px] pr-[14px] py-[10px]"
-          />
-        </div>
-        <div className="flex flex-col sm:flex-row gap-[8px] sm:gap-[10px] flex-wrap">
+      <section className="mb-[14px]">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-[8px] sm:gap-[10px]">
+          <div className="relative flex-1 h-[40px] w-full">
+            <Search
+              className="absolute left-[14px] top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground"
+              aria-hidden="true"
+            />
+            <Input
+              aria-label="Buscar aprendizados"
+              placeholder="Buscar por palavra-chave..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full h-full pl-[38px] pr-[14px]"
+            />
+          </div>
           <Select value={categoryFilter} onValueChange={setCategoryFilter}>
             <SelectTrigger
               aria-label="Filtrar por categoria"
-              className="min-w-[155px] h-auto px-[14px] py-[10px]"
+              className="h-[40px] w-full sm:w-[148px] shrink-0 px-[14px]"
             >
               <SelectValue placeholder="Categoria" />
             </SelectTrigger>
@@ -105,7 +105,7 @@ export default function Index() {
           <Select value={levelFilter} onValueChange={setLevelFilter}>
             <SelectTrigger
               aria-label="Filtrar por dificuldade"
-              className="min-w-[155px] h-auto px-[14px] py-[10px]"
+              className="h-[40px] w-full sm:w-[148px] shrink-0 px-[14px]"
             >
               <SelectValue placeholder="Dificuldade" />
             </SelectTrigger>
@@ -117,32 +117,36 @@ export default function Index() {
               ))}
             </SelectContent>
           </Select>
-          <div className="flex items-center">
-            <label htmlFor="sort-select" className="sr-only">
-              Ordenar por
-            </label>
-            <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger id="sort-select" className="min-w-[160px] h-auto px-[14px] py-[10px]">
-                <SelectValue placeholder="Ordenar por" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="recentes">Mais recentes</SelectItem>
-                <SelectItem value="relevancia">Mais relevantes</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          {hasActiveFilters && (
+          <label htmlFor="sort-select" className="sr-only">
+            Ordenar por
+          </label>
+          <Select value={sortBy} onValueChange={setSortBy}>
+            <SelectTrigger
+              id="sort-select"
+              className="h-[40px] w-full sm:w-[160px] shrink-0 px-[14px]"
+            >
+              <SelectValue placeholder="Ordenar por" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="recentes">Mais recentes</SelectItem>
+              <SelectItem value="relevancia">Mais relevantes</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        {hasActiveFilters && (
+          <div className="flex justify-end mt-[8px]">
             <Button
               variant="ghost"
               onClick={clearFilters}
-              className="h-auto px-[14px] py-[10px] text-[0.8125rem] text-muted-foreground hover:text-foreground hover:bg-transparent"
+              className="h-[40px] px-[14px] text-[0.8125rem] text-muted-foreground hover:text-foreground hover:bg-transparent"
               aria-label="Limpar filtros"
             >
               <X className="h-4 w-4 mr-2" aria-hidden="true" />
               Limpar
             </Button>
-          )}
-        </div>
+          </div>
+        )}
       </section>
 
       {/* Section 3: Results Counter */}
