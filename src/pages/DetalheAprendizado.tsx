@@ -164,7 +164,7 @@ export default function DetalheAprendizado() {
               disabled={submitting}
               size="md"
             />
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 font-mono">
               {ap.rating_count ? (
                 <>
                   <span className="text-[1rem] font-bold text-foreground">
@@ -182,7 +182,7 @@ export default function DetalheAprendizado() {
             </div>
           </div>
           {userRating && (
-            <div className="text-[0.75rem] text-muted-foreground mt-[6px]">
+            <div className="text-[0.75rem] text-muted-foreground mt-[6px] font-mono">
               Sua avaliacao: {userRating.value} {userRating.value === 1 ? 'estrela' : 'estrelas'}
             </div>
           )}

@@ -256,7 +256,7 @@ export default function Index() {
               <div className="mt-[12px] pt-[12px] border-t border-border flex items-center gap-[6px]">
                 <StarRating rating={Number(item.rating_avg || 0)} size="sm" />
                 {item.rating_count ? (
-                  <div className="flex items-center gap-[4px]">
+                  <div className="flex items-center gap-[4px] font-mono">
                     <span className="text-[0.75rem] font-semibold text-foreground">
                       {Number(item.rating_avg).toFixed(1)}
                     </span>
@@ -265,7 +265,7 @@ export default function Index() {
                     </span>
                   </div>
                 ) : (
-                  <span className="text-[0.75rem] text-muted-foreground italic">
+                  <span className="text-[0.75rem] text-muted-foreground italic font-mono">
                     Sem avaliacoes ainda
                   </span>
                 )}

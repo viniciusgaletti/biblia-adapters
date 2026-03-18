@@ -2,7 +2,7 @@ import { a as require_jsx_runtime, c as Link, g as require_react, m as useParams
 import { a as cn, t as Button } from "./button-BeRAxBEE.js";
 import { t as ArrowLeft } from "./arrow-left-DCIMdVmn.js";
 import { t as StarRating } from "./star-rating-CxxwsLsY.js";
-import { t as toast } from "./index-D2DI8Tpx.js";
+import { t as toast } from "./index-DTuG9sfW.js";
 import { a as submitRating, n as deleteRating, r as fetchLearningById } from "./learnings-lUo10QHQ.js";
 import { t as Skeleton } from "./skeleton-Ce3YI1dZ.js";
 var RefreshCw = createLucideIcon("refresh-cw", [
@@ -349,7 +349,7 @@ function DetalheAprendizado() {
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 								"data-uid": "src/pages/DetalheAprendizado.tsx:167:13",
 								"data-prohibitions": "[editContent]",
-								className: "flex items-center gap-2",
+								className: "flex items-center gap-2 font-mono",
 								children: ap.rating_count ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									"data-uid": "src/pages/DetalheAprendizado.tsx:170:19",
 									"data-prohibitions": "[editContent]",
@@ -376,7 +376,7 @@ function DetalheAprendizado() {
 						}), userRating && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							"data-uid": "src/pages/DetalheAprendizado.tsx:185:13",
 							"data-prohibitions": "[editContent]",
-							className: "text-[0.75rem] text-muted-foreground mt-[6px]",
+							className: "text-[0.75rem] text-muted-foreground mt-[6px] font-mono",
 							children: [
 								"Sua avaliacao: ",
 								userRating.value,
@@ -452,4 +452,4 @@ function DetalheAprendizado() {
 //#endregion
 export { DetalheAprendizado as default };
 
-//# sourceMappingURL=DetalheAprendizado-B8oQjDZT.js.map
+//# sourceMappingURL=DetalheAprendizado-DNXywPws.js.map

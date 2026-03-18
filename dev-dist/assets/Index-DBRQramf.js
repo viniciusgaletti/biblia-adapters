@@ -573,7 +573,7 @@ function Index() {
 							}), item.rating_count ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								"data-uid": "src/pages/Index.tsx:259:19",
 								"data-prohibitions": "[editContent]",
-								className: "flex items-center gap-[4px]",
+								className: "flex items-center gap-[4px] font-mono",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									"data-uid": "src/pages/Index.tsx:260:21",
 									"data-prohibitions": "[editContent]",
@@ -592,7 +592,7 @@ function Index() {
 							}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 								"data-uid": "src/pages/Index.tsx:268:19",
 								"data-prohibitions": "[]",
-								className: "text-[0.75rem] text-muted-foreground italic",
+								className: "text-[0.75rem] text-muted-foreground italic font-mono",
 								children: "Sem avaliacoes ainda"
 							})]
 						}),
@@ -618,4 +618,4 @@ function Index() {
 //#endregion
 export { Index as default };
 
-//# sourceMappingURL=Index-B8xSBhhS.js.map
+//# sourceMappingURL=Index-DBRQramf.js.map
