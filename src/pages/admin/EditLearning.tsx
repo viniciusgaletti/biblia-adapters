@@ -78,7 +78,7 @@ export default function EditLearning() {
   if (error || !learning) {
     return (
       <div className="max-w-[680px] mx-auto flex flex-col items-center justify-center min-h-[50vh] animate-fade-in-up font-sans px-4">
-        <h2 className="text-xl font-bold mb-4">{error || 'Aprendizado nao encontrado.'}</h2>
+        <h2 className="text-xl font-bold mb-4">{error || 'Aprendizado não encontrado.'}</h2>
         <Link to="/admin">
           <Button>Voltar ao painel</Button>
         </Link>
@@ -167,7 +167,7 @@ export default function EditLearning() {
                       <SelectContent>
                         <SelectItem value="IA">IA</SelectItem>
                         <SelectItem value="Vibecoding">Vibecoding</SelectItem>
-                        <SelectItem value="Automacoes">Automacoes</SelectItem>
+                        <SelectItem value="Automações">Automações</SelectItem>
                         <SelectItem value="Agentes de IA">Agentes de IA</SelectItem>
                       </SelectContent>
                     </Select>
@@ -222,7 +222,7 @@ export default function EditLearning() {
                     <ReqLabel>Título</ReqLabel>
                     <FormControl>
                       <Input
-                        placeholder="Titulo curto e direto do aprendizado"
+                        placeholder="Título curto e direto do aprendizado"
                         disabled={isSubmitting}
                         {...field}
                       />
@@ -242,7 +242,7 @@ export default function EditLearning() {
                     <ReqLabel>Contexto</ReqLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Descreva o problema ou situacao que gerou esse aprendizado."
+                        placeholder="Descreva o problema ou situação que gerou esse aprendizado."
                         rows={4}
                         disabled={isSubmitting}
                         {...field}
@@ -260,7 +260,7 @@ export default function EditLearning() {
                     <ReqLabel>Aprendizado</ReqLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Descreva a solucao ou insight de forma clara e direta."
+                        placeholder="Descreva a solução ou insight de forma clara e direta."
                         rows={5}
                         disabled={isSubmitting}
                         {...field}
@@ -280,7 +280,8 @@ export default function EditLearning() {
                     </span>
                   </label>
                   <p className="text-[12px] text-muted-foreground mb-[10px]">
-                    Divida o aprendizado em etapas. Deixe em branco se nao se aplicar.
+                    Se o aprendizado tem uma sequência, liste os passos. Deixe em branco se não se
+                    aplicar.
                   </p>
                 </div>
                 <div className="flex flex-col gap-[8px]">
@@ -345,7 +346,7 @@ export default function EditLearning() {
                     <OptLabel>Observações</OptLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Pontos de atencao, limitacoes ou informacoes extras para os colegas."
+                        placeholder="Pontos de atenção, limitações ou informações extras para os colegas."
                         rows={3}
                         disabled={isSubmitting}
                         value={field.value || ''}
@@ -381,7 +382,7 @@ export default function EditLearning() {
                   Salvando...
                 </>
               ) : (
-                'Salvar alteracoes'
+                'Salvar alterações'
               )}
             </Button>
           </div>

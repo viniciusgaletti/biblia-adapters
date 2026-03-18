@@ -66,7 +66,7 @@ export default function NovoAprendizado() {
           Registrar Aprendizado
         </h1>
         <p className="text-[13px] text-muted-foreground mt-1 leading-[1.6]">
-          Compartilhe com a equipe o que voce aprendeu na pratica.
+          Compartilhe com a equipe o que você aprendeu na prática.
         </p>
       </section>
 
@@ -127,7 +127,7 @@ export default function NovoAprendizado() {
                       <SelectContent>
                         <SelectItem value="IA">IA</SelectItem>
                         <SelectItem value="Vibecoding">Vibecoding</SelectItem>
-                        <SelectItem value="Automacoes">Automacoes</SelectItem>
+                        <SelectItem value="Automações">Automações</SelectItem>
                         <SelectItem value="Agentes de IA">Agentes de IA</SelectItem>
                       </SelectContent>
                     </Select>
@@ -153,7 +153,7 @@ export default function NovoAprendizado() {
                               'border-destructive focus-visible:ring-destructive',
                           )}
                         >
-                          <SelectValue placeholder="Selecione o nivel" />
+                          <SelectValue placeholder="Selecione o nível" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -182,7 +182,7 @@ export default function NovoAprendizado() {
                     <ReqLabel>Título</ReqLabel>
                     <FormControl>
                       <Input
-                        placeholder="Titulo curto e direto do aprendizado"
+                        placeholder="Título curto e direto do aprendizado"
                         disabled={isSubmitting}
                         {...field}
                       />
@@ -202,7 +202,7 @@ export default function NovoAprendizado() {
                     <ReqLabel>Contexto</ReqLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Descreva o problema ou situacao que gerou esse aprendizado."
+                        placeholder="Descreva o problema ou situação que gerou esse aprendizado."
                         rows={4}
                         disabled={isSubmitting}
                         {...field}
@@ -220,7 +220,7 @@ export default function NovoAprendizado() {
                     <ReqLabel>Aprendizado</ReqLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Descreva a solucao ou insight de forma clara e direta."
+                        placeholder="Descreva a solução ou insight de forma clara e direta."
                         rows={5}
                         disabled={isSubmitting}
                         {...field}
@@ -240,7 +240,8 @@ export default function NovoAprendizado() {
                     </span>
                   </label>
                   <p className="text-[12px] text-muted-foreground mb-[10px]">
-                    Divida o aprendizado em etapas. Deixe em branco se nao se aplicar.
+                    Se o aprendizado tem uma sequência, liste os passos. Deixe em branco se não se
+                    aplicar.
                   </p>
                 </div>
                 <div className="flex flex-col gap-[8px]">
@@ -305,7 +306,7 @@ export default function NovoAprendizado() {
                     <OptLabel>Observações</OptLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Pontos de atencao, limitacoes ou informacoes extras para os colegas."
+                        placeholder="Pontos de atenção, limitações ou informações extras para os colegas."
                         rows={3}
                         disabled={isSubmitting}
                         value={field.value || ''}

@@ -54,10 +54,10 @@ export function useAdminDashboard() {
 
     try {
       await adminService.deleteLearning(id)
-      toast({ title: 'Aprendizado excluido com sucesso.' })
+      toast({ title: 'Aprendizado excluído com sucesso.' })
     } catch (e) {
       setLearnings(previous)
-      toast({ title: 'Nao foi possivel excluir. Tente novamente.', variant: 'destructive' })
+      toast({ title: 'Não foi possível excluir. Tente novamente.', variant: 'destructive' })
     }
   }
 

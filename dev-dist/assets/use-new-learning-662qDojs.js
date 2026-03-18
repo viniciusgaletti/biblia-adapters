@@ -1,7 +1,7 @@
 import { a as require_jsx_runtime, g as require_react, p as useNavigate, v as __toESM } from "./client-D09FV_21.js";
 import { a as cn, r as Slot } from "./button-BeRAxBEE.js";
 import { n as CircleAlert } from "./plus-DeMb-NdG.js";
-import { r as useToast } from "./index-9i0J7xpl.js";
+import { r as useToast } from "./index-CTVASw6d.js";
 import { t as createLearning } from "./learnings-lUo10QHQ.js";
 import { t as Label } from "./label-Cg7XO7Wk.js";
 //#region ../../cache/modules/biblia-dos-eliters-3acf3/node_modules/.pnpm/react-hook-form@7.71.2_react@19.2.4/node_modules/react-hook-form/dist/index.esm.mjs
@@ -7918,15 +7918,15 @@ var NewLearningSchema = object({
 	category: _enum([
 		"IA",
 		"Vibecoding",
-		"Automacoes",
+		"Automações",
 		"Agentes de IA"
 	], { errorMap: () => ({ message: "Selecione uma categoria" }) }),
 	level: _enum([
 		"Iniciante",
 		"Intermediario",
 		"Avancado"
-	], { errorMap: () => ({ message: "Selecione o nivel" }) }),
-	title: string().min(5, "Titulo deve ter entre 5 e 100 caracteres").max(100, "Titulo deve ter entre 5 e 100 caracteres"),
+	], { errorMap: () => ({ message: "Selecione o nível" }) }),
+	title: string().min(5, "Título deve ter entre 5 e 100 caracteres").max(100, "Título deve ter entre 5 e 100 caracteres"),
 	context: string().min(20, "Descreva o contexto com pelo menos 20 caracteres"),
 	learning: string().min(30, "Descreva o aprendizado com pelo menos 30 caracteres"),
 	stepsArray: array(object({ value: string() })).max(10),
@@ -7968,9 +7968,9 @@ var useNewLearning = () => {
 			navigate("/");
 		} catch (error) {
 			console.error(error);
-			let message = "Nao foi possivel salvar. Tente novamente.";
-			if (error?.code === "23514") message = "Categoria ou nivel invalido";
-			else if (error?.message?.toLowerCase().includes("fetch") || error?.message?.toLowerCase().includes("network") || error?.message?.toLowerCase().includes("timeout") || error?.message?.toLowerCase().includes("failed to fetch")) message = "Conexao lenta. Verifique sua internet e tente novamente.";
+			let message = "Não foi possível salvar. Tente novamente.";
+			if (error?.code === "23514") message = "Categoria ou nível inválido";
+			else if (error?.message?.toLowerCase().includes("fetch") || error?.message?.toLowerCase().includes("network") || error?.message?.toLowerCase().includes("timeout") || error?.message?.toLowerCase().includes("failed to fetch")) message = "Conexão lenta. Verifique sua internet e tente novamente.";
 			toast({
 				title: message,
 				variant: "destructive"
@@ -7988,4 +7988,4 @@ var useNewLearning = () => {
 //#endregion
 export { FormControl as a, FormLabel as c, useFieldArray as d, useForm as f, Form as i, FormMessage as l, useNewLearning as n, FormField as o, a as r, FormItem as s, NewLearningSchema as t, Textarea as u };
 
-//# sourceMappingURL=use-new-learning-CofpJKME.js.map
+//# sourceMappingURL=use-new-learning-662qDojs.js.map

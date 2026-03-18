@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-CSolJpon.js","assets/client-D09FV_21.js","assets/dist-Cjh9VPbQ.js","assets/button-BeRAxBEE.js","assets/select-CyLNbRw8.js","assets/plus-DeMb-NdG.js","assets/star-rating-CxxwsLsY.js","assets/input-UzQica1A.js","assets/skeleton-Ce3YI1dZ.js","assets/learnings-lUo10QHQ.js","assets/NovoAprendizado-Coe6TK3T.js","assets/use-new-learning-CofpJKME.js","assets/label-Cg7XO7Wk.js","assets/arrow-left-DCIMdVmn.js","assets/DetalheAprendizado-CqxO0t7e.js","assets/Login-ByF8k4A4.js","assets/use-admin-auth-CzBVU3ds.js","assets/Dashboard-CgyRNa5s.js","assets/admin-Bb_eAA0H.js","assets/EditLearning-CXEefLxS.js","assets/AdminRoute-ubFVfI6X.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-BRqhJE8i.js","assets/client-D09FV_21.js","assets/dist-Cjh9VPbQ.js","assets/button-BeRAxBEE.js","assets/select-CyLNbRw8.js","assets/plus-DeMb-NdG.js","assets/star-rating-CxxwsLsY.js","assets/input-UzQica1A.js","assets/skeleton-Ce3YI1dZ.js","assets/learnings-lUo10QHQ.js","assets/NovoAprendizado-DBydHVtF.js","assets/use-new-learning-662qDojs.js","assets/label-Cg7XO7Wk.js","assets/arrow-left-DCIMdVmn.js","assets/DetalheAprendizado-Cf1nvan5.js","assets/Login-C4HklBli.js","assets/use-admin-auth-CzBVU3ds.js","assets/Dashboard-BsFsXzp3.js","assets/admin-Bb_eAA0H.js","assets/EditLearning-A3icWb5X.js","assets/AdminRoute-D4kUuhcB.js"])))=>i.map(i=>d[i]);
 import { _ as __commonJSMin, a as require_jsx_runtime, c as Link, d as Route, f as Routes, g as require_react, h as __vitePreload, o as createLucideIcon, p as useNavigate, s as BrowserRouter, t as supabase, u as Outlet, v as __toESM } from "./client-D09FV_21.js";
 import { a as cn$1, c as useComposedRefs, l as require_react_dom, o as cva, t as Button } from "./button-BeRAxBEE.js";
 import { C as createContextScope, T as X, _ as Primitive, a as createPopperScope, d as Portal, f as useLayoutEffect2, g as useCallbackRef, h as Root, i as Root2$1, l as VisuallyHidden, m as DismissableLayer, n as Arrow, o as useId, p as Branch, r as Content, s as Root$1, t as Anchor, u as useControllableState, v as dispatchDiscreteCustomEvent, w as composeEventHandlers, x as createSlottable, y as createCollection } from "./dist-Cjh9VPbQ.js";
@@ -17114,13 +17114,13 @@ var NotFound = () => {
 };
 //#endregion
 //#region src/App.tsx
-var Index = (0, import_react.lazy)(() => __vitePreload(() => import("./Index-CSolJpon.js"), __vite__mapDeps([0,1,2,3,4,5,6,7,8,9])));
-var NovoAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./NovoAprendizado-Coe6TK3T.js"), __vite__mapDeps([10,1,2,3,11,12,5,9,4,13,7])));
-var DetalheAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./DetalheAprendizado-CqxO0t7e.js"), __vite__mapDeps([14,1,3,13,6,8,9])));
-var AdminLogin = (0, import_react.lazy)(() => __vitePreload(() => import("./Login-ByF8k4A4.js"), __vite__mapDeps([15,1,3,12,7,16])));
-var AdminDashboard = (0, import_react.lazy)(() => __vitePreload(() => import("./Dashboard-CgyRNa5s.js"), __vite__mapDeps([17,1,2,3,4,7,8,16,18])));
-var AdminEditLearning = (0, import_react.lazy)(() => __vitePreload(() => import("./EditLearning-CXEefLxS.js"), __vite__mapDeps([19,1,2,3,11,12,5,9,4,13,7,8,18])));
-var AdminRoute = (0, import_react.lazy)(() => __vitePreload(() => import("./AdminRoute-ubFVfI6X.js"), __vite__mapDeps([20,1,16])));
+var Index = (0, import_react.lazy)(() => __vitePreload(() => import("./Index-BRqhJE8i.js"), __vite__mapDeps([0,1,2,3,4,5,6,7,8,9])));
+var NovoAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./NovoAprendizado-DBydHVtF.js"), __vite__mapDeps([10,1,2,3,11,12,5,9,4,13,7])));
+var DetalheAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./DetalheAprendizado-Cf1nvan5.js"), __vite__mapDeps([14,1,3,13,6,8,9])));
+var AdminLogin = (0, import_react.lazy)(() => __vitePreload(() => import("./Login-C4HklBli.js"), __vite__mapDeps([15,1,3,12,7,16])));
+var AdminDashboard = (0, import_react.lazy)(() => __vitePreload(() => import("./Dashboard-BsFsXzp3.js"), __vite__mapDeps([17,1,2,3,4,7,8,16,18])));
+var AdminEditLearning = (0, import_react.lazy)(() => __vitePreload(() => import("./EditLearning-A3icWb5X.js"), __vite__mapDeps([19,1,2,3,11,12,5,9,4,13,7,8,18])));
+var AdminRoute = (0, import_react.lazy)(() => __vitePreload(() => import("./AdminRoute-D4kUuhcB.js"), __vite__mapDeps([20,1,16])));
 var AdminLoader = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 	"data-uid": "src/App.tsx:25:3",
 	"data-prohibitions": "[]",
@@ -17280,4 +17280,4 @@ var App = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BrowserRouter, {
 //#endregion
 export { LoaderCircle as i, Presence as n, useToast as r, toast as t };
 
-//# sourceMappingURL=index-9i0J7xpl.js.map
+//# sourceMappingURL=index-CTVASw6d.js.map

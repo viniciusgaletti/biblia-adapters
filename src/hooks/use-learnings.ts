@@ -18,7 +18,7 @@ export interface Learning {
   rating_count: number
 }
 
-export const CATEGORIES = ['Todos', 'IA', 'Vibecoding', 'Automacoes', 'Agentes de IA']
+export const CATEGORIES = ['Todos', 'IA', 'Vibecoding', 'Automações', 'Agentes de IA']
 export const LEVELS = ['Todos', 'Iniciante', 'Intermediario', 'Avancado']
 
 export function useLearnings() {

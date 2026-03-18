@@ -20,8 +20,10 @@ const getLevelColors = (level: string) => {
     case 'iniciante':
       return 'bg-[#d1fae5] text-[#065f46] dark:bg-[#064e3b] dark:text-[#a7f3d0]'
     case 'intermediario':
+    case 'intermediário':
       return 'bg-[#fef3c7] text-[#92400e] dark:bg-[#78350f] dark:text-[#fde68a]'
     case 'avancado':
+    case 'avançado':
       return 'bg-[#fee2e2] text-[#991b1b] dark:bg-[#7f1d1d] dark:text-[#fecaca]'
     default:
       return 'bg-muted text-muted-foreground'
@@ -60,7 +62,7 @@ export default function Index() {
             Biblia dos Adapters
           </h1>
           <p className="text-[0.8125rem] text-muted-foreground mt-[6px] leading-[1.6]">
-            Repositorio vivo de aprendizados sobre IA, Vibecoding, Automacoes e Agentes de IA
+            Repositório vivo de aprendizados sobre IA, Vibecoding, Automações e Agentes de IA
           </p>
         </div>
         <Link to="/novo" className="w-full md:w-auto shrink-0">
@@ -112,7 +114,11 @@ export default function Index() {
             <SelectContent>
               {LEVELS.map((lvl) => (
                 <SelectItem key={lvl} value={lvl}>
-                  {lvl}
+                  {lvl === 'Intermediario'
+                    ? 'Intermediário'
+                    : lvl === 'Avancado'
+                      ? 'Avançado'
+                      : lvl}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -191,7 +197,7 @@ export default function Index() {
           <AlertCircle className="w-[44px] h-[44px] text-destructive" aria-hidden="true" />
           <h3 className="text-[1rem] font-semibold mt-[16px] text-foreground">Algo deu errado</h3>
           <p className="text-[0.8125rem] text-muted-foreground mt-[6px] leading-[1.6] max-w-md px-4">
-            Nao foi possivel carregar os aprendizados.
+            Não foi possível carregar os aprendizados.
           </p>
           <Button
             onClick={refetch}
@@ -238,7 +244,11 @@ export default function Index() {
                     getLevelColors(item.level),
                   )}
                 >
-                  {item.level}
+                  {item.level === 'Intermediario'
+                    ? 'Intermediário'
+                    : item.level === 'Avancado'
+                      ? 'Avançado'
+                      : item.level}
                 </span>
               </div>
               <h3 className="text-[0.9375rem] font-semibold text-foreground mt-[14px] mb-[6px] leading-[1.4] line-clamp-2">
@@ -270,7 +280,7 @@ export default function Index() {
                   </div>
                 ) : (
                   <span className="text-[0.75rem] text-muted-foreground italic font-mono">
-                    Sem avaliacoes ainda
+                    Sem avaliações ainda
                   </span>
                 )}
               </div>

@@ -42,7 +42,7 @@ export function useRating(learningId: string | undefined) {
       onSuccess?.()
     } catch (err) {
       console.error(err)
-      toast.error('Nao foi possivel registrar sua avaliacao.')
+      toast.error('Não foi possível registrar sua avaliação.')
     } finally {
       setSubmitting(false)
     }

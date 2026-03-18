@@ -139,7 +139,11 @@ export default function DetalheAprendizado() {
                 getLevelColor(ap.level),
               )}
             >
-              {ap.level}
+              {ap.level === 'Intermediario'
+                ? 'Intermediário'
+                : ap.level === 'Avancado'
+                  ? 'Avançado'
+                  : ap.level}
             </span>
           )}
         </div>
@@ -183,7 +187,7 @@ export default function DetalheAprendizado() {
           </div>
           {userRating && (
             <div className="text-[0.75rem] text-muted-foreground mt-[6px] font-mono">
-              Sua avaliacao: {userRating.value} {userRating.value === 1 ? 'estrela' : 'estrelas'}
+              Sua avaliação: {userRating.value} {userRating.value === 1 ? 'estrela' : 'estrelas'}
             </div>
           )}
         </div>

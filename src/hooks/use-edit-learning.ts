@@ -68,7 +68,7 @@ export const useEditLearning = (id: string | undefined) => {
         })
       } catch (err) {
         console.error(err)
-        setError('Aprendizado nao encontrado.')
+        setError('Aprendizado não encontrado.')
       } finally {
         setIsLoading(false)
       }
@@ -109,7 +109,7 @@ export const useEditLearning = (id: string | undefined) => {
     } catch (error: any) {
       console.error(error)
       toast({
-        title: 'Nao foi possivel salvar. Tente novamente.',
+        title: 'Não foi possível salvar. Tente novamente.',
         variant: 'destructive',
       })
     } finally {

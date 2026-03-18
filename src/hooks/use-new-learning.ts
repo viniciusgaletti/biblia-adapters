@@ -10,16 +10,16 @@ import { format } from 'date-fns'
 export const NewLearningSchema = z.object({
   author: z.string().min(2, 'Informe seu nome completo'),
   date: z.string().min(1, 'Informe a data'),
-  category: z.enum(['IA', 'Vibecoding', 'Automacoes', 'Agentes de IA'], {
+  category: z.enum(['IA', 'Vibecoding', 'Automações', 'Agentes de IA'], {
     errorMap: () => ({ message: 'Selecione uma categoria' }),
   }),
   level: z.enum(['Iniciante', 'Intermediario', 'Avancado'], {
-    errorMap: () => ({ message: 'Selecione o nivel' }),
+    errorMap: () => ({ message: 'Selecione o nível' }),
   }),
   title: z
     .string()
-    .min(5, 'Titulo deve ter entre 5 e 100 caracteres')
-    .max(100, 'Titulo deve ter entre 5 e 100 caracteres'),
+    .min(5, 'Título deve ter entre 5 e 100 caracteres')
+    .max(100, 'Título deve ter entre 5 e 100 caracteres'),
   context: z.string().min(20, 'Descreva o contexto com pelo menos 20 caracteres'),
   learning: z.string().min(30, 'Descreva o aprendizado com pelo menos 30 caracteres'),
   stepsArray: z.array(z.object({ value: z.string() })).max(10),
@@ -75,17 +75,17 @@ export const useNewLearning = () => {
       navigate('/')
     } catch (error: any) {
       console.error(error)
-      let message = 'Nao foi possivel salvar. Tente novamente.'
+      let message = 'Não foi possível salvar. Tente novamente.'
 
       if (error?.code === '23514') {
-        message = 'Categoria ou nivel invalido'
+        message = 'Categoria ou nível inválido'
       } else if (
         error?.message?.toLowerCase().includes('fetch') ||
         error?.message?.toLowerCase().includes('network') ||
         error?.message?.toLowerCase().includes('timeout') ||
         error?.message?.toLowerCase().includes('failed to fetch')
       ) {
-        message = 'Conexao lenta. Verifique sua internet e tente novamente.'
+        message = 'Conexão lenta. Verifique sua internet e tente novamente.'
       }
 
       toast({

@@ -2,7 +2,7 @@ import { a as require_jsx_runtime, c as Link, g as require_react, m as useParams
 import { a as cn, t as Button } from "./button-BeRAxBEE.js";
 import { t as ArrowLeft } from "./arrow-left-DCIMdVmn.js";
 import { t as StarRating } from "./star-rating-CxxwsLsY.js";
-import { t as toast } from "./index-9i0J7xpl.js";
+import { t as toast } from "./index-CTVASw6d.js";
 import { a as submitRating, n as deleteRating, r as fetchLearningById } from "./learnings-lUo10QHQ.js";
 import { t as Skeleton } from "./skeleton-Ce3YI1dZ.js";
 var RefreshCw = createLucideIcon("refresh-cw", [
@@ -84,7 +84,7 @@ function useRating(learningId) {
 			onSuccess?.();
 		} catch (err) {
 			console.error(err);
-			toast.error("Nao foi possivel registrar sua avaliacao.");
+			toast.error("Não foi possível registrar sua avaliação.");
 		} finally {
 			setSubmitting(false);
 		}
@@ -296,49 +296,49 @@ function DetalheAprendizado() {
 								"data-uid": "src/pages/DetalheAprendizado.tsx:136:13",
 								"data-prohibitions": "[editContent]",
 								className: cn("text-[0.6875rem] font-bold py-[2px] px-[7px] rounded-[3px]", getLevelColor(ap.level)),
-								children: ap.level
+								children: ap.level === "Intermediario" ? "Intermediário" : ap.level === "Avancado" ? "Avançado" : ap.level
 							})
 						]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-						"data-uid": "src/pages/DetalheAprendizado.tsx:147:9",
+						"data-uid": "src/pages/DetalheAprendizado.tsx:151:9",
 						"data-prohibitions": "[editContent]",
 						className: "text-[1.625rem] font-bold tracking-[-0.02em] leading-[1.3] text-foreground mb-3",
 						children: ap.title
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						"data-uid": "src/pages/DetalheAprendizado.tsx:151:9",
+						"data-uid": "src/pages/DetalheAprendizado.tsx:155:9",
 						"data-prohibitions": "[editContent]",
 						className: "flex items-center gap-[12px] text-[0.75rem] text-muted-foreground mb-6",
 						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								"data-uid": "src/pages/DetalheAprendizado.tsx:152:11",
+								"data-uid": "src/pages/DetalheAprendizado.tsx:156:11",
 								"data-prohibitions": "[editContent]",
 								children: ap.author || "Autor desconhecido"
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								"data-uid": "src/pages/DetalheAprendizado.tsx:153:11",
+								"data-uid": "src/pages/DetalheAprendizado.tsx:157:11",
 								"data-prohibitions": "[]",
 								"aria-hidden": "true",
 								children: "•"
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								"data-uid": "src/pages/DetalheAprendizado.tsx:154:11",
+								"data-uid": "src/pages/DetalheAprendizado.tsx:158:11",
 								"data-prohibitions": "[editContent]",
 								children: formatDateLong(ap.date)
 							})
 						]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						"data-uid": "src/pages/DetalheAprendizado.tsx:157:9",
+						"data-uid": "src/pages/DetalheAprendizado.tsx:161:9",
 						"data-prohibitions": "[editContent]",
 						className: "mt-[12px] mb-[4px]",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/pages/DetalheAprendizado.tsx:158:11",
+							"data-uid": "src/pages/DetalheAprendizado.tsx:162:11",
 							"data-prohibitions": "[editContent]",
 							className: "flex items-center gap-3",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(StarRating, {
-								"data-uid": "src/pages/DetalheAprendizado.tsx:159:13",
+								"data-uid": "src/pages/DetalheAprendizado.tsx:163:13",
 								"data-prohibitions": "[editContent]",
 								rating: Number(ap.rating_avg || 0),
 								interactive: true,
@@ -347,16 +347,16 @@ function DetalheAprendizado() {
 								disabled: submitting,
 								size: "md"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								"data-uid": "src/pages/DetalheAprendizado.tsx:167:13",
+								"data-uid": "src/pages/DetalheAprendizado.tsx:171:13",
 								"data-prohibitions": "[editContent]",
 								className: "flex items-center gap-2 font-mono",
 								children: ap.rating_count ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									"data-uid": "src/pages/DetalheAprendizado.tsx:170:19",
+									"data-uid": "src/pages/DetalheAprendizado.tsx:174:19",
 									"data-prohibitions": "[editContent]",
 									className: "text-[1rem] font-bold text-foreground",
 									children: Number(ap.rating_avg).toFixed(1)
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-									"data-uid": "src/pages/DetalheAprendizado.tsx:173:19",
+									"data-uid": "src/pages/DetalheAprendizado.tsx:177:19",
 									"data-prohibitions": "[editContent]",
 									className: "text-[0.875rem] text-muted-foreground",
 									children: [
@@ -367,18 +367,18 @@ function DetalheAprendizado() {
 										")"
 									]
 								})] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									"data-uid": "src/pages/DetalheAprendizado.tsx:178:17",
+									"data-uid": "src/pages/DetalheAprendizado.tsx:182:17",
 									"data-prohibitions": "[]",
 									className: "text-[0.875rem] text-muted-foreground italic",
 									children: "Seja o primeiro a avaliar"
 								})
 							})]
 						}), userRating && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/pages/DetalheAprendizado.tsx:185:13",
+							"data-uid": "src/pages/DetalheAprendizado.tsx:189:13",
 							"data-prohibitions": "[editContent]",
 							className: "text-[0.75rem] text-muted-foreground mt-[6px] font-mono",
 							children: [
-								"Sua avaliacao: ",
+								"Sua avaliação: ",
 								userRating.value,
 								" ",
 								userRating.value === 1 ? "estrela" : "estrelas"
@@ -388,35 +388,35 @@ function DetalheAprendizado() {
 				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("hr", {
-				"data-uid": "src/pages/DetalheAprendizado.tsx:192:7",
+				"data-uid": "src/pages/DetalheAprendizado.tsx:196:7",
 				"data-prohibitions": "[editContent]",
 				className: "border-t border-border mt-[24px] mb-[28px]"
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/DetalheAprendizado.tsx:194:7",
+				"data-uid": "src/pages/DetalheAprendizado.tsx:198:7",
 				"data-prohibitions": "[]",
 				className: "space-y-[32px]",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Section, {
-						"data-uid": "src/pages/DetalheAprendizado.tsx:195:9",
+						"data-uid": "src/pages/DetalheAprendizado.tsx:199:9",
 						"data-prohibitions": "[editContent]",
 						title: "Contexto / Problema que Resolve",
 						content: ap.context
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Section, {
-						"data-uid": "src/pages/DetalheAprendizado.tsx:196:9",
+						"data-uid": "src/pages/DetalheAprendizado.tsx:200:9",
 						"data-prohibitions": "[editContent]",
 						title: "O Aprendizado",
 						content: ap.learning
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Section, {
-						"data-uid": "src/pages/DetalheAprendizado.tsx:197:9",
+						"data-uid": "src/pages/DetalheAprendizado.tsx:201:9",
 						"data-prohibitions": "[editContent]",
 						title: "Passo a Passo",
 						content: ap.steps
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Section, {
-						"data-uid": "src/pages/DetalheAprendizado.tsx:198:9",
+						"data-uid": "src/pages/DetalheAprendizado.tsx:202:9",
 						"data-prohibitions": "[editContent]",
 						title: "Observações / Dicas Extras",
 						content: ap.observations
@@ -424,21 +424,21 @@ function DetalheAprendizado() {
 				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("footer", {
-				"data-uid": "src/pages/DetalheAprendizado.tsx:201:7",
+				"data-uid": "src/pages/DetalheAprendizado.tsx:205:7",
 				"data-prohibitions": "[]",
 				className: "mt-[44px]",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-					"data-uid": "src/pages/DetalheAprendizado.tsx:202:9",
+					"data-uid": "src/pages/DetalheAprendizado.tsx:206:9",
 					"data-prohibitions": "[]",
 					to: "/",
 					tabIndex: -1,
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						"data-uid": "src/pages/DetalheAprendizado.tsx:203:11",
+						"data-uid": "src/pages/DetalheAprendizado.tsx:207:11",
 						"data-prohibitions": "[]",
 						variant: "ghost",
 						className: "text-[0.8125rem] text-muted-foreground hover:bg-muted/50 h-auto py-2 px-3 -ml-3",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, {
-							"data-uid": "src/pages/DetalheAprendizado.tsx:207:13",
+							"data-uid": "src/pages/DetalheAprendizado.tsx:211:13",
 							"data-prohibitions": "[editContent]",
 							className: "w-3 h-3 mr-2",
 							"aria-hidden": "true"
@@ -452,4 +452,4 @@ function DetalheAprendizado() {
 //#endregion
 export { DetalheAprendizado as default };
 
-//# sourceMappingURL=DetalheAprendizado-CqxO0t7e.js.map
+//# sourceMappingURL=DetalheAprendizado-Cf1nvan5.js.map

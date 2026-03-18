@@ -44,15 +44,15 @@ export default function AdminDashboard() {
     fetchLearnings,
   } = useAdminDashboard()
 
-  const CATEGORIES = ['Todos', 'IA', 'Vibecoding', 'Automacoes', 'Agentes de IA']
+  const CATEGORIES = ['Todos', 'IA', 'Vibecoding', 'Automações', 'Agentes de IA']
   const LEVELS = ['Todos', 'Iniciante', 'Intermediario', 'Avancado']
   const stats = [
     { label: 'Total', val: learnings.length },
     { label: 'IA', val: learnings.filter((l) => l.category === 'IA').length },
     { label: 'Vibecoding', val: learnings.filter((l) => l.category === 'Vibecoding').length },
     {
-      label: 'Automacoes e Agentes',
-      val: learnings.filter((l) => ['Automacoes', 'Agentes de IA'].includes(l.category)).length,
+      label: 'Automações e Agentes',
+      val: learnings.filter((l) => ['Automações', 'Agentes de IA'].includes(l.category)).length,
     },
   ]
 
@@ -79,7 +79,7 @@ export default function AdminDashboard() {
               Painel Admin
             </h1>
             <p className="text-[0.8125rem] text-muted-foreground mt-[2px]">
-              {learnings.length} aprendizados no repositorio
+              {learnings.length} aprendizados no repositório
             </p>
           </div>
           <div className="flex items-center gap-[12px]">
@@ -88,7 +88,7 @@ export default function AdminDashboard() {
               target="_blank"
               className="text-[0.8125rem] text-primary hover:underline flex items-center gap-1 font-medium"
             >
-              Ver repositorio <ExternalLink className="w-3.5 h-3.5" />
+              Ver repositório <ExternalLink className="w-3.5 h-3.5" />
             </Link>
             <button
               onClick={async () => {
@@ -138,12 +138,12 @@ export default function AdminDashboard() {
           </Select>
           <Select value={level} onValueChange={setLevel}>
             <SelectTrigger className="md:w-[200px]">
-              <SelectValue placeholder="Nivel" />
+              <SelectValue placeholder="Nível" />
             </SelectTrigger>
             <SelectContent>
               {LEVELS.map((l) => (
                 <SelectItem key={l} value={l}>
-                  {l}
+                  {l === 'Intermediario' ? 'Intermediário' : l === 'Avancado' ? 'Avançado' : l}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -180,7 +180,7 @@ export default function AdminDashboard() {
           </div>
         ) : error ? (
           <div className="text-center py-12">
-            <p className="mb-4 text-[0.875rem]">Nao foi possivel carregar.</p>
+            <p className="mb-4 text-[0.875rem]">Não foi possível carregar.</p>
             <Button onClick={fetchLearnings}>Tentar novamente</Button>
           </div>
         ) : filteredLearnings.length === 0 ? (
@@ -211,7 +211,11 @@ export default function AdminDashboard() {
                   <span
                     className={`text-[0.6875rem] font-medium px-2 py-0.5 rounded-full border ${getLvlColor(l.level)}`}
                   >
-                    {l.level}
+                    {l.level === 'Intermediario'
+                      ? 'Intermediário'
+                      : l.level === 'Avancado'
+                        ? 'Avançado'
+                        : l.level}
                   </span>
                 </div>
                 <div className="flex items-center gap-2 w-full">
@@ -239,7 +243,7 @@ export default function AdminDashboard() {
                     #
                   </th>
                   <th className="px-[14px] py-[10px] text-[0.6875rem] font-bold uppercase tracking-[0.06em] text-muted-foreground">
-                    Titulo
+                    Título
                   </th>
                   <th className="px-[14px] py-[10px] text-[0.6875rem] font-bold uppercase tracking-[0.06em] text-muted-foreground w-[140px]">
                     Autor
@@ -248,13 +252,13 @@ export default function AdminDashboard() {
                     Categoria
                   </th>
                   <th className="px-[14px] py-[10px] text-[0.6875rem] font-bold uppercase tracking-[0.06em] text-muted-foreground w-[110px]">
-                    Nivel
+                    Nível
                   </th>
                   <th className="px-[14px] py-[10px] text-[0.6875rem] font-bold uppercase tracking-[0.06em] text-muted-foreground w-[100px]">
                     Data
                   </th>
                   <th className="px-[14px] py-[10px] text-[0.6875rem] font-bold uppercase tracking-[0.06em] text-muted-foreground w-[100px] text-right">
-                    Acoes
+                    Ações
                   </th>
                 </tr>
               </thead>
@@ -289,7 +293,11 @@ export default function AdminDashboard() {
                           l.level,
                         )}`}
                       >
-                        {l.level}
+                        {l.level === 'Intermediario'
+                          ? 'Intermediário'
+                          : l.level === 'Avancado'
+                            ? 'Avançado'
+                            : l.level}
                       </span>
                     </td>
                     <td className="px-[14px] py-[12px] text-[0.8125rem] text-muted-foreground">
@@ -333,8 +341,8 @@ function DelDialog({ children, onConfirm }: { children: React.ReactNode; onConfi
         <AlertDialogHeader>
           <AlertDialogTitle>Excluir aprendizado?</AlertDialogTitle>
           <AlertDialogDescription>
-            Essa acao nao pode ser desfeita. O aprendizado sera removido permanentemente do
-            repositorio.
+            Essa ação não pode ser desfeita. O aprendizado será removido permanentemente do
+            repositório.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

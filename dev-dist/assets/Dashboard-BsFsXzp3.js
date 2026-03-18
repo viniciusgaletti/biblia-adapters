@@ -2,7 +2,7 @@ import { a as require_jsx_runtime, c as Link, g as require_react, o as createLuc
 import { a as cn, c as useComposedRefs, n as buttonVariants, t as Button } from "./button-BeRAxBEE.js";
 import { a as SelectValue, c as FocusScope, i as SelectTrigger, l as useFocusGuards, n as SelectContent, o as ReactRemoveScroll, r as SelectItem, s as hideOthers, t as Select } from "./select-CyLNbRw8.js";
 import { C as createContextScope, S as createContext2, T as X, _ as Primitive, b as createSlot, d as Portal$1, m as DismissableLayer, o as useId, u as useControllableState, w as composeEventHandlers, x as createSlottable } from "./dist-Cjh9VPbQ.js";
-import { n as Presence, r as useToast } from "./index-9i0J7xpl.js";
+import { n as Presence, r as useToast } from "./index-CTVASw6d.js";
 import { t as useAdminAuth } from "./use-admin-auth-CzBVU3ds.js";
 import { t as Skeleton } from "./skeleton-Ce3YI1dZ.js";
 import { t as Input } from "./input-UzQica1A.js";
@@ -94,11 +94,11 @@ function useAdminDashboard() {
 		setLearnings(learnings.filter((l) => l.id !== id));
 		try {
 			await adminService.deleteLearning(id);
-			toast({ title: "Aprendizado excluido com sucesso." });
+			toast({ title: "Aprendizado excluído com sucesso." });
 		} catch (e) {
 			setLearnings(previous);
 			toast({
-				title: "Nao foi possivel excluir. Tente novamente.",
+				title: "Não foi possível excluir. Tente novamente.",
 				variant: "destructive"
 			});
 		}
@@ -646,7 +646,7 @@ function AdminDashboard() {
 		"Todos",
 		"IA",
 		"Vibecoding",
-		"Automacoes",
+		"Automações",
 		"Agentes de IA"
 	];
 	const LEVELS = [
@@ -669,8 +669,8 @@ function AdminDashboard() {
 			val: learnings.filter((l) => l.category === "Vibecoding").length
 		},
 		{
-			label: "Automacoes e Agentes",
-			val: learnings.filter((l) => ["Automacoes", "Agentes de IA"].includes(l.category)).length
+			label: "Automações e Agentes",
+			val: learnings.filter((l) => ["Automações", "Agentes de IA"].includes(l.category)).length
 		}
 	];
 	const dateFmt = (d) => d ? d.split("-").reverse().join("/") : "";
@@ -707,7 +707,7 @@ function AdminDashboard() {
 							"data-uid": "src/pages/admin/Dashboard.tsx:81:13",
 							"data-prohibitions": "[editContent]",
 							className: "text-[0.8125rem] text-muted-foreground mt-[2px]",
-							children: [learnings.length, " aprendizados no repositorio"]
+							children: [learnings.length, " aprendizados no repositório"]
 						})]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						"data-uid": "src/pages/admin/Dashboard.tsx:85:11",
@@ -719,7 +719,7 @@ function AdminDashboard() {
 							to: "/",
 							target: "_blank",
 							className: "text-[0.8125rem] text-primary hover:underline flex items-center gap-1 font-medium",
-							children: ["Ver repositorio ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, {
+							children: ["Ver repositório ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, {
 								"data-uid": "src/pages/admin/Dashboard.tsx:91:31",
 								"data-prohibitions": "[editContent]",
 								className: "w-3.5 h-3.5"
@@ -808,7 +808,7 @@ function AdminDashboard() {
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectValue, {
 									"data-uid": "src/pages/admin/Dashboard.tsx:141:15",
 									"data-prohibitions": "[editContent]",
-									placeholder: "Nivel"
+									placeholder: "Nível"
 								})
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelectContent, {
 								"data-uid": "src/pages/admin/Dashboard.tsx:143:13",
@@ -817,7 +817,7 @@ function AdminDashboard() {
 									"data-uid": "src/pages/admin/Dashboard.tsx:145:17",
 									"data-prohibitions": "[editContent]",
 									value: l,
-									children: l
+									children: l === "Intermediario" ? "Intermediário" : l === "Avancado" ? "Avançado" : l
 								}, l))
 							})]
 						}),
@@ -870,7 +870,7 @@ function AdminDashboard() {
 						"data-uid": "src/pages/admin/Dashboard.tsx:183:13",
 						"data-prohibitions": "[]",
 						className: "mb-4 text-[0.875rem]",
-						children: "Nao foi possivel carregar."
+						children: "Não foi possível carregar."
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						"data-uid": "src/pages/admin/Dashboard.tsx:184:13",
 						"data-prohibitions": "[]",
@@ -934,25 +934,25 @@ function AdminDashboard() {
 									"data-uid": "src/pages/admin/Dashboard.tsx:211:19",
 									"data-prohibitions": "[editContent]",
 									className: `text-[0.6875rem] font-medium px-2 py-0.5 rounded-full border ${getLvlColor(l.level)}`,
-									children: l.level
+									children: l.level === "Intermediario" ? "Intermediário" : l.level === "Avancado" ? "Avançado" : l.level
 								})]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								"data-uid": "src/pages/admin/Dashboard.tsx:217:17",
+								"data-uid": "src/pages/admin/Dashboard.tsx:221:17",
 								"data-prohibitions": "[]",
 								className: "flex items-center gap-2 w-full",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-									"data-uid": "src/pages/admin/Dashboard.tsx:218:19",
+									"data-uid": "src/pages/admin/Dashboard.tsx:222:19",
 									"data-prohibitions": "[]",
 									to: `/admin/editar/${l.id}`,
 									className: "flex-1 border border-border rounded-[var(--radius)] text-[0.8125rem] py-2 text-center text-foreground hover:bg-accent transition-colors font-medium",
 									children: "Editar"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DelDialog, {
-									"data-uid": "src/pages/admin/Dashboard.tsx:224:19",
+									"data-uid": "src/pages/admin/Dashboard.tsx:228:19",
 									"data-prohibitions": "[]",
 									onConfirm: () => deleteLearning(l.id),
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-										"data-uid": "src/pages/admin/Dashboard.tsx:225:21",
+										"data-uid": "src/pages/admin/Dashboard.tsx:229:21",
 										"data-prohibitions": "[]",
 										className: "flex-1 border border-destructive/30 text-destructive rounded-[var(--radius)] text-[0.8125rem] py-2 text-center hover:bg-destructive/10 transition-colors font-medium",
 										children: "Excluir"
@@ -962,155 +962,155 @@ function AdminDashboard() {
 						]
 					}, l.id))
 				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					"data-uid": "src/pages/admin/Dashboard.tsx:234:11",
+					"data-uid": "src/pages/admin/Dashboard.tsx:238:11",
 					"data-prohibitions": "[editContent]",
 					className: "bg-card rounded-[calc(var(--radius)*1.5)] border border-border overflow-hidden",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("table", {
-						"data-uid": "src/pages/admin/Dashboard.tsx:235:13",
+						"data-uid": "src/pages/admin/Dashboard.tsx:239:13",
 						"data-prohibitions": "[editContent]",
 						className: "w-full border-collapse text-left",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("thead", {
-							"data-uid": "src/pages/admin/Dashboard.tsx:236:15",
+							"data-uid": "src/pages/admin/Dashboard.tsx:240:15",
 							"data-prohibitions": "[]",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", {
-								"data-uid": "src/pages/admin/Dashboard.tsx:237:17",
+								"data-uid": "src/pages/admin/Dashboard.tsx:241:17",
 								"data-prohibitions": "[]",
 								className: "border-b border-border bg-muted",
 								children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-										"data-uid": "src/pages/admin/Dashboard.tsx:238:19",
+										"data-uid": "src/pages/admin/Dashboard.tsx:242:19",
 										"data-prohibitions": "[]",
 										className: "px-[14px] py-[10px] text-[0.6875rem] font-bold uppercase tracking-[0.06em] text-muted-foreground w-[60px]",
 										children: "#"
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-										"data-uid": "src/pages/admin/Dashboard.tsx:241:19",
+										"data-uid": "src/pages/admin/Dashboard.tsx:245:19",
 										"data-prohibitions": "[]",
 										className: "px-[14px] py-[10px] text-[0.6875rem] font-bold uppercase tracking-[0.06em] text-muted-foreground",
-										children: "Titulo"
+										children: "Título"
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-										"data-uid": "src/pages/admin/Dashboard.tsx:244:19",
+										"data-uid": "src/pages/admin/Dashboard.tsx:248:19",
 										"data-prohibitions": "[]",
 										className: "px-[14px] py-[10px] text-[0.6875rem] font-bold uppercase tracking-[0.06em] text-muted-foreground w-[140px]",
 										children: "Autor"
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-										"data-uid": "src/pages/admin/Dashboard.tsx:247:19",
+										"data-uid": "src/pages/admin/Dashboard.tsx:251:19",
 										"data-prohibitions": "[]",
 										className: "px-[14px] py-[10px] text-[0.6875rem] font-bold uppercase tracking-[0.06em] text-muted-foreground w-[120px]",
 										children: "Categoria"
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-										"data-uid": "src/pages/admin/Dashboard.tsx:250:19",
+										"data-uid": "src/pages/admin/Dashboard.tsx:254:19",
 										"data-prohibitions": "[]",
 										className: "px-[14px] py-[10px] text-[0.6875rem] font-bold uppercase tracking-[0.06em] text-muted-foreground w-[110px]",
-										children: "Nivel"
+										children: "Nível"
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-										"data-uid": "src/pages/admin/Dashboard.tsx:253:19",
+										"data-uid": "src/pages/admin/Dashboard.tsx:257:19",
 										"data-prohibitions": "[]",
 										className: "px-[14px] py-[10px] text-[0.6875rem] font-bold uppercase tracking-[0.06em] text-muted-foreground w-[100px]",
 										children: "Data"
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-										"data-uid": "src/pages/admin/Dashboard.tsx:256:19",
+										"data-uid": "src/pages/admin/Dashboard.tsx:260:19",
 										"data-prohibitions": "[]",
 										className: "px-[14px] py-[10px] text-[0.6875rem] font-bold uppercase tracking-[0.06em] text-muted-foreground w-[100px] text-right",
-										children: "Acoes"
+										children: "Ações"
 									})
 								]
 							})
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("tbody", {
-							"data-uid": "src/pages/admin/Dashboard.tsx:261:15",
+							"data-uid": "src/pages/admin/Dashboard.tsx:265:15",
 							"data-prohibitions": "[editContent]",
 							children: filteredLearnings.map((l) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", {
-								"data-uid": "src/pages/admin/Dashboard.tsx:263:19",
+								"data-uid": "src/pages/admin/Dashboard.tsx:267:19",
 								"data-prohibitions": "[editContent]",
 								className: "border-b border-border hover:bg-accent/50 transition-colors last:border-0",
 								children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
-										"data-uid": "src/pages/admin/Dashboard.tsx:267:21",
+										"data-uid": "src/pages/admin/Dashboard.tsx:271:21",
 										"data-prohibitions": "[editContent]",
 										className: "px-[14px] py-[12px] text-[0.8125rem] text-foreground",
 										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											"data-uid": "src/pages/admin/Dashboard.tsx:268:23",
+											"data-uid": "src/pages/admin/Dashboard.tsx:272:23",
 											"data-prohibitions": "[editContent]",
 											className: "bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full border border-border text-[0.6875rem] font-medium",
 											children: l.number
 										})
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
-										"data-uid": "src/pages/admin/Dashboard.tsx:272:21",
+										"data-uid": "src/pages/admin/Dashboard.tsx:276:21",
 										"data-prohibitions": "[editContent]",
 										className: "px-[14px] py-[12px] text-[0.8125rem] text-foreground font-medium max-w-[220px] truncate whitespace-nowrap",
 										title: l.title,
 										children: l.title
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
-										"data-uid": "src/pages/admin/Dashboard.tsx:278:21",
+										"data-uid": "src/pages/admin/Dashboard.tsx:282:21",
 										"data-prohibitions": "[editContent]",
 										className: "px-[14px] py-[12px] text-[0.8125rem] text-muted-foreground truncate",
 										children: l.author
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
-										"data-uid": "src/pages/admin/Dashboard.tsx:281:21",
+										"data-uid": "src/pages/admin/Dashboard.tsx:285:21",
 										"data-prohibitions": "[editContent]",
 										className: "px-[14px] py-[12px]",
 										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											"data-uid": "src/pages/admin/Dashboard.tsx:282:23",
+											"data-uid": "src/pages/admin/Dashboard.tsx:286:23",
 											"data-prohibitions": "[editContent]",
 											className: "text-[0.6875rem] font-medium bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full border border-transparent",
 											children: l.category
 										})
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
-										"data-uid": "src/pages/admin/Dashboard.tsx:286:21",
+										"data-uid": "src/pages/admin/Dashboard.tsx:290:21",
 										"data-prohibitions": "[editContent]",
 										className: "px-[14px] py-[12px]",
 										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											"data-uid": "src/pages/admin/Dashboard.tsx:287:23",
+											"data-uid": "src/pages/admin/Dashboard.tsx:291:23",
 											"data-prohibitions": "[editContent]",
 											className: `text-[0.6875rem] font-medium px-2 py-0.5 rounded-full border ${getLvlColor(l.level)}`,
-											children: l.level
+											children: l.level === "Intermediario" ? "Intermediário" : l.level === "Avancado" ? "Avançado" : l.level
 										})
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
-										"data-uid": "src/pages/admin/Dashboard.tsx:295:21",
+										"data-uid": "src/pages/admin/Dashboard.tsx:303:21",
 										"data-prohibitions": "[editContent]",
 										className: "px-[14px] py-[12px] text-[0.8125rem] text-muted-foreground",
 										children: dateFmt(l.date)
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
-										"data-uid": "src/pages/admin/Dashboard.tsx:298:21",
+										"data-uid": "src/pages/admin/Dashboard.tsx:306:21",
 										"data-prohibitions": "[]",
 										className: "px-[14px] py-[12px] text-[0.8125rem] text-foreground text-right",
 										children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											"data-uid": "src/pages/admin/Dashboard.tsx:299:23",
+											"data-uid": "src/pages/admin/Dashboard.tsx:307:23",
 											"data-prohibitions": "[]",
 											className: "flex items-center justify-end gap-[4px]",
 											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-												"data-uid": "src/pages/admin/Dashboard.tsx:300:25",
+												"data-uid": "src/pages/admin/Dashboard.tsx:308:25",
 												"data-prohibitions": "[]",
 												to: `/admin/editar/${l.id}`,
 												className: "w-[32px] h-[32px] rounded-[var(--radius)] flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-accent transition-colors",
 												"aria-label": "Editar",
 												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Pencil, {
-													"data-uid": "src/pages/admin/Dashboard.tsx:305:27",
+													"data-uid": "src/pages/admin/Dashboard.tsx:313:27",
 													"data-prohibitions": "[editContent]",
 													className: "w-4 h-4"
 												})
 											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DelDialog, {
-												"data-uid": "src/pages/admin/Dashboard.tsx:307:25",
+												"data-uid": "src/pages/admin/Dashboard.tsx:315:25",
 												"data-prohibitions": "[]",
 												onConfirm: () => deleteLearning(l.id),
 												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-													"data-uid": "src/pages/admin/Dashboard.tsx:308:27",
+													"data-uid": "src/pages/admin/Dashboard.tsx:316:27",
 													"data-prohibitions": "[]",
 													className: "w-[32px] h-[32px] rounded-[var(--radius)] flex items-center justify-center text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors",
 													"aria-label": "Excluir",
 													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trash2, {
-														"data-uid": "src/pages/admin/Dashboard.tsx:312:29",
+														"data-uid": "src/pages/admin/Dashboard.tsx:320:29",
 														"data-prohibitions": "[editContent]",
 														className: "w-4 h-4"
 													})
@@ -1129,38 +1129,38 @@ function AdminDashboard() {
 }
 function DelDialog({ children, onConfirm }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AlertDialog, {
-		"data-uid": "src/pages/admin/Dashboard.tsx:330:5",
+		"data-uid": "src/pages/admin/Dashboard.tsx:338:5",
 		"data-prohibitions": "[editContent]",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AlertDialogTrigger, {
-			"data-uid": "src/pages/admin/Dashboard.tsx:331:7",
+			"data-uid": "src/pages/admin/Dashboard.tsx:339:7",
 			"data-prohibitions": "[editContent]",
 			asChild: true,
 			children
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AlertDialogContent, {
-			"data-uid": "src/pages/admin/Dashboard.tsx:332:7",
+			"data-uid": "src/pages/admin/Dashboard.tsx:340:7",
 			"data-prohibitions": "[]",
 			className: "font-sans",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AlertDialogHeader, {
-				"data-uid": "src/pages/admin/Dashboard.tsx:333:9",
+				"data-uid": "src/pages/admin/Dashboard.tsx:341:9",
 				"data-prohibitions": "[]",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AlertDialogTitle, {
-					"data-uid": "src/pages/admin/Dashboard.tsx:334:11",
+					"data-uid": "src/pages/admin/Dashboard.tsx:342:11",
 					"data-prohibitions": "[]",
 					children: "Excluir aprendizado?"
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AlertDialogDescription, {
-					"data-uid": "src/pages/admin/Dashboard.tsx:335:11",
+					"data-uid": "src/pages/admin/Dashboard.tsx:343:11",
 					"data-prohibitions": "[]",
-					children: "Essa acao nao pode ser desfeita. O aprendizado sera removido permanentemente do repositorio."
+					children: "Essa ação não pode ser desfeita. O aprendizado será removido permanentemente do repositório."
 				})]
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AlertDialogFooter, {
-				"data-uid": "src/pages/admin/Dashboard.tsx:340:9",
+				"data-uid": "src/pages/admin/Dashboard.tsx:348:9",
 				"data-prohibitions": "[]",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AlertDialogCancel, {
-					"data-uid": "src/pages/admin/Dashboard.tsx:341:11",
+					"data-uid": "src/pages/admin/Dashboard.tsx:349:11",
 					"data-prohibitions": "[]",
 					children: "Cancelar"
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AlertDialogAction, {
-					"data-uid": "src/pages/admin/Dashboard.tsx:342:11",
+					"data-uid": "src/pages/admin/Dashboard.tsx:350:11",
 					"data-prohibitions": "[]",
 					onClick: onConfirm,
 					className: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
@@ -1173,4 +1173,4 @@ function DelDialog({ children, onConfirm }) {
 //#endregion
 export { AdminDashboard as default };
 
-//# sourceMappingURL=Dashboard-CgyRNa5s.js.map
+//# sourceMappingURL=Dashboard-BsFsXzp3.js.map
