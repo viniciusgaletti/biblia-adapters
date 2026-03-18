@@ -246,8 +246,8 @@ export default function NovoAprendizado() {
                 </div>
                 <div className="flex flex-col gap-[8px]">
                   {fields.map((field, index) => (
-                    <div key={field.id} className="flex flex-row items-center gap-[8px]">
-                      <span className="font-mono text-[13px] font-medium text-muted-foreground min-w-[24px] text-right">
+                    <div key={field.id} className="flex flex-row items-start gap-[8px]">
+                      <span className="font-mono text-[13px] font-medium text-muted-foreground min-w-[24px] text-right mt-[10px]">
                         {index + 1}.
                       </span>
                       <FormField
@@ -256,9 +256,10 @@ export default function NovoAprendizado() {
                         render={({ field: inputField }) => (
                           <FormItem className="flex-1 space-y-0">
                             <FormControl>
-                              <Input
+                              <Textarea
                                 {...inputField}
-                                className="font-mono text-[13px] py-[9px] px-[12px] h-auto shadow-none"
+                                rows={2}
+                                className="font-mono text-[13px] py-[9px] px-[12px] min-h-0 shadow-none resize-y leading-[1.6] break-words overflow-y-auto overflow-x-hidden w-full"
                                 placeholder={`Passo ${index + 1}`}
                                 disabled={isSubmitting}
                                 aria-label={`Passo ${index + 1}`}
@@ -273,7 +274,7 @@ export default function NovoAprendizado() {
                           type="button"
                           variant="ghost"
                           size="icon"
-                          className="w-[28px] h-[28px] shrink-0 text-muted-foreground hover:text-destructive hover:bg-transparent"
+                          className="w-[28px] h-[28px] shrink-0 text-muted-foreground hover:text-destructive hover:bg-transparent mt-[6px]"
                           onClick={() => remove(index)}
                           aria-label={`Remover passo ${index + 1}`}
                           disabled={isSubmitting}
