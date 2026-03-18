@@ -1,5 +1,5 @@
 import { a as require_jsx_runtime, l as Navigate, u as Outlet } from "./client-D09FV_21.js";
-import { i as LoaderCircle } from "./index-DTuG9sfW.js";
+import { i as LoaderCircle } from "./index-CnOC6vjI.js";
 import { t as useAdminAuth } from "./use-admin-auth-CzBVU3ds.js";
 //#region src/components/AdminRoute.tsx
 var import_jsx_runtime = require_jsx_runtime();
@@ -29,4 +29,4 @@ function AdminRoute() {
 //#endregion
 export { AdminRoute as default };
 
-//# sourceMappingURL=AdminRoute-CAib_Wmp.js.map
+//# sourceMappingURL=AdminRoute-C1KwbpOW.js.map

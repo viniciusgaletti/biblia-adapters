@@ -1,10 +1,32 @@
-import { Suspense } from 'react'
-import { Outlet, Link } from 'react-router-dom'
+import { Suspense, useEffect } from 'react'
+import { Outlet, Link, useNavigate } from 'react-router-dom'
 import { BookOpen, Loader2 } from 'lucide-react'
 import { ThemeToggle } from './ThemeToggle'
 import { ErrorBoundary } from './ErrorBoundary'
 
 export default function Layout() {
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.shiftKey && event.key === 'A') {
+        const activeElement = document.activeElement
+        if (activeElement) {
+          const tagName = activeElement.tagName.toUpperCase()
+          if (tagName === 'INPUT' || tagName === 'TEXTAREA' || tagName === 'SELECT') {
+            return
+          }
+        }
+        navigate('/admin')
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [navigate])
+
   return (
     <ErrorBoundary>
       <div className="min-h-screen bg-background text-foreground flex flex-col font-sans transition-colors duration-200">

@@ -1,5 +1,5 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-DBRQramf.js","assets/client-D09FV_21.js","assets/dist-Cjh9VPbQ.js","assets/button-BeRAxBEE.js","assets/select-CyLNbRw8.js","assets/plus-DeMb-NdG.js","assets/star-rating-CxxwsLsY.js","assets/input-UzQica1A.js","assets/skeleton-Ce3YI1dZ.js","assets/learnings-lUo10QHQ.js","assets/NovoAprendizado-03HVFfyB.js","assets/use-new-learning-DKa7BYMv.js","assets/label-Cg7XO7Wk.js","assets/arrow-left-DCIMdVmn.js","assets/DetalheAprendizado-DNXywPws.js","assets/Login-CBM0wxj7.js","assets/use-admin-auth-CzBVU3ds.js","assets/Dashboard-WK5v-KXQ.js","assets/admin-Bb_eAA0H.js","assets/EditLearning-oiz6mB3O.js","assets/AdminRoute-CAib_Wmp.js"])))=>i.map(i=>d[i]);
-import { _ as __commonJSMin, a as require_jsx_runtime, c as Link, d as Route, f as Routes, g as require_react, h as __vitePreload, o as createLucideIcon, s as BrowserRouter, t as supabase, u as Outlet, v as __toESM } from "./client-D09FV_21.js";
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-DBRQramf.js","assets/client-D09FV_21.js","assets/dist-Cjh9VPbQ.js","assets/button-BeRAxBEE.js","assets/select-CyLNbRw8.js","assets/plus-DeMb-NdG.js","assets/star-rating-CxxwsLsY.js","assets/input-UzQica1A.js","assets/skeleton-Ce3YI1dZ.js","assets/learnings-lUo10QHQ.js","assets/NovoAprendizado-BC2Ldab0.js","assets/use-new-learning-BTRWky2Q.js","assets/label-Cg7XO7Wk.js","assets/arrow-left-DCIMdVmn.js","assets/DetalheAprendizado-CXCy7kjc.js","assets/Login-Qt6az1Fa.js","assets/use-admin-auth-CzBVU3ds.js","assets/Dashboard-Cc5kpIYO.js","assets/admin-Bb_eAA0H.js","assets/EditLearning-zUaTXiFQ.js","assets/AdminRoute-C1KwbpOW.js"])))=>i.map(i=>d[i]);
+import { _ as __commonJSMin, a as require_jsx_runtime, c as Link, d as Route, f as Routes, g as require_react, h as __vitePreload, o as createLucideIcon, p as useNavigate, s as BrowserRouter, t as supabase, u as Outlet, v as __toESM } from "./client-D09FV_21.js";
 import { a as cn$1, c as useComposedRefs, l as require_react_dom, o as cva, t as Button } from "./button-BeRAxBEE.js";
 import { C as createContextScope, T as X, _ as Primitive, a as createPopperScope, d as Portal, f as useLayoutEffect2, g as useCallbackRef, h as Root, i as Root2$1, l as VisuallyHidden, m as DismissableLayer, n as Arrow, o as useId, p as Branch, r as Content, s as Root$1, t as Anchor, u as useControllableState, v as dispatchDiscreteCustomEvent, w as composeEventHandlers, x as createSlottable, y as createCollection } from "./dist-Cjh9VPbQ.js";
 //#region \0vite/modulepreload-polyfill.js
@@ -16982,68 +16982,85 @@ var ErrorBoundary = class extends import_react.Component {
 //#endregion
 //#region src/components/Layout.tsx
 function Layout() {
+	const navigate = useNavigate();
+	(0, import_react.useEffect)(() => {
+		const handleKeyDown = (event) => {
+			if (event.shiftKey && event.key === "A") {
+				const activeElement = document.activeElement;
+				if (activeElement) {
+					const tagName = activeElement.tagName.toUpperCase();
+					if (tagName === "INPUT" || tagName === "TEXTAREA" || tagName === "SELECT") return;
+				}
+				navigate("/admin");
+			}
+		};
+		window.addEventListener("keydown", handleKeyDown);
+		return () => {
+			window.removeEventListener("keydown", handleKeyDown);
+		};
+	}, [navigate]);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ErrorBoundary, {
-		"data-uid": "src/components/Layout.tsx:9:5",
+		"data-uid": "src/components/Layout.tsx:31:5",
 		"data-prohibitions": "[]",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			"data-uid": "src/components/Layout.tsx:10:7",
+			"data-uid": "src/components/Layout.tsx:32:7",
 			"data-prohibitions": "[]",
 			className: "min-h-screen bg-background text-foreground flex flex-col font-sans transition-colors duration-200",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
-				"data-uid": "src/components/Layout.tsx:11:9",
+				"data-uid": "src/components/Layout.tsx:33:9",
 				"data-prohibitions": "[]",
 				className: "sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border shadow-sm",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					"data-uid": "src/components/Layout.tsx:12:11",
+					"data-uid": "src/components/Layout.tsx:34:11",
 					"data-prohibitions": "[]",
 					className: "max-w-5xl mx-auto px-4 sm:px-6 py-3 sm:py-0 min-h-16 h-auto flex flex-wrap sm:flex-nowrap items-center justify-between gap-y-3 gap-x-4",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
-						"data-uid": "src/components/Layout.tsx:13:13",
+						"data-uid": "src/components/Layout.tsx:35:13",
 						"data-prohibitions": "[]",
 						to: "/",
 						className: "flex items-center gap-2 group shrink-0",
 						"aria-label": "Página Inicial",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(BookOpen, {
-							"data-uid": "src/components/Layout.tsx:18:15",
+							"data-uid": "src/components/Layout.tsx:40:15",
 							"data-prohibitions": "[editContent]",
 							className: "w-6 h-6 text-primary transition-transform group-hover:scale-110"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							"data-uid": "src/components/Layout.tsx:19:15",
+							"data-uid": "src/components/Layout.tsx:41:15",
 							"data-prohibitions": "[]",
 							className: "text-xl font-bold text-primary tracking-tight hidden sm:inline-block",
 							children: "Bíblia dos Adapters"
 						})]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/components/Layout.tsx:23:13",
+						"data-uid": "src/components/Layout.tsx:45:13",
 						"data-prohibitions": "[]",
 						className: "flex items-center gap-2 w-full sm:w-auto justify-end",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThemeToggle, {
-							"data-uid": "src/components/Layout.tsx:24:15",
+							"data-uid": "src/components/Layout.tsx:46:15",
 							"data-prohibitions": "[editContent]"
 						})
 					})]
 				})
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
-				"data-uid": "src/components/Layout.tsx:29:9",
+				"data-uid": "src/components/Layout.tsx:51:9",
 				"data-prohibitions": "[]",
 				className: "flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8 animate-fade-in",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react.Suspense, {
-					"data-uid": "src/components/Layout.tsx:30:11",
+					"data-uid": "src/components/Layout.tsx:52:11",
 					"data-prohibitions": "[]",
 					fallback: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/components/Layout.tsx:32:15",
+						"data-uid": "src/components/Layout.tsx:54:15",
 						"data-prohibitions": "[]",
 						className: "flex justify-center items-center h-64",
 						role: "status",
 						"aria-label": "Carregando",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, {
-							"data-uid": "src/components/Layout.tsx:37:17",
+							"data-uid": "src/components/Layout.tsx:59:17",
 							"data-prohibitions": "[editContent]",
 							className: "w-8 h-8 animate-spin text-primary"
 						})
 					}),
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {
-						"data-uid": "src/components/Layout.tsx:41:13",
+						"data-uid": "src/components/Layout.tsx:63:13",
 						"data-prohibitions": "[editContent]"
 					})
 				})
@@ -17098,12 +17115,12 @@ var NotFound = () => {
 //#endregion
 //#region src/App.tsx
 var Index = (0, import_react.lazy)(() => __vitePreload(() => import("./Index-DBRQramf.js"), __vite__mapDeps([0,1,2,3,4,5,6,7,8,9])));
-var NovoAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./NovoAprendizado-03HVFfyB.js"), __vite__mapDeps([10,1,2,3,11,12,5,9,4,13,7])));
-var DetalheAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./DetalheAprendizado-DNXywPws.js"), __vite__mapDeps([14,1,3,13,6,8,9])));
-var AdminLogin = (0, import_react.lazy)(() => __vitePreload(() => import("./Login-CBM0wxj7.js"), __vite__mapDeps([15,1,3,12,7,16])));
-var AdminDashboard = (0, import_react.lazy)(() => __vitePreload(() => import("./Dashboard-WK5v-KXQ.js"), __vite__mapDeps([17,1,2,3,4,7,8,16,18])));
-var AdminEditLearning = (0, import_react.lazy)(() => __vitePreload(() => import("./EditLearning-oiz6mB3O.js"), __vite__mapDeps([19,1,2,3,11,12,5,9,4,13,7,8,18])));
-var AdminRoute = (0, import_react.lazy)(() => __vitePreload(() => import("./AdminRoute-CAib_Wmp.js"), __vite__mapDeps([20,1,16])));
+var NovoAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./NovoAprendizado-BC2Ldab0.js"), __vite__mapDeps([10,1,2,3,11,12,5,9,4,13,7])));
+var DetalheAprendizado = (0, import_react.lazy)(() => __vitePreload(() => import("./DetalheAprendizado-CXCy7kjc.js"), __vite__mapDeps([14,1,3,13,6,8,9])));
+var AdminLogin = (0, import_react.lazy)(() => __vitePreload(() => import("./Login-Qt6az1Fa.js"), __vite__mapDeps([15,1,3,12,7,16])));
+var AdminDashboard = (0, import_react.lazy)(() => __vitePreload(() => import("./Dashboard-Cc5kpIYO.js"), __vite__mapDeps([17,1,2,3,4,7,8,16,18])));
+var AdminEditLearning = (0, import_react.lazy)(() => __vitePreload(() => import("./EditLearning-zUaTXiFQ.js"), __vite__mapDeps([19,1,2,3,11,12,5,9,4,13,7,8,18])));
+var AdminRoute = (0, import_react.lazy)(() => __vitePreload(() => import("./AdminRoute-C1KwbpOW.js"), __vite__mapDeps([20,1,16])));
 var AdminLoader = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 	"data-uid": "src/App.tsx:25:3",
 	"data-prohibitions": "[]",
@@ -17263,4 +17280,4 @@ var App = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BrowserRouter, {
 //#endregion
 export { LoaderCircle as i, Presence as n, useToast as r, toast as t };
 
-//# sourceMappingURL=index-DTuG9sfW.js.map
+//# sourceMappingURL=index-CnOC6vjI.js.map
