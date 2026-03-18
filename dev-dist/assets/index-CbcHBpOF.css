@@ -675,6 +675,9 @@ body::selection{
 .z-\[1\]{
   z-index: 1;
 }
+.m-0{
+  margin: 0px;
+}
 .-mx-1{
   margin-left: -0.25rem;
   margin-right: -0.25rem;
@@ -943,6 +946,9 @@ body::selection{
 }
 .h-\[20px\]{
   height: 20px;
+}
+.h-\[24px\]{
+  height: 24px;
 }
 .h-\[28px\]{
   height: 28px;
@@ -1406,6 +1412,9 @@ body::selection{
 .gap-4{
   gap: 1rem;
 }
+.gap-\[10px\]{
+  gap: 10px;
+}
 .gap-\[12px\]{
   gap: 12px;
 }
@@ -1697,6 +1706,9 @@ body::selection{
 }
 .bg-muted-foreground\/10{
   background-color: hsl(var(--muted-foreground) / 0.1);
+}
+.bg-muted\/40{
+  background-color: hsl(var(--muted) / 0.4);
 }
 .bg-muted\/50{
   background-color: hsl(var(--muted) / 0.5);

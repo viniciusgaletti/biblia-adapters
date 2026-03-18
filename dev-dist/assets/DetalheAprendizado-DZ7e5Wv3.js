@@ -2,7 +2,7 @@ import { a as require_jsx_runtime, c as Link, g as require_react, m as useParams
 import { a as cn, t as Button } from "./button-BeRAxBEE.js";
 import { t as ArrowLeft } from "./arrow-left-DCIMdVmn.js";
 import { t as StarRating } from "./star-rating-CxxwsLsY.js";
-import { t as toast } from "./index-DL8EMkSj.js";
+import { t as toast } from "./index-DJw-Hamh.js";
 import { a as submitRating, n as deleteRating, r as fetchLearningById } from "./learnings-lUo10QHQ.js";
 import { t as Skeleton } from "./skeleton-Ce3YI1dZ.js";
 var RefreshCw = createLucideIcon("refresh-cw", [
@@ -394,7 +394,7 @@ function DetalheAprendizado() {
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				"data-uid": "src/pages/DetalheAprendizado.tsx:198:7",
-				"data-prohibitions": "[]",
+				"data-prohibitions": "[editContent]",
 				className: "space-y-[32px]",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Section, {
@@ -409,14 +409,38 @@ function DetalheAprendizado() {
 						title: "O Aprendizado",
 						content: ap.learning
 					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Section, {
-						"data-uid": "src/pages/DetalheAprendizado.tsx:201:9",
+					ap.steps && ap.steps.trim() && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+						"data-uid": "src/pages/DetalheAprendizado.tsx:203:11",
 						"data-prohibitions": "[editContent]",
-						title: "Passo a Passo",
-						content: ap.steps
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+							"data-uid": "src/pages/DetalheAprendizado.tsx:204:13",
+							"data-prohibitions": "[]",
+							className: "text-[0.6875rem] font-bold uppercase tracking-[0.08em] text-muted-foreground mb-[10px]",
+							children: "Passo a Passo"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ol", {
+							"data-uid": "src/pages/DetalheAprendizado.tsx:207:13",
+							"data-prohibitions": "[editContent]",
+							className: "list-none flex flex-col gap-[10px] m-0 p-0",
+							children: ap.steps.split("\n").map((step) => step.trim()).filter(Boolean).map((step, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
+								"data-uid": "src/pages/DetalheAprendizado.tsx:213:19",
+								"data-prohibitions": "[editContent]",
+								className: "flex flex-row items-start gap-[12px] bg-muted/40 border border-border rounded-lg py-[12px] px-[16px]",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									"data-uid": "src/pages/DetalheAprendizado.tsx:217:21",
+									"data-prohibitions": "[editContent]",
+									className: "flex items-center justify-center shrink-0 mt-[1px] min-w-[24px] h-[24px] bg-primary text-primary-foreground rounded-full text-[0.6875rem] font-bold",
+									children: index + 1
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									"data-uid": "src/pages/DetalheAprendizado.tsx:220:21",
+									"data-prohibitions": "[editContent]",
+									className: "font-mono text-[0.875rem] leading-[1.75] text-foreground whitespace-pre-line flex-1",
+									children: step.replace(/^\d+\.\s+/, "")
+								})]
+							}, index))
+						})]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Section, {
-						"data-uid": "src/pages/DetalheAprendizado.tsx:202:9",
+						"data-uid": "src/pages/DetalheAprendizado.tsx:229:9",
 						"data-prohibitions": "[editContent]",
 						title: "Observações / Dicas Extras",
 						content: ap.observations
@@ -424,21 +448,21 @@ function DetalheAprendizado() {
 				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("footer", {
-				"data-uid": "src/pages/DetalheAprendizado.tsx:205:7",
+				"data-uid": "src/pages/DetalheAprendizado.tsx:232:7",
 				"data-prohibitions": "[]",
 				className: "mt-[44px]",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-					"data-uid": "src/pages/DetalheAprendizado.tsx:206:9",
+					"data-uid": "src/pages/DetalheAprendizado.tsx:233:9",
 					"data-prohibitions": "[]",
 					to: "/",
 					tabIndex: -1,
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						"data-uid": "src/pages/DetalheAprendizado.tsx:207:11",
+						"data-uid": "src/pages/DetalheAprendizado.tsx:234:11",
 						"data-prohibitions": "[]",
 						variant: "ghost",
 						className: "text-[0.8125rem] text-muted-foreground hover:bg-muted/50 h-auto py-2 px-3 -ml-3",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, {
-							"data-uid": "src/pages/DetalheAprendizado.tsx:211:13",
+							"data-uid": "src/pages/DetalheAprendizado.tsx:238:13",
 							"data-prohibitions": "[editContent]",
 							className: "w-3 h-3 mr-2",
 							"aria-hidden": "true"
@@ -452,4 +476,4 @@ function DetalheAprendizado() {
 //#endregion
 export { DetalheAprendizado as default };
 
-//# sourceMappingURL=DetalheAprendizado-CbARonXn.js.map
+//# sourceMappingURL=DetalheAprendizado-DZ7e5Wv3.js.map

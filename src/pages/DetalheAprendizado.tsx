@@ -198,7 +198,34 @@ export default function DetalheAprendizado() {
       <div className="space-y-[32px]">
         <Section title="Contexto / Problema que Resolve" content={ap.context} />
         <Section title="O Aprendizado" content={ap.learning} />
-        <Section title="Passo a Passo" content={ap.steps} />
+
+        {ap.steps && ap.steps.trim() && (
+          <section>
+            <h2 className="text-[0.6875rem] font-bold uppercase tracking-[0.08em] text-muted-foreground mb-[10px]">
+              Passo a Passo
+            </h2>
+            <ol className="list-none flex flex-col gap-[10px] m-0 p-0">
+              {ap.steps
+                .split('\n')
+                .map((step) => step.trim())
+                .filter(Boolean)
+                .map((step, index) => (
+                  <li
+                    key={index}
+                    className="flex flex-row items-start gap-[12px] bg-muted/40 border border-border rounded-lg py-[12px] px-[16px]"
+                  >
+                    <span className="flex items-center justify-center shrink-0 mt-[1px] min-w-[24px] h-[24px] bg-primary text-primary-foreground rounded-full text-[0.6875rem] font-bold">
+                      {index + 1}
+                    </span>
+                    <div className="font-mono text-[0.875rem] leading-[1.75] text-foreground whitespace-pre-line flex-1">
+                      {step.replace(/^\d+\.\s+/, '')}
+                    </div>
+                  </li>
+                ))}
+            </ol>
+          </section>
+        )}
+
         <Section title="Observações / Dicas Extras" content={ap.observations} />
       </div>
 
