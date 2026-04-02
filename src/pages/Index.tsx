@@ -59,7 +59,7 @@ export default function Index() {
       <section className="flex flex-col md:flex-row justify-between items-start md:items-center mb-[36px] gap-4">
         <div>
           <h1 className="text-[1.875rem] font-bold text-foreground tracking-[-0.02em]">
-            Biblia dos Adapters
+            Biblia dos Renata
           </h1>
           <p className="text-[0.8125rem] text-muted-foreground mt-[6px] leading-[1.6]">
             Repositório vivo de aprendizados sobre IA, Vibecoding, Automações e Agentes de IA
